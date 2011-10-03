@@ -1,0 +1,16 @@
+<?php
+
+include_once('stanford_courses.features.inc');
+
+/*
+ * Implementation of hook_help().
+ */
+function stanford_courses_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#stanford_courses':
+      $output = '<p>'. ('This module provides a turnkey solution for importing course information from !explorecourses. It includes a "Stanford Course" content type, a feed importer, and a View of all courses. ', array('!explorecourses' => l('explorecourses.stanford.edu', 'http://explorecourses.stanford.edu'))) .'</p>';
+      $output .= '<p>' t('To import from a feed, first construct the search for the courses that you want to import at explorecourses.stanford.edu. Then, to retrieve the XML feed for the search, change <strong>view=catalog</strong> to <strong>view=xml</strong> in the URL.') .'</p>';
+      $output .= '<p>'. t('Paste the XML feed URL into the URL box at !import', array('import' => l('import/stanford_course_importer', 'import/stanford_course_importer')));
+      return $output;
+  }
+}
