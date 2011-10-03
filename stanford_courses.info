@@ -1,6 +1,5 @@
 core = "6.x"
 dependencies[] = "auto_nodetitle"
-dependencies[] = "cck"
 dependencies[] = "content"
 dependencies[] = "date"
 dependencies[] = "features"
