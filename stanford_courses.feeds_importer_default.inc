@@ -27,18 +27,18 @@ function stanford_courses_feeds_importer_default() {
         'sources' => array(
           'xpathparser:0' => 'title',
           'xpathparser:1' => 'description',
-          'xpathparser:2' => 'year',
           'xpathparser:4' => 'code',
           'xpathparser:5' => 'gers',
           'xpathparser:6' => 'subject',
+          'xpathparser:7' => 'year',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
           'xpathparser:1' => 0,
-          'xpathparser:2' => 0,
           'xpathparser:4' => 0,
           'xpathparser:5' => 0,
           'xpathparser:6' => 0,
+          'xpathparser:7' => 0,
         ),
         'context' => '//courses/course',
         'exp' => array(
@@ -47,10 +47,10 @@ function stanford_courses_feeds_importer_default() {
             'context' => 0,
             'xpathparser:0' => 0,
             'xpathparser:1' => 0,
-            'xpathparser:2' => 0,
             'xpathparser:4' => 0,
             'xpathparser:5' => 0,
             'xpathparser:6' => 0,
+            'xpathparser:7' => 0,
           ),
         ),
       ),
@@ -74,23 +74,23 @@ function stanford_courses_feeds_importer_default() {
             'unique' => FALSE,
           ),
           2 => array(
-            'source' => 'xpathparser:2',
-            'target' => 'taxonomy:features_academic_year',
-            'unique' => FALSE,
-          ),
-          3 => array(
             'source' => 'xpathparser:4',
             'target' => 'field_stanford_course_code',
             'unique' => FALSE,
           ),
-          4 => array(
+          3 => array(
             'source' => 'xpathparser:5',
             'target' => 'field_stanford_course_ger',
             'unique' => FALSE,
           ),
-          5 => array(
+          4 => array(
             'source' => 'xpathparser:6',
             'target' => 'field_stanford_course_subject',
+            'unique' => FALSE,
+          ),
+          5 => array(
+            'source' => 'xpathparser:7',
+            'target' => 'field_stanford_course_year',
             'unique' => FALSE,
           ),
         ),
