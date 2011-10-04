@@ -31,6 +31,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:5' => 'gers',
           'xpathparser:6' => 'subject',
           'xpathparser:7' => 'year',
+          'xpathparser:8' => 'concat(title,"-",subject,"-",year,"-",code)',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
@@ -39,6 +40,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:5' => 0,
           'xpathparser:6' => 0,
           'xpathparser:7' => 0,
+          'xpathparser:8' => 0,
         ),
         'context' => '//courses/course',
         'exp' => array(
@@ -51,8 +53,10 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:5' => 0,
             'xpathparser:6' => 0,
             'xpathparser:7' => 0,
+            'xpathparser:8' => 0,
           ),
         ),
+        'allow_override' => 1,
       ),
     ),
     'processor' => array(
@@ -92,6 +96,11 @@ function stanford_courses_feeds_importer_default() {
             'source' => 'xpathparser:7',
             'target' => 'field_stanford_course_year',
             'unique' => FALSE,
+          ),
+          6 => array(
+            'source' => 'xpathparser:8',
+            'target' => 'guid',
+            'unique' => 1,
           ),
         ),
         'author' => 0,
