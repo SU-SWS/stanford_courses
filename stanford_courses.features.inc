@@ -26,6 +26,17 @@ function stanford_courses_node_info() {
       'min_word_count' => '0',
       'help' => '',
     ),
+    'stanford_section' => array(
+      'name' => t('Stanford Course Section'),
+      'module' => 'features',
+      'description' => t(' A <em>section</em> is an instance of a course, and includes instructor, academic quarter, date and time information, and so forth.'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'has_body' => '0',
+      'body_label' => '',
+      'min_word_count' => '0',
+      'help' => '',
+    ),
   );
   return $items;
 }
