@@ -17,6 +17,17 @@ function stanford_courses_views_default_views() {
   $view->api_version = 2;
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
+  $handler->override_option('relationships', array(
+    'field_stanford_section_course_nid' => array(
+      'label' => 'Parent Course',
+      'required' => 0,
+      'delta' => -1,
+      'id' => 'field_stanford_section_course_nid',
+      'table' => 'node_data_field_stanford_section_course',
+      'field' => 'field_stanford_section_course_nid',
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('fields', array(
     'title' => array(
       'label' => 'Course Title',
@@ -249,6 +260,7 @@ function stanford_courses_views_default_views() {
       'operator' => 'in',
       'value' => array(
         'stanford_course' => 'stanford_course',
+        'stanford_section' => 'stanford_section',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -272,7 +284,7 @@ function stanford_courses_views_default_views() {
   $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'table');
   $handler->override_option('style_options', array(
-    'grouping' => 'field_stanford_course_year_value',
+    'grouping' => '',
     'override' => 1,
     'sticky' => 0,
     'order' => 'asc',
