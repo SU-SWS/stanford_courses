@@ -596,7 +596,7 @@ function stanford_courses_content_default_fields() {
     'widget_active' => '1',
     'type' => 'date',
     'required' => '0',
-    'multiple' => '0',
+    'multiple' => '3',
     'module' => 'date',
     'active' => '1',
     'granularity' => array(
@@ -658,31 +658,28 @@ function stanford_courses_content_default_fields() {
     'widget_active' => '1',
     'type' => 'text',
     'required' => '0',
-    'multiple' => '7',
+    'multiple' => '3',
     'module' => 'text',
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => '0|Sunday
-1|Monday
-2|Tuesday
-3|Wednesday
-4|Thursday
-5|Friday
-6|Saturday',
+    'allowed_values' => '',
     'allowed_values_php' => '',
     'widget' => array(
       'default_value' => array(
         '0' => array(
           'value' => '',
+          '_error_element' => 'default_value_widget][field_stanford_section_dow][0][value',
         ),
       ),
       'default_value_php' => NULL,
+      'rows' => 5,
+      'size' => '60',
       'label' => 'Days of Week',
       'weight' => '8',
       'description' => 'Choose the days of the week that this section is offered',
-      'type' => 'optionwidgets_buttons',
-      'module' => 'optionwidgets',
+      'type' => 'text_textfield',
+      'module' => 'text',
     ),
   );
 
@@ -985,7 +982,7 @@ function stanford_courses_content_default_fields() {
     'widget_active' => '1',
     'type' => 'datetime',
     'required' => '0',
-    'multiple' => '0',
+    'multiple' => '3',
     'module' => 'date',
     'active' => '1',
     'granularity' => array(
@@ -993,8 +990,8 @@ function stanford_courses_content_default_fields() {
       'hour' => 'hour',
       'minute' => 'minute',
     ),
-    'timezone_db' => 'UTC',
-    'tz_handling' => 'site',
+    'timezone_db' => '',
+    'tz_handling' => 'none',
     'todate' => 'optional',
     'repeat' => 0,
     'repeat_collapsed' => '',
@@ -1005,7 +1002,7 @@ function stanford_courses_content_default_fields() {
       'default_value2' => 'strtotime',
       'default_value_code2' => '+1 hour',
       'input_format' => 'm/d/Y - H:i:s',
-      'input_format_custom' => 'g:i:s A',
+      'input_format_custom' => 'H:i:s',
       'increment' => '30',
       'text_parts' => array(),
       'year_range' => '-3:+3',
@@ -1013,7 +1010,7 @@ function stanford_courses_content_default_fields() {
       'label' => 'Start and End Time',
       'weight' => '9',
       'description' => 'Enter the start and end times of the class section',
-      'type' => 'date_select',
+      'type' => 'date_text',
       'module' => 'date',
     ),
   );
