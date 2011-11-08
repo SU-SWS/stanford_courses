@@ -9,9 +9,72 @@ function stanford_courses_help($path, $arg) {
   switch ($path) {
     case 'admin/help#stanford_courses':
       $output = '<p>'. t('This module provides a turnkey solution for importing course information from !explorecourses. It includes a &quot;Stanford Course&quot; content type, a &quot;Stanford Course Section&quot; content type, a feed importer for each content type, and a View of all courses. ', array('!explorecourses' => l('explorecourses.stanford.edu', 'http://explorecourses.stanford.edu'))) .'</p>';
-      $output .= '<p>'. t('To import from a feed, first construct the search for the courses that you want to import at explorecourses.stanford.edu. Then, to retrieve the XML feed for the search, change <strong>view=catalog</strong> to <strong>view=xml-20111011</strong> (current as of Oct. 11) in the URL.') .'</p>';
+      $output .= '<p>'. t('To import from a feed, first construct the search for the courses that you want to import at explorecourses.stanford.edu. Then, to retrieve the XML feed for the search, change <strong>view=catalog</strong> to <strong>view=xml-20111011</strong> (current as of October, 2011) in the URL.') .'</p>';
       $output .= '<p>'. t('Paste the XML feed URL into the URL box at !import and click the <strong>Import</strong> button to import <em>course</em> information.', array('!import' => l('import/stanford_course_importer', 'import/stanford_course_importer'))) .'</p>';
       $output .= '<p>'. t('Paste the <em>same</em> XML feed URL into the URL box at !import and click the <strong>Import</strong> button to import <em>course section</em> information.', array('!import' => l('import/stanford_course_section_importer', 'import/stanford_course_importer'))) .'</p>';
+      $output .= '<p>'. t('<strong>Courses</strong> and <strong>Course Sections</strong> can have !nodereference relationships. ', array('!nodereference' => l('CCK Nodereference', 'https://drupal.org/project/cck')));
+      $output .= t('These nodereferences do not get created on import. To create them, go to !coursesettings and click &quot;Create Node References&quot;.', array('!coursesettings' => l('admin/settings/stanford-courses', 'admin/settings/stanford-courses'))) .'</p>';
       return $output;
   }
+}
+
+/*
+ * Implementation of hook_menu().
+ */
+function stanford_courses_menu() {
+  $items['admin/settings/stanford-courses'] = array(
+    'title' => 'Stanford Courses Settings',
+    'description' => 'Configure the Stanford Courses module',
+    'page callback' => 'stanford_courses_settings',
+    'access arguments' => array('administer feeds'),
+    'type' => 'MENU_NORMAL_ITEM',
+  );
+  return $items;
+}
+
+/*
+ * Generate settings page.
+ */
+function stanford_courses_settings() {
+  $output = t('Use the form below to create relationships (node references) between <em>Stanford Courses</em> and <em>Stanford Course Sections</em>.');
+  $output .= drupal_get_form('stanford_courses_create_nodereference');
+  return $output;
+}
+
+/*
+ * Create nodereferences based on a user-chosen common field.
+ */
+function stanford_courses_create_nodereference() {
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Create Node References')
+  );
+  return $form;
+}
+
+/*
+ * Create nodereferences for Stanford Course and Stanford Course Section nodes.
+ * Join on common Course ID fields.
+ */
+function stanford_courses_create_nodereference_submit($form, &$form_state) {
+  $section_cid = 'field_stanford_section_course_id_value';
+  $course_cid = 'field_stanford_course_course_id_value';
+  $section_nid = 'field_stanford_section_course_nid';
+  $course_nid = 'content_type_stanford_course.nid';
+  $result = db_query("UPDATE {content_type_stanford_section} LEFT JOIN {content_type_stanford_course} ON %s = %s SET %s = %s", $section_cid, $course_cid, $section_nid, $course_nid);
+  cache_clear_all();
+  drupal_set_message(t('Your nodereferences have been created.'));
+}
+
+/*
+ * Retrieve all nodereference fields.
+ */
+function stanford_courses_get_nodereference_fields() {
+  $type = 'nodereference';
+  $results = db_query('SELECT * FROM {content_node_field} WHERE type = \'%s\'', $type);
+  $nodereference_fields = array();
+  while ($row = db_fetch_array($results)) {
+    $nodereference_fields[] = $row['field_name'];
+  }
+  return $nodereference_fields;
 }
