@@ -53,7 +53,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Code',
-      'weight' => '-3',
+      'weight' => '-4',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -161,7 +161,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'General Education Requirement(s)',
-      'weight' => '-2',
+      'weight' => '-3',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -216,6 +216,114 @@ function stanford_courses_content_default_fields() {
       'default_value_php' => NULL,
       'label' => 'Subject',
       'weight' => 0,
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_stanford_course_tag_name
+  $fields['stanford_course-field_stanford_course_tag_name'] = array(
+    'field_name' => 'field_stanford_course_tag_name',
+    'type_name' => 'stanford_course',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '3',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stanford_course_tag_name][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Tag: Name',
+      'weight' => '4',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
+  // Exported field: field_stanford_course_tag_org
+  $fields['stanford_course-field_stanford_course_tag_org'] = array(
+    'field_name' => 'field_stanford_course_tag_org',
+    'type_name' => 'stanford_course',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '3',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stanford_course_tag_org][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Tag: Organization',
+      'weight' => '3',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -438,6 +546,8 @@ function stanford_courses_content_default_fields() {
     'allowed_values' => '',
     'allowed_values_php' => '',
     'widget' => array(
+      'rows' => 5,
+      'size' => '60',
       'default_value' => array(
         '0' => array(
           'value' => '',
@@ -445,8 +555,6 @@ function stanford_courses_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'rows' => 5,
-      'size' => '60',
       'label' => 'Component',
       'weight' => '3',
       'description' => '',
@@ -666,6 +774,8 @@ function stanford_courses_content_default_fields() {
     'allowed_values' => '',
     'allowed_values_php' => '',
     'widget' => array(
+      'rows' => 5,
+      'size' => '60',
       'default_value' => array(
         '0' => array(
           'value' => '',
@@ -673,8 +783,6 @@ function stanford_courses_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'rows' => 5,
-      'size' => '60',
       'label' => 'Days of Week',
       'weight' => '8',
       'description' => 'Choose the days of the week that this section is offered',
@@ -882,6 +990,8 @@ function stanford_courses_content_default_fields() {
     'allowed_values' => '',
     'allowed_values_php' => '',
     'widget' => array(
+      'rows' => 5,
+      'size' => '60',
       'default_value' => array(
         '0' => array(
           'value' => '',
@@ -889,8 +999,6 @@ function stanford_courses_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'rows' => 5,
-      'size' => '60',
       'label' => 'Subject',
       'weight' => '-1',
       'description' => '',
@@ -936,6 +1044,8 @@ function stanford_courses_content_default_fields() {
     'allowed_values' => '',
     'allowed_values_php' => '',
     'widget' => array(
+      'rows' => 5,
+      'size' => '60',
       'default_value' => array(
         '0' => array(
           'value' => '',
@@ -943,8 +1053,6 @@ function stanford_courses_content_default_fields() {
         ),
       ),
       'default_value_php' => NULL,
-      'rows' => 5,
-      'size' => '60',
       'label' => 'Academic Term',
       'weight' => '-2',
       'description' => 'Enter the academic term, e.g., <em>2011-2012 Spring</em>.',
@@ -1086,6 +1194,8 @@ function stanford_courses_content_default_fields() {
   t('Start and End Dates');
   t('Start and End Time');
   t('Subject');
+  t('Tag: Name');
+  t('Tag: Organization');
   t('Units');
 
   return $fields;
