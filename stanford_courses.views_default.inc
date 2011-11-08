@@ -11,10 +11,9 @@ function stanford_courses_views_default_views() {
   $view->name = 'stanford_courses';
   $view->description = 'Sortable table View of all Stanford Course node';
   $view->tag = 'stanford';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->core = 0;
+  $view->api_version = '2';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('relationships', array(
