@@ -17,13 +17,13 @@ function stanford_courses_views_default_views() {
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
   $handler = $view->new_display('default', 'Defaults', 'default');
   $handler->override_option('relationships', array(
-    'field_stanford_section_course_nid' => array(
-      'label' => 'Parent Course',
+    'field_stanford_course_section_nid' => array(
+      'label' => 'Child Section(s)',
       'required' => 0,
-      'delta' => -1,
-      'id' => 'field_stanford_section_course_nid',
-      'table' => 'node_data_field_stanford_section_course',
-      'field' => 'field_stanford_section_course_nid',
+      'delta' => '-1',
+      'id' => 'field_stanford_course_section_nid',
+      'table' => 'node_data_field_stanford_course_section',
+      'field' => 'field_stanford_course_section_nid',
       'relationship' => 'none',
     ),
   ));
@@ -239,6 +239,47 @@ function stanford_courses_views_default_views() {
       'field' => 'field_stanford_course_year_value',
       'relationship' => 'none',
     ),
+    'field_stanford_course_section_nid' => array(
+      'label' => 'Section(s)',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'absolute' => 0,
+        'link_class' => '',
+        'alt' => '',
+        'rel' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'hide_alter_empty' => 1,
+      'link_to_node' => 0,
+      'label_type' => 'widget',
+      'format' => 'default',
+      'multiple' => array(
+        'group' => 1,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'field_stanford_course_section_nid',
+      'table' => 'node_data_field_stanford_course_section',
+      'field' => 'field_stanford_course_section_nid',
+      'relationship' => 'none',
+    ),
   ));
   $handler->override_option('filters', array(
     'status_extra' => array(
@@ -259,7 +300,6 @@ function stanford_courses_views_default_views() {
       'operator' => 'in',
       'value' => array(
         'stanford_course' => 'stanford_course',
-        'stanford_section' => 'stanford_section',
       ),
       'group' => '0',
       'exposed' => FALSE,
@@ -281,6 +321,7 @@ function stanford_courses_views_default_views() {
   ));
   $handler->override_option('title', 'Stanford Courses');
   $handler->override_option('items_per_page', 0);
+  $handler->override_option('distinct', 1);
   $handler->override_option('style_plugin', 'table');
   $handler->override_option('style_options', array(
     'grouping' => '',
