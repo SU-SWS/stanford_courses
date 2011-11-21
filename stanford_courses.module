@@ -11,9 +11,10 @@ function stanford_courses_help($path, $arg) {
       $output = '<p>'. t('This module provides a turnkey solution for importing course information from !explorecourses. It includes a &quot;Stanford Course&quot; content type, a &quot;Stanford Course Section&quot; content type, a feed importer for each content type, and a View of all courses. ', array('!explorecourses' => l('explorecourses.stanford.edu', 'http://explorecourses.stanford.edu'))) .'</p>';
       $output .= '<p>'. t('To import from a feed, first construct the search for the courses that you want to import at explorecourses.stanford.edu. Then, to retrieve the XML feed for the search, change <strong>view=catalog</strong> to <strong>view=xml-20111011</strong> (current as of October, 2011) in the URL.') .'</p>';
       $output .= '<p>'. t('Paste the XML feed URL into the URL box at !import and click the <strong>Import</strong> button to import <em>course</em> information.', array('!import' => l('import/stanford_course_importer', 'import/stanford_course_importer'))) .'</p>';
+      $output .= '<p>'. t('Be sure to use the <strong>http</strong> prefix for the URL, as <strong>https</strong> will trigger an error.') .'</p>';
       $output .= '<p>'. t('Paste the <em>same</em> XML feed URL into the URL box at !import and click the <strong>Import</strong> button to import <em>course section</em> information.', array('!import' => l('import/stanford_course_section_importer', 'import/stanford_course_importer'))) .'</p>';
       $output .= '<p>'. t('<strong>Courses</strong> and <strong>Course Sections</strong> can have !nodereference relationships. ', array('!nodereference' => l('CCK Nodereference', 'https://drupal.org/project/cck')));
-      $output .= t('These nodereferences do not get created on import. To create them, go to !coursesettings and click &quot;Create Node References&quot;.', array('!coursesettings' => l('admin/settings/stanford-courses', 'admin/settings/stanford-courses'))) .'</p>';
+      $output .= t('These nodereferences do not get created on import. To create them, go to !coursesettings and click &quot;Create Node References&quot;. This will create nodereferences based on a shared <strong>Course ID</strong> field.', array('!coursesettings' => l('admin/settings/stanford-courses', 'admin/settings/stanford-courses'))) .'</p>';
       return $output;
   }
 }
@@ -61,7 +62,13 @@ function stanford_courses_create_nodereference_submit($form, &$form_state) {
   $course_cid = 'field_stanford_course_course_id_value';
   $section_nid = 'field_stanford_section_course_nid';
   $course_nid = 'content_type_stanford_course.nid';
+  $course_nid_rev = 'content_field_stanford_course_section.nid';
   $result = db_query("UPDATE {content_type_stanford_section} LEFT JOIN {content_type_stanford_course} ON %s = %s SET %s = %s", $section_cid, $course_cid, $section_nid, $course_nid);
+  $course_nid_a = 'content_field_stanford_course_section.nid';
+  $section_table = 'courses.content_type_stanford_section';
+  $course_section_nid = 'field_stanford_course_section_nid';
+  $section_nid_a = 'content_type_stanford_section.nid';
+  $result = db_query("UPDATE {content_field_stanford_course_section} LEFT JOIN {content_type_stanford_course} ON %s = %s LEFT JOIN %s ON %s = %s SET %s = %s WHERE %s = %s", $course_nid_a, $course_nid, $section_table, $course_cid, $section_cid, $course_section_nid, $section_nid_a, $course_nid_a, $course_nid);
   cache_clear_all();
   drupal_set_message(t('Your nodereferences have been created.'));
 }
