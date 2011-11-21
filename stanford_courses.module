@@ -65,10 +65,9 @@ function stanford_courses_create_nodereference_submit($form, &$form_state) {
   $course_nid_rev = 'content_field_stanford_course_section.nid';
   $result = db_query("UPDATE {content_type_stanford_section} LEFT JOIN {content_type_stanford_course} ON %s = %s SET %s = %s", $section_cid, $course_cid, $section_nid, $course_nid);
   $course_nid_a = 'content_field_stanford_course_section.nid';
-  $section_table = 'courses.content_type_stanford_section';
   $course_section_nid = 'field_stanford_course_section_nid';
   $section_nid_a = 'content_type_stanford_section.nid';
-  $result = db_query("UPDATE {content_field_stanford_course_section} LEFT JOIN {content_type_stanford_course} ON %s = %s LEFT JOIN %s ON %s = %s SET %s = %s WHERE %s = %s", $course_nid_a, $course_nid, $section_table, $course_cid, $section_cid, $course_section_nid, $section_nid_a, $course_nid_a, $course_nid);
+  $result = db_query("UPDATE {content_field_stanford_course_section} LEFT JOIN {content_type_stanford_course} ON %s = %s LEFT JOIN {content_type_stanford_section} ON %s = %s SET %s = %s WHERE %s = %s", $course_nid_a, $course_nid, $course_cid, $section_cid, $course_section_nid, $section_nid_a, $course_nid_a, $course_nid);
   cache_clear_all();
   drupal_set_message(t('Your nodereferences have been created.'));
 }
