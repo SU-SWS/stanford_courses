@@ -52,8 +52,8 @@ function stanford_courses_get_nodereference_fields() {
 }
 
 /*
-* Add the creation of noderferences at the time of import.
-*/
+ * Add the creation of noderferences at the time of import.
+ */
 function stanford_courses_form_feeds_import_form_alter(&$form, &$form_state) {
   if (($form['#importer_id'] == 'stanford_course_importer') || ($form['#importer_id'] == 'stanford_course_section_importer')) {
     $form['#submit'][] = 'stanford_courses_create_nodereference_submit';
