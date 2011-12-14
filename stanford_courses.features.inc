@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Defines Features for the Stanford Courses module.
+ */
 
 /**
  * Implementation of hook_ctools_plugin_api().
