@@ -37,7 +37,7 @@ function stanford_courses_menu() {
  * Generate settings page.
  */
 function stanford_courses_settings() {
-  $output = t('Use the form below to create relationships (node references) between <em>Stanford Courses</em> and <em>Stanford Course Sections</em>.');
+  $output = t('Click the button below to create relationships (node references) between <em>Stanford Courses</em> and <em>Stanford Course Sections</em>.');
   $output .= drupal_get_form('stanford_courses_create_nodereference');
   return $output;
 }
