@@ -6,5 +6,6 @@ The XPath concat() function used to map to the GUID field (not a true GUID) requ
 
 KNOWN ISSUES
 ------------
-When enabling the Feature via drush, drush will complain that it cannot find a release history for "text" and several other CCK modules. To avoid this, download CCK first.
+* When enabling the Feature via drush, drush will complain that it cannot find a release history for "text" and several other CCK modules. To avoid this, download CCK first.
+* There is an intermittent DateTimeZone error on import - https://github.com/jbickar/stanford_courses/issues/6
 
