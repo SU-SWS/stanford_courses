@@ -35,7 +35,7 @@ function stanford_courses_create_nodereference_submit($form, &$form_state) {
   $section_nid_a = 'content_type_stanford_section.nid';
   $result = db_query("UPDATE {content_field_stanford_course_section} LEFT JOIN {content_type_stanford_course} ON %s = %s LEFT JOIN {content_type_stanford_section} ON %s = %s SET %s = %s WHERE %s = %s", $course_nid_a, $course_nid, $course_cid, $section_cid, $course_section_nid, $section_nid_a, $course_nid_a, $course_nid);
   cache_clear_all();
-  drupal_set_message(t('If applicable, nodereferences between Stanford Course nodes and Stanford Course Section nodes have been created or updated.'));
+  drupal_set_message(t('If applicable, nodereferences between Stanford Course nodes and Stanford Course Section nodes have been created and/or updated.'));
 }
 
 /*
