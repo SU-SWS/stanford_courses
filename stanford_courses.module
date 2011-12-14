@@ -14,43 +14,9 @@ function stanford_courses_help($path, $arg) {
       $output .= '<p>'. t('Be sure to use the <strong>http</strong> prefix for the URL, as <strong>https</strong> will trigger an error.') .'</p>';
       $output .= '<p>'. t('Paste the <em>same</em> XML feed URL into the URL box at !import and click the <strong>Import</strong> button to import <em>course section</em> information.', array('!import' => l('import/stanford_course_section_importer', 'import/stanford_course_section_importer'))) .'</p>';
       $output .= '<p>'. t('<strong>Courses</strong> and <strong>Course Sections</strong> can have !nodereference relationships. ', array('!nodereference' => l('CCK Nodereference', 'https://drupal.org/project/cck')));
-      $output .= t('These nodereferences do not get created on import. To create them, go to !coursesettings and click &quot;Create Node References&quot;. This will create nodereferences based on a shared <strong>Course ID</strong> field.', array('!coursesettings' => l('admin/settings/stanford-courses', 'admin/settings/stanford-courses'))) .'</p>';
+      $output .= t('These nodereferences get created &quot;automagically&quot; on import, based on a common <strong>Course ID</strong> value.') .'</p>';
       return $output;
   }
-}
-
-/*
- * Implementation of hook_menu().
- */
-function stanford_courses_menu() {
-  $items['admin/settings/stanford-courses'] = array(
-    'title' => 'Stanford Courses Settings',
-    'description' => 'Configure the Stanford Courses module',
-    'page callback' => 'stanford_courses_settings',
-    'access arguments' => array('administer feeds'),
-    'type' => 'MENU_NORMAL_ITEM',
-  );
-  return $items;
-}
-
-/*
- * Generate settings page.
- */
-function stanford_courses_settings() {
-  $output = t('Click the button below to create relationships (node references) between <em>Stanford Courses</em> and <em>Stanford Course Sections</em>.');
-  $output .= drupal_get_form('stanford_courses_create_nodereference');
-  return $output;
-}
-
-/*
- * Create nodereferences based on a user-chosen common field.
- */
-function stanford_courses_create_nodereference() {
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => t('Create Node References')
-  );
-  return $form;
 }
 
 /*
@@ -69,7 +35,7 @@ function stanford_courses_create_nodereference_submit($form, &$form_state) {
   $section_nid_a = 'content_type_stanford_section.nid';
   $result = db_query("UPDATE {content_field_stanford_course_section} LEFT JOIN {content_type_stanford_course} ON %s = %s LEFT JOIN {content_type_stanford_section} ON %s = %s SET %s = %s WHERE %s = %s", $course_nid_a, $course_nid, $course_cid, $section_cid, $course_section_nid, $section_nid_a, $course_nid_a, $course_nid);
   cache_clear_all();
-  drupal_set_message(t('Your nodereferences have been created.'));
+  drupal_set_message(t('If applicable, nodereferences between Stanford Course nodes and Stanford Course Section nodes have been created or updated.'));
 }
 
 /*
@@ -83,4 +49,13 @@ function stanford_courses_get_nodereference_fields() {
     $nodereference_fields[] = $row['field_name'];
   }
   return $nodereference_fields;
+}
+
+/*
+* Add the creation of noderferences at the time of import.
+*/
+function stanford_courses_form_feeds_import_form_alter(&$form, &$form_state) {
+  if (($form['#importer_id'] == 'stanford_course_importer') || ($form['#importer_id'] == 'stanford_course_section_importer')) {
+    $form['#submit'][] = 'stanford_courses_create_nodereference_submit';
+  }
 }
