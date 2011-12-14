@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Defines default Views for the Stanford Courses module.
+ */
 
 /**
  * Implementation of hook_views_default_views().
@@ -528,6 +532,37 @@ function stanford_courses_views_default_views() {
     'weight' => 0,
     'name' => 'navigation',
   ));
+  $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->override_option('style_plugin', 'rss');
+  $handler->override_option('style_options', array(
+    'mission_description' => FALSE,
+    'description' => '',
+  ));
+  $handler->override_option('row_plugin', 'node_rss');
+  $handler->override_option('row_options', array(
+    'relationship' => 'none',
+    'item_length' => 'default',
+  ));
+  $handler->override_option('path', 'stanford-course-sections/feed');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('displays', array(
+    'page_1' => 'page_1',
+    'default' => 0,
+  ));
+  $handler->override_option('sitename_title', FALSE);
 
   $views[$view->name] = $view;
 
@@ -907,6 +942,37 @@ function stanford_courses_views_default_views() {
     'weight' => 0,
     'name' => 'navigation',
   ));
+  $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->override_option('style_plugin', 'rss');
+  $handler->override_option('style_options', array(
+    'mission_description' => FALSE,
+    'description' => '',
+  ));
+  $handler->override_option('row_plugin', 'node_rss');
+  $handler->override_option('row_options', array(
+    'relationship' => 'field_stanford_course_section_nid',
+    'item_length' => 'default',
+  ));
+  $handler->override_option('path', 'stanford-courses/feed');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('displays', array(
+    'page_1' => 'page_1',
+    'default' => 0,
+  ));
+  $handler->override_option('sitename_title', FALSE);
 
   $views[$view->name] = $view;
 
