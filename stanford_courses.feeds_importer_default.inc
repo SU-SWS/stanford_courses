@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Defines default Feeds Importers for the Stanford Courses module.
+ */
 
 /**
  * Implementation of hook_feeds_importer_default().
