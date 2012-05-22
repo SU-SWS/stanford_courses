@@ -135,9 +135,9 @@ function stanford_courses_feeds_importer_default() {
         'authorize' => 0,
       ),
     ),
-    'content_type' => '',
+    'content_type' => 'stanford_course_importer',
     'update' => 0,
-    'import_period' => '1800',
+    'import_period' => '86400',
     'expire_period' => 3600,
     'import_on_create' => 1,
   );
@@ -316,9 +316,9 @@ function stanford_courses_feeds_importer_default() {
         'authorize' => 0,
       ),
     ),
-    'content_type' => '',
+    'content_type' => 'stanford_course_section_importer',
     'update' => 0,
-    'import_period' => '1800',
+    'import_period' => '86400',
     'expire_period' => 3600,
     'import_on_create' => 1,
   );
