@@ -1,9 +1,0 @@
-Stanford Courses x.x-x.x, xxxx-xx-xx
-------------------------------------
-
-Stanford Courses 6.x-1.0-beta2, 2012-02-29
-------------------------------------------
-Added CHANGELOG.txt
-Added LICENSE.txt
-Updated README.txt to remove dependency on -dev version of feeds_xpathparser
-Updated help text at admin/help/stanford_courses
