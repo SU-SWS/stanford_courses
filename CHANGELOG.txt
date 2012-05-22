@@ -1,6 +1,12 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 6.x-1.0-beta3, 2012-05-22
+------------------------------------------
+Changes since -beta2:
+  Changed default refresh rate for Feeds
+  Changed importers from standalone forms to being attached to Importer content types
+  
 Stanford Courses 6.x-1.0-beta2, 2012-02-29
 ------------------------------------------
 Added CHANGELOG.txt
