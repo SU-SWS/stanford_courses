@@ -35,7 +35,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:5' => 'gers',
           'xpathparser:6' => 'subject',
           'xpathparser:7' => 'year',
-          'xpathparser:8' => 'concat(administrativeInformation/courseId,"-",subject,"-",code)',
+          'xpathparser:8' => 'concat(administrativeInformation/courseId,"-",subject,"-",code,"-",year)',
           'xpathparser:9' => 'administrativeInformation/courseId',
           'xpathparser:10' => 'tags/tag/organization',
           'xpathparser:11' => 'tags/tag/name',
