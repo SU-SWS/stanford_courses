@@ -1,11 +1,15 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
-Stanford Courses 6.x-1.0-beta3, 2012-05-22
+Stanford Courses 6.x-1.0-beta3, 2012-05-23
 ------------------------------------------
 Changes since -beta2:
   Changed default refresh rate for Feeds
   Changed importers from standalone forms to being attached to Importer content types
+  Added helper function to allow users to paste the "...view=catalog..." feed URL into the import form
+  Added helper to avoid errors when using https syntax for feed URL
+  Added year to GUID for stanford_course importer
+    Note: if upgrading from a previous version of the stanford_courses module, it is possible that this change could cause duplicate content.
   
 Stanford Courses 6.x-1.0-beta2, 2012-02-29
 ------------------------------------------
