@@ -52,6 +52,9 @@ function stanford_courses_get_nodereference_fields() {
   return $nodereference_fields;
 }
 
+/**
+ * Modify the search URL to retrieve the XML URL instead.
+ */
 function stanford_courses_feed_url_validate($form, &$form_state) {
   //Let's make things a little easier on the user
   $feed_url = $form_state['values']['feeds']['FeedsHTTPFetcher']['source'];
@@ -75,6 +78,7 @@ function stanford_courses_form_feeds_import_form_alter(&$form, &$form_state) {
  * Implements hook_form_alter().
  *
  * Add the creation of noderferences at the time of import.
+ * Modify the search URL to retrieve the XML URL instead.
  */
 function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
   if (($form_id == 'stanford_course_importer_node_form') || ($form_id == 'stanford_course_section_importer_node_form')) {
@@ -82,4 +86,15 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
     //make our validation function run first
     array_unshift($form['#validate'], 'stanford_courses_feed_url_validate');
   }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function stanford_courses_enable() {
+  $modules = array();
+  $modules[] = 'feeds';
+  $modules[] = 'content';
+  module_enable($modules);
+  drupal_flush_all_caches();
 }
