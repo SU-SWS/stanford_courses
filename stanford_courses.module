@@ -25,16 +25,43 @@ function stanford_courses_help($path, $arg) {
  * Join on common Course ID fields.
  */
 function stanford_courses_create_nodereference_submit(&$form, &$form_state) {
+  //Course ID, section nodes
   $section_cid = 'field_stanford_section_course_id_value';
+  
+  //Course ID, course nodes
   $course_cid = 'field_stanford_course_course_id_value';
+  
+  //Section node, referenced course node nid (1-to-1 in this direction)
   $section_nid = 'field_stanford_section_course_nid';
+
+  //nid of course node
   $course_nid = 'content_type_stanford_course.nid';
+
+  //nid of course node in 1-to-many nodereference table; not used?
   $course_nid_rev = 'content_field_stanford_course_section.nid';
+
+  //Create 1-to-1 nodereferences from section nodes to course nodes; simpler than the other direction because a section only can have one nodereference to a course
+  //Update content_type_stanford_section.field_stanford_section_course_nid, left join content_type_stanford_course on course ID, set field_stanford_section_course_nid = content_type_stanford_course.nid
+  //LEFT JOIN returns all rows from content_type_stanford_section, regardless of whether there's a corresponding course ID, or whether it's duplicated - which is what we want because we want to update *each* row
+  //In English: where the course ID number is the same for a section node and a course node, set the nodereference field in the section node to the nid of the corresponding course node
   $result = db_query("UPDATE {content_type_stanford_section} LEFT JOIN {content_type_stanford_course} ON %s = %s SET %s = %s", $section_cid, $course_cid, $section_nid, $course_nid);
+
+  //nid of course node in 1-to-many nodereference table; same as $course_nid_rev
   $course_nid_a = 'content_field_stanford_course_section.nid';
+  
+  //nid of section node in 1-to-many nodereference table (this is the field name in the table)
   $course_section_nid = 'field_stanford_course_section_nid';
+  
+  //nid of section node in its own DB table
   $section_nid_a = 'content_type_stanford_section.nid';
+  
+  //Joining three tables - good times!
+  //Update content_field_stanford_course_section
+  //First join: set up a relationship between content_field_stanford_course_section and content_type_stanford_course, with nid as common field
+  //Second join: set up a relationship between content_type_stanford_course and content_type_stanford_section, with Course ID as common field
+  //Update content_field_stanford_course_section, set field_stanford_course_section_nid = content_type_stanford_section.nid where content_field_stanford_course_section.nid = content_type_stanford_course.nid
   $result = db_query("UPDATE {content_field_stanford_course_section} LEFT JOIN {content_type_stanford_course} ON %s = %s LEFT JOIN {content_type_stanford_section} ON %s = %s SET %s = %s WHERE %s = %s", $course_nid_a, $course_nid, $course_cid, $section_cid, $course_section_nid, $section_nid_a, $course_nid_a, $course_nid);
+  
   drupal_flush_all_caches();
   drupal_set_message(t('If applicable, nodereferences between Stanford Course nodes and Stanford Course Section nodes have been created and/or updated.'));
 }
@@ -66,7 +93,7 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * Add the creation of noderferences at the time of import.
+ * Add the creation of noderferences at the time of import (on standalone form).
  */
 function stanford_courses_form_feeds_import_form_alter(&$form, &$form_state) {
   if (($form['#importer_id'] == 'stanford_course_importer') || ($form['#importer_id'] == 'stanford_course_section_importer')) {
