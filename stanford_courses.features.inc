@@ -39,7 +39,7 @@ function stanford_courses_node_info() {
       'has_body' => '0',
       'body_label' => '',
       'min_word_count' => '0',
-      'help' => 'This is a "meta" content type for importing course feeds from http://explorecourses.stanford.edu. See the help section at <strong>admin/help/stanford_courses</strong> for more information.',
+      'help' => t('This is a "meta" content type for importing course feeds from http://explorecourses.stanford.edu. See the help section at <strong>admin/help/stanford_courses</strong> for more information.'),
     ),
     'stanford_course_section_importer' => array(
       'name' => t('Stanford Course Section Importer'),
@@ -50,7 +50,7 @@ function stanford_courses_node_info() {
       'has_body' => '0',
       'body_label' => '',
       'min_word_count' => '0',
-      'help' => 'This is a "meta" content type for importing course section feeds from http://explorecourses.stanford.edu. See the help section at <strong>admin/help/stanford_courses</strong> for more information.',
+      'help' => t('This is a "meta" content type for importing course section feeds from http://explorecourses.stanford.edu. See the help section at <strong>admin/help/stanford_courses</strong> for more information.'),
     ),
     'stanford_section' => array(
       'name' => t('Stanford Course Section'),
