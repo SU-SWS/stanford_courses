@@ -26,10 +26,10 @@ function stanford_courses_help($path, $arg) {
  */
 function stanford_courses_create_nodereference_submit(&$form, &$form_state) {
   //Course ID, section nodes
-  $section_cid = 'field_stanford_section_course_id_value';
+  $section_cid = 'field_stanford_section_scid_value';
   
   //Course ID, course nodes
-  $course_cid = 'field_stanford_course_course_id_value';
+  $course_cid = 'field_stanford_course_scid_value';
   
   //Section node, referenced course node nid (1-to-1 in this direction)
   $section_nid = 'field_stanford_section_course_nid';
@@ -111,7 +111,13 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
   if (($form_id == 'stanford_course_importer_node_form') || ($form_id == 'stanford_course_section_importer_node_form') || $form_id == 'feeds_import_tab_form') {
     $form['#submit'][] = 'stanford_courses_create_nodereference_submit';
     //make our validation function run first
-    array_unshift($form['#validate'], 'stanford_courses_feed_url_validate');
+    //dsm($form);
+    if (is_array($form['#validate'])) {
+      array_unshift($form['#validate'], 'stanford_courses_feed_url_validate');
+    }
+    else {
+      $form['#validate'][] = 'stanford_courses_feed_url_validate';
+    }
   }
 }
 
