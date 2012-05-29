@@ -15,9 +15,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_course_code',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => '-4',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -57,7 +58,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Code',
-      'weight' => '-3',
+      'weight' => '-4',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -69,9 +70,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_course_course_id',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => '2',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -111,7 +113,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Course ID',
-      'weight' => '1',
+      'weight' => '2',
       'description' => '6-digit course ID number. Used only internally.',
       'type' => 'number',
       'module' => 'number',
@@ -123,9 +125,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_course_ger',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => '-2',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -172,14 +175,78 @@ function stanford_courses_content_default_fields() {
     ),
   );
 
+  // Exported field: field_stanford_course_scid
+  $fields['stanford_course-field_stanford_course_scid'] = array(
+    'field_name' => 'field_stanford_course_scid',
+    'type_name' => 'stanford_course',
+    'display_settings' => array(
+      'weight' => '6',
+      'parent' => '',
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'hidden',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'hidden',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stanford_course_scid][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Subject-Code-ID',
+      'weight' => '6',
+      'description' => 'This field is populated automatically when importing from explorecourses.stanford.edu. You should not need to fill this out manually.',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
   // Exported field: field_stanford_course_section
   $fields['stanford_course-field_stanford_course_section'] = array(
     'field_name' => 'field_stanford_course_section',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => '3',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -209,6 +276,8 @@ function stanford_courses_content_default_fields() {
       'page' => 0,
       'stanford_course' => 0,
       'story' => 0,
+      'stanford_course_importer' => FALSE,
+      'stanford_course_section_importer' => FALSE,
     ),
     'advanced_view' => '--',
     'advanced_view_args' => '',
@@ -223,7 +292,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Section(s)',
-      'weight' => '2',
+      'weight' => '3',
       'description' => '',
       'type' => 'nodereference_autocomplete',
       'module' => 'nodereference',
@@ -235,9 +304,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_course_subject',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => '-1',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -289,9 +359,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_course_tag_name',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => '5',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -313,7 +384,7 @@ function stanford_courses_content_default_fields() {
     'widget_active' => '1',
     'type' => 'text',
     'required' => '0',
-    'multiple' => '3',
+    'multiple' => '1',
     'module' => 'text',
     'active' => '1',
     'text_processing' => '0',
@@ -331,7 +402,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Tag: Name',
-      'weight' => '4',
+      'weight' => '5',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -343,9 +414,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_course_tag_org',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => '4',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -367,7 +439,7 @@ function stanford_courses_content_default_fields() {
     'widget_active' => '1',
     'type' => 'text',
     'required' => '0',
-    'multiple' => '3',
+    'multiple' => '1',
     'module' => 'text',
     'active' => '1',
     'text_processing' => '0',
@@ -385,7 +457,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Tag: Organization',
-      'weight' => '3',
+      'weight' => '4',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -397,9 +469,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_course_year',
     'type_name' => 'stanford_course',
     'display_settings' => array(
+      'weight' => 0,
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -485,9 +558,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_classid',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '-4',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -539,9 +613,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_code',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => 0,
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -581,7 +656,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Code',
-      'weight' => '-1',
+      'weight' => 0,
       'description' => 'The code is used only internally.',
       'type' => 'number',
       'module' => 'number',
@@ -593,9 +668,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_component',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '3',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -635,7 +711,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Component',
-      'weight' => '2',
+      'weight' => '3',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -647,9 +723,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_course',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '11',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -693,7 +770,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Course',
-      'weight' => '10',
+      'weight' => '11',
       'description' => '',
       'type' => 'nodereference_autocomplete',
       'module' => 'nodereference',
@@ -705,9 +782,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_course_id',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '4',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -747,7 +825,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Course ID',
-      'weight' => '3',
+      'weight' => '4',
       'description' => 'The course ID is used only internally.',
       'type' => 'number',
       'module' => 'number',
@@ -759,9 +837,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_dates',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '6',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -809,7 +888,7 @@ function stanford_courses_content_default_fields() {
       'year_range' => '-3:+3',
       'label_position' => 'above',
       'label' => 'Start and End Dates',
-      'weight' => '5',
+      'weight' => '6',
       'description' => 'Enter the first and last days of the class session',
       'type' => 'date_select',
       'module' => 'date',
@@ -821,9 +900,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_dow',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '9',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -863,7 +943,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Day(s) of Week',
-      'weight' => '8',
+      'weight' => '9',
       'description' => 'Choose the days of the week that this section is offered',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -875,9 +955,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_instrctr',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '5',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -917,7 +998,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Instructor(s)',
-      'weight' => '4',
+      'weight' => '5',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -929,9 +1010,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_location',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '10',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -971,7 +1053,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Location(s)',
-      'weight' => '9',
+      'weight' => '10',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -983,9 +1065,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_number',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '2',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -1025,10 +1108,73 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Section Number',
-      'weight' => '1',
+      'weight' => '2',
       'description' => 'The section number is used internally.',
       'type' => 'number',
       'module' => 'number',
+    ),
+  );
+
+  // Exported field: field_stanford_section_scid
+  $fields['stanford_section-field_stanford_section_scid'] = array(
+    'field_name' => 'field_stanford_section_scid',
+    'type_name' => 'stanford_section',
+    'display_settings' => array(
+      'weight' => '13',
+      'parent' => '',
+      'label' => array(
+        'format' => 'hidden',
+      ),
+      'teaser' => array(
+        'format' => 'hidden',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'hidden',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stanford_section_scid][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Subject-Code-ID',
+      'weight' => '13',
+      'description' => '',
+      'type' => 'text_textfield',
+      'module' => 'text',
     ),
   );
 
@@ -1037,9 +1183,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_subject',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '-2',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -1091,9 +1238,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_term',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '-3',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -1145,9 +1293,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_time_end',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '8',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -1187,7 +1336,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'End Time(s)',
-      'weight' => '7',
+      'weight' => '8',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -1199,9 +1348,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_time_strt',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '7',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -1241,7 +1391,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Start Time(s)',
-      'weight' => '6',
+      'weight' => '7',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -1253,9 +1403,10 @@ function stanford_courses_content_default_fields() {
     'field_name' => 'field_stanford_section_unit',
     'type_name' => 'stanford_section',
     'display_settings' => array(
+      'weight' => '1',
+      'parent' => '',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -1295,7 +1446,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Units',
-      'weight' => 0,
+      'weight' => '1',
       'description' => 'Enter the number of academic',
       'type' => 'number',
       'module' => 'number',
@@ -1321,6 +1472,7 @@ function stanford_courses_content_default_fields() {
   t('Start Time(s)');
   t('Start and End Dates');
   t('Subject');
+  t('Subject-Code-ID');
   t('Tag: Name');
   t('Tag: Organization');
   t('Units');
