@@ -1,6 +1,18 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 6.x-1.0-beta4, 2012-05-29
+------------------------------------------
+Changes since -beta3
+  Various fixes addressing https://github.com/SU-SWS/stanford_courses/issues/12
+    (cross-listed courses can have same course ID)
+    -Added new text field to stanford_course and stanford_section content types to 
+      more accurately track nodereference relationships between course nodes and
+      section nodes
+      -Note: if if upgrading from a previous version of the stanford_courses module, it is possible that this change could break node reference relationships between existing nodes.
+  Set stanford_course and stanford_section to be *not* promoted to the front page
+    and to create new revisions by default
+
 Stanford Courses 6.x-1.0-beta3, 2012-05-23
 ------------------------------------------
 Changes since -beta2:
