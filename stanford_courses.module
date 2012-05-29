@@ -30,10 +30,10 @@ function stanford_courses_help($path, $arg) {
 function stanford_courses_create_nodereference_submit(&$form, &$form_state) {
   //Course ID, section nodes
   $section_cid = 'field_stanford_section_scid_value';
-  
+
   //Course ID, course nodes
   $course_cid = 'field_stanford_course_scid_value';
-  
+
   //Section node, referenced course node nid (1-to-1 in this direction)
   $section_nid = 'field_stanford_section_course_nid';
 
@@ -51,20 +51,20 @@ function stanford_courses_create_nodereference_submit(&$form, &$form_state) {
 
   //nid of course node in 1-to-many nodereference table; same as $course_nid_rev
   $course_nid_a = 'content_field_stanford_course_section.nid';
-  
+
   //nid of section node in 1-to-many nodereference table (this is the field name in the table)
   $course_section_nid = 'field_stanford_course_section_nid';
-  
+
   //nid of section node in its own DB table
   $section_nid_a = 'content_type_stanford_section.nid';
-  
+
   //Joining three tables - good times!
   //Update content_field_stanford_course_section
   //First join: set up a relationship between content_field_stanford_course_section and content_type_stanford_course, with nid as common field
   //Second join: set up a relationship between content_type_stanford_course and content_type_stanford_section, with Course ID as common field
   //Update content_field_stanford_course_section, set field_stanford_course_section_nid = content_type_stanford_section.nid where content_field_stanford_course_section.nid = content_type_stanford_course.nid
   $result = db_query("UPDATE {content_field_stanford_course_section} LEFT JOIN {content_type_stanford_course} ON %s = %s LEFT JOIN {content_type_stanford_section} ON %s = %s SET %s = %s WHERE %s = %s", $course_nid_a, $course_nid, $course_cid, $section_cid, $course_section_nid, $section_nid_a, $course_nid_a, $course_nid);
-  
+
   drupal_flush_all_caches();
   drupal_set_message(t('If applicable, nodereferences between Stanford Course nodes and Stanford Course Section nodes have been created and/or updated.'));
 }
