@@ -15,6 +15,9 @@ function stanford_courses_help($path, $arg) {
       $output .= '<p>' . t('Paste the <em>same</em> search URL into the URL box at !import and click the <strong>Import</strong> button to import <em>course section</em> information.', array('!import' => l('node/add/stanford-course-section-importer', 'node/add/stanford-course-section-importer'))) .'</p>';
       $output .= '<p>' . t('<strong>Courses</strong> and <strong>Course Sections</strong> can have !nodereference relationships. ', array('!nodereference' => l('CCK Nodereference', 'https://drupal.org/project/cck')));
       $output .= t('These nodereferences get created &quot;automagically&quot; on import, based on a common <strong>Course ID</strong> value.') .'</p>';
+      $output .= '<p>' . t('<strong>Note:</strong> A current limitation is that only one nodereference between a <strong>Course</strong> node and a <strong>Course Section</strong> is created. ');
+      $output .= t('Users wishing to create automatic many-to-one nodereference relationships are encouraged to use the !cnr module. ', array('!cnr' => l('Corresponding Node Reference', 'https://drupal.org/project/cnr')));
+      $output .= t('This module likely will be a requirement for future versions of the Stanford Courses module.') . '</p>';
       $output .= '<p>' . t('After importing course and course section nodes, two table Views are created at !stanfordcourses and !stanfordcoursesections, respectively.', array('!stanfordcourses' => l('stanford-courses', 'stanford-courses'), '!stanfordcoursesections' => l('stanford-course-sections', 'stanford-course-sections'))) .'</p>';
       return $output;
   }
