@@ -132,5 +132,7 @@ function stanford_courses_enable() {
   $modules[] = 'feeds';
   $modules[] = 'content';
   module_enable($modules);
+  variable_set('node_options_stanford_course', array('status', 'revision'));
+  variable_set('node_options_stanford_section', array('status', 'revision'));
   drupal_flush_all_caches();
 }
