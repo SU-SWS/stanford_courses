@@ -114,7 +114,6 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
   if (($form_id == 'stanford_course_importer_node_form') || ($form_id == 'stanford_course_section_importer_node_form') || $form_id == 'feeds_import_tab_form') {
     $form['#submit'][] = 'stanford_courses_create_nodereference_submit';
     //make our validation function run first
-    //dsm($form);
     if (is_array($form['#validate'])) {
       array_unshift($form['#validate'], 'stanford_courses_feed_url_validate');
     }
@@ -135,4 +134,36 @@ function stanford_courses_enable() {
   variable_set('node_options_stanford_course', array('status', 'revision'));
   variable_set('node_options_stanford_section', array('status', 'revision'));
   drupal_flush_all_caches();
+}
+
+/**
+ * Implements hook_menu().
+ */
+function stanford_courses_menu() {
+  $items['admin/settings/stanford-courses'] = array(
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('stanford_courses_settings_form'),
+    'access arguments' => array('administer nodes'),
+    'title' => 'Stanford Course Importer Settings',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+  return $items;
+}
+
+/**
+ * Settings form.
+ */
+function stanford_courses_settings_form() {
+  $form = array();
+  $description = '<p>' . t('Here you can create automatic node references between <strong>Stanford Course</strong> nodes and <strong>Stanford Course Section</strong> nodes. ');
+  $description .= t('These node reference relationships are created based on a common <strong>Subject, Code, and Course ID</strong> value. ') . '</p>';
+  $form['intro'] = array(
+    '#value' => $description,
+  );
+  $form['submit'] = array(
+    '#type' => 'submit', 
+    '#value' => t('Update Node References'),
+  );
+  $form['#submit'][] = 'stanford_courses_create_nodereference_submit';
+  return $form;
 }
