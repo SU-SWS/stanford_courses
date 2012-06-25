@@ -72,7 +72,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:10' => 0,
           ),
         ),
-        'allow_override' => 0,
+        'allow_override' => 1,
       ),
     ),
     'processor' => array(
@@ -228,7 +228,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:15' => 0,
           ),
         ),
-        'allow_override' => 0,
+        'allow_override' => 1,
       ),
     ),
     'processor' => array(
