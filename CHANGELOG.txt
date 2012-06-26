@@ -1,0 +1,7 @@
+Stanford Courses x.x-x.x, xxxx-xx-xx
+------------------------------------
+
+Stanford Courses 7.x-1.0-alpha4, 2012-06-25
+-------------------------------------------
+First actual release of D7 version of Stanford Courses module.
+  (-alpha1 through -alpha3 were incomplete Features waypoints)
