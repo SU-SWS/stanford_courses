@@ -5,5 +5,14 @@
 function stanford_courses_install() {
   variable_set('node_options_stanford_course', array('status', 'revision'));
   variable_set('node_options_stanford_section', array('status', 'revision'));
+  variable_set('node_options_stanford_course_importer', array('status', 'revision'));
+  variable_set('node_options_stanford_course_section_importer', array('status', 'revision'));
   drupal_flush_all_caches();
+}
+
+function stanford_courses_uninstall() {
+  variable_delete('node_options_stanford_course');
+  variable_delete('node_options_stanford_section');
+  variable_delete('node_options_stanford_course_importer');
+  variable_delete('node_options_stanford_course_section_importer');
 }
