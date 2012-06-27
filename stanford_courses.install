@@ -3,16 +3,36 @@
  * Implements hook_install().
  */
 function stanford_courses_install() {
+  // Set defaults to published, create new revision, not promoted to front page
   variable_set('node_options_stanford_course', array('status', 'revision'));
-  variable_set('node_options_stanford_section', array('status', 'revision'));
   variable_set('node_options_stanford_course_importer', array('status', 'revision'));
+  variable_set('node_options_stanford_course_section', array('status', 'revision'));
   variable_set('node_options_stanford_course_section_importer', array('status', 'revision'));
+  // Disable comments by default
+  variable_set('comment_stanford_course', 1);
+  variable_set('comment_stanford_course_importer', 1);
+  variable_set('comment_stanford_course_section', 1);
+  variable_set('comment_stanford_course_section_importer', 1);
+  // Dont' display author and date information
+  variable_set('node_submitted_stanford_course', 0);
+  variable_set('node_submitted_stanford_course_importer', 0);
+  variable_set('node_submitted_stanford_course_section', 0);
+  variable_set('node_submitted_stanford_course_section_importer', 0);
   drupal_flush_all_caches();
 }
 
 function stanford_courses_uninstall() {
+  // Undo that voodoo that we did do at install time
   variable_del('node_options_stanford_course');
   variable_del('node_options_stanford_section');
   variable_del('node_options_stanford_course_importer');
   variable_del('node_options_stanford_course_section_importer');
+  variable_del('comment_stanford_course');
+  variable_del('comment_stanford_course_importer');
+  variable_del('comment_stanford_course_section');
+  variable_del('comment_stanford_course_section_importer');
+  variable_del('node_submitted_stanford_course');
+  variable_del('node_submitted_stanford_course_importer');
+  variable_del('node_submitted_stanford_course_section');
+  variable_del('node_submitted_stanford_course_section_importer');
 }
