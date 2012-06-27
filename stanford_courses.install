@@ -11,8 +11,8 @@ function stanford_courses_install() {
 }
 
 function stanford_courses_uninstall() {
-  variable_delete('node_options_stanford_course');
-  variable_delete('node_options_stanford_section');
-  variable_delete('node_options_stanford_course_importer');
-  variable_delete('node_options_stanford_course_section_importer');
+  variable_del('node_options_stanford_course');
+  variable_del('node_options_stanford_section');
+  variable_del('node_options_stanford_course_importer');
+  variable_del('node_options_stanford_course_section_importer');
 }
