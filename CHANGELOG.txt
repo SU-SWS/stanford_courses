@@ -1,6 +1,12 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-1.0-alpha5, 2012-06-29
+-------------------------------------------
+Changes since -alpha4:
+  -updated help text
+  -updated README file
+
 Stanford Courses 7.x-1.0-alpha4, 2012-06-25
 -------------------------------------------
 First actual release of D7 version of Stanford Courses module.
