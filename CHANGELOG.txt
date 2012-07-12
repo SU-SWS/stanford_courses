@@ -1,6 +1,11 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-1.0-alpha6, 2012-07-12
+-------------------------------------------
+Changes since -alpha5:
+  -added LICENSE.txt
+
 Stanford Courses 7.x-1.0-alpha5, 2012-06-29
 -------------------------------------------
 Changes since -alpha4:
