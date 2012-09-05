@@ -1,6 +1,11 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 6.x-1.0-beta5, 2012-09-05
+------------------------------------------
+Changes since -beta4
+  Added link to the course listing on explorecourses.stanford.edu on each course node
+
 Stanford Courses 6.x-1.0-beta4, 2012-05-29
 ------------------------------------------
 Changes since -beta3

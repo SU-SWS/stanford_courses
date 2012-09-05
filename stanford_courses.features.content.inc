@@ -120,6 +120,76 @@ function stanford_courses_content_default_fields() {
     ),
   );
 
+  // Exported field: field_stanford_course_ec_link
+  $fields['stanford_course-field_stanford_course_ec_link'] = array(
+    'field_name' => 'field_stanford_course_ec_link',
+    'type_name' => 'stanford_course',
+    'display_settings' => array(
+      'weight' => '7',
+      'parent' => '',
+      'label' => array(
+        'format' => 'above',
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'link',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'link',
+    'active' => '1',
+    'attributes' => array(
+      'target' => 'default',
+      'rel' => '',
+      'class' => '',
+      'title' => '',
+    ),
+    'display' => array(
+      'url_cutoff' => '80',
+    ),
+    'url' => 0,
+    'title' => 'value',
+    'title_value' => 'View this course on ExploreCourses',
+    'enable_tokens' => 0,
+    'validate_url' => 1,
+    'widget' => array(
+      'default_value' => array(
+        '0' => array(
+          'url' => '',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'ExploreCourses Link',
+      'weight' => '7',
+      'description' => 'This field is created programmatically and you cannot edit it.',
+      'type' => 'link',
+      'module' => 'link',
+    ),
+  );
+
   // Exported field: field_stanford_course_ger
   $fields['stanford_course-field_stanford_course_ger'] = array(
     'field_name' => 'field_stanford_course_ger',
@@ -362,14 +432,14 @@ function stanford_courses_content_default_fields() {
       'weight' => '5',
       'parent' => '',
       'label' => array(
-        'format' => 'above',
+        'format' => 'hidden',
       ),
       'teaser' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       '4' => array(
@@ -417,14 +487,14 @@ function stanford_courses_content_default_fields() {
       'weight' => '4',
       'parent' => '',
       'label' => array(
-        'format' => 'above',
+        'format' => 'hidden',
       ),
       'teaser' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       'full' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       '4' => array(
@@ -1464,6 +1534,7 @@ function stanford_courses_content_default_fields() {
   t('Course ID');
   t('Day(s) of Week');
   t('End Time(s)');
+  t('ExploreCourses Link');
   t('General Education Requirement(s)');
   t('Instructor(s)');
   t('Location(s)');
