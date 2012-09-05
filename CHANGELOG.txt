@@ -1,6 +1,16 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 6.x-1.0-beta7, 2012-09-05
+------------------------------------------
+Changes since -beta6:
+  Changed Course View to have node title link to course listing on ExploreCourses
+
+Stanford Courses 6.x-1.0-beta6, 2012-09-05
+------------------------------------------
+Changes since -beta5
+  Fixed missing feeds_tamper implementation
+
 Stanford Courses 6.x-1.0-beta5, 2012-09-05
 ------------------------------------------
 Changes since -beta4
