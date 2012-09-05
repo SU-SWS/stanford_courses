@@ -22,6 +22,5 @@ function stanford_courses_urlencode_form($importer, $element_key, $settings) {
 
 function stanford_courses_urlencode_callback($source, $item_key, $element_key, &$field, $settings) {
   $field = urlencode($field);
-  //dsm($field);
 }
 
