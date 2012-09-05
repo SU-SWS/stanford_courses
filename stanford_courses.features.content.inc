@@ -172,7 +172,7 @@ function stanford_courses_content_default_fields() {
     ),
     'url' => 0,
     'title' => 'value',
-    'title_value' => 'View this course on ExploreCourses',
+    'title_value' => 'View this course and available sections on ExploreCourses',
     'enable_tokens' => 0,
     'validate_url' => 1,
     'widget' => array(
