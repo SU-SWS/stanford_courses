@@ -12,6 +12,9 @@ function stanford_courses_ctools_plugin_api() {
   if ($module == "feeds" && $api == "feeds_importer_default") {
     return array("version" => 1);
   }
+  elseif ($module == "feeds_tamper" && $api == "feeds_tamper_default") {
+    return array("version" => 2);
+  }
 }
 
 /**
