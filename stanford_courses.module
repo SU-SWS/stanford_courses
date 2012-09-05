@@ -88,15 +88,25 @@ function stanford_courses_get_nodereference_fields() {
 function stanford_courses_feed_url_validate($form, &$form_state) {
   //Let's make things a little easier on the user
   $feed_url = $form_state['values']['feeds']['FeedsHTTPFetcher']['source'];
-  $feed_url = preg_replace('/view\=catalog/', 'view=xml-20111011', $feed_url);
+  $feed_url = preg_replace('/view\=catalog/', 'view=xml-20120105', $feed_url);
   $feed_url = preg_replace('/https/', 'http', $feed_url);
   form_set_value(array('#parents' => array('feeds', 'FeedsHTTPFetcher', 'source')), $feed_url, &$form_state);
+}
+
+/*
+ * Modify the ExploreCourses link to pass the subject through drupal_urlencode().
+ */
+function stanford_courses_ec_link_validate($form, &$form_state) {
+  $subject = $form_state['values']['field_stanford_course_subject'][0]['value'];
+  $code = $form_state['values']['field_stanford_course_code'][0]['value'];
+  $ec_link = 'http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&q=' . urlencode($subject) . '+' . urlencode($code);
+  form_set_value(array('#parents' => array('field_stanford_course_ec_link', 0, 'url')), $ec_link, &$form_state);
 }
 
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * Add the creation of noderferences at the time of import (on standalone form).
+ * Add the creation of nodereferences at the time of import (on standalone form).
  */
 function stanford_courses_form_feeds_import_form_alter(&$form, &$form_state) {
   if (($form['#importer_id'] == 'stanford_course_importer') || ($form['#importer_id'] == 'stanford_course_section_importer')) {
@@ -119,6 +129,15 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
     }
     else {
       $form['#validate'][] = 'stanford_courses_feed_url_validate';
+    }
+  }
+  if ($form_id == 'stanford_course_node_form') {
+    //make our validation function run first
+    if (is_array($form['#validate'])) {
+      array_unshift($form['#validate'], 'stanford_courses_ec_link_validate');
+    }
+    else {
+      $form['#validate'][] = 'stanford_courses_ec_link_validate';
     }
   }
 }
@@ -167,3 +186,13 @@ function stanford_courses_settings_form() {
   $form['#submit'][] = 'stanford_courses_create_nodereference_submit';
   return $form;
 }
+
+/*
+ * Implements hook_ctools_plugin_directory().
+ */
+function stanford_courses_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'feeds_tamper') {
+    return 'plugins';
+  }
+}
+
