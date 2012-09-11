@@ -1,6 +1,12 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 6.x-1.0-beta8, 2012-09-11
+------------------------------------------
+Changes since -beta7:
+  -Added Notes field to Stanford Course content type
+  -removed space in search query for ExploreCourses
+
 Stanford Courses 6.x-1.0-beta7, 2012-09-05
 ------------------------------------------
 Changes since -beta6:
