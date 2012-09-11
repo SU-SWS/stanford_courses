@@ -113,7 +113,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Course ID',
-      'weight' => '2',
+      'weight' => '3',
       'description' => '6-digit course ID number. Used only internally.',
       'type' => 'number',
       'module' => 'number',
@@ -183,7 +183,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'ExploreCourses Link',
-      'weight' => '7',
+      'weight' => '8',
       'description' => 'This field is created programmatically and you cannot edit it.',
       'type' => 'link',
       'module' => 'link',
@@ -245,6 +245,68 @@ function stanford_courses_content_default_fields() {
     ),
   );
 
+  // Exported field: field_stanford_course_notes
+  $fields['stanford_course-field_stanford_course_notes'] = array(
+    'field_name' => 'field_stanford_course_notes',
+    'type_name' => 'stanford_course',
+    'display_settings' => array(
+      'label' => array(
+        'format' => 'above',
+        'exclude' => 0,
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '2' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      '3' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'token' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'text',
+    'required' => '0',
+    'multiple' => '0',
+    'module' => 'text',
+    'active' => '1',
+    'text_processing' => '0',
+    'max_length' => '',
+    'allowed_values' => '',
+    'allowed_values_php' => '',
+    'widget' => array(
+      'rows' => 5,
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'value' => '',
+          '_error_element' => 'default_value_widget][field_stanford_course_notes][0][value',
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Notes',
+      'weight' => '-1',
+      'description' => 'Enter any applicable notes about this course',
+      'type' => 'text_textfield',
+      'module' => 'text',
+    ),
+  );
+
   // Exported field: field_stanford_course_scid
   $fields['stanford_course-field_stanford_course_scid'] = array(
     'field_name' => 'field_stanford_course_scid',
@@ -301,7 +363,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Subject-Code-ID',
-      'weight' => '6',
+      'weight' => '7',
       'description' => 'This field is populated automatically when importing from explorecourses.stanford.edu. You should not need to fill this out manually.',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -362,7 +424,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Section(s)',
-      'weight' => '3',
+      'weight' => '4',
       'description' => '',
       'type' => 'nodereference_autocomplete',
       'module' => 'nodereference',
@@ -417,7 +479,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Subject',
-      'weight' => '-1',
+      'weight' => 0,
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -472,7 +534,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Tag: Name',
-      'weight' => '5',
+      'weight' => '6',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -527,7 +589,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Tag: Organization',
-      'weight' => '4',
+      'weight' => '5',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -616,7 +678,7 @@ function stanford_courses_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Academic Year',
-      'weight' => 0,
+      'weight' => '1',
       'description' => '',
       'type' => 'text_textfield',
       'module' => 'text',
@@ -1538,6 +1600,7 @@ function stanford_courses_content_default_fields() {
   t('General Education Requirement(s)');
   t('Instructor(s)');
   t('Location(s)');
+  t('Notes');
   t('Section Number');
   t('Section(s)');
   t('Start Time(s)');
