@@ -50,4 +50,11 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-
+/*
+ * Implements hook_ctools_plugin_directory().
+ */
+function stanford_courses_ctools_plugin_directory($module, $plugin) {
+  if ($module == 'feeds_tamper') {
+    return 'plugins';
+  }
+}
