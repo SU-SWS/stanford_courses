@@ -14,9 +14,6 @@ $plugin = array(
 function stanford_courses_urlencode_form($importer, $element_key, $settings) {
   $form = array();
   $form['help']['#value'] = t('Run values through the !urlencode function.', array('!urlencode' => l('urlencode()', 'http://us3.php.net/urlencode')));
-  //
-  // Other formy stuff here.
-  //
   return $form;
 }
 
