@@ -40,6 +40,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:8' => 'tags/tag/organization',
           'xpathparser:9' => 'tags/tag/name',
           'xpathparser:10' => 'concat(subject,"-",code,"-",courseId)',
+          'xpathparser:11' => 'concat(subject,code)',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
@@ -53,6 +54,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:8' => 0,
           'xpathparser:9' => 0,
           'xpathparser:10' => 0,
+          'xpathparser:11' => 0,
         ),
         'context' => '//courses/course',
         'exp' => array(
@@ -70,6 +72,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:8' => 0,
             'xpathparser:9' => 0,
             'xpathparser:10' => 0,
+            'xpathparser:11' => 0,
           ),
         ),
         'allow_override' => 1,
@@ -135,6 +138,11 @@ function stanford_courses_feeds_importer_default() {
           10 => array(
             'source' => 'xpathparser:10',
             'target' => 'field_stanford_course_scid',
+            'unique' => FALSE,
+          ),
+          11 => array(
+            'source' => 'xpathparser:11',
+            'target' => 'field_stanford_course_ec_link:url',
             'unique' => FALSE,
           ),
         ),

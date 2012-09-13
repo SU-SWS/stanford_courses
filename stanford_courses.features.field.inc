@@ -212,6 +212,88 @@ function stanford_courses_field_default_fields() {
     ),
   );
 
+  // Exported field: 'node-stanford_course-field_stanford_course_ec_link'
+  $fields['node-stanford_course-field_stanford_course_ec_link'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_stanford_course_ec_link',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'stanford_course',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This field is created programmatically and you cannot edit it.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => '11',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_stanford_course_ec_link',
+      'label' => 'ExploreCourses Link',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 0,
+        'title' => 'value',
+        'title_maxlength' => '128',
+        'title_value' => 'View this course and available sections on ExploreCourses',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '11',
+      ),
+    ),
+  );
+
   // Exported field: 'node-stanford_course-field_stanford_course_ger'
   $fields['node-stanford_course-field_stanford_course_ger'] = array(
     'field_config' => array(
@@ -539,10 +621,9 @@ function stanford_courses_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'text',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '7',
         ),
         'teaser' => array(
@@ -607,10 +688,9 @@ function stanford_courses_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'text',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'hidden',
           'weight' => '6',
         ),
         'teaser' => array(
@@ -1897,6 +1977,7 @@ function stanford_courses_field_default_fields() {
   t('Enter the academic term, e.g., <em>2012-2013 Spring</em>.');
   t('Enter the first and last days of the class session');
   t('Enter the number of academic credits.');
+  t('ExploreCourses Link');
   t('General Education Requirement(s)');
   t('Instructor(s)');
   t('Location(s)');
@@ -1913,6 +1994,7 @@ function stanford_courses_field_default_fields() {
   t('The code is used only internally.');
   t('The course ID is used only internally.');
   t('The section number is used internally.');
+  t('This field is created programmatically and you cannot edit it.');
   t('This field is populated automatically when importing from explorecourses.stanford.edu. You should not need to fill this out manually.');
   t('Time(s)');
   t('Units');
