@@ -28,7 +28,7 @@ function stanford_courses_help($path, $arg) {
 function stanford_courses_feed_url_validate($form, &$form_state) {
   //Let's make things a little easier on the user
   $feed_url = $form_state['values']['feeds']['FeedsHTTPFetcher']['source'];
-  $feed_url = preg_replace('/view\=catalog/', 'view=xml-20111011', $feed_url);
+  $feed_url = preg_replace('/view\=catalog/', 'view=xml-20120105', $feed_url);
   $feed_url = preg_replace('/https/', 'http', $feed_url);
   form_set_value(array('#parents' => array('feeds', 'FeedsHTTPFetcher', 'source')), $feed_url, $form_state);
 }
