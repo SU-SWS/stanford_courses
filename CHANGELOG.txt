@@ -1,6 +1,13 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-1.0-alpha7, 2012-09-13
+-------------------------------------------
+Changes since -alpha6:
+  -added link to course listing on ExploreCourses for course nodes
+  -changed link in course View to go to course listing on ExploreCourses
+  -updated help text
+
 Stanford Courses 7.x-1.0-alpha6, 2012-07-12
 -------------------------------------------
 Changes since -alpha5:
