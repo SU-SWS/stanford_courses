@@ -39,7 +39,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:9' => 'administrativeInformation/courseId',
           'xpathparser:10' => 'tags/tag/organization',
           'xpathparser:11' => 'tags/tag/name',
-          'xpathparser:12' => 'concat(subject,"-",code,"-",courseId)',
+          'xpathparser:12' => 'concat(subject,"-",code,"-",administrativeInformation/courseId)',
           'xpathparser:13' => 'concat(subject,code)',
         ),
         'rawXML' => array(
