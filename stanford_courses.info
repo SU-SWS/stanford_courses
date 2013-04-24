@@ -7,6 +7,7 @@ project = stanford_courses
 dependencies[] = features
 dependencies[] = feeds
 dependencies[] = feeds_xpathparser
+dependencies[] = feeds_tamper
 dependencies[] = field_collection
 dependencies[] = number
 dependencies[] = strongarm
