@@ -15,7 +15,7 @@ function stanford_courses_feeds_importer_default() {
   $feeds_importer->api_version = 1;
   $feeds_importer->id = 'stanford_course_importer';
   $feeds_importer->config = array(
-    'name' => 'Stanford Course Importer',
+    'name' => 'Course Importer',
     'description' => 'Imports course information from explorecourses.stanford.edu',
     'fetcher' => array(
       'plugin_key' => 'FeedsHTTPFetcher',
@@ -23,6 +23,7 @@ function stanford_courses_feeds_importer_default() {
         'auto_detect_feeds' => FALSE,
         'use_pubsubhubbub' => FALSE,
         'designated_hub' => '',
+        'request_timeout' => NULL,
       ),
     ),
     'parser' => array(
@@ -31,169 +32,19 @@ function stanford_courses_feeds_importer_default() {
         'sources' => array(
           'xpathparser:0' => 'concat(administrativeInformation/courseId,"-",subject,"-",code,"-",year)',
           'xpathparser:1' => 'title',
-          'xpathparser:2' => 'code',
-          'xpathparser:3' => 'gers',
-          'xpathparser:4' => 'subject',
-          'xpathparser:5' => 'description',
-          'xpathparser:6' => 'year',
+          'xpathparser:2' => 'description',
+          'xpathparser:3' => 'year',
+          'xpathparser:4' => 'gers',
+          'xpathparser:5' => 'subject',
+          'xpathparser:6' => 'code',
           'xpathparser:7' => 'administrativeInformation/courseId',
-          'xpathparser:8' => 'tags/tag/organization',
-          'xpathparser:9' => 'tags/tag/name',
-          'xpathparser:10' => 'concat(subject,"-",code,"-",courseId)',
-          'xpathparser:11' => 'concat(subject,code)',
-        ),
-        'rawXML' => array(
-          'xpathparser:0' => 0,
-          'xpathparser:1' => 0,
-          'xpathparser:2' => 0,
-          'xpathparser:3' => 0,
-          'xpathparser:4' => 0,
-          'xpathparser:5' => 0,
-          'xpathparser:6' => 0,
-          'xpathparser:7' => 0,
-          'xpathparser:8' => 0,
-          'xpathparser:9' => 0,
-          'xpathparser:10' => 0,
-          'xpathparser:11' => 0,
-        ),
-        'context' => '//courses/course',
-        'exp' => array(
-          'errors' => 0,
-          'debug' => array(
-            'context' => 0,
-            'xpathparser:0' => 0,
-            'xpathparser:1' => 0,
-            'xpathparser:2' => 0,
-            'xpathparser:3' => 0,
-            'xpathparser:4' => 0,
-            'xpathparser:5' => 0,
-            'xpathparser:6' => 0,
-            'xpathparser:7' => 0,
-            'xpathparser:8' => 0,
-            'xpathparser:9' => 0,
-            'xpathparser:10' => 0,
-            'xpathparser:11' => 0,
-          ),
-        ),
-        'allow_override' => 1,
-      ),
-    ),
-    'processor' => array(
-      'plugin_key' => 'FeedsNodeProcessor',
-      'config' => array(
-        'content_type' => 'stanford_course',
-        'expire' => '-1',
-        'author' => 0,
-        'mappings' => array(
-          0 => array(
-            'source' => 'xpathparser:0',
-            'target' => 'guid',
-            'unique' => 1,
-          ),
-          1 => array(
-            'source' => 'xpathparser:1',
-            'target' => 'title',
-            'unique' => FALSE,
-          ),
-          2 => array(
-            'source' => 'xpathparser:2',
-            'target' => 'field_stanford_course_code',
-            'unique' => FALSE,
-          ),
-          3 => array(
-            'source' => 'xpathparser:3',
-            'target' => 'field_stanford_course_ger',
-            'unique' => FALSE,
-          ),
-          4 => array(
-            'source' => 'xpathparser:4',
-            'target' => 'field_stanford_course_subject',
-            'unique' => FALSE,
-          ),
-          5 => array(
-            'source' => 'xpathparser:5',
-            'target' => 'body',
-            'unique' => FALSE,
-          ),
-          6 => array(
-            'source' => 'xpathparser:6',
-            'target' => 'field_stanford_course_year',
-            'unique' => FALSE,
-          ),
-          7 => array(
-            'source' => 'xpathparser:7',
-            'target' => 'field_stanford_course_course_id',
-            'unique' => FALSE,
-          ),
-          8 => array(
-            'source' => 'xpathparser:8',
-            'target' => 'field_stanford_course_tag_org',
-            'unique' => FALSE,
-          ),
-          9 => array(
-            'source' => 'xpathparser:9',
-            'target' => 'field_stanford_course_tag_name',
-            'unique' => FALSE,
-          ),
-          10 => array(
-            'source' => 'xpathparser:10',
-            'target' => 'field_stanford_course_scid',
-            'unique' => FALSE,
-          ),
-          11 => array(
-            'source' => 'xpathparser:11',
-            'target' => 'field_stanford_course_ec_link:url',
-            'unique' => FALSE,
-          ),
-        ),
-        'update_existing' => '2',
-        'input_format' => 'filtered_html',
-      ),
-    ),
-    'content_type' => 'stanford_course_importer',
-    'update' => 0,
-    'import_period' => '86400',
-    'expire_period' => 3600,
-    'import_on_create' => 1,
-    'process_in_background' => 1,
-  );
-  $export['stanford_course_importer'] = $feeds_importer;
-
-  $feeds_importer = new stdClass();
-  $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
-  $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'stanford_course_section_importer';
-  $feeds_importer->config = array(
-    'name' => 'Stanford Course Section Importer',
-    'description' => 'Imports course sections from explorecourses.stanford.edu',
-    'fetcher' => array(
-      'plugin_key' => 'FeedsHTTPFetcher',
-      'config' => array(
-        'auto_detect_feeds' => FALSE,
-        'use_pubsubhubbub' => FALSE,
-        'designated_hub' => '',
-      ),
-    ),
-    'parser' => array(
-      'plugin_key' => 'FeedsXPathParserXML',
-      'config' => array(
-        'sources' => array(
-          'xpathparser:0' => 'classId',
-          'xpathparser:1' => 'concat(subject,"-",classId)',
-          'xpathparser:2' => 'term',
-          'xpathparser:3' => 'subject',
-          'xpathparser:4' => 'code',
-          'xpathparser:5' => 'units',
-          'xpathparser:6' => 'sectionNumber',
-          'xpathparser:7' => 'component',
-          'xpathparser:8' => 'courseId',
-          'xpathparser:9' => 'instructor/name',
-          'xpathparser:10' => 'schedules/schedule/days',
-          'xpathparser:11' => 'concat(schedules/schedule/startTime, " - ", schedules/schedule/endTime)',
-          'xpathparser:12' => 'schedules/schedule/location',
-          'xpathparser:13' => 'schedules/schedule/startDate',
-          'xpathparser:14' => 'schedules/schedule/endDate',
-          'xpathparser:15' => 'concat(subject,"-",code,"-",courseId)',
+          'xpathparser:8' => 'concat(sections/section/subject,"-",sections/section/code,"-",sections/section/courseId)',
+          'xpathparser:9' => 'sections/section/term',
+          'xpathparser:10' => 'sections/section/schedules/schedule/days',
+          'xpathparser:11' => 'sections/section/schedules/schedule/location',
+          'xpathparser:12' => 'concat(sections/section/schedules/schedule/startTime, " - ", sections/section/schedules/schedule/endTime)',
+          'xpathparser:13' => 'tags/tag/organization',
+          'xpathparser:14' => 'tags/tag/name',
         ),
         'rawXML' => array(
           'xpathparser:0' => 0,
@@ -211,9 +62,8 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:12' => 0,
           'xpathparser:13' => 0,
           'xpathparser:14' => 0,
-          'xpathparser:15' => 0,
         ),
-        'context' => '//courses/course/sections/section',
+        'context' => '//courses/course',
         'exp' => array(
           'errors' => 0,
           'debug' => array(
@@ -233,18 +83,16 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:12' => 0,
             'xpathparser:13' => 0,
             'xpathparser:14' => 0,
-            'xpathparser:15' => 0,
           ),
         ),
-        'allow_override' => 1,
+        'allow_override' => 0,
       ),
     ),
     'processor' => array(
       'plugin_key' => 'FeedsNodeProcessor',
       'config' => array(
-        'content_type' => 'stanford_course_section',
         'expire' => '-1',
-        'author' => 0,
+        'author' => '1',
         'mappings' => array(
           0 => array(
             'source' => 'xpathparser:0',
@@ -254,91 +102,89 @@ function stanford_courses_feeds_importer_default() {
           1 => array(
             'source' => 'xpathparser:1',
             'target' => 'title',
-            'unique' => FALSE,
+            'unique' => 0,
           ),
           2 => array(
             'source' => 'xpathparser:2',
-            'target' => 'field_stanford_section_term',
+            'target' => 'body',
             'unique' => FALSE,
           ),
           3 => array(
             'source' => 'xpathparser:3',
-            'target' => 'field_stanford_section_subject',
+            'target' => 'field_s_course_year',
             'unique' => FALSE,
           ),
           4 => array(
             'source' => 'xpathparser:4',
-            'target' => 'field_stanford_section_code',
+            'target' => 'field_s_course_ger',
             'unique' => FALSE,
           ),
           5 => array(
             'source' => 'xpathparser:5',
-            'target' => 'field_stanford_section_units',
+            'target' => 'field_s_course_subject',
             'unique' => FALSE,
           ),
           6 => array(
             'source' => 'xpathparser:6',
-            'target' => 'field_stanford_section_number',
+            'target' => 'field_s_course_code',
             'unique' => FALSE,
           ),
           7 => array(
             'source' => 'xpathparser:7',
-            'target' => 'field_stanford_section_component',
+            'target' => 'field_s_course_id',
             'unique' => FALSE,
           ),
           8 => array(
             'source' => 'xpathparser:8',
-            'target' => 'field_stanford_section_course_id',
+            'target' => 'field_s_course_scid',
             'unique' => FALSE,
           ),
           9 => array(
             'source' => 'xpathparser:9',
-            'target' => 'field_stanford_section_instrctr',
+            'target' => 'field_s_course_section_info:field_s_course_term',
             'unique' => FALSE,
           ),
           10 => array(
             'source' => 'xpathparser:10',
-            'target' => 'field_stanford_section_dow',
+            'target' => 'field_s_course_section_info:field_s_course_dow',
             'unique' => FALSE,
           ),
           11 => array(
             'source' => 'xpathparser:11',
-            'target' => 'field_stanford_section_time',
+            'target' => 'field_s_course_section_info:field_s_course_location',
             'unique' => FALSE,
           ),
           12 => array(
             'source' => 'xpathparser:12',
-            'target' => 'field_stanford_section_location',
+            'target' => 'field_s_course_section_info:field_s_course_time',
             'unique' => FALSE,
           ),
           13 => array(
             'source' => 'xpathparser:13',
-            'target' => 'field_stanford_section_dates:start',
+            'target' => 'field_s_course_tag_org',
             'unique' => FALSE,
           ),
           14 => array(
             'source' => 'xpathparser:14',
-            'target' => 'field_stanford_section_dates:end',
-            'unique' => FALSE,
-          ),
-          15 => array(
-            'source' => 'xpathparser:15',
-            'target' => 'field_stanford_section_scid',
+            'target' => 'field_s_course_tag_name',
             'unique' => FALSE,
           ),
         ),
         'update_existing' => '2',
-        'input_format' => 'plain_text',
+        'input_format' => 'filtered_html',
+        'authorize' => 1,
+        'skip_hash_check' => 0,
+        'bundle' => 'stanford_course',
       ),
     ),
-    'content_type' => 'stanford_course_section_importer',
+    'content_type' => 'stanford_course_importer',
     'update' => 0,
     'import_period' => '86400',
     'expire_period' => 3600,
     'import_on_create' => 1,
-    'process_in_background' => 1,
+    'process_in_background' => 0,
   );
-  $export['stanford_course_section_importer'] = $feeds_importer;
+  $export['stanford_course_importer'] = $feeds_importer;
 
   return $export;
 }
