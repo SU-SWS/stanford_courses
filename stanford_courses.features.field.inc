@@ -196,34 +196,227 @@ function stanford_courses_field_default_fields() {
     ),
   );
 
-  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_term'.
-  $fields['field_collection_item-field_s_course_section_info-field_s_course_term'] = array(
+  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_section_year'.
+  $fields['field_collection_item-field_s_course_section_info-field_s_course_section_year'] = array(
     'field_config' => array(
       'active' => '1',
       'cardinality' => '1',
       'deleted' => '0',
       'entity_types' => array(),
-      'field_name' => 'field_s_course_term',
-      'foreign keys' => array(
-        'format' => array(
-          'columns' => array(
-            'format' => 'format',
-          ),
-          'table' => 'filter_format',
-        ),
-      ),
+      'field_name' => 'field_s_course_section_year',
+      'foreign keys' => array(),
       'indexes' => array(
-        'format' => array(
-          0 => 'format',
+        'value' => array(
+          0 => 'value',
         ),
       ),
       'locked' => '0',
-      'module' => 'text',
+      'module' => 'list',
       'settings' => array(
-        'max_length' => '255',
+        'allowed_values' => array(
+          1891 => '1891-1892',
+          1892 => '1892-1893',
+          1893 => '1893-1894',
+          1894 => '1894-1895',
+          1895 => '1895-1896',
+          1896 => '1896-1897',
+          1897 => '1897-1898',
+          1898 => '1898-1899',
+          1899 => '1899-1900',
+          1900 => '1900-1901',
+          1901 => '1901-1902',
+          1902 => '1902-1903',
+          1903 => '1903-1904',
+          1904 => '1904-1905',
+          1905 => '1905-1906',
+          1906 => '1906-1907',
+          1907 => '1907-1908',
+          1908 => '1908-1909',
+          1909 => '1909-1910',
+          1910 => '1910-1911',
+          1911 => '1911-1912',
+          1912 => '1912-1913',
+          1913 => '1913-1914',
+          1914 => '1914-1915',
+          1915 => '1915-1916',
+          1916 => '1916-1917',
+          1917 => '1917-1918',
+          1918 => '1918-1919',
+          1919 => '1919-1920',
+          1920 => '1920-1921',
+          1921 => '1921-1922',
+          1922 => '1922-1923',
+          1923 => '1923-1924',
+          1924 => '1924-1925',
+          1925 => '1925-1926',
+          1926 => '1926-1927',
+          1927 => '1927-1928',
+          1928 => '1928-1929',
+          1929 => '1929-1930',
+          1930 => '1930-1931',
+          1931 => '1931-1932',
+          1932 => '1932-1933',
+          1933 => '1933-1934',
+          1934 => '1934-1935',
+          1935 => '1935-1936',
+          1936 => '1936-1937',
+          1937 => '1937-1938',
+          1938 => '1938-1939',
+          1939 => '1939-1940',
+          1940 => '1940-1941',
+          1941 => '1941-1942',
+          1942 => '1942-1943',
+          1943 => '1943-1944',
+          1944 => '1944-1945',
+          1945 => '1945-1946',
+          1946 => '1946-1947',
+          1947 => '1947-1948',
+          1948 => '1948-1949',
+          1949 => '1949-1950',
+          1950 => '1950-1951',
+          1951 => '1951-1952',
+          1952 => '1952-1953',
+          1953 => '1953-1954',
+          1954 => '1954-1955',
+          1955 => '1955-1956',
+          1956 => '1956-1957',
+          1957 => '1957-1958',
+          1958 => '1958-1959',
+          1959 => '1959-1960',
+          1960 => '1960-1961',
+          1961 => '1961-1962',
+          1962 => '1962-1963',
+          1963 => '1963-1964',
+          1964 => '1964-1965',
+          1965 => '1965-1966',
+          1966 => '1966-1967',
+          1967 => '1967-1968',
+          1968 => '1968-1969',
+          1969 => '1969-1970',
+          1970 => '1970-1971',
+          1971 => '1971-1972',
+          1972 => '1972-1973',
+          1973 => '1973-1974',
+          1974 => '1974-1975',
+          1975 => '1975-1976',
+          1976 => '1976-1977',
+          1977 => '1977-1978',
+          1978 => '1978-1979',
+          1979 => '1979-1980',
+          1980 => '1980-1981',
+          1981 => '1981-1982',
+          1982 => '1982-1983',
+          1983 => '1983-1984',
+          1984 => '1984-1985',
+          1985 => '1985-1986',
+          1986 => '1986-1987',
+          1987 => '1987-1988',
+          1988 => '1988-1989',
+          1989 => '1989-1990',
+          1990 => '1990-1991',
+          1991 => '1991-1992',
+          1992 => '1992-1993',
+          1993 => '1993-1994',
+          1994 => '1994-1995',
+          1995 => '1995-1996',
+          1996 => '1996-1997',
+          1997 => '1997-1998',
+          1998 => '1998-1999',
+          1999 => '1999-2000',
+          2000 => '2000-2001',
+          2001 => '2001-2002',
+          2002 => '2002-2003',
+          2003 => '2003-2004',
+          2004 => '2004-2005',
+          2005 => '2005-2006',
+          2006 => '2006-2007',
+          2007 => '2007-2008',
+          2008 => '2008-2009',
+          2009 => '2009-2010',
+          2010 => '2010-2011',
+          2011 => '2011-2012',
+          2012 => '2012-2013',
+          2013 => '2013-2014',
+          2014 => '2014-2015',
+          2015 => '2015-2016',
+          2016 => '2016-2017',
+          2017 => '2017-2018',
+          2018 => '2018-2019',
+          2019 => '2019-2020',
+          2020 => '2020-2021',
+          2021 => '2021-2022',
+          2022 => '2022-2023',
+          2023 => '2023-2024',
+          2024 => '2024-2025',
+          2025 => '2025-2026',
+        ),
+        'allowed_values_function' => '',
       ),
       'translatable' => '0',
-      'type' => 'text',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_s_course_section_info',
+      'default_value' => array(
+        0 => array(
+          'value' => '2013',
+        ),
+      ),
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 4,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_s_course_section_year',
+      'label' => 'Year',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '49',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_term'.
+  $fields['field_collection_item-field_s_course_section_info-field_s_course_term'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '4',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_term',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => 'Autumn',
+          1 => 'Winter',
+          2 => 'Spring',
+          3 => 'Summer',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
     ),
     'field_instance' => array(
       'bundle' => 'field_s_course_section_info',
@@ -233,10 +426,10 @@ function stanford_courses_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
+          'module' => 'list',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => 0,
+          'type' => 'list_default',
+          'weight' => 5,
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -244,47 +437,14 @@ function stanford_courses_field_default_fields() {
       'label' => 'Quarter',
       'required' => 0,
       'settings' => array(
-        'better_formats' => array(
-          'allowed_formats' => array(
-            'content_editor_text_format' => 'content_editor_text_format',
-            'ds_code' => 'ds_code',
-            'filtered_html' => 'filtered_html',
-            'full_html' => 'full_html',
-            'plain_text' => 'plain_text',
-          ),
-          'allowed_formats_toggle' => 0,
-          'default_order_toggle' => 0,
-          'default_order_wrapper' => array(
-            'formats' => array(
-              'content_editor_text_format' => array(
-                'weight' => '-10',
-              ),
-              'ds_code' => array(
-                'weight' => '12',
-              ),
-              'filtered_html' => array(
-                'weight' => '0',
-              ),
-              'full_html' => array(
-                'weight' => '1',
-              ),
-              'plain_text' => array(
-                'weight' => '10',
-              ),
-            ),
-          ),
-        ),
-        'text_processing' => '0',
         'user_register_form' => FALSE,
       ),
       'widget' => array(
         'active' => 1,
-        'module' => 'text',
-        'settings' => array(
-          'size' => '60',
-        ),
-        'type' => 'text_textfield',
-        'weight' => '42',
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_buttons',
+        'weight' => '50',
       ),
     ),
   );
@@ -581,6 +741,71 @@ function stanford_courses_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-stanford_course-field_s_course_concat_sec_info'.
+  $fields['node-stanford_course-field_s_course_concat_sec_info'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_concat_sec_info',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'computed_field',
+      'settings' => array(
+        'code' => '$entity_field[0][\'value\'] = "";',
+        'database' => array(
+          'data_default' => '',
+          'data_index' => 0,
+          'data_length' => '32',
+          'data_not_NULL' => 0,
+          'data_precision' => '10',
+          'data_scale' => '2',
+          'data_size' => 'normal',
+          'data_type' => 'varchar',
+        ),
+        'display_format' => '$display_output = $entity_field_item[\'value\'];',
+        'store' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'computed',
+    ),
+    'field_instance' => array(
+      'bundle' => 'stanford_course',
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'computed_field',
+          'settings' => array(),
+          'type' => 'computed_field_plain',
+          'weight' => 15,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_s_course_concat_sec_info',
+      'label' => 'Concatenated Section Info',
+      'required' => FALSE,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'module' => 'computed_field',
+        'settings' => array(),
+        'type' => 'computed',
+        'weight' => '31',
       ),
     ),
   );
@@ -1461,9 +1686,11 @@ function stanford_courses_field_default_fields() {
   t('Academic Year');
   t('Body');
   t('Code');
+  t('Concatenated Section Info');
   t('Course ID');
   t('Day(s) of Week');
   t('Description');
+  t('ExploreCourses Link');
   t('Location(s)');
   t('Quarter');
   t('Requirements');
@@ -1472,7 +1699,9 @@ function stanford_courses_field_default_fields() {
   t('Subject-Code-ID');
   t('Tag: Name');
   t('Tag: Organization');
+  t('This field is created programmatically and you cannot edit it.');
   t('Time(s)');
+  t('Year');
 
   return $fields;
 }
