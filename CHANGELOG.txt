@@ -1,25 +1,8 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
-Stanford Courses 7.x-1.0-alpha7, 2012-09-13
+Stanford Courses 7.x-2.0-alpha4, 2013-05-15
 -------------------------------------------
-Changes since -alpha6:
-  -added link to course listing on ExploreCourses for course nodes
-  -changed link in course View to go to course listing on ExploreCourses
-  -updated help text
-
-Stanford Courses 7.x-1.0-alpha6, 2012-07-12
--------------------------------------------
-Changes since -alpha5:
-  -added LICENSE.txt
-
-Stanford Courses 7.x-1.0-alpha5, 2012-06-29
--------------------------------------------
-Changes since -alpha4:
-  -updated help text
-  -updated README file
-
-Stanford Courses 7.x-1.0-alpha4, 2012-06-25
--------------------------------------------
-First actual release of D7 version of Stanford Courses module.
-  (-alpha1 through -alpha3 were incomplete Features waypoints)
+First tagged release on 7.x-2.x branch
+Added and rearranged fields
+Added Feeds Tamper
