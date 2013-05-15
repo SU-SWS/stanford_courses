@@ -39,7 +39,8 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:6' => 'code',
           'xpathparser:7' => 'administrativeInformation/courseId',
           'xpathparser:8' => 'concat(sections/section/subject,"-",sections/section/code,"-",sections/section/courseId)',
-          'xpathparser:9' => 'sections/section/term',
+          'xpathparser:15' => 'substring(sections/section/term,1,9)',
+          'xpathparser:9' => 'substring(sections/section/term,11)',
           'xpathparser:10' => 'sections/section/schedules/schedule/days',
           'xpathparser:11' => 'sections/section/schedules/schedule/location',
           'xpathparser:12' => 'concat(sections/section/schedules/schedule/startTime, " - ", sections/section/schedules/schedule/endTime)',
@@ -56,6 +57,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:6' => 0,
           'xpathparser:7' => 0,
           'xpathparser:8' => 0,
+          'xpathparser:15' => 0,
           'xpathparser:9' => 0,
           'xpathparser:10' => 0,
           'xpathparser:11' => 0,
@@ -77,6 +79,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:6' => 0,
             'xpathparser:7' => 0,
             'xpathparser:8' => 0,
+            'xpathparser:15' => 0,
             'xpathparser:9' => 0,
             'xpathparser:10' => 0,
             'xpathparser:11' => 0,
@@ -140,31 +143,36 @@ function stanford_courses_feeds_importer_default() {
             'unique' => FALSE,
           ),
           9 => array(
+            'source' => 'xpathparser:15',
+            'target' => 'field_s_course_section_info:field_s_course_section_year',
+            'unique' => FALSE,
+          ),
+          10 => array(
             'source' => 'xpathparser:9',
             'target' => 'field_s_course_section_info:field_s_course_term',
             'unique' => FALSE,
           ),
-          10 => array(
+          11 => array(
             'source' => 'xpathparser:10',
             'target' => 'field_s_course_section_info:field_s_course_dow',
             'unique' => FALSE,
           ),
-          11 => array(
+          12 => array(
             'source' => 'xpathparser:11',
             'target' => 'field_s_course_section_info:field_s_course_location',
             'unique' => FALSE,
           ),
-          12 => array(
+          13 => array(
             'source' => 'xpathparser:12',
             'target' => 'field_s_course_section_info:field_s_course_time',
             'unique' => FALSE,
           ),
-          13 => array(
+          14 => array(
             'source' => 'xpathparser:13',
             'target' => 'field_s_course_tag_org',
             'unique' => FALSE,
           ),
-          14 => array(
+          15 => array(
             'source' => 'xpathparser:14',
             'target' => 'field_s_course_tag_name',
             'unique' => FALSE,
