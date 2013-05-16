@@ -357,11 +357,7 @@ function stanford_courses_field_default_fields() {
     ),
     'field_instance' => array(
       'bundle' => 'field_s_course_section_info',
-      'default_value' => array(
-        0 => array(
-          'value' => '2013',
-        ),
-      ),
+      'default_value' => NULL,
       'deleted' => '0',
       'description' => '',
       'display' => array(
