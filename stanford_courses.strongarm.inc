@@ -35,6 +35,9 @@ function stanford_courses_strongarm() {
         'metatags' => array(
           'weight' => '40',
         ),
+        'redirect' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),
@@ -79,6 +82,9 @@ function stanford_courses_strongarm() {
         ),
         'path' => array(
           'weight' => '1',
+        ),
+        'redirect' => array(
+          'weight' => '30',
         ),
       ),
       'display' => array(),
@@ -247,6 +253,20 @@ function stanford_courses_strongarm() {
   $strongarm->name = 'node_submitted_stanford_course_importer';
   $strongarm->value = 0;
   $export['node_submitted_stanford_course_importer'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_stanford_course_importer_pattern';
+  $strongarm->value = 'course-importers/[node:title]';
+  $export['pathauto_node_stanford_course_importer_pattern'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'pathauto_node_stanford_course_pattern';
+  $strongarm->value = 'courses/[node:title]';
+  $export['pathauto_node_stanford_course_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

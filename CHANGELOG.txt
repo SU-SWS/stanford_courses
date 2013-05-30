@@ -1,6 +1,10 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-2.0-alpha6, 2013-05-16
+-------------------------------------------
+Added mapper to ExploreCourses link field to Feeds importer
+
 Stanford Courses 7.x-2.0-alpha5, 2013-05-15
 -------------------------------------------
 Added mapper for Year field in Section Field Collection

@@ -50,7 +50,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 1,
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -143,7 +143,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 2,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -192,6 +192,77 @@ function stanford_courses_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '46',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_section_dates'.
+  $fields['field_collection_item-field_s_course_section_info-field_s_course_section_dates'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_section_dates',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'date',
+      'settings' => array(
+        'cache_count' => '1',
+        'cache_enabled' => 1,
+        'granularity' => array(
+          'day' => 'day',
+          'hour' => 0,
+          'minute' => 0,
+          'month' => 'month',
+          'second' => 0,
+          'year' => 'year',
+        ),
+        'timezone_db' => '',
+        'todate' => 'optional',
+        'tz_handling' => 'none',
+      ),
+      'translatable' => '0',
+      'type' => 'datetime',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_s_course_section_info',
+      'deleted' => '0',
+      'description' => 'Choose the start and end dates of the Quarter.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '6',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_s_course_section_dates',
+      'label' => 'Date Range',
+      'required' => 0,
+      'settings' => array(
+        'default_value' => 'now',
+        'default_value2' => 'same',
+        'default_value_code' => '',
+        'default_value_code2' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'date',
+        'settings' => array(
+          'display_all_day' => 0,
+          'increment' => '15',
+          'input_format' => 'M j Y - H:i:s',
+          'input_format_custom' => '',
+          'label_position' => 'above',
+          'text_parts' => array(),
+          'year_range' => '-3:+3',
+        ),
+        'type' => 'date_popup',
+        'weight' => '51',
       ),
     ),
   );
@@ -366,7 +437,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 4,
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -425,7 +496,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => 5,
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -485,7 +556,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -682,7 +753,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '7',
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -777,11 +848,10 @@ function stanford_courses_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'computed_field',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'computed_field_plain',
-          'weight' => 15,
+          'type' => 'hidden',
+          'weight' => '11',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -847,7 +917,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'link',
           'settings' => array(),
           'type' => 'link_default',
-          'weight' => 14,
+          'weight' => '7',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -929,7 +999,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '6',
+          'weight' => '2',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1020,7 +1090,7 @@ function stanford_courses_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '9',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1089,7 +1159,7 @@ function stanford_courses_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '10',
+          'weight' => '13',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1184,7 +1254,7 @@ function stanford_courses_field_default_fields() {
             'view_mode' => 'full',
           ),
           'type' => 'field_collection_view',
-          'weight' => '11',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1250,7 +1320,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '8',
+          'weight' => '4',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1348,7 +1418,7 @@ function stanford_courses_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '15',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1446,7 +1516,7 @@ function stanford_courses_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '12',
+          'weight' => '14',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1681,9 +1751,11 @@ function stanford_courses_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Academic Year');
   t('Body');
+  t('Choose the start and end dates of the Quarter.');
   t('Code');
   t('Concatenated Section Info');
   t('Course ID');
+  t('Date Range');
   t('Day(s) of Week');
   t('Description');
   t('ExploreCourses Link');

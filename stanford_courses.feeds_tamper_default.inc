@@ -13,6 +13,21 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_15-substr_plugin';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:15';
+  $feeds_tamper->plugin_id = 'substr_plugin';
+  $feeds_tamper->settings = array(
+    'start' => '0',
+    'length' => '9',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Substring';
+  $export['stanford_course_importer-xpathparser_15-substr_plugin'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'stanford_course_importer-xpathparser_16-rewrite';
   $feeds_tamper->importer = 'stanford_course_importer';
   $feeds_tamper->source = 'xpathparser:16';
@@ -35,6 +50,21 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'URL Encode';
   $export['stanford_course_importer-xpathparser_16-urlencode_plugin'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_9-substr_plugin';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:9';
+  $feeds_tamper->plugin_id = 'substr_plugin';
+  $feeds_tamper->settings = array(
+    'start' => '10',
+    'length' => '',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Substring';
+  $export['stanford_course_importer-xpathparser_9-substr_plugin'] = $feeds_tamper;
 
   return $export;
 }
