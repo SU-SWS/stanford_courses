@@ -1,6 +1,13 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-2.0-alpha7, 2013-05-30
+-------------------------------------------
+-Added substr() Feeds Tamper plugin
+-Added start date and end date to section info
+-Feeds Tamper plugins to replace XPath functions for Field Collection fields
+-Added pathauto config for course and course importer nodes
+
 Stanford Courses 7.x-2.0-alpha6, 2013-05-16
 -------------------------------------------
 Added mapper to ExploreCourses link field to Feeds importer
