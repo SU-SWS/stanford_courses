@@ -19,7 +19,7 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper->plugin_id = 'substr_plugin';
   $feeds_tamper->settings = array(
     'start' => '0',
-    'length' => '9',
+    'length' => '4',
   );
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'Substring';

@@ -475,10 +475,10 @@ function stanford_courses_field_default_fields() {
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
-          0 => 'Autumn',
-          1 => 'Winter',
-          2 => 'Spring',
-          3 => 'Summer',
+          'Autumn' => 'Autumn',
+          'Winter' => 'Winter',
+          'Spring' => 'Spring',
+          'Summer' => 'Summer',
         ),
         'allowed_values_function' => '',
       ),
@@ -642,7 +642,7 @@ function stanford_courses_field_default_fields() {
       'bundle' => 'stanford_course',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This filtered text field is the course description',
       'display' => array(
         'default' => array(
           'label' => 'hidden',
@@ -1608,7 +1608,7 @@ function stanford_courses_field_default_fields() {
       'bundle' => 'stanford_course',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'This text field provides the academic year for the course (e.g., 2013-2014).',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -1768,6 +1768,8 @@ function stanford_courses_field_default_fields() {
   t('Tag: Name');
   t('Tag: Organization');
   t('This field is created programmatically and you cannot edit it.');
+  t('This filtered text field is the course description.');
+  t('This text field provides the academic year for the course (e.g., 2013-2014).');
   t('Time(s)');
   t('Year');
 
