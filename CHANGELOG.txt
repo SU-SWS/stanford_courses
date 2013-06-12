@@ -1,6 +1,11 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-2.0-alpha8, 2013-06-12
+-------------------------------------------
+-Changed Feeds tamper substr() for Year field in Field Collection to map to the key in the key|value pair for mapping
+-Changed Quarter field in Field Collection to not have key|value configuration, to support Feeds mapping better
+
 Stanford Courses 7.x-2.0-alpha7, 2013-05-30
 -------------------------------------------
 -Added substr() Feeds Tamper plugin
