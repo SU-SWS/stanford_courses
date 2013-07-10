@@ -549,7 +549,7 @@ function stanford_courses_field_default_fields() {
       'bundle' => 'field_s_course_section_info',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => '',
+      'description' => 'Enter the start time of the course section.',
       'display' => array(
         'default' => array(
           'label' => 'above',
@@ -605,6 +605,103 @@ function stanford_courses_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '48',
+      ),
+    ),
+  );
+
+ // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_time_end'.
+  $fields['field_collection_item-field_s_course_section_info-field_s_course_time_end'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_time_end',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_s_course_section_info',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Enter the end time of the course section.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'text',
+          'settings' => array(),
+          'type' => 'text_default',
+          'weight' => 9,
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_s_course_time_end',
+      'label' => 'End Time',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'content_editor_text_format' => 'content_editor_text_format',
+            'ds_code' => 'ds_code',
+            'filtered_html' => 'filtered_html',
+            'full_html' => 'full_html',
+            'php_code' => 'php_code',
+            'plain_text' => 'plain_text',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'content_editor_text_format' => array(
+                'weight' => '-10',
+              ),
+              'ds_code' => array(
+                'weight' => '12',
+              ),
+              'filtered_html' => array(
+                'weight' => '0',
+              ),
+              'full_html' => array(
+                'weight' => '1',
+              ),
+              'php_code' => array(
+                'weight' => '11',
+              ),
+              'plain_text' => array(
+                'weight' => '10',
+              ),
+            ),
+          ),
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '7',
       ),
     ),
   );
@@ -808,6 +905,62 @@ function stanford_courses_field_default_fields() {
         ),
         'type' => 'text_textfield',
         'weight' => '7',
+      ),
+    ),
+  );
+
+// Exported field: 'node-stanford_course-field_s_course_code_integer'.
+  $fields['node-stanford_course-field_s_course_code_integer'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_code_integer',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'stanford_course',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'This is a structural field used for sorting and you should not need to edit it. It is the numeric portion of the course code (e.g., "172" for "172E") and should be automatically generated.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_s_course_code_integer',
+      'label' => 'Code (Integer)',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '14',
       ),
     ),
   );
@@ -1608,14 +1761,13 @@ function stanford_courses_field_default_fields() {
       'bundle' => 'stanford_course',
       'default_value' => NULL,
       'deleted' => '0',
-      'description' => 'This text field provides the academic year for the course (e.g., 2013-2014).',
+      'description' => 'This text field provides the academic year for the course (e.g., 2013).',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '1',
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1758,6 +1910,9 @@ function stanford_courses_field_default_fields() {
   t('Date Range');
   t('Day(s) of Week');
   t('Description');
+  t('End Time');
+  t('Enter the end time of the course section.');
+  t('Enter the start time of the course section.');
   t('ExploreCourses Link');
   t('Location(s)');
   t('Quarter');
@@ -1769,7 +1924,8 @@ function stanford_courses_field_default_fields() {
   t('Tag: Organization');
   t('This field is created programmatically and you cannot edit it.');
   t('This filtered text field is the course description.');
-  t('This text field provides the academic year for the course (e.g., 2013-2014).');
+  t('This is a structural field used for sorting and you should not need to edit it. It is the numeric portion of the course code (e.g., "172" for "172E") and should be automatically generated.');
+  t('This text field provides the academic year for the course (e.g., 2013).');
   t('Time(s)');
   t('Year');
 
