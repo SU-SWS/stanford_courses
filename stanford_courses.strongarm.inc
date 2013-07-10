@@ -265,7 +265,7 @@ function stanford_courses_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_stanford_course_pattern';
-  $strongarm->value = 'courses/[node:title]';
+  $strongarm->value = 'courses/[node:field_s_course_year]-[node:field_s_course_subject]-[node:field_s_course_code]';
   $export['pathauto_node_stanford_course_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
