@@ -561,7 +561,7 @@ function stanford_courses_field_default_fields() {
       ),
       'entity_type' => 'field_collection_item',
       'field_name' => 'field_s_course_time',
-      'label' => 'Time(s)',
+      'label' => 'Start Time',
       'required' => 0,
       'settings' => array(
         'better_formats' => array(
@@ -1862,7 +1862,7 @@ function stanford_courses_field_default_fields() {
   t('This filtered text field is the course description.');
   t('This is a structural field used for sorting and you should not need to edit it. It is the numeric portion of the course code (e.g., "172" for "172E") and should be automatically generated.');
   t('This text field provides the academic year for the course (e.g., 2013).');
-  t('Time(s)');
+  t('Start Time');
   t('Year');
 
   return $fields;
