@@ -85,3 +85,118 @@ function stanford_courses_ctools_plugin_directory($module, $plugin) {
     return 'plugins';
   }
 }
+
+/**
+ * Implements hook_feeds_processor_targets_alter()
+ */
+function stanford_courses_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+  foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
+    $info = field_info_field($name);
+    if ($info['type'] == 'field_collection') {
+      $new_targets = array();
+      feeds_alter('feeds_processor_targets', $new_targets, 'field_collection_item', $info['field_name']);
+      foreach ($new_targets as $sub_name => $target) {
+        $new_name = $info['field_name'] . ':' . $sub_name;
+        $targets[$new_name] = $target;
+        if (isset($target['name'])) {
+          $targets[$new_name]['name'] = $instance['label'] . ': ' . $target['name'];
+        }
+
+        // We override callback for now and retrieve original later.
+        $targets[$new_name]['callback'] = 'stanford_courses_feeds_set_target';
+      }
+    }
+  }
+}
+
+/**
+ * Process Field Collection items
+ */
+function stanford_courses_feeds_set_target($source, $entity, $target, $value) {
+  static $sub_targets = array();
+
+  $args = explode(':', $target);
+  $target = array_shift($args);
+  $sub_target = implode(':', $args);
+
+  // Now we retrieve old callbacks and keep then on a static cache
+  if (!isset($sub_targets[$target])) {
+    feeds_alter('feeds_processor_targets', $sub_targets[$target], 'field_collection_item', $target);
+  }
+  $_sub_targets = $sub_targets[$target];
+
+  $value = is_array($value) ? $value : array($value);
+  $info = field_info_field($target);
+
+  // Iterate over all values.
+  $delta = 0;
+  $field = isset($entity->$target) ? $entity->$target : array();
+  foreach ($value as $v) {
+    if (isset($field['und'][$delta]['entity'])) {
+      $field_collection_item = $field['und'][$delta]['entity'];
+    }
+    elseif (isset($field['und'][$delta]['value'])) {
+      $field_collection_item = field_collection_item_load($field['und'][$delta]['value']);
+    }
+    if (empty($field_collection_item)) {
+      $field_collection_item = entity_create('field_collection_item', array('field_name' => $target));
+    }
+
+    if (isset($_sub_targets[$sub_target]['callback']) && function_exists($_sub_targets[$sub_target]['callback'])) {
+      $callback = $_sub_targets[$sub_target]['callback'];
+      $callback($source, $field_collection_item, $sub_target, $v);
+    }
+
+    $field['und'][$delta]['entity'] = $field_collection_item;
+    $field['und'][$delta]['value'] = $field_collection_item->item_id;
+
+    unset($field_collection_item);
+
+    if ($info['cardinality'] == 1) {
+      break;
+    }
+    $delta++;
+  }
+
+  $entity->{$target} = $field;
+}
+
+/**
+ * Implements hook_feeds_presave().
+ */
+function stanford_courses_feeds_presave($source, $entity) {
+  // Do not save any empty field collection items that may have been created
+  // during the mapping process. Since the mapping is done field by field in
+  // stanford_courses_feeds_set_target(), we have to wait until this hook (when
+  // the field collection item is fully built up) before we can check if it's
+  // empty.
+  $config = $source->importer()->getConfig();
+  if (!empty($config['processor']['config']['mappings'])) {
+    // Find all field collection mappings.
+    foreach ($config['processor']['config']['mappings'] as $mapping) {
+      if (isset($mapping['target'])) {
+        $args = explode(':', $mapping['target']);
+        $field_name = array_shift($args);
+        if (($field = field_info_field($field_name)) && $field['type'] == 'field_collection') {
+          // If the field collection item is empty, do not save it.
+          if (!empty($entity->{$field_name})) {
+            foreach ($entity->{$field_name} as $langcode => &$items) {
+              foreach ($items as $delta => $item) {
+                if (isset($item['entity']) && field_collection_item_is_empty($item['entity'])) {
+                  unset($items[$delta]);
+                }
+              }
+              // Clean up the final array.
+              if (empty($items)) {
+                unset($entity->{$field_name}[$langcode]);
+              }
+              else {
+                $items = array_values($items);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
