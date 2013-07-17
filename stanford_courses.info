@@ -6,6 +6,7 @@ php = 5.2.4
 version = 7.x-2.0-alpha9
 project = stanford_courses
 dependencies[] = date
+dependencies[] = date_popup
 dependencies[] = features
 dependencies[] = feeds (>=2.0-alpha8)
 dependencies[] = feeds_tamper
