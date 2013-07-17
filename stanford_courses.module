@@ -85,21 +85,3 @@ function stanford_courses_ctools_plugin_directory($module, $plugin) {
     return 'plugins';
   }
 }
-
-/*function computed_field_field_s_course_concat_sec_info_compute(&$entity_field, $entity_type, $entity, $field, $instance, $langcode, $items) {
-  dpm($entity);
-  if(isset($entity->field_s_course_section_info[LANGUAGE_NONE][0]['value'])) {
-    $i = 0;
-    $field_collection_items = array();
-    while(isset($entity->field_s_course_section_info[LANGUAGE_NONE][$i]['value'])) {
-      $field_collection_item = field_collection_item_load($entity->field_s_course_section_info[LANGUAGE_NONE][$i]['value']);
-      $field_collection_items[] = $field_collection_item;
-      $i++;
-    }
-//    $field_collection_item = field_collection_item_load($entity->field_s_course_section_info[LANGUAGE_NONE][0]['value']);
-    dpm($field_collection_items);
-    $entity_field[0]['value'] = "Foo";
-    
-  }
-  
-}*/
