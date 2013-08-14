@@ -10,6 +10,82 @@
 function stanford_courses_field_default_fields() {
   $fields = array();
 
+  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_component'.
+  $fields['field_collection_item-field_s_course_section_info-field_s_course_component'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_component',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'ACT' => 'ACT',
+          'CLK' => 'CLK',
+          'COL' => 'COL',
+          'DIS' => 'DIS',
+          'SEM' => 'SEM',
+          'RES' => 'RES',
+          'INS' => 'INS',
+          'ITR' => 'ITR',
+          'LBS' => 'LBS',
+          'LAB' => 'LAB',
+          'LEC' => 'LEC',
+          'PRC' => 'PRC',
+          'LNG' => 'LNG',
+          'IDS' => 'IDS',
+          'ISF' => 'ISF',
+          'ISS' => 'ISS',
+          'SCS' => 'SCS',
+          'T/D' => 'T/D',
+          'WKS' => 'WKS',
+        ),
+        'allowed_values_function' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_s_course_section_info',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Enter the course component, e.g., DIS for discussion section. See http://studentaffairs.stanford.edu/registrar/staff/course-components for a full list of course components',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => '12',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_s_course_component',
+      'label' => 'Component',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(
+          'apply_chosen' => 1,
+        ),
+        'type' => 'options_select',
+        'weight' => '13',
+      ),
+    ),
+  );
+
   // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_dow'.
   $fields['field_collection_item-field_s_course_section_info-field_s_course_dow'] = array(
     'field_config' => array(
@@ -196,6 +272,102 @@ function stanford_courses_field_default_fields() {
     ),
   );
 
+  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_section_class_id'.
+  $fields['field_collection_item-field_s_course_section_info-field_s_course_section_class_id'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_section_class_id',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'text',
+      'settings' => array(
+        'max_length' => '255',
+      ),
+      'translatable' => '0',
+      'type' => 'text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_s_course_section_info',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '13',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_s_course_section_class_id',
+      'label' => 'Class ID',
+      'required' => 0,
+      'settings' => array(
+        'better_formats' => array(
+          'allowed_formats' => array(
+            'content_editor_text_format' => 'content_editor_text_format',
+            'ds_code' => 'ds_code',
+            'filtered_html' => 'filtered_html',
+            'full_html' => 'full_html',
+            'php_code' => 'php_code',
+            'plain_text' => 'plain_text',
+          ),
+          'allowed_formats_toggle' => 0,
+          'default_order_toggle' => 0,
+          'default_order_wrapper' => array(
+            'formats' => array(
+              'content_editor_text_format' => array(
+                'weight' => '-10',
+              ),
+              'ds_code' => array(
+                'weight' => '12',
+              ),
+              'filtered_html' => array(
+                'weight' => '0',
+              ),
+              'full_html' => array(
+                'weight' => '1',
+              ),
+              'php_code' => array(
+                'weight' => '11',
+              ),
+              'plain_text' => array(
+                'weight' => '10',
+              ),
+            ),
+          ),
+        ),
+        'text_processing' => '0',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'size' => '60',
+        ),
+        'type' => 'text_textfield',
+        'weight' => '14',
+      ),
+    ),
+  );
+
   // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_section_dates'.
   $fields['field_collection_item-field_s_course_section_info-field_s_course_section_dates'] = array(
     'field_config' => array(
@@ -263,6 +435,62 @@ function stanford_courses_field_default_fields() {
         ),
         'type' => 'date_popup',
         'weight' => '51',
+      ),
+    ),
+  );
+
+  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_section_number'.
+  $fields['field_collection_item-field_s_course_section_info-field_s_course_section_number'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_s_course_section_number',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'number',
+      'settings' => array(),
+      'translatable' => '0',
+      'type' => 'number_integer',
+    ),
+    'field_instance' => array(
+      'bundle' => 'field_s_course_section_info',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Enter the section number (e.g., 01, 02, 03, etc.)',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'number',
+          'settings' => array(
+            'decimal_separator' => '.',
+            'prefix_suffix' => TRUE,
+            'scale' => 0,
+            'thousand_separator' => ' ',
+          ),
+          'type' => 'number_integer',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'field_collection_item',
+      'field_name' => 'field_s_course_section_number',
+      'label' => 'Section Number',
+      'required' => 0,
+      'settings' => array(
+        'max' => '',
+        'min' => '1',
+        'prefix' => '',
+        'suffix' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'number',
+        'settings' => array(),
+        'type' => 'number',
+        'weight' => '1',
       ),
     ),
   );
@@ -846,10 +1074,10 @@ function stanford_courses_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
+          'type' => 'text_plain',
           'weight' => '3',
         ),
         'teaser' => array(
@@ -1847,7 +2075,7 @@ function stanford_courses_field_default_fields() {
   t('Day(s) of Week');
   t('Description');
   t('End Time');
-  t('Enter the end time of the course section.');
+  t('Enter the course component, e.g., DIS for discussion section. See http://studentaffairs.stanford.edu/registrar/staff/course-components for a full list of course components');  t('Enter the end time of the course section.');
   t('Enter the start time of the course section.');
   t('ExploreCourses Link');
   t('Location(s)');

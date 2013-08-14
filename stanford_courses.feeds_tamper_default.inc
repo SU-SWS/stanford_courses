@@ -13,6 +13,38 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_10-find_replace_regex';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:10';
+  $feeds_tamper->plugin_id = 'find_replace_regex';
+  $feeds_tamper->settings = array(
+    'find' => '/\\s{1,1000}/',
+    'replace' => ' ',
+    'limit' => '',
+    'real_limit' => -1,
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Find replace whitespace via regex';
+  $export['stanford_course_importer-xpathparser_10-find_replace_regex'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_10-trim';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:10';
+  $feeds_tamper->plugin_id = 'trim';
+  $feeds_tamper->settings = array(
+    'mask' => '',
+    'side' => 'trim',
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Trim whitespace from beginning and end';
+  $export['stanford_course_importer-xpathparser_10-trim'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'stanford_course_importer-xpathparser_12-format_plugin';
   $feeds_tamper->importer = 'stanford_course_importer';
   $feeds_tamper->source = 'xpathparser:12';
@@ -76,6 +108,33 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper->weight = 0;
   $feeds_tamper->description = 'URL Encode';
   $export['stanford_course_importer-xpathparser_16-urlencode_plugin'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_17-strtotime';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:17';
+  $feeds_tamper->plugin_id = 'strtotime';
+  $feeds_tamper->settings = '';
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'String to Unix timestamp';
+  $export['stanford_course_importer-xpathparser_17-strtotime'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_17-subtract_two_weeks';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:17';
+  $feeds_tamper->plugin_id = 'math';
+  $feeds_tamper->settings = array(
+    'operation' => 'subtraction',
+    'value' => '1209600',
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Subtract two weeks';
+  $export['stanford_course_importer-xpathparser_17-subtract_two_weeks'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
