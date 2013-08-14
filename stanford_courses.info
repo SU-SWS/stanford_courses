@@ -56,7 +56,6 @@ features[field][] = node-stanford_course-field_s_course_subject
 features[field][] = node-stanford_course-field_s_course_tag_name
 features[field][] = node-stanford_course-field_s_course_tag_org
 features[field][] = node-stanford_course-field_s_course_year
-features[field][] = node-stanford_course_importer-body
 features[node][] = stanford_course
 features[node][] = stanford_course_importer
 features[variable][] = additional_settings__active_tab_stanford_course
