@@ -60,11 +60,10 @@ function stanford_courses_field_default_fields() {
       'description' => 'Enter the course component, e.g., DIS for discussion section. See http://studentaffairs.stanford.edu/registrar/staff/course-components for a full list of course components',
       'display' => array(
         'default' => array(
-          'label' => 'above',
-          'module' => 'list',
+          'label' => 'hidden',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => '12',
+          'type' => 'hidden',
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -126,7 +125,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -219,7 +218,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -311,7 +310,7 @@ function stanford_courses_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '13',
+          'weight' => '9',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -407,7 +406,7 @@ function stanford_courses_field_default_fields() {
           'label' => 'hidden',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '8',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -415,8 +414,8 @@ function stanford_courses_field_default_fields() {
       'label' => 'Date Range',
       'required' => 0,
       'settings' => array(
-        'default_value' => 'now',
-        'default_value2' => 'same',
+        'default_value' => '',
+        'default_value2' => '',
         'default_value_code' => '',
         'default_value_code2' => '',
         'user_register_form' => FALSE,
@@ -471,7 +470,7 @@ function stanford_courses_field_default_fields() {
             'thousand_separator' => ' ',
           ),
           'type' => 'number_integer',
-          'weight' => '0',
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -665,7 +664,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '4',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -724,7 +723,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'list',
           'settings' => array(),
           'type' => 'list_default',
-          'weight' => '5',
+          'weight' => '1',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -837,7 +836,7 @@ function stanford_courses_field_default_fields() {
     ),
   );
 
- // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_time_end'.
+  // Exported field: 'field_collection_item-field_s_course_section_info-field_s_course_time_end'.
   $fields['field_collection_item-field_s_course_section_info-field_s_course_time_end'] = array(
     'field_config' => array(
       'active' => '1',
@@ -877,7 +876,7 @@ function stanford_courses_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 9,
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'field_collection_item',
@@ -1137,7 +1136,7 @@ function stanford_courses_field_default_fields() {
     ),
   );
 
-// Exported field: 'node-stanford_course-field_s_course_code_integer'.
+  // Exported field: 'node-stanford_course-field_s_course_code_integer'.
   $fields['node-stanford_course-field_s_course_code_integer'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1995,29 +1994,34 @@ function stanford_courses_field_default_fields() {
   t('Academic Year');
   t('Body');
   t('Choose the start and end dates of the Quarter.');
+  t('Class ID');
   t('Code');
-  t('Concatenated Section Info');
+  t('Code (Integer)');
+  t('Component');
   t('Course ID');
   t('Date Range');
   t('Day(s) of Week');
   t('Description');
   t('End Time');
-  t('Enter the course component, e.g., DIS for discussion section. See http://studentaffairs.stanford.edu/registrar/staff/course-components for a full list of course components');  t('Enter the end time of the course section.');
+  t('Enter the course component, e.g., DIS for discussion section. See http://studentaffairs.stanford.edu/registrar/staff/course-components for a full list of course components');
+  t('Enter the end time of the course section.');
+  t('Enter the section number (e.g., 01, 02, 03, etc.)');
   t('Enter the start time of the course section.');
   t('ExploreCourses Link');
   t('Location(s)');
   t('Quarter');
   t('Requirements');
   t('Section Information');
+  t('Section Number');
+  t('Start Time');
   t('Subject');
   t('Subject-Code-ID');
   t('Tag: Name');
   t('Tag: Organization');
   t('This field is created programmatically and you cannot edit it.');
-  t('This filtered text field is the course description.');
+  t('This filtered text field is the course description');
   t('This is a structural field used for sorting and you should not need to edit it. It is the numeric portion of the course code (e.g., "172" for "172E") and should be automatically generated.');
   t('This text field provides the academic year for the course (e.g., 2013).');
-  t('Start Time');
   t('Year');
 
   return $fields;
