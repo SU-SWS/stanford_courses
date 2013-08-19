@@ -1,6 +1,17 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-2.0-alpha9, 2013-08-19
+-------------------------------------------
+Changes since 7.x-2.0-alpha8:
+  -Added date/time string formatter for Feeds Tamper
+  -Added Field Collection/Feeds integration. See https://drupal.org/node/1063434
+  -Added component, class id, section number, end time, code (integer) fields, 
+    and their associated feeds mappers and tampers, to Course Section Field Collection
+  -Removed body field from Course Importer content type
+  -Added pathauto settings
+  -Removed stub computed field
+
 Stanford Courses 7.x-2.0-alpha8, 2013-06-12
 -------------------------------------------
 -Changed Feeds tamper substr() for Year field in Field Collection to map to the key in the key|value pair for mapping
