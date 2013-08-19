@@ -1,6 +1,10 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-2.0-alpha10, 2013-08-19
+--------------------------------------------
+-Rearranged display fields on Course Section Field Collection
+
 Stanford Courses 7.x-2.0-alpha9, 2013-08-19
 -------------------------------------------
 Changes since 7.x-2.0-alpha8:
