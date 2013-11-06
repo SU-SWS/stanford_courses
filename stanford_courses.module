@@ -28,6 +28,38 @@ function stanford_courses_help($path, $arg) {
 }
 
 /**
+ * Implements hook_requirements
+ */
+function stanford_courses_requirements($phase) {
+  $requirements = array();
+
+  switch($phase) {
+    case 'update':
+
+      // Ensure that field_collection module is enabled before updating.
+      if (!module_exists('field_collection')) {
+        // Be nice and try to enable it for the user.
+        if(!module_enable(array('field_collection'))) {
+          // Still no dice. Throw out requirement.
+          $requirements['fieldcollections_enabled'] = array(
+            'title' => 'Field Collection Module Required',
+            'value' => 'Not installed',
+            'description' => 'Field Collection module required for version 2.x of the stanford courses module. Please download and enable the field_collection module before proceeding. http://drupal.org/project/field_collection',
+            'severity' => REQUIREMENT_ERROR,
+          );
+        }
+      }
+
+      break;
+      default:
+  }
+
+  return $requirements;
+}
+
+
+
+/**
  * Implements hook_form_alter().
  *
  * Modify the search URL to retrieve the XML URL instead.
