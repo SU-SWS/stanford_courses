@@ -17,15 +17,47 @@ function stanford_courses_help($path, $arg) {
       $output .= '<p>' . t('To import from a feed, first construct the search for the courses that you want to import at !explorecourses.', array('!explorecourses' => l('explorecourses.stanford.edu', 'http://explorecourses.stanford.edu'))) .'</p>';
       $output .= '<p>' . t('Paste the URL of your search into the URL box (e.g., &quot;http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on...&quot; etc.) at !import and click the <strong>Save</strong> button to import <em>course</em> information. (The module will &quot;automagically&quot; convert the search URL into an XML URL.)', array('!import' => l('node/add/stanford-course-importer', 'node/add/stanford-course-importer'))) .'</p>';
       $output .= '<p>' . t('A link to the course listing on ExploreCourses automatically will be created for each course node.') . '</p>';
-      $output .= '<h2>' . t('Course Sections') . '</h2>';
+/*      $output .= '<h2>' . t('Course Sections') . '</h2>';
       $output .= '<p>' . t('It is possible to import Course Section information as well. Note that there are some limitations to this approach, and users are advised to use the link to the ExploreCourses website that is provided on each course node. ');
       $output .= t('It is likely that the Course Section importer will be removed from future versions of the Stanford Courses module.') . '</p>';
       $output .= '<p>' . t('Paste the <em>same</em> search URL into the URL box at !import and click the <strong>Save</strong> button to import <em>course section</em> information.', array('!import' => l('node/add/stanford-course-section-importer', 'node/add/stanford-course-section-importer'))) .'</p>';
       $output .= '<p>' . t('<strong>Courses</strong> and <strong>Course Sections</strong> can have !nodereference relationships. ', array('!nodereference' => l('Entity Reference', 'http://drupal.org/project/entityreference'))) . '</p>';
-      $output .= '<p>' . t('After importing course and course section nodes, two table Views are created at !stanfordcourses and !stanfordcoursesections, respectively.', array('!stanfordcourses' => l('stanford-courses', 'stanford-courses'), '!stanfordcoursesections' => l('stanford-course-sections', 'stanford-course-sections'))) .'</p>';
+      $output .= '<p>' . t('After importing course and course section nodes, two table Views are created at !stanfordcourses and !stanfordcoursesections, respectively.', array('!stanfordcourses' => l('stanford-courses', 'stanford-courses'), '!stanfordcoursesections' => l('stanford-course-sections', 'stanford-course-sections'))) .'</p>'; */
       return $output;
   }
 }
+
+/**
+ * Implements hook_requirements
+ */
+function stanford_courses_requirements($phase) {
+  $requirements = array();
+
+  switch($phase) {
+    case 'update':
+
+      // Ensure that field_collection module is enabled before updating.
+      if (!module_exists('field_collection')) {
+        // Be nice and try to enable it for the user.
+        if(!module_enable(array('field_collection'))) {
+          // Still no dice. Throw out requirement.
+          $requirements['fieldcollections_enabled'] = array(
+            'title' => 'Field Collection Module Required',
+            'value' => 'Not installed',
+            'description' => 'Field Collection module required for version 2.x of the stanford courses module. Please download and enable the field_collection module before proceeding. http://drupal.org/project/field_collection',
+            'severity' => REQUIREMENT_ERROR,
+          );
+        }
+      }
+
+      break;
+      default:
+  }
+
+  return $requirements;
+}
+
+
 
 /**
  * Implements hook_form_alter().
@@ -58,21 +90,23 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
  * Modify the search URL to retrieve the XML URL instead.
  */
 function stanford_courses_feed_url_validate($form, &$form_state) {
-  //Let's make things a little easier on the user
-  $feed_url = $form_state['values']['feeds']['FeedsHTTPFetcher']['source'];
-  $feed_url = preg_replace('/view\=catalog/', 'view=xml-20120105', $feed_url);
-  $feed_url = preg_replace('/https/', 'http', $feed_url);
-  form_set_value(array('#parents' => array('feeds', 'FeedsHTTPFetcher', 'source')), $feed_url, $form_state);
+  if (isset($form_state['values']['feeds'])) {
+    //Let's make things a little easier on the user
+    $feed_url = $form_state['values']['feeds']['FeedsHTTPFetcher']['source'];
+    $feed_url = preg_replace('/view\=catalog/', 'view=xml-20130201', $feed_url);
+    $feed_url = preg_replace('/https/', 'http', $feed_url);
+    form_set_value(array('#parents' => array('feeds', 'FeedsHTTPFetcher', 'source')), $feed_url, $form_state);
+  }
 }
 
 /*
  * Modify the ExploreCourses link to pass the subject and code through urlencode().
  */
 function stanford_courses_ec_link_validate($form, &$form_state) {
-  $subject = $form_state['values']['field_stanford_course_subject']['und'][0]['value'];
-  $code = $form_state['values']['field_stanford_course_code']['und'][0]['value'];
+  $subject = $form_state['values']['field_s_course_subject']['und'][0]['value'];
+  $code = $form_state['values']['field_s_course_code']['und'][0]['value'];
   $ec_link = 'http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&q=' . urlencode($subject) . urlencode($code);
-  form_set_value(array('#parents' => array('field_stanford_course_ec_link', 'und', 0, 'url')), $ec_link, $form_state);
+  form_set_value(array('#parents' => array('field_s_course_ec_link', 'und', 0, 'url')), $ec_link, $form_state);
 }
 
 /*
@@ -81,5 +115,120 @@ function stanford_courses_ec_link_validate($form, &$form_state) {
 function stanford_courses_ctools_plugin_directory($module, $plugin) {
   if ($module == 'feeds_tamper') {
     return 'plugins';
+  }
+}
+
+/**
+ * Implements hook_feeds_processor_targets_alter()
+ */
+function stanford_courses_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
+  foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
+    $info = field_info_field($name);
+    if ($info['type'] == 'field_collection') {
+      $new_targets = array();
+      feeds_alter('feeds_processor_targets', $new_targets, 'field_collection_item', $info['field_name']);
+      foreach ($new_targets as $sub_name => $target) {
+        $new_name = $info['field_name'] . ':' . $sub_name;
+        $targets[$new_name] = $target;
+        if (isset($target['name'])) {
+          $targets[$new_name]['name'] = $instance['label'] . ': ' . $target['name'];
+        }
+
+        // We override callback for now and retrieve original later.
+        $targets[$new_name]['callback'] = 'stanford_courses_feeds_set_target';
+      }
+    }
+  }
+}
+
+/**
+ * Process Field Collection items
+ */
+function stanford_courses_feeds_set_target($source, $entity, $target, $value) {
+  static $sub_targets = array();
+
+  $args = explode(':', $target);
+  $target = array_shift($args);
+  $sub_target = implode(':', $args);
+
+  // Now we retrieve old callbacks and keep then on a static cache
+  if (!isset($sub_targets[$target])) {
+    feeds_alter('feeds_processor_targets', $sub_targets[$target], 'field_collection_item', $target);
+  }
+  $_sub_targets = $sub_targets[$target];
+
+  $value = is_array($value) ? $value : array($value);
+  $info = field_info_field($target);
+
+  // Iterate over all values.
+  $delta = 0;
+  $field = isset($entity->$target) ? $entity->$target : array();
+  foreach ($value as $v) {
+    if (isset($field['und'][$delta]['entity'])) {
+      $field_collection_item = $field['und'][$delta]['entity'];
+    }
+    elseif (isset($field['und'][$delta]['value'])) {
+      $field_collection_item = field_collection_item_load($field['und'][$delta]['value']);
+    }
+    if (empty($field_collection_item)) {
+      $field_collection_item = entity_create('field_collection_item', array('field_name' => $target));
+    }
+
+    if (isset($_sub_targets[$sub_target]['callback']) && function_exists($_sub_targets[$sub_target]['callback'])) {
+      $callback = $_sub_targets[$sub_target]['callback'];
+      $callback($source, $field_collection_item, $sub_target, $v);
+    }
+
+    $field['und'][$delta]['entity'] = $field_collection_item;
+    $field['und'][$delta]['value'] = $field_collection_item->item_id;
+
+    unset($field_collection_item);
+
+    if ($info['cardinality'] == 1) {
+      break;
+    }
+    $delta++;
+  }
+
+  $entity->{$target} = $field;
+}
+
+/**
+ * Implements hook_feeds_presave().
+ */
+function stanford_courses_feeds_presave($source, $entity) {
+  // Do not save any empty field collection items that may have been created
+  // during the mapping process. Since the mapping is done field by field in
+  // stanford_courses_feeds_set_target(), we have to wait until this hook (when
+  // the field collection item is fully built up) before we can check if it's
+  // empty.
+  $config = $source->importer()->getConfig();
+  if (!empty($config['processor']['config']['mappings'])) {
+    // Find all field collection mappings.
+    foreach ($config['processor']['config']['mappings'] as $mapping) {
+      if (isset($mapping['target'])) {
+        $args = explode(':', $mapping['target']);
+        $field_name = array_shift($args);
+        if (($field = field_info_field($field_name)) && $field['type'] == 'field_collection') {
+          // If the field collection item is empty, do not save it.
+          if (!empty($entity->{$field_name})) {
+            foreach ($entity->{$field_name} as $langcode => &$items) {
+              foreach ($items as $delta => $item) {
+                if (isset($item['entity']) && field_collection_item_is_empty($item['entity'])) {
+                  unset($items[$delta]);
+                }
+              }
+              // Clean up the final array.
+              if (empty($items)) {
+                unset($entity->{$field_name}[$langcode]);
+              }
+              else {
+                $items = array_values($items);
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

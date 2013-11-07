@@ -1,25 +1,44 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
-Stanford Courses 7.x-1.0-alpha7, 2012-09-13
--------------------------------------------
-Changes since -alpha6:
-  -added link to course listing on ExploreCourses for course nodes
-  -changed link in course View to go to course listing on ExploreCourses
-  -updated help text
+Stanford Courses 7.x-2.0-alpha10, 2013-08-19
+--------------------------------------------
+-Rearranged display fields on Course Section Field Collection
 
-Stanford Courses 7.x-1.0-alpha6, 2012-07-12
+Stanford Courses 7.x-2.0-alpha9, 2013-08-19
 -------------------------------------------
-Changes since -alpha5:
-  -added LICENSE.txt
+Changes since 7.x-2.0-alpha8:
+  -Added date/time string formatter for Feeds Tamper
+  -Added Field Collection/Feeds integration. See https://drupal.org/node/1063434
+  -Added component, class id, section number, end time, code (integer) fields, 
+    and their associated feeds mappers and tampers, to Course Section Field Collection
+  -Removed body field from Course Importer content type
+  -Added pathauto settings
+  -Removed stub computed field
 
-Stanford Courses 7.x-1.0-alpha5, 2012-06-29
+Stanford Courses 7.x-2.0-alpha8, 2013-06-12
 -------------------------------------------
-Changes since -alpha4:
-  -updated help text
-  -updated README file
+-Changed Feeds tamper substr() for Year field in Field Collection to map to the key in the key|value pair for mapping
+-Changed Quarter field in Field Collection to not have key|value configuration, to support Feeds mapping better
 
-Stanford Courses 7.x-1.0-alpha4, 2012-06-25
+Stanford Courses 7.x-2.0-alpha7, 2013-05-30
 -------------------------------------------
-First actual release of D7 version of Stanford Courses module.
-  (-alpha1 through -alpha3 were incomplete Features waypoints)
+-Added substr() Feeds Tamper plugin
+-Added start date and end date to section info
+-Feeds Tamper plugins to replace XPath functions for Field Collection fields
+-Added pathauto config for course and course importer nodes
+
+Stanford Courses 7.x-2.0-alpha6, 2013-05-16
+-------------------------------------------
+Added mapper to ExploreCourses link field to Feeds importer
+
+Stanford Courses 7.x-2.0-alpha5, 2013-05-15
+-------------------------------------------
+Added mapper for Year field in Section Field Collection
+Added XPath function to split data coming in into "2012-2013" for year and "Autumn" for Quarter
+
+Stanford Courses 7.x-2.0-alpha4, 2013-05-15
+-------------------------------------------
+First tagged release on 7.x-2.x branch
+Added and rearranged fields
+Added Feeds Tamper

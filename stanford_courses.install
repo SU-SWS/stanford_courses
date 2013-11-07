@@ -1,38 +1,246 @@
 <?php
 /**
- * Implements hook_install().
+ * @file
+ * Installation and update functionality
+ *
+ * @author shea mckinney <sheamck@stanford.edu>
+ *
+ */
+
+
+/**
+ * [stanford_courses_install description]
+ * @return [type] [description]
  */
 function stanford_courses_install() {
-  // Set defaults to published, create new revision, not promoted to front page
-  variable_set('node_options_stanford_course', array('status', 'revision'));
-  variable_set('node_options_stanford_course_importer', array('status', 'revision'));
-  variable_set('node_options_stanford_course_section', array('status', 'revision'));
-  variable_set('node_options_stanford_course_section_importer', array('status', 'revision'));
-  // Disable comments by default
-  variable_set('comment_stanford_course', 1);
-  variable_set('comment_stanford_course_importer', 1);
-  variable_set('comment_stanford_course_section', 1);
-  variable_set('comment_stanford_course_section_importer', 1);
-  // Dont' display author and date information
-  variable_set('node_submitted_stanford_course', 0);
-  variable_set('node_submitted_stanford_course_importer', 0);
-  variable_set('node_submitted_stanford_course_section', 0);
-  variable_set('node_submitted_stanford_course_section_importer', 0);
-  drupal_flush_all_caches();
+  // Installation Functions
 }
 
+/**
+ * [stanford_courses_enable description]
+ * @return [type] [description]
+ */
+function stanford_courses_enable() {
+  // Enable module functions
+}
+
+/**
+ * [stanford_courses_disable description]
+ * @return [type] [description]
+ */
+function stanford_courses_disable() {
+  // Disable module functions
+}
+
+/**
+ * [stanford_courses_uninstall description]
+ * @return [type] [description]
+ */
 function stanford_courses_uninstall() {
-  // Undo that voodoo that we did do at install time
-  variable_del('node_options_stanford_course');
-  variable_del('node_options_stanford_section');
-  variable_del('node_options_stanford_course_importer');
-  variable_del('node_options_stanford_course_section_importer');
-  variable_del('comment_stanford_course');
-  variable_del('comment_stanford_course_importer');
-  variable_del('comment_stanford_course_section');
-  variable_del('comment_stanford_course_section_importer');
-  variable_del('node_submitted_stanford_course');
-  variable_del('node_submitted_stanford_course_importer');
-  variable_del('node_submitted_stanford_course_section');
-  variable_del('node_submitted_stanford_course_section_importer');
+  // Uninstall module functions
+}
+
+/**
+ * 7.x-1.x Update #1. Placeholder Legacy update
+ */
+function stanford_courses_update_7100(&$sandbox) {
+  // Legacy Placeholder
+  return;
+}
+
+/**
+ * 7.x-1.x to 7.x-2.x Upgrade path function. Takes care of renaming fields
+ * and content types. Generally changing the machine names is a very bad thing.
+ * We are going to take some liberties here. Views and other things like
+ * workbench will have to be updated manually as they store machine names and we
+ * will not be looking to change them. This is primarily for drupal core only.
+ */
+function stanford_courses_update_7200(&$sandbox) {
+
+  /**
+   * @todo  Check to see if the fact that a few unique keys on the field
+   * database tables have a key that is named after the old convention but
+   * points to the name convention field causes any performance problems.
+   */
+
+  // Do a quick check if drush.
+  // If drush is being used then the hook_requirements is bypassed and it is
+  // possible the user is trying to upgrade without enabling field
+  // collections. Do it here or die.
+  if (drupal_is_cli()) {
+    if(!module_exists('field_collection')) {
+      if(!module_enable('field_collection')) {
+        drush_log('ERROR: Field Collections Not Installed', 'error');
+        return FALSE;
+      }
+      else {
+        drush_log('INFO: Field Collection Module was Enabled', 'info');
+        watchdog('stanford_courses', 'Enabled Field Collection Module');
+
+        // Need to clear the caches once this is enabled or features revert
+        // will not be able to find the field type.
+        drupal_flush_all_caches();
+      }
+    }
+  }
+
+  /**
+   * Schema Changes!
+   * Remove field_stanford_course_section
+   *
+   * Add field_s_course_section_info - This will be done through the feature
+   * Add field_s_course_code_integer - This will be done through the feature
+   *
+   * For the rest of the fields attached to the bundle change the name from 'field_stanford_course' to 'field_s_course'
+   */
+
+  // Remove all section tables, fields, everything!
+  node_type_delete('stanford_course_section');
+  node_type_delete('stanford_course_section_importer');
+
+  // Remove the node reference field from the course content type.
+  field_delete_field('field_stanford_course_section');
+  field_purge_batch(50);
+
+  db_delete('field_config_instance')
+    ->condition('bundle', 'stanford_course_section_importer')
+    ->execute();
+
+  $fields = array(
+    'field_stanford_course_code'      => 'field_s_course_code',
+    'field_stanford_course_ger'       => 'field_s_course_ger',
+    'field_stanford_course_subject'   => 'field_s_course_subject',
+    'field_stanford_course_year'      => 'field_s_course_year',
+    'field_stanford_course_course_id' => 'field_s_course_id',
+    'field_stanford_course_tag_org'   => 'field_s_course_tag_org',
+    'field_stanford_course_tag_name'  => 'field_s_course_tag_name',
+    'field_stanford_course_scid'      => 'field_s_course_scid',
+    'field_stanford_course_ec_link'   => 'field_s_course_ec_link',
+  );
+
+  // Loop through each of the fields/tables with the old name and change them
+  foreach($fields as $field_name => $new_field_name) {
+
+    // First check that field_name exists
+    if(!db_table_exists('field_data_' . $field_name)) {
+      // If we cannot find a data table then just continue.
+      continue;
+    }
+
+    // Define some things...
+    $data_table_name = 'field_data_' . $field_name;
+    $revision_table_name = 'field_revision_' . $field_name;
+    $field_info = field_info_field($field_name);
+    $storage_details = $field_info['storage']['details'];
+
+    // The storage for each field has unique configuration. Must follow.
+    foreach($storage_details['sql']['FIELD_LOAD_CURRENT'] as $field) {
+      // Change the field names.
+      foreach($field as $key => $value) {
+
+        // Rename the field table columns and preserve existing spec. Let
+        // features take care of any configuration changes.
+        $spec = $field_info['columns'][$key];
+        db_change_field($data_table_name, $value, $new_field_name . "_" . $key, $spec);
+        db_change_field($revision_table_name, $value, $new_field_name . "_" . $key, $spec);
+
+      }
+    }
+
+    // Change the field storage table names.
+    db_rename_table($data_table_name, 'field_data_' . $new_field_name);
+    db_rename_table($revision_table_name, 'field_revision_' . $new_field_name);
+
+    // Change the field names int he field_config and
+    // field_instance_config tables
+
+    db_update('field_config')
+      ->fields(
+        array(
+          'field_name' => $new_field_name,
+        )
+      )
+      ->condition('field_name', $field_name, '=')
+      ->execute();
+
+    db_update('field_config_instance')
+      ->fields(
+        array(
+          'field_name' => $new_field_name,
+        )
+      )
+      ->condition('field_name', $field_name, '=')
+      ->execute();
+
+  } /// end foreach loop on fields... whew.
+
+
+  /**
+   * Revert the feature!
+   */
+
+  // Kill any potential locks prior to revert...
+  // I wonder why this isnt in the semaphore table?
+  variable_del('features_semaphore');
+
+   features_revert(
+    array(
+      'stanford_courses' => array(
+        'field',
+        'ctools',
+        'feeds_importer',
+        'feeds_tamper',
+        'node',
+        'variable',
+        )
+      )
+    );
+
+  // We are doing some very hacky things. Lets be sure the lock is removed
+  // after we are done here.
+  variable_del('features_semaphore');
+
+  /**
+   * Mark all course nodes as needing to be updated/imported again.
+   */
+
+  // Expire the hash in the feeds_item table in order to 'trick' feed_importer
+  // into thinking that there is new content
+  db_update('feeds_item')
+    ->fields(
+      array(
+        'hash' => 'nullified'
+      )
+    )
+    ->condition('id', 'stanford_course_importer')
+    ->execute();
+
+  // Remove the extra configuration on the feeds_source configuration for
+  // legacy importer nodes. The xpathparser is no longer correct and should
+  // be just dropped.
+
+  $configs = db_select('feeds_source', 'fs')
+  ->fields('fs',
+    array(
+    'feed_nid','config'
+    ))
+  ->condition('id', 'stanford_course_importer')
+  ->execute();
+
+  // Loop through each of the configured nodes and drop the xpathparser config
+  while ($values = $configs->fetchAssoc()) {
+    $nid = $values['feed_nid'];
+    $importer_configuration = unserialize($values['config']);
+    unset($importer_configuration['FeedsXPathParserXML']);
+    db_update('feeds_source')
+      ->fields(array('config' => serialize($importer_configuration)))
+      ->condition('feed_nid', $nid)
+      ->execute();
+  }
+
+  // feeds_reschedule('stanford_course_importer');
+  // feeds_importer('stanford_course_importer')->schedule();
+  // feeds_source($id, $row->feed_nid)->schedule();
+
+  return;
 }
