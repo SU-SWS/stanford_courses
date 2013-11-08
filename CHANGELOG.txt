@@ -3,6 +3,7 @@ Stanford Courses x.x-x.x, xxxx-xx-xx
 
 Stanford Courses 7.x-2.0-alpha11, 2013-xx-xx
 --------------------------------------------
+-2.x Branch now requires feeds alpha8 or greater
 -Created update path from 1.x version
   -- Remove course section and course section importer content types
   -- Remove course section and course section nodes
