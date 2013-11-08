@@ -10,6 +10,8 @@ Stanford Courses 7.x-2.0-alpha11, 2013-xx-xx
   -- Updates fields from 1.x -2.x version on course content type while preserving content
   -- Reverts feature module
   -- Invalidates the hash for all couse nodes so that the feed importer will update content on the next import
+  -- The stanford_course_section views have been delete in this version. It's been deleted because its functionality has been subsumed.
+  -- The stanford_course view has been decoupled from the view. Now in install a view will be inserted into the database. On upgrade the view will only be dumped to the database if it hasn't been modified.
 
 Stanford Courses 7.x-2.0-alpha10, 2013-08-19
 --------------------------------------------
