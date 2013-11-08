@@ -73,12 +73,12 @@ function stanford_courses_update_7200(&$sandbox) {
   // collections. Do it here or die.
   if (drupal_is_cli()) {
     if(!module_exists('field_collection')) {
-      if(!module_enable('field_collection')) {
+      if(!module_enable(array('field_collection'))) {
+        watchdog('stanford_courses', 'Could not enable the Field Collection Module. Terminated update_7200.');
         return FALSE;
       }
       else {
         watchdog('stanford_courses', 'Enabled Field Collection Module');
-
         // Need to clear the caches once this is enabled or features revert
         // will not be able to find the field type.
         drupal_flush_all_caches();
