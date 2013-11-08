@@ -72,17 +72,8 @@ function stanford_courses_update_7200(&$sandbox) {
   // possible the user is trying to upgrade without enabling field
   // collections. Do it here or die.
   if (drupal_is_cli()) {
-    if(!module_exists('field_collection')) {
-      if(!module_enable(array('field_collection'))) {
-        watchdog('stanford_courses', 'Could not enable the Field Collection Module. Terminated update_7200.');
-        return FALSE;
-      }
-      else {
-        watchdog('stanford_courses', 'Enabled Field Collection Module');
-        // Need to clear the caches once this is enabled or features revert
-        // will not be able to find the field type.
-        drupal_flush_all_caches();
-      }
+    if(!_require_helper('field_collection')) {
+      return FALSE;
     }
   }
 
@@ -258,5 +249,77 @@ function stanford_courses_update_7200(&$sandbox) {
    */
   drupal_set_message('Update to Course Importer was successfull. All existing course nodes will need to be updated. Please run the import on each of your course importer nodes in order to update the course nodes with the new information that is available.', 'status');
 
-  return;
+  /**
+   * Views
+   * Check to see if the default views have been modified and are in the
+   * database. If the view is in the DB then leave it alone. If there is no view
+   * in the DB write the new view to the DB and be done with it.
+   */
+
+  _stanford_courses_dump_views();
+
+  return TRUE;
 }
+
+/**
+ * Dump the exported views from (views/*) folder into the DB
+ * @return True if dumped, False if not dumped.
+ */
+function _stanford_courses_dump_views() {
+
+  // Require views module. Yes really.
+  if(!_require_helper('views')) {
+    return FALSE;
+  }
+
+  // Look for a view in the DB.
+  $result = db_select('views_view', 'vw')
+            ->fields('vw', array('name'))
+            ->condition('name', 'stanford_courses')
+            ->execute();
+
+  // There should only ever be 1 or none.
+  if($result->rowCount()) {
+    return FALSE;
+  }
+
+  // Load the view includes.
+  module_load_include('inc', 'stanford_courses', 'views/stanford_courses.views_default');
+
+  // Save the views.
+  $views = stanford_courses_get_views();
+  foreach($views as $view_name => $view_object) {
+    $view_object->save();
+  }
+
+  return TRUE;
+}
+
+/**
+ * Checks to see if a module exists and is enabled. If the module is not
+ * enabled it trys to enable it. Failing that it returns false and logs a
+ * watchdog message
+ * @param  [string] $module_name The name of the module to enable
+ * @param boolean $clear_caches true to clear all caches.
+ * @return Boolean. True if successfully enabled or is already enabled.
+ */
+function _require_helper($module_name, $clear_caches = TRUE) {
+
+  if(!module_exists($module_name)) {
+    if(!module_enable(array($module_name))) {
+      watchdog('stanford_courses', 'Could not enable the ' . $module_name . '. Terminated update_7200.');
+      return FALSE;
+    }
+    else {
+      watchdog('stanford_courses', 'Enabled ' . $module_name . ' Module');
+      // Need to clear the caches once this is enabled or features revert
+      // will not be able to find the field type.
+      if ($clear_caches) {
+        drupal_flush_all_caches();
+      }
+    }
+  }
+
+  return TRUE;
+}
+
