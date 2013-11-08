@@ -23,6 +23,6 @@ An upgrade path from the 1.x branch to the 2.x branch has been added. Simply rep
 
 The 2.x branch upgrade path will delete content and manipulate your course content type. The course section content type and importer will no longer exist in the 2.x branch. These content types and nodes will be deleted. If you are using these content types please consider staying on the 1.x branch and contacting Stanford Web Services for more information on how to proceed.
 
-
+The stanford_course_section views have been delete in this version. It's been deleted because its functionality has been subsumed.
 
 
