@@ -280,6 +280,7 @@ function _stanford_courses_dump_views() {
 
   // There should only ever be 1 or none.
   if($result->rowCount()) {
+    drupal_set_message('You have modified stanford course views. These views will need to be updated to reflect the new content type structure. You should go change those now: ' . l('Views Admin', 'admin/structure/views'), 'warning');
     return FALSE;
   }
 
