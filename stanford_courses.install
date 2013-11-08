@@ -106,6 +106,13 @@ function stanford_courses_update_7200(&$sandbox) {
     ->condition('bundle', 'stanford_course_section_importer')
     ->execute();
 
+  // Remove all section nodes from the system ...
+  module_load_include('php', 'stanford_courses', 'inc/delete_all.inc');
+  _stanford_courses_delete_all_normal(array(
+    'stanford_course_section',
+    'stanford_course_section_importer'
+  ));
+
   $fields = array(
     'field_stanford_course_code'      => 'field_s_course_code',
     'field_stanford_course_ger'       => 'field_s_course_ger',
