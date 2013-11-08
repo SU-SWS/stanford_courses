@@ -6,7 +6,7 @@
  * see: http://www.drupal.org/project/delete_all
  */
 
-function _delete_all_normal($types) {
+function _stanford_courses_delete_all_normal($types) {
   $results = array();
   $deleted = 0;
   if (is_array($types) && count($types) > 0) {
@@ -34,7 +34,7 @@ function _delete_all_normal($types) {
   return $deleted;
 }
 
-function _delete_all_quick($types) {
+function _stanford_courses_delete_all_quick($types) {
   $deleted = 0;
   foreach ($types as $type) {
     // keep this alive
