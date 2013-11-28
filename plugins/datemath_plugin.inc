@@ -1,8 +1,13 @@
 <?php
-/*
- * @file Run values through some date math processing().
+/**
+ * @file
+ * Feeds Tamper Plugin
+ * Run values through some date math processing().
  */
 
+/**
+ * Plugin definition
+ */
 $plugin = array(
   'form' => 'stanford_courses_datemath_form',
   'callback' => 'stanford_courses_datemath_callback',
@@ -12,11 +17,11 @@ $plugin = array(
  );
 
 /**
- * [stanford_courses_datemath_form description]
+ * Returns a configuration form for the datemath feeds tamper plugin
  * @param  [type] $importer    [description]
  * @param  [type] $element_key [description]
  * @param  [type] $settings    [description]
- * @return [type]              [description]
+ * @return array               Form settings array
  */
 function stanford_courses_datemath_form($importer, $element_key, $settings) {
   $form = array();
@@ -42,7 +47,8 @@ function stanford_courses_datemath_form($importer, $element_key, $settings) {
 }
 
 /**
- * [stanford_courses_datemath_callback description]
+ * Callback function for feeds tamper datemath plugin. Processes input data into
+ * a time and performs date math like 'add one day' to it.
  * @param  [type] $source      [description]
  * @param  [type] $item_key    [description]
  * @param  [type] $element_key [description]
@@ -52,6 +58,7 @@ function stanford_courses_datemath_form($importer, $element_key, $settings) {
  */
 function stanford_courses_datemath_callback($source, $item_key, $element_key, &$field, $settings) {
 
+  // Ensure data is valid. Can't trust feeds.
   $datetime = $field;
   if (!is_numeric($datetime)) {
     $datetime = strtotime($field);
@@ -60,10 +67,11 @@ function stanford_courses_datemath_callback($source, $item_key, $element_key, &$
     }
   }
 
+  // So far only two operations. Add or remove.
   $opt = ($settings['operative'] == "subtract") ? "-" : "+";
-
   $datetime = strtotime($opt . $settings['amount'], $datetime);
 
+  // Check to see if our math worked. If not then leave field as original.
   if (is_numeric($datetime)) {
     $field = $datetime;
   }
