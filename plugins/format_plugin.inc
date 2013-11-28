@@ -57,7 +57,7 @@ function stanford_courses_format_callback($source, $item_key, $element_key, &$fi
   // Check to see if we have a number!
   // If not then just return the field as is.
   if (!is_numeric($field)) {
-    return $field;
+    return;
   }
 
   // Set the formatted date.
