@@ -280,7 +280,7 @@ function stanford_courses_update_7200(&$sandbox) {
    * Leave a message to the user that they will have to manually run the
    * import again as the course nodes have been invalidated.
    */
-  drupal_set_message('Update to Course Importer was successfull. All existing course nodes will need to be updated. Please run the import on each of your course importer nodes in order to update the course nodes with the new information that is available.', 'status');
+  drupal_set_message('Update to Course Importer was successful. All existing course nodes will need to be updated. Please run the import on each of your course importer nodes in order to update the course nodes with the new information that is available.', 'status');
 
   /**
    * Views
