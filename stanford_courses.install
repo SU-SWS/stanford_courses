@@ -181,7 +181,7 @@ function stanford_courses_update_7200(&$sandbox) {
     db_rename_table($data_table_name, 'field_data_' . $new_field_name);
     db_rename_table($revision_table_name, 'field_revision_' . $new_field_name);
 
-    // Change the field names int he field_config and
+    // Change the field names in the field_config and
     // field_instance_config tables
 
     db_update('field_config')
