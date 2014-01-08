@@ -8,7 +8,7 @@
  */
 
 /**
- * Implements hook_requirements
+ * Implements hook_requirements().
  */
 function stanford_courses_requirements($phase) {
   $requirements = array();
@@ -39,8 +39,7 @@ function stanford_courses_requirements($phase) {
 
 
 /**
- * Implementation of hook_install
- * @return [type] [description]
+ * Implementats hook_install().
  */
 function stanford_courses_install() {
 
@@ -50,24 +49,21 @@ function stanford_courses_install() {
 }
 
 /**
- * Implementation of hook_enable
- * @return [type] [description]
+ * Implements hook_enable().
  */
 function stanford_courses_enable() {
   // Enable module functions
 }
 
 /**
- * implementation of hook_disable
- * @return [type] [description]
+ * Implements hook_disable().
  */
 function stanford_courses_disable() {
   // Disable module functions
 }
 
 /**
- * implementation of hook_uninstall
- * @return [type] [description]
+ * Implements hook_uninstall().
  */
 function stanford_courses_uninstall() {
   // Uninstall module functions
