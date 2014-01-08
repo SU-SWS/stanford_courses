@@ -247,7 +247,7 @@ function stanford_courses_update_7200(&$sandbox) {
 
   // Remove the extra configuration on the feeds_source configuration for
   // legacy importer nodes. The xpathparser is no longer correct and should
-  // be just dropped.
+  // just be dropped.
 
   $configs = db_select('feeds_source', 'fs')
   ->fields('fs',
