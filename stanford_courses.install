@@ -276,7 +276,7 @@ function stanford_courses_update_7200(&$sandbox) {
    * Leave a message to the user that they will have to manually run the
    * import again as the course nodes have been invalidated.
    */
-  drupal_set_message('Update to Course Importer was successful. All existing course nodes will need to be updated. Please run the import on each of your course importer nodes in order to update the course nodes with the new information that is available.', 'status');
+  drupal_set_message(t('Update to Course Importer was successful. All existing course nodes will need to be updated. Please run the import on each of your course importer nodes in order to update the course nodes with the new information that is available.'), 'status');
 
   /**
    * Views
@@ -309,7 +309,7 @@ function _stanford_courses_dump_views() {
 
   // There should only ever be 1 or none.
   if($result->rowCount()) {
-    drupal_set_message('You have modified stanford course views. These views will need to be updated to reflect the new content type structure. You should go change those now: ' . l('Views Admin', 'admin/structure/views'), 'warning');
+    drupal_set_message(t('You have modified the stanford_course View. This View will need to be updated to reflect the new content type structure. You should go change those now: ') . l('Views Admin', 'admin/structure/views/stanford_courses'), 'warning');
     return FALSE;
   }
 
