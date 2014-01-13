@@ -17,11 +17,9 @@ $plugin = array(
  );
 
 /**
+ * Implements hook_form().
+ * 
  * Returns a configuration form for the datemath feeds tamper plugin
- * @param  [type] $importer    [description]
- * @param  [type] $element_key [description]
- * @param  [type] $settings    [description]
- * @return array               Form settings array
  */
 function stanford_courses_datemath_form($importer, $element_key, $settings) {
   $form = array();
@@ -40,7 +38,7 @@ function stanford_courses_datemath_form($importer, $element_key, $settings) {
   $form['amount']['#title'] = t('Amount of time');
   $form['amount']['#default_value'] = $settings['amount'];
   $form['amount']['#size'] = '80';
-  $form['amount']['#description'] = t('Enter a human readable amount of time. eg: 1 day, 12 hours, 9 months');
+  $form['amount']['#description'] = t('Enter a human readable amount of time, e.g., "1 day", "12 hours", "9 months"');
 
 
   return $form;
