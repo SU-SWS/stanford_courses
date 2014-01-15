@@ -80,7 +80,7 @@ function stanford_courses_field_default_fields() {
           'apply_chosen' => 1,
         ),
         'type' => 'options_select',
-        'weight' => '13',
+        'weight' => '4',
       ),
     ),
   );
@@ -173,7 +173,7 @@ function stanford_courses_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '44',
+        'weight' => '6',
       ),
     ),
   );
@@ -266,7 +266,7 @@ function stanford_courses_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '46',
+        'weight' => '9',
       ),
     ),
   );
@@ -362,7 +362,7 @@ function stanford_courses_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '14',
+        'weight' => '2',
       ),
     ),
   );
@@ -433,7 +433,7 @@ function stanford_courses_field_default_fields() {
           'year_range' => '-3:+3',
         ),
         'type' => 'date_popup',
-        'weight' => '51',
+        'weight' => '5',
       ),
     ),
   );
@@ -489,7 +489,7 @@ function stanford_courses_field_default_fields() {
         'module' => 'number',
         'settings' => array(),
         'type' => 'number',
-        'weight' => '1',
+        'weight' => '3',
       ),
     ),
   );
@@ -679,7 +679,7 @@ function stanford_courses_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '49',
+        'weight' => '0',
       ),
     ),
   );
@@ -738,7 +738,7 @@ function stanford_courses_field_default_fields() {
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_buttons',
-        'weight' => '50',
+        'weight' => '1',
       ),
     ),
   );
@@ -831,7 +831,7 @@ function stanford_courses_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '48',
+        'weight' => '7',
       ),
     ),
   );
@@ -928,7 +928,7 @@ function stanford_courses_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => '7',
+        'weight' => '8',
       ),
     ),
   );
@@ -1992,7 +1992,6 @@ function stanford_courses_field_default_fields() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Academic Year');
-  t('Body');
   t('Choose the start and end dates of the Quarter.');
   t('Class ID');
   t('Code');
