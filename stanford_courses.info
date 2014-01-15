@@ -29,7 +29,6 @@ features[feeds_tamper][] = stanford_course_importer-xpathparser_15-substr_plugin
 features[feeds_tamper][] = stanford_course_importer-xpathparser_16-rewrite
 features[feeds_tamper][] = stanford_course_importer-xpathparser_16-urlencode_plugin
 features[feeds_tamper][] = stanford_course_importer-xpathparser_17-strtotime
-features[feeds_tamper][] = stanford_course_importer-xpathparser_17-subtract_two_weeks
 features[feeds_tamper][] = stanford_course_importer-xpathparser_19-find_replace_regex
 features[feeds_tamper][] = stanford_course_importer-xpathparser_20-format_plugin
 features[feeds_tamper][] = stanford_course_importer-xpathparser_20-strtotime
