@@ -119,22 +119,6 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'stanford_course_importer-xpathparser_17-datemath_plugin';
-  $feeds_tamper->importer = 'stanford_course_importer';
-  $feeds_tamper->source = 'xpathparser:17';
-  $feeds_tamper->plugin_id = 'datemath_plugin';
-  $feeds_tamper->settings = array(
-    'operative' => 'subtract',
-    'amount' => '2 weeks',
-  );
-  $feeds_tamper->weight = 2;
-  $feeds_tamper->description = 'Remove two weeks';
-
-  $export[$feeds_tamper->id] = $feeds_tamper;
-
-  $feeds_tamper = new stdClass();
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
-  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'stanford_course_importer-xpathparser_17-strtotime';
   $feeds_tamper->importer = 'stanford_course_importer';
   $feeds_tamper->source = 'xpathparser:17';
