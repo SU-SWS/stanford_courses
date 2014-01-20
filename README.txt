@@ -2,6 +2,7 @@ Drupal Features module for pulling course information from explorecourses.stanfo
 
 -- SUMMARY --
 Authors: John Bickar, Shea McKinney
+Features Version: 2.x
 
 -- INSTALLATION --
 Install and enable as you would any normal Drupal module.
