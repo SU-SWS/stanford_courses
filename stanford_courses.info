@@ -32,7 +32,6 @@ features[feeds_tamper][] = stanford_course_importer-xpathparser_19-find_replace_
 features[feeds_tamper][] = stanford_course_importer-xpathparser_20-format_plugin
 features[feeds_tamper][] = stanford_course_importer-xpathparser_20-strtotime
 features[feeds_tamper][] = stanford_course_importer-xpathparser_9-substr_plugin
-features[field_base][] = body
 features[field_base][] = field_s_course_code
 features[field_base][] = field_s_course_code_integer
 features[field_base][] = field_s_course_component
