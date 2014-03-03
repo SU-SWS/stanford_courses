@@ -1,0 +1,16 @@
+name = Stanford Courses Person Reference
+description = Stanford Courses person entity reference field and views
+core = 7.x
+package = Stanford
+version = 7.x-1.0
+project = stanford_courses_person_reference
+dependencies[] = entityreference
+dependencies[] = features
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[field_base][] = field_s_course_person
+features[field_instance][] = field_collection_item-field_s_course_section_info-field_s_course_person
+features[views_view][] = stanford_courses
+features_exclude[dependencies][ctools] = ctools
+project path = sites/all/modules/stanford/stanford_course/modules/stanford_course_person_reference

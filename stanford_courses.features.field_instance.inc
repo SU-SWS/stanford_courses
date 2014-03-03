@@ -42,6 +42,86 @@ function stanford_courses_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'field_collection_item-field_s_course_section_info-field_s_course_syllabus'
+  $field_instances['field_collection_item-field_s_course_section_info-field_s_course_syllabus'] = array(
+    'bundle' => 'field_s_course_section_info',
+    'deleted' => 0,
+    'description' => 'Syllabus Uploads',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 11,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_s_course_syllabus',
+    'label' => 'Syllabus',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'courses/syllabus',
+      'file_extensions' => 'pdf txt doc xls ppt csv docx pptx xlsx zip gif jpg jpeg png',
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'insert' => 0,
+        'insert_absolute' => 0,
+        'insert_class' => '',
+        'insert_default' => 'auto',
+        'insert_styles' => array(
+          'auto' => 'auto',
+          'icon_link' => 0,
+          'image' => 0,
+          'image_3-col-header' => 0,
+          'image_4-col-header' => 0,
+          'image_6-col-banner' => 0,
+          'image_6-col-banner-short' => 0,
+          'image_6-col-banner-tall' => 0,
+          'image_8-col-banner' => 0,
+          'image_8-col-banner-short' => 0,
+          'image_8-col-banner-tall' => 0,
+          'image_9-col-banner' => 0,
+          'image_9-col-banner-short' => 0,
+          'image_12-col-banner' => 0,
+          'image_icon-square' => 0,
+          'image_large' => 0,
+          'image_large-landscape' => 0,
+          'image_large-landscape-scaled' => 0,
+          'image_large-profile' => 0,
+          'image_large-profile-scaled' => 0,
+          'image_large-scaled' => 0,
+          'image_large-square' => 0,
+          'image_med-landscape' => 0,
+          'image_med-landscape-scaled' => 0,
+          'image_med-profile' => 0,
+          'image_med-profile-scaled' => 0,
+          'image_med-square' => 0,
+          'image_medium' => 0,
+          'image_page-width' => 0,
+          'image_sm-landscape' => 0,
+          'image_sm-profile' => 0,
+          'image_sm-square' => 0,
+          'image_thmb-landscape' => 0,
+          'image_thmb-profile' => 0,
+          'image_thmb-square' => 0,
+          'image_thumbnail' => 0,
+          'link' => 0,
+        ),
+        'insert_width' => '',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'field_collection_item-field_s_course_section_info-field_s_course_dow'
   $field_instances['field_collection_item-field_s_course_section_info-field_s_course_dow'] = array(
     'bundle' => 'field_s_course_section_info',
@@ -1281,6 +1361,8 @@ function stanford_courses_field_default_field_instances() {
   t('Start Time');
   t('Subject');
   t('Subject-Code-ID');
+  t('Syllabus');
+  t('Syllabus Uploads');
   t('Tag: Name');
   t('Tag: Organization');
   t('This field is created programmatically and you cannot edit it.');

@@ -1,0 +1,1897 @@
+<?php
+/**
+ * @file
+ * stanford_course_views.views_default.inc
+ */
+
+/**
+ * Implements hook_views_default_views().
+ */
+function stanford_course_views_views_default_views() {
+  $export = array();
+
+  $view = new view();
+  $view->name = 'courses';
+  $view->description = 'Courses imported from Explore Courses';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Courses';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Courses';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '300';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '300';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Go';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_s_course_year' => 'field_s_course_year',
+    'field_s_course_term' => 'field_s_course_term',
+    'field_s_course_subject' => 'field_s_course_subject',
+    'field_s_course_code' => 'field_s_course_subject',
+    'title' => 'title',
+    'field_s_course_dow' => 'field_s_course_dow',
+    'field_s_course_time' => 'field_s_course_time',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_s_course_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_term' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_subject' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_code' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_dow' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_time' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>Sorry, there are no courses available based on your search filter. Click on the reset button to enter a new search filter.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
+  /* Relationship: Content: Section Information (field_s_course_section_info) */
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['table'] = 'field_data_field_s_course_section_info';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['field'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['delta'] = '-1';
+  /* Field: Content: ExploreCourses Link */
+  $handler->display->display_options['fields']['field_s_course_ec_link']['id'] = 'field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['table'] = 'field_data_field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['field'] = 'field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_ec_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_ec_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['type'] = 'link_plain';
+  /* Field: Field collection item: Quarter */
+  $handler->display->display_options['fields']['field_s_course_term']['id'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['table'] = 'field_data_field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['field'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_term']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_term']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_term']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_term']['alter']['text'] = '[field_s_course_term] [field_s_course_year]';
+  $handler->display->display_options['fields']['field_s_course_term']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_term']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['delta_offset'] = '0';
+  /* Field: Content: Academic Year */
+  $handler->display->display_options['fields']['field_s_course_year']['id'] = 'field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['table'] = 'field_data_field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['field'] = 'field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_year']['element_label_colon'] = FALSE;
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject']['id'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['field'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['label'] = 'Number';
+  $handler->display->display_options['fields']['field_s_course_subject']['element_label_colon'] = FALSE;
+  /* Field: Content: Code */
+  $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['field'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['text'] = ' [field_s_course_code]';
+  $handler->display->display_options['fields']['field_s_course_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_code']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_code']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Field collection item: Location(s) */
+  $handler->display->display_options['fields']['field_s_course_location']['id'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['table'] = 'field_data_field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['field'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_location']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_s_course_location']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_location']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Day(s) of Week */
+  $handler->display->display_options['fields']['field_s_course_dow']['id'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['table'] = 'field_data_field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['field'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_dow']['label'] = 'Days';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: End Time */
+  $handler->display->display_options['fields']['field_s_course_time_end']['id'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['table'] = 'field_data_field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['field'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time_end']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_time_end']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time_end']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Start Time */
+  $handler->display->display_options['fields']['field_s_course_time']['id'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['table'] = 'field_data_field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['field'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time']['label'] = 'Time';
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['text'] = '[field_s_course_time] - [field_s_course_time_end]';
+  $handler->display->display_options['fields']['field_s_course_time']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_time']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_time']['hide_empty'] = TRUE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Code (field_s_course_code) */
+  $handler->display->display_options['sorts']['field_s_course_code_value']['id'] = 'field_s_course_code_value';
+  $handler->display->display_options['sorts']['field_s_course_code_value']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['sorts']['field_s_course_code_value']['field'] = 'field_s_course_code_value';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  /* Filter criterion: Field collection item: Component (field_s_course_component) */
+  $handler->display->display_options['filters']['field_s_course_component_value']['id'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['table'] = 'field_data_field_s_course_component';
+  $handler->display->display_options['filters']['field_s_course_component_value']['field'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_s_course_component_value']['value'] = array(
+    'DIS' => 'DIS',
+    'INS' => 'INS',
+    'PRC' => 'PRC',
+    'T/D' => 'T/D',
+  );
+  $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
+
+  /* Display: Featured Courses */
+  $handler = $view->new_display('block', 'Featured Courses', 'block');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Featured Course';
+  $handler->display->display_options['enabled'] = FALSE;
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Academic Year */
+  $handler->display->display_options['fields']['field_s_course_year']['id'] = 'field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['table'] = 'field_data_field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['field'] = 'field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_year']['element_label_colon'] = FALSE;
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject']['id'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['field'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_subject']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_subject']['element_label_colon'] = FALSE;
+  /* Field: Content: Code */
+  $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['field'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['text'] = '[field_s_course_subject] [field_s_course_code]';
+  $handler->display->display_options['fields']['field_s_course_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_code']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_code']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['alter']['max_length'] = '300';
+  $handler->display->display_options['fields']['body']['alter']['trim'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['label'] = '';
+  $handler->display->display_options['fields']['view_node']['element_class'] = 'more-link';
+  $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['view_node']['text'] = 'See Course Information';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Global: Random */
+  $handler->display->display_options['sorts']['random']['id'] = 'random';
+  $handler->display->display_options['sorts']['random']['table'] = 'views';
+  $handler->display->display_options['sorts']['random']['field'] = 'random';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  $handler->display->display_options['block_description'] = 'Featured Course';
+
+  /* Display: Search Page */
+  $handler = $view->new_display('page', 'Search Page', 'search_page');
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_s_course_code_integer' => 'field_s_course_code_integer',
+    'field_s_course_section_number' => 'title',
+    'field_s_course_subject' => 'title',
+    'field_s_course_code' => 'title',
+    'title' => 'title',
+    'field_s_course_person' => 'field_s_course_person',
+    'field_s_course_co_instructor' => 'field_s_course_person',
+    'field_s_course_section_year' => 'field_s_course_section_year',
+    'field_s_course_term' => 'field_s_course_section_year',
+    'field_s_course_dow' => 'field_s_course_dow',
+    'field_s_course_time_end' => 'field_s_course_time_end',
+    'field_s_course_time' => 'field_s_course_dow',
+    'field_s_course_location' => 'field_s_course_dow',
+    'field_s_course_syllabus' => 'field_s_course_dow',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_s_course_code_integer' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_section_number' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_subject' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_code' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'field_s_course_person' => array(
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'field_s_course_co_instructor' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_section_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'field_s_course_term' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_dow' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_time_end' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_time' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_location' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_syllabus' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['exposed_block'] = TRUE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Section Information (field_s_course_section_info) */
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['table'] = 'field_data_field_s_course_section_info';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['field'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['delta'] = '-1';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: ExploreCourses Link */
+  $handler->display->display_options['fields']['field_s_course_ec_link']['id'] = 'field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['table'] = 'field_data_field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['field'] = 'field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_ec_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_ec_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['type'] = 'link_plain';
+  /* Field: Content: Code (Integer) */
+  $handler->display->display_options['fields']['field_s_course_code_integer']['id'] = 'field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['table'] = 'field_data_field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['field'] = 'field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code_integer']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_code_integer']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Field collection item: Section Number */
+  $handler->display->display_options['fields']['field_s_course_section_number']['id'] = 'field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['table'] = 'field_data_field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['field'] = 'field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_section_number']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_section_number']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['alter']['text'] = '(section [field_s_course_section_number])';
+  $handler->display->display_options['fields']['field_s_course_section_number']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject']['id'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['field'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['label'] = 'Number';
+  $handler->display->display_options['fields']['field_s_course_subject']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_subject']['element_label_colon'] = FALSE;
+  /* Field: Content: Code */
+  $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['field'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['label'] = 'Course Number';
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['text'] = '[field_s_course_subject] [field_s_course_code] [field_s_course_section_number]';
+  $handler->display->display_options['fields']['field_s_course_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_code']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_code']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_s_course_ec_link]';
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['external'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Year */
+  $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['field'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_section_year']['label'] = 'Quarter';
+  /* Field: Field collection item: Quarter */
+  $handler->display->display_options['fields']['field_s_course_term']['id'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['table'] = 'field_data_field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['field'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_term']['alter']['text'] = '[field_s_course_year] [field_s_course_term]';
+  $handler->display->display_options['fields']['field_s_course_term']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_term']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['delta_offset'] = '0';
+  /* Field: Field collection item: Day(s) of Week */
+  $handler->display->display_options['fields']['field_s_course_dow']['id'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['table'] = 'field_data_field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['field'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_dow']['label'] = 'Day, Time, Location';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: End Time */
+  $handler->display->display_options['fields']['field_s_course_time_end']['id'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['table'] = 'field_data_field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['field'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time_end']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_time_end']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time_end']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Start Time */
+  $handler->display->display_options['fields']['field_s_course_time']['id'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['table'] = 'field_data_field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['field'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time']['label'] = 'Time';
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['text'] = '[field_s_course_time] - [field_s_course_time_end]';
+  $handler->display->display_options['fields']['field_s_course_time']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_time']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_time']['hide_empty'] = TRUE;
+  /* Field: Field collection item: Location(s) */
+  $handler->display->display_options['fields']['field_s_course_location']['id'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['table'] = 'field_data_field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['field'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_location']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_s_course_location']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_location']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Code (Integer) (field_s_course_code_integer) */
+  $handler->display->display_options['sorts']['field_s_course_code_integer_value']['id'] = 'field_s_course_code_integer_value';
+  $handler->display->display_options['sorts']['field_s_course_code_integer_value']['table'] = 'field_data_field_s_course_code_integer';
+  $handler->display->display_options['sorts']['field_s_course_code_integer_value']['field'] = 'field_s_course_code_integer_value';
+  /* Sort criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
+  /* Sort criterion: Field collection item: Section Number (field_s_course_section_number) */
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['id'] = 'field_s_course_section_number_value';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['table'] = 'field_data_field_s_course_section_number';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['field'] = 'field_s_course_section_number_value';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search courses by title';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Field collection item: Year (field_s_course_section_year) */
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['id'] = 'field_s_course_section_year_value';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['table'] = 'field_data_field_s_course_section_year';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['field'] = 'field_s_course_section_year_value';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['value'] = array(
+    2012 => '2012',
+    2013 => '2013',
+  );
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['expose']['operator_id'] = 'field_s_course_section_year_value_op';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['expose']['label'] = 'Academic year';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['expose']['operator'] = 'field_s_course_section_year_value_op';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['expose']['identifier'] = 'field_s_course_section_year_value';
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['field_s_course_section_year_value']['expose']['reduce'] = TRUE;
+  /* Filter criterion: Field collection item: Quarter (field_s_course_term) */
+  $handler->display->display_options['filters']['field_s_course_term_value']['id'] = 'field_s_course_term_value';
+  $handler->display->display_options['filters']['field_s_course_term_value']['table'] = 'field_data_field_s_course_term';
+  $handler->display->display_options['filters']['field_s_course_term_value']['field'] = 'field_s_course_term_value';
+  $handler->display->display_options['filters']['field_s_course_term_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_term_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_term_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_term_value']['expose']['operator_id'] = 'field_s_course_term_value_op';
+  $handler->display->display_options['filters']['field_s_course_term_value']['expose']['label'] = 'Quarter';
+  $handler->display->display_options['filters']['field_s_course_term_value']['expose']['operator'] = 'field_s_course_term_value_op';
+  $handler->display->display_options['filters']['field_s_course_term_value']['expose']['identifier'] = 'field_s_course_term_value';
+  $handler->display->display_options['filters']['field_s_course_term_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  $handler->display->display_options['filters']['field_s_course_term_value']['group_info']['label'] = 'Quarter (field_s_course_term)';
+  $handler->display->display_options['filters']['field_s_course_term_value']['group_info']['identifier'] = 'field_s_course_term_value';
+  $handler->display->display_options['filters']['field_s_course_term_value']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_s_course_term_value']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+  );
+  /* Filter criterion: Field collection item: Component (field_s_course_component) */
+  $handler->display->display_options['filters']['field_s_course_component_value']['id'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['table'] = 'field_data_field_s_course_component';
+  $handler->display->display_options['filters']['field_s_course_component_value']['field'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_s_course_component_value']['value'] = array(
+    'DIS' => 'DIS',
+    'INS' => 'INS',
+    'PRC' => 'PRC',
+    'T/D' => 'T/D',
+  );
+  $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['path'] = 'courses/search';
+  $handler->display->display_options['menu']['title'] = 'Courses';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'main-menu';
+  $handler->display->display_options['menu']['context'] = 0;
+
+  /* Display: Faculty Courses */
+  $handler = $view->new_display('block', 'Faculty Courses', 'block_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Current Courses';
+  $handler->display->display_options['enabled'] = FALSE;
+  $handler->display->display_options['display_description'] = 'Courses by faculty block';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No current courses listed.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Quarter */
+  $handler->display->display_options['fields']['field_s_course_term']['id'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['table'] = 'field_data_field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['field'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_term']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_term']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_term']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Year */
+  $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['field'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_section_year']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_section_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_section_year']['element_label_colon'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_s_course_term] [field_s_course_section_year]<br />
+    [title]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  /* Filter criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Field collection item: Date Range - end date (field_s_course_section_dates:value2) */
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['id'] = 'field_s_course_section_dates_value2';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['field'] = 'field_s_course_section_dates_value2';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now';
+  /* Filter criterion: Field collection item: Component (field_s_course_component) */
+  $handler->display->display_options['filters']['field_s_course_component_value']['id'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['table'] = 'field_data_field_s_course_component';
+  $handler->display->display_options['filters']['field_s_course_component_value']['field'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_s_course_component_value']['value'] = array(
+    'DIS' => 'DIS',
+    'INS' => 'INS',
+    'PRC' => 'PRC',
+    'T/D' => 'T/D',
+  );
+
+  /* Display: Current Courses (Page) */
+  $handler = $view->new_display('page', 'Current Courses (Page)', 'current_courses_page');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Current Courses';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_s_course_code_integer' => 'field_s_course_code_integer',
+    'field_s_course_subject' => 'title',
+    'field_s_course_section_number' => 'field_s_course_section_number',
+    'field_s_course_code' => 'title',
+    'title' => 'title',
+    'field_s_course_person' => 'field_s_course_person',
+    'field_s_course_co_instructor' => 'field_s_course_person',
+    'field_s_course_section_year' => 'field_s_course_section_year',
+    'field_s_course_term' => 'field_s_course_section_year',
+    'field_s_course_dow' => 'field_s_course_dow',
+    'field_s_course_time_end' => 'field_s_course_time_end',
+    'field_s_course_time' => 'field_s_course_dow',
+    'field_s_course_location' => 'field_s_course_dow',
+    'field_s_course_syllabus' => 'field_s_course_dow',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_s_course_code_integer' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_subject' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_section_number' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_code' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'field_s_course_person' => array(
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'field_s_course_co_instructor' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_section_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'field_s_course_term' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_dow' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'field_s_course_time_end' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_time' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_location' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_syllabus' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter, starting two weeks before the first day of classes.</p>
+    <p>Please use the search form to find future or past courses.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Section Information (field_s_course_section_info) */
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['table'] = 'field_data_field_s_course_section_info';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['field'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['delta'] = '-1';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: ExploreCourses Link */
+  $handler->display->display_options['fields']['field_s_course_ec_link']['id'] = 'field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['table'] = 'field_data_field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['field'] = 'field_s_course_ec_link';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_ec_link']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_ec_link']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_s_course_ec_link']['type'] = 'link_plain';
+  /* Field: Content: Code (Integer) */
+  $handler->display->display_options['fields']['field_s_course_code_integer']['id'] = 'field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['table'] = 'field_data_field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['field'] = 'field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code_integer']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_code_integer']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject']['id'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['field'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_subject']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_subject']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Section Number */
+  $handler->display->display_options['fields']['field_s_course_section_number']['id'] = 'field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['table'] = 'field_data_field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['field'] = 'field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_section_number']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_section_number']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['alter']['text'] = '(section [field_s_course_section_number])';
+  $handler->display->display_options['fields']['field_s_course_section_number']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Code */
+  $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['field'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['label'] = 'Course Number';
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['text'] = '[field_s_course_subject] [field_s_course_code] [field_s_course_section_number]';
+  $handler->display->display_options['fields']['field_s_course_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_code']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_code']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_s_course_ec_link]';
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['external'] = TRUE;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Year */
+  $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['field'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_section_year']['label'] = 'Quarter';
+  $handler->display->display_options['fields']['field_s_course_section_year']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Quarter */
+  $handler->display->display_options['fields']['field_s_course_term']['id'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['table'] = 'field_data_field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['field'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_term']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_term']['alter']['text'] = '[field_s_course_term] [field_s_course_year]';
+  $handler->display->display_options['fields']['field_s_course_term']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_term']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['delta_offset'] = '0';
+  /* Field: Field collection item: Day(s) of Week */
+  $handler->display->display_options['fields']['field_s_course_dow']['id'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['table'] = 'field_data_field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['field'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_dow']['label'] = 'Day, Time, Location';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: End Time */
+  $handler->display->display_options['fields']['field_s_course_time_end']['id'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['table'] = 'field_data_field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['field'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time_end']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_time_end']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time_end']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Start Time */
+  $handler->display->display_options['fields']['field_s_course_time']['id'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['table'] = 'field_data_field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['field'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time']['label'] = 'Time';
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['text'] = '[field_s_course_time] - [field_s_course_time_end]';
+  $handler->display->display_options['fields']['field_s_course_time']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_time']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_time']['hide_empty'] = TRUE;
+  /* Field: Field collection item: Location(s) */
+  $handler->display->display_options['fields']['field_s_course_location']['id'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['table'] = 'field_data_field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['field'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_location']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_s_course_location']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_location']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_location']['hide_empty'] = TRUE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Code (Integer) (field_s_course_code_integer) */
+  $handler->display->display_options['sorts']['field_s_course_code_integer_value']['id'] = 'field_s_course_code_integer_value';
+  $handler->display->display_options['sorts']['field_s_course_code_integer_value']['table'] = 'field_data_field_s_course_code_integer';
+  $handler->display->display_options['sorts']['field_s_course_code_integer_value']['field'] = 'field_s_course_code_integer_value';
+  /* Sort criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
+  /* Sort criterion: Field collection item: Section Number (field_s_course_section_number) */
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['id'] = 'field_s_course_section_number_value';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['table'] = 'field_data_field_s_course_section_number';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['field'] = 'field_s_course_section_number_value';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now';
+  /* Filter criterion: Field collection item: Date Range - end date (field_s_course_section_dates:value2) */
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['id'] = 'field_s_course_section_dates_value2';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['field'] = 'field_s_course_section_dates_value2';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['form_type'] = 'date_text';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now';
+  /* Filter criterion: Field collection item: Component (field_s_course_component) */
+  $handler->display->display_options['filters']['field_s_course_component_value']['id'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['table'] = 'field_data_field_s_course_component';
+  $handler->display->display_options['filters']['field_s_course_component_value']['field'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_s_course_component_value']['value'] = array(
+    'DIS' => 'DIS',
+    'INS' => 'INS',
+    'PRC' => 'PRC',
+    'T/D' => 'T/D',
+  );
+  $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['path'] = 'courses';
+  $handler->display->display_options['menu']['title'] = 'Courses';
+
+  /* Display: Section Information */
+  $handler = $view->new_display('block', 'Section Information', 'section_info');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Section Information';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_s_course_code_integer' => 'field_s_course_code_integer',
+    'field_s_course_subject_1' => 'title',
+    'field_s_course_code' => 'title',
+    'title' => 'title',
+    'field_s_course_person' => 'field_s_course_person',
+    'field_s_course_co_instructor' => 'field_s_course_person',
+    'field_s_course_section_year' => 'field_s_course_section_year',
+    'field_s_course_term' => 'field_s_course_section_year',
+    'field_s_course_dow' => 'field_s_course_dow',
+    'field_s_course_time_end' => 'field_s_course_time_end',
+    'field_s_course_time' => 'field_s_course_dow',
+    'field_s_course_location' => 'field_s_course_dow',
+    'field_s_course_year' => 'field_s_course_year',
+    'field_s_course_subject' => 'field_s_course_subject',
+    'body' => 'body',
+    'field_s_course_syllabus' => 'field_s_course_dow',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'field_s_course_code_integer' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_subject_1' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_code' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'field_s_course_person' => array(
+      'align' => '',
+      'separator' => '<br />',
+      'empty_column' => 0,
+    ),
+    'field_s_course_co_instructor' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_section_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'field_s_course_term' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_dow' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_time_end' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_time' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_location' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_subject' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'body' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_syllabus' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['empty'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  /* Relationship: Content: Section Information (field_s_course_section_info) */
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['table'] = 'field_data_field_s_course_section_info';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['field'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['delta'] = '-1';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Code (Integer) */
+  $handler->display->display_options['fields']['field_s_course_code_integer']['id'] = 'field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['table'] = 'field_data_field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['field'] = 'field_s_course_code_integer';
+  $handler->display->display_options['fields']['field_s_course_code_integer']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code_integer']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject_1']['id'] = 'field_s_course_subject_1';
+  $handler->display->display_options['fields']['field_s_course_subject_1']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject_1']['field'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject_1']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_subject_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_subject_1']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Section Number */
+  $handler->display->display_options['fields']['field_s_course_section_number']['id'] = 'field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['table'] = 'field_data_field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['field'] = 'field_s_course_section_number';
+  $handler->display->display_options['fields']['field_s_course_section_number']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_section_number']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_section_number']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['alter']['text'] = '(section [field_s_course_section_number])';
+  $handler->display->display_options['fields']['field_s_course_section_number']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_section_number']['settings'] = array(
+    'thousand_separator' => ' ',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Code */
+  $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['field'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['label'] = 'Course Number';
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_code']['alter']['text'] = '[field_s_course_subject_1] [field_s_course_code] [field_s_course_section_number]';
+  $handler->display->display_options['fields']['field_s_course_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_code']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_code']['element_default_classes'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_type'] = 'strong';
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Year */
+  $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['field'] = 'field_s_course_section_year';
+  $handler->display->display_options['fields']['field_s_course_section_year']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_section_year']['label'] = 'Quarter';
+  $handler->display->display_options['fields']['field_s_course_section_year']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Quarter */
+  $handler->display->display_options['fields']['field_s_course_term']['id'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['table'] = 'field_data_field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['field'] = 'field_s_course_term';
+  $handler->display->display_options['fields']['field_s_course_term']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_term']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_term']['alter']['text'] = '[field_s_course_term] [field_s_course_year]';
+  $handler->display->display_options['fields']['field_s_course_term']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_term']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_term']['delta_offset'] = '0';
+  /* Field: Field collection item: Day(s) of Week */
+  $handler->display->display_options['fields']['field_s_course_dow']['id'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['table'] = 'field_data_field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['field'] = 'field_s_course_dow';
+  $handler->display->display_options['fields']['field_s_course_dow']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_dow']['label'] = 'Day, Time, Location';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: End Time */
+  $handler->display->display_options['fields']['field_s_course_time_end']['id'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['table'] = 'field_data_field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['field'] = 'field_s_course_time_end';
+  $handler->display->display_options['fields']['field_s_course_time_end']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time_end']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_time_end']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time_end']['element_label_colon'] = FALSE;
+  /* Field: Field collection item: Start Time */
+  $handler->display->display_options['fields']['field_s_course_time']['id'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['table'] = 'field_data_field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['field'] = 'field_s_course_time';
+  $handler->display->display_options['fields']['field_s_course_time']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_time']['label'] = 'Time';
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_time']['alter']['text'] = '[field_s_course_time] - [field_s_course_time_end]';
+  $handler->display->display_options['fields']['field_s_course_time']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_time']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_time']['hide_empty'] = TRUE;
+  /* Field: Field collection item: Location(s) */
+  $handler->display->display_options['fields']['field_s_course_location']['id'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['table'] = 'field_data_field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['field'] = 'field_s_course_location';
+  $handler->display->display_options['fields']['field_s_course_location']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_location']['label'] = 'Room';
+  $handler->display->display_options['fields']['field_s_course_location']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_location']['element_label_colon'] = FALSE;
+  /* Field: Content: Academic Year */
+  $handler->display->display_options['fields']['field_s_course_year']['id'] = 'field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['table'] = 'field_data_field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['field'] = 'field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_year']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_year']['element_label_colon'] = FALSE;
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject']['id'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['field'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['label'] = 'Number';
+  $handler->display->display_options['fields']['field_s_course_subject']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_subject']['element_label_colon'] = FALSE;
+  /* Field: Content: Body */
+  $handler->display->display_options['fields']['body']['id'] = 'body';
+  $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
+  $handler->display->display_options['fields']['body']['field'] = 'body';
+  $handler->display->display_options['fields']['body']['label'] = '';
+  $handler->display->display_options['fields']['body']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['sorts']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
+  /* Sort criterion: Field collection item: Section Number (field_s_course_section_number) */
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['id'] = 'field_s_course_section_number_value';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['table'] = 'field_data_field_s_course_section_number';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['field'] = 'field_s_course_section_number_value';
+  $handler->display->display_options['sorts']['field_s_course_section_number_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  /* Filter criterion: Field collection item: Component (field_s_course_component) */
+  $handler->display->display_options['filters']['field_s_course_component_value']['id'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['table'] = 'field_data_field_s_course_component';
+  $handler->display->display_options['filters']['field_s_course_component_value']['field'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_s_course_component_value']['value'] = array(
+    'DIS' => 'DIS',
+    'INS' => 'INS',
+    'PRC' => 'PRC',
+    'T/D' => 'T/D',
+  );
+  $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['block_description'] = 'Course Section Information';
+
+  $export['courses'] = $view;
+
+  $view = new view();
+  $view->name = 'courses_manage';
+  $view->description = 'View, edit, and delete your site\'s content.';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Courses: Manage';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Manage Courses';
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer nodes';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'counter' => 'counter',
+    'views_bulk_operations' => 'views_bulk_operations',
+    'field_s_image_image' => 'field_s_image_image',
+    'field_s_course_code' => 'field_s_course_code',
+    'title' => 'title',
+    'timestamp' => 'title',
+    'status' => 'status',
+    'changed' => 'changed',
+    'field_s_course_featured' => 'field_s_course_featured',
+    'field_s_course_year' => 'field_s_course_year',
+    'nid' => 'nid',
+    'edit_node' => 'edit_node',
+    'view_node' => 'edit_node',
+    'delete_node' => 'edit_node',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'counter' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'views_bulk_operations' => array(
+      'align' => '',
+      'separator' => ' | ',
+      'empty_column' => 0,
+    ),
+    'field_s_image_image' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_code' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'timestamp' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'status' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'changed' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_featured' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_year' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nid' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => ' ',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => ' | ',
+      'empty_column' => 0,
+    ),
+    'view_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'delete_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h3><a href="/admin/manage">Back to Manage All Content</a></h3>';
+  $handler->display->display_options['header']['area']['format'] = 'content_editor_text_format';
+  /* Field: Global: View result counter */
+  $handler->display->display_options['fields']['counter']['id'] = 'counter';
+  $handler->display->display_options['fields']['counter']['table'] = 'views';
+  $handler->display->display_options['fields']['counter']['field'] = 'counter';
+  $handler->display->display_options['fields']['counter']['label'] = 'Row';
+  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+  /* Field: Bulk operations: Content */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo']['operations'] = array(
+    'action::node_assign_owner_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_delete_item' => array(
+      'selected' => 1,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 1,
+      'label' => 'Delete',
+    ),
+    'action::system_message_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_script_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_make_sticky_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_make_unsticky_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::views_bulk_operations_modify_action' => array(
+      'selected' => 1,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 1,
+      'label' => 'Modify',
+      'settings' => array(
+        'show_all_tokens' => 0,
+        'display_values' => array(
+          'stanford_course::field_s_course_featured' => 'stanford_course::field_s_course_featured',
+        ),
+      ),
+    ),
+    'action::views_bulk_operations_argument_selector_action' => array(
+      'selected' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+      'settings' => array(
+        'url' => '',
+      ),
+    ),
+    'action::node_promote_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_publish_action' => array(
+      'selected' => 1,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 1,
+      'label' => 'Publish',
+    ),
+    'action::system_goto_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpromote_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_save_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::system_send_email_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::node_unpublish_action' => array(
+      'selected' => 1,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 1,
+      'label' => 'Unpublish',
+    ),
+    'action::node_unpublish_by_keyword_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+    'action::pathauto_node_update_action' => array(
+      'selected' => 0,
+      'use_queue' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo']['display_result'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo']['merge_single_action'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo']['force_single'] = 0;
+  /* Field: Field: Image */
+  $handler->display->display_options['fields']['field_s_image_image']['id'] = 'field_s_image_image';
+  $handler->display->display_options['fields']['field_s_image_image']['table'] = 'field_data_field_s_image_image';
+  $handler->display->display_options['fields']['field_s_image_image']['field'] = 'field_s_image_image';
+  $handler->display->display_options['fields']['field_s_image_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_s_image_image']['settings'] = array(
+    'image_style' => 'thmb-square',
+    'image_link' => '',
+  );
+  /* Field: Content: Code */
+  $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['fields']['field_s_course_code']['field'] = 'field_s_course_code';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Has new content */
+  $handler->display->display_options['fields']['timestamp']['id'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['table'] = 'history';
+  $handler->display->display_options['fields']['timestamp']['field'] = 'timestamp';
+  $handler->display->display_options['fields']['timestamp']['label'] = '';
+  $handler->display->display_options['fields']['timestamp']['element_label_colon'] = FALSE;
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['not'] = 0;
+  /* Field: Content: Updated date */
+  $handler->display->display_options['fields']['changed']['id'] = 'changed';
+  $handler->display->display_options['fields']['changed']['table'] = 'node';
+  $handler->display->display_options['fields']['changed']['field'] = 'changed';
+  $handler->display->display_options['fields']['changed']['date_format'] = 'short';
+  /* Field: Content: Featured */
+  $handler->display->display_options['fields']['field_s_course_featured']['id'] = 'field_s_course_featured';
+  $handler->display->display_options['fields']['field_s_course_featured']['table'] = 'field_data_field_s_course_featured';
+  $handler->display->display_options['fields']['field_s_course_featured']['field'] = 'field_s_course_featured';
+  /* Field: Content: Academic Year */
+  $handler->display->display_options['fields']['field_s_course_year']['id'] = 'field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['table'] = 'field_data_field_s_course_year';
+  $handler->display->display_options['fields']['field_s_course_year']['field'] = 'field_s_course_year';
+  /* Field: Content: Nid */
+  $handler->display->display_options['fields']['nid']['id'] = 'nid';
+  $handler->display->display_options['fields']['nid']['table'] = 'node';
+  $handler->display->display_options['fields']['nid']['field'] = 'nid';
+  $handler->display->display_options['fields']['nid']['label'] = 'Node ID';
+  $handler->display->display_options['fields']['nid']['link_to_node'] = TRUE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Actions';
+  /* Field: Content: Link */
+  $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
+  $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
+  /* Field: Content: Delete link */
+  $handler->display->display_options['fields']['delete_node']['id'] = 'delete_node';
+  $handler->display->display_options['fields']['delete_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['delete_node']['field'] = 'delete_node';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Title';
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
+  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 'All';
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['status']['expose']['operator_id'] = '';
+  $handler->display->display_options['filters']['status']['expose']['label'] = 'Published';
+  $handler->display->display_options['filters']['status']['expose']['operator'] = 'status_op';
+  $handler->display->display_options['filters']['status']['expose']['identifier'] = 'status';
+  $handler->display->display_options['filters']['status']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Featured (field_s_course_featured) */
+  $handler->display->display_options['filters']['field_s_course_featured_value']['id'] = 'field_s_course_featured_value';
+  $handler->display->display_options['filters']['field_s_course_featured_value']['table'] = 'field_data_field_s_course_featured';
+  $handler->display->display_options['filters']['field_s_course_featured_value']['field'] = 'field_s_course_featured_value';
+  $handler->display->display_options['filters']['field_s_course_featured_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_featured_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['operator_id'] = 'field_s_course_featured_value_op';
+  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['label'] = 'Featured';
+  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['operator'] = 'field_s_course_featured_value_op';
+  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['identifier'] = 'field_s_course_featured_value';
+  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Content: Academic Year (field_s_course_year) */
+  $handler->display->display_options['filters']['field_s_course_year_value']['id'] = 'field_s_course_year_value';
+  $handler->display->display_options['filters']['field_s_course_year_value']['table'] = 'field_data_field_s_course_year';
+  $handler->display->display_options['filters']['field_s_course_year_value']['field'] = 'field_s_course_year_value';
+  $handler->display->display_options['filters']['field_s_course_year_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_s_course_year_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['operator_id'] = 'field_s_course_year_value_op';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['label'] = 'Academic Year';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['description'] = 'Ex. 2012-2013';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['operator'] = 'field_s_course_year_value_op';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['identifier'] = 'field_s_course_year_value';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+    19 => 0,
+  );
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['path'] = 'admin/manage/courses';
+  $export['courses_manage'] = $view;
+
+  return $export;
+}
