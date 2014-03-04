@@ -5,33 +5,3 @@
  */
 
 include_once 'stanford_courses_person_reference.features.inc';
-
-/**
- * Implementation of hook_views_default_views_alter().
- */
-function stanford_courses_person_reference_views_default_views_alter(&$views) {
-
-  if (array_key_exists('courses', $views)) {
-
-    $handler = $views['courses']->display['current_courses_page']
-
-    $handler->display_options['style_options']['columns']['field_s_course_person'] = 'field_s_course_person';
-    $handler->display_options['style_options']['info']['field_s_course_person'] = array(
-      'align' => '',
-      'separator' => '<br />',
-      'empty_column' => 0,
-    );
-
-    /* Field: Field collection item: Instructor */
-    $handler->display_options['fields']['field_s_course_person']['id'] = 'field_s_course_person';
-    $handler->display_options['fields']['field_s_course_person']['table'] = 'field_data_field_s_course_person';
-    $handler->display_options['fields']['field_s_course_person']['field'] = 'field_s_course_person';
-    $handler->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
-    $handler->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
-    $handler->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
-    $handler->display_options['fields']['field_s_course_person']['settings'] = array(
-      'link' => 1,
-    );
-  }
-
-}

@@ -1,17 +1,17 @@
 <?php
 /**
  * @file
- * stanford_course_views.views_default.inc
+ * stanford_courses_person_reference_views.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function stanford_course_views_views_default_views() {
+function stanford_courses_person_reference_views_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'courses';
+  $view->name = 'courses_reference';
   $view->description = 'Courses imported from Explore Courses';
   $view->tag = 'default';
   $view->base_table = 'node';
@@ -520,6 +520,16 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Instructor */
+  $handler->display->display_options['fields']['field_s_course_person']['id'] = 'field_s_course_person';
+  $handler->display->display_options['fields']['field_s_course_person']['table'] = 'field_data_field_s_course_person';
+  $handler->display->display_options['fields']['field_s_course_person']['field'] = 'field_s_course_person';
+  $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_person']['settings'] = array(
+    'link' => 1,
+  );
   /* Field: Field collection item: Year */
   $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
   $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
@@ -715,107 +725,6 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'main-menu';
   $handler->display->display_options['menu']['context'] = 0;
 
-  /* Display: Faculty Courses */
-  $handler = $view->new_display('block', 'Faculty Courses', 'block_1');
-  $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Current Courses';
-  $handler->display->display_options['enabled'] = FALSE;
-  $handler->display->display_options['display_description'] = 'Courses by faculty block';
-  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
-  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'default';
-  $handler->display->display_options['defaults']['style_options'] = FALSE;
-  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'fields';
-  $handler->display->display_options['defaults']['row_options'] = FALSE;
-  $handler->display->display_options['defaults']['empty'] = FALSE;
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<p>No current courses listed.</p>';
-  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
-  $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Field collection item: Quarter */
-  $handler->display->display_options['fields']['field_s_course_term']['id'] = 'field_s_course_term';
-  $handler->display->display_options['fields']['field_s_course_term']['table'] = 'field_data_field_s_course_term';
-  $handler->display->display_options['fields']['field_s_course_term']['field'] = 'field_s_course_term';
-  $handler->display->display_options['fields']['field_s_course_term']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['fields']['field_s_course_term']['label'] = '';
-  $handler->display->display_options['fields']['field_s_course_term']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_course_term']['element_label_colon'] = FALSE;
-  /* Field: Field collection item: Year */
-  $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
-  $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
-  $handler->display->display_options['fields']['field_s_course_section_year']['field'] = 'field_s_course_section_year';
-  $handler->display->display_options['fields']['field_s_course_section_year']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['fields']['field_s_course_section_year']['label'] = '';
-  $handler->display->display_options['fields']['field_s_course_section_year']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_course_section_year']['element_label_colon'] = FALSE;
-  /* Field: Global: Custom text */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_s_course_term] [field_s_course_section_year]<br />
-    [title]';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['defaults']['arguments'] = FALSE;
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'stanford_course' => 'stanford_course',
-  );
-  /* Filter criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['granularity'] = 'minute';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['form_type'] = 'date_text';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now';
-  /* Filter criterion: Field collection item: Date Range - end date (field_s_course_section_dates:value2) */
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['id'] = 'field_s_course_section_dates_value2';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['table'] = 'field_data_field_s_course_section_dates';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['field'] = 'field_s_course_section_dates_value2';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now';
-  /* Filter criterion: Field collection item: Component (field_s_course_component) */
-  $handler->display->display_options['filters']['field_s_course_component_value']['id'] = 'field_s_course_component_value';
-  $handler->display->display_options['filters']['field_s_course_component_value']['table'] = 'field_data_field_s_course_component';
-  $handler->display->display_options['filters']['field_s_course_component_value']['field'] = 'field_s_course_component_value';
-  $handler->display->display_options['filters']['field_s_course_component_value']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['filters']['field_s_course_component_value']['operator'] = 'not';
-  $handler->display->display_options['filters']['field_s_course_component_value']['value'] = array(
-    'DIS' => 'DIS',
-    'INS' => 'INS',
-    'PRC' => 'PRC',
-    'T/D' => 'T/D',
-  );
-
   /* Display: Current Courses (Page) */
   $handler = $view->new_display('page', 'Current Courses (Page)', 'current_courses_page');
   $handler->display->display_options['defaults']['title'] = FALSE;
@@ -938,7 +847,7 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter, starting two weeks before the first day of classes.</p>
-    <p>Please use the search form to find future or past courses.</p>';
+      <p>Please use the search form to find future or past courses.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Section Information (field_s_course_section_info) */
@@ -1008,6 +917,17 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Instructor */
+  $handler->display->display_options['fields']['field_s_course_person']['id'] = 'field_s_course_person';
+  $handler->display->display_options['fields']['field_s_course_person']['table'] = 'field_data_field_s_course_person';
+  $handler->display->display_options['fields']['field_s_course_person']['field'] = 'field_s_course_person';
+  $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_person']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_person']['settings'] = array(
+    'link' => 1,
+  );
   /* Field: Field collection item: Year */
   $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
   $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
@@ -1460,9 +1380,10 @@ function stanford_course_views_views_default_views() {
   );
   $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['block_description'] = 'Course Section Information';
-  $export['courses'] = $view;
 
 
+
+  $export['courses_reference'] = $view;
 
   return $export;
 }
