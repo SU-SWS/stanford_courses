@@ -37,7 +37,6 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
-    'counter' => 'counter',
     'views_bulk_operations' => 'views_bulk_operations',
     'field_s_image_image' => 'field_s_image_image',
     'field_s_course_code' => 'field_s_course_code',
@@ -54,11 +53,6 @@ function stanford_courses_administration_views_default_views() {
   );
   $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
-    'counter' => array(
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'views_bulk_operations' => array(
       'align' => '',
       'separator' => ' | ',
@@ -147,12 +141,7 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<h3><a href="/admin/manage">Back to Manage All Content</a></h3>';
   $handler->display->display_options['header']['area']['format'] = 'content_editor_text_format';
-  /* Field: Global: View result counter */
-  $handler->display->display_options['fields']['counter']['id'] = 'counter';
-  $handler->display->display_options['fields']['counter']['table'] = 'views';
-  $handler->display->display_options['fields']['counter']['field'] = 'counter';
-  $handler->display->display_options['fields']['counter']['label'] = 'Row';
-  $handler->display->display_options['fields']['counter']['counter_start'] = '1';
+
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
