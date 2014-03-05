@@ -1383,7 +1383,7 @@ function stanford_courses_person_reference_views_views_default_views() {
 
 
   /* Display: Faculty Courses */
-  $handler = $view->new_display('block', 'Faculty Courses', 'block_1');
+  $handler = $view->new_display('block', 'Faculty Courses', 'courses_reference_person_block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Current Courses';
   $handler->display->display_options['display_description'] = 'Courses by faculty block';

@@ -29,11 +29,11 @@ function stanford_courses_person_reference_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-314278560b13258b4cf909ef7feab5ac' => array(
+        'views-5c84bdc5ea8289bceed723799d38940f' => array(
           'module' => 'views',
-          'delta' => '314278560b13258b4cf909ef7feab5ac',
+          'delta' => '5c84bdc5ea8289bceed723799d38940f',
           'region' => 'sidebar_second',
-          'weight' => '49',
+          'weight' => '10',
         ),
       ),
     ),
