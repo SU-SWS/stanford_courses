@@ -15,7 +15,7 @@ function stanford_courses_person_reference_context_default_contexts() {
   $context->api_version = 3;
   $context->name = 'courses_reference';
   $context->description = 'A list of courses taught by a person.';
-  $context->tag = 'People';
+  $context->tag = 'Courses';
   $context->conditions = array(
     'node' => array(
       'values' => array(
@@ -29,9 +29,9 @@ function stanford_courses_person_reference_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'views-2d9147be40cd77d32915a554bf315858' => array(
+        'views-314278560b13258b4cf909ef7feab5ac' => array(
           'module' => 'views',
-          'delta' => '2d9147be40cd77d32915a554bf315858',
+          'delta' => '314278560b13258b4cf909ef7feab5ac',
           'region' => 'sidebar_second',
           'weight' => '49',
         ),
@@ -43,7 +43,7 @@ function stanford_courses_person_reference_context_default_contexts() {
   // Translatables
   // Included for use with string extractors like potx.
   t('A list of courses taught by a person.');
-  t('People');
+  t('Courses');
   $export['courses_reference'] = $context;
 
   return $export;
