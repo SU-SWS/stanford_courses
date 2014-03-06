@@ -24,3 +24,5 @@ The 2.x branch upgrade path will delete content and manipulate your course conte
 The stanford_course_section View has been deleted in this version because its functionality has been subsumed.
 
 
+Example Course Importer URL:
+http://explorecourses.stanford.edu/search?view=xml-20130201&filter-coursestatus-Active=on&page=0&catalog=&q=ARTHIST&collapse=

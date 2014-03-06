@@ -520,13 +520,28 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Co Instructor */
+  $handler->display->display_options['fields']['field_s_course_co_person']['id'] = 'field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['table'] = 'field_data_field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['field'] = 'field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_co_person']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_co_person']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_co_person']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['empty_zero'] = TRUE;
   /* Field: Field collection item: Instructor */
   $handler->display->display_options['fields']['field_s_course_person']['id'] = 'field_s_course_person';
   $handler->display->display_options['fields']['field_s_course_person']['table'] = 'field_data_field_s_course_person';
   $handler->display->display_options['fields']['field_s_course_person']['field'] = 'field_s_course_person';
   $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_person']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_person']['alter']['text'] = '<div>[field_s_course_person]</div>
+  <div>[field_s_course_co_person]</div>';
   $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_person']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_s_course_person']['settings'] = array(
     'link' => 1,
   );
@@ -587,9 +602,13 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_syllabus']['field'] = 'field_s_course_syllabus';
   $handler->display->display_options['fields']['field_s_course_syllabus']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_syllabus']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_syllabus']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_syllabus']['alter']['text'] = '<a href="[field_s_course_syllabus]" title="Download Syllabus">Download Syllabus</a>';
   $handler->display->display_options['fields']['field_s_course_syllabus']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_syllabus']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_syllabus']['element_wrapper_class'] = 'descriptor';
   $handler->display->display_options['fields']['field_s_course_syllabus']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_s_course_syllabus']['type'] = 'file_download_link';
+  $handler->display->display_options['fields']['field_s_course_syllabus']['type'] = 'file_url_plain';
   $handler->display->display_options['fields']['field_s_course_syllabus']['settings'] = array(
     'text' => 'Download Syllabus',
   );
@@ -917,11 +936,26 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Field collection item: Co Instructor */
+  $handler->display->display_options['fields']['field_s_course_co_person']['id'] = 'field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['table'] = 'field_data_field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['field'] = 'field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_co_person']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_co_person']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_co_person']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['type'] = 'text_plain';
   /* Field: Field collection item: Instructor */
   $handler->display->display_options['fields']['field_s_course_person']['id'] = 'field_s_course_person';
   $handler->display->display_options['fields']['field_s_course_person']['table'] = 'field_data_field_s_course_person';
   $handler->display->display_options['fields']['field_s_course_person']['field'] = 'field_s_course_person';
   $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_person']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_person']['alter']['text'] = '<div>[field_s_course_person]</div>
+  <div>[field_s_course_co_person]</div>';
   $handler->display->display_options['fields']['field_s_course_person']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
@@ -988,9 +1022,13 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_syllabus']['field'] = 'field_s_course_syllabus';
   $handler->display->display_options['fields']['field_s_course_syllabus']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_syllabus']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_syllabus']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_syllabus']['alter']['text'] = '<a href="[field_s_course_syllabus]" title="Download Syllabus">Download Syllabus</a>';
   $handler->display->display_options['fields']['field_s_course_syllabus']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_syllabus']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_syllabus']['element_wrapper_class'] = 'descriptor';
   $handler->display->display_options['fields']['field_s_course_syllabus']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_s_course_syllabus']['type'] = 'file_download_link';
+  $handler->display->display_options['fields']['field_s_course_syllabus']['type'] = 'file_url_plain';
   $handler->display->display_options['fields']['field_s_course_syllabus']['settings'] = array(
     'text' => 'Download Syllabus',
   );
@@ -1503,6 +1541,7 @@ function stanford_courses_person_reference_views_views_default_views() {
     'PRC' => 'PRC',
     'T/D' => 'T/D',
   );
+
 
   $export['courses_reference'] = $view;
 
