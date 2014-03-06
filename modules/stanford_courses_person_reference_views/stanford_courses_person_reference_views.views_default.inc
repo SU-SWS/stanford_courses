@@ -568,7 +568,10 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_dow']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_dow']['label'] = 'Day, Time, Location';
   $handler->display->display_options['fields']['field_s_course_dow']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_class'] = 'descriptor';
   $handler->display->display_options['fields']['field_s_course_dow']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_dow']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_wrapper_class'] = 'descriptor';
   /* Field: Field collection item: End Time */
   $handler->display->display_options['fields']['field_s_course_time_end']['id'] = 'field_s_course_time_end';
   $handler->display->display_options['fields']['field_s_course_time_end']['table'] = 'field_data_field_s_course_time_end';
@@ -987,7 +990,10 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_dow']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_dow']['label'] = 'Day, Time, Location';
   $handler->display->display_options['fields']['field_s_course_dow']['element_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_class'] = 'descriptor';
   $handler->display->display_options['fields']['field_s_course_dow']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_s_course_dow']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_s_course_dow']['element_wrapper_class'] = 'descriptor';
   /* Field: Field collection item: End Time */
   $handler->display->display_options['fields']['field_s_course_time_end']['id'] = 'field_s_course_time_end';
   $handler->display->display_options['fields']['field_s_course_time_end']['table'] = 'field_data_field_s_course_time_end';
