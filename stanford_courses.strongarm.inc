@@ -36,7 +36,7 @@ function stanford_courses_strongarm() {
           'weight' => '40',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '13',
         ),
       ),
       'display' => array(),
