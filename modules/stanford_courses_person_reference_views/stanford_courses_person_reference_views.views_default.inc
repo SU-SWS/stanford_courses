@@ -538,7 +538,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_person']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['alter']['text'] = '<div>[field_s_course_person]</div>
-  <div>[field_s_course_co_person]</div>';
+    <div>[field_s_course_co_person]</div>';
   $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['hide_alter_empty'] = FALSE;
@@ -617,6 +617,10 @@ function stanford_courses_person_reference_views_views_default_views() {
   );
   $handler->display->display_options['fields']['field_s_course_syllabus']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Subject (field_s_course_subject) */
+  $handler->display->display_options['sorts']['field_s_course_subject_value']['id'] = 'field_s_course_subject_value';
+  $handler->display->display_options['sorts']['field_s_course_subject_value']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['sorts']['field_s_course_subject_value']['field'] = 'field_s_course_subject_value';
   /* Sort criterion: Content: Code (Integer) (field_s_course_code_integer) */
   $handler->display->display_options['sorts']['field_s_course_code_integer_value']['id'] = 'field_s_course_code_integer_value';
   $handler->display->display_options['sorts']['field_s_course_code_integer_value']['table'] = 'field_data_field_s_course_code_integer';
@@ -869,7 +873,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter, starting two weeks before the first day of classes.</p>
-        <p>Please use the search form to find future or past courses.</p>';
+          <p>Please use the search form to find future or past courses.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Section Information (field_s_course_section_info) */
@@ -958,7 +962,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_person']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['alter']['text'] = '<div>[field_s_course_person]</div>
-  <div>[field_s_course_co_person]</div>';
+    <div>[field_s_course_co_person]</div>';
   $handler->display->display_options['fields']['field_s_course_person']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
@@ -1040,6 +1044,10 @@ function stanford_courses_person_reference_views_views_default_views() {
   );
   $handler->display->display_options['fields']['field_s_course_syllabus']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Subject (field_s_course_subject) */
+  $handler->display->display_options['sorts']['field_s_course_subject_value']['id'] = 'field_s_course_subject_value';
+  $handler->display->display_options['sorts']['field_s_course_subject_value']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['sorts']['field_s_course_subject_value']['field'] = 'field_s_course_subject_value';
   /* Sort criterion: Content: Code (Integer) (field_s_course_code_integer) */
   $handler->display->display_options['sorts']['field_s_course_code_integer_value']['id'] = 'field_s_course_code_integer_value';
   $handler->display->display_options['sorts']['field_s_course_code_integer_value']['table'] = 'field_data_field_s_course_code_integer';
@@ -1443,7 +1451,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>No current courses listed.</p>
-    <p><a class="more-link" href="https://sites.stanford.edu/english/courses">All Current Courses</a></p>';
+      <p><a class="more-link" href="https://sites.stanford.edu/english/courses">All Current Courses</a></p>';
   $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: ExploreCourses Link */
@@ -1490,7 +1498,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_s_course_term] [field_s_course_section_year]<br />
-    [title]';
+      [title]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Field collection item: Instructor (field_s_course_person) */
@@ -1547,7 +1555,6 @@ function stanford_courses_person_reference_views_views_default_views() {
     'PRC' => 'PRC',
     'T/D' => 'T/D',
   );
-
 
   $export['courses_reference'] = $view;
 
