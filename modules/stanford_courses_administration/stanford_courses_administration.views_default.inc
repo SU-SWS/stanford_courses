@@ -141,7 +141,6 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<h3><a href="/admin/manage">Back to Manage All Content</a></h3>';
   $handler->display->display_options['header']['area']['format'] = 'content_editor_text_format';
-
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
@@ -281,15 +280,6 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['display_result'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['merge_single_action'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['force_single'] = 0;
-  /* Field: Field collection item: Image */
-  $handler->display->display_options['fields']['field_s_image_image']['id'] = 'field_s_image_image';
-  $handler->display->display_options['fields']['field_s_image_image']['table'] = 'field_data_field_s_image_image';
-  $handler->display->display_options['fields']['field_s_image_image']['field'] = 'field_s_image_image';
-  $handler->display->display_options['fields']['field_s_image_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_s_image_image']['settings'] = array(
-    'image_style' => 'thmb-square',
-    'image_link' => '',
-  );
   /* Field: Content: Code */
   $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
   $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
@@ -316,10 +306,6 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['fields']['changed']['table'] = 'node';
   $handler->display->display_options['fields']['changed']['field'] = 'changed';
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
-  /* Field: Broken/missing handler */
-  $handler->display->display_options['fields']['field_s_course_featured']['id'] = 'field_s_course_featured';
-  $handler->display->display_options['fields']['field_s_course_featured']['table'] = 'field_data_field_s_course_featured';
-  $handler->display->display_options['fields']['field_s_course_featured']['field'] = 'field_s_course_featured';
   /* Field: Content: Academic Year */
   $handler->display->display_options['fields']['field_s_course_year']['id'] = 'field_s_course_year';
   $handler->display->display_options['fields']['field_s_course_year']['table'] = 'field_data_field_s_course_year';
@@ -399,27 +385,6 @@ function stanford_courses_administration_views_default_views() {
     15 => 0,
     17 => 0,
   );
-  /* Filter criterion: Broken/missing handler */
-  $handler->display->display_options['filters']['field_s_course_featured_value']['id'] = 'field_s_course_featured_value';
-  $handler->display->display_options['filters']['field_s_course_featured_value']['table'] = 'field_data_field_s_course_featured';
-  $handler->display->display_options['filters']['field_s_course_featured_value']['field'] = 'field_s_course_featured_value';
-  $handler->display->display_options['filters']['field_s_course_featured_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_s_course_featured_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['operator_id'] = 'field_s_course_featured_value_op';
-  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['label'] = 'Featured';
-  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['operator'] = 'field_s_course_featured_value_op';
-  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['identifier'] = 'field_s_course_featured_value';
-  $handler->display->display_options['filters']['field_s_course_featured_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    13 => 0,
-    11 => 0,
-    9 => 0,
-    7 => 0,
-    5 => 0,
-    15 => 0,
-    17 => 0,
-  );
   /* Filter criterion: Content: Academic Year (field_s_course_year) */
   $handler->display->display_options['filters']['field_s_course_year_value']['id'] = 'field_s_course_year_value';
   $handler->display->display_options['filters']['field_s_course_year_value']['table'] = 'field_data_field_s_course_year';
@@ -447,6 +412,13 @@ function stanford_courses_administration_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'admin/manage/courses';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Manage Courses';
+  $handler->display->display_options['menu']['description'] = 'Manage Courses';
+  $handler->display->display_options['menu']['weight'] = '';
+  $handler->display->display_options['menu']['name'] = 'menu-manage-content-by-type';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
 
   $export['courses_manage'] = $view;
   return $export;
