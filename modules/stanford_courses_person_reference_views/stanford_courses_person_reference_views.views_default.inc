@@ -691,6 +691,27 @@ function stanford_courses_person_reference_views_views_default_views() {
     'field_s_course_person' => 'field_s_course_person',
     'body' => 'body',
   );
+  /* Filter criterion: Content: Subject (field_s_course_subject) */
+  $handler->display->display_options['filters']['field_s_course_subject_value']['id'] = 'field_s_course_subject_value';
+  $handler->display->display_options['filters']['field_s_course_subject_value']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['filters']['field_s_course_subject_value']['field'] = 'field_s_course_subject_value';
+  $handler->display->display_options['filters']['field_s_course_subject_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_subject_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_subject_value']['expose']['operator_id'] = 'field_s_course_subject_value_op';
+  $handler->display->display_options['filters']['field_s_course_subject_value']['expose']['label'] = 'Program';
+  $handler->display->display_options['filters']['field_s_course_subject_value']['expose']['operator'] = 'field_s_course_subject_value_op';
+  $handler->display->display_options['filters']['field_s_course_subject_value']['expose']['identifier'] = 'field_s_course_subject_value';
+  $handler->display->display_options['filters']['field_s_course_subject_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    5 => 0,
+    4 => 0,
+    3 => 0,
+    9 => 0,
+    7 => 0,
+    8 => 0,
+  );
   /* Filter criterion: Field collection item: Year (field_s_course_section_year) */
   $handler->display->display_options['filters']['field_s_course_section_year_value']['id'] = 'field_s_course_section_year_value';
   $handler->display->display_options['filters']['field_s_course_section_year_value']['table'] = 'field_data_field_s_course_section_year';
