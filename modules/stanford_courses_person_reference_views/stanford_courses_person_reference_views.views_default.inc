@@ -1296,13 +1296,6 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_type'] = 'strong';
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Field collection item: Co Instructor */
-  $handler->display->display_options['fields']['field_s_course_co_person']['id'] = 'field_s_course_co_person';
-  $handler->display->display_options['fields']['field_s_course_co_person']['table'] = 'field_data_field_s_course_co_person';
-  $handler->display->display_options['fields']['field_s_course_co_person']['field'] = 'field_s_course_co_person';
-  $handler->display->display_options['fields']['field_s_course_co_person']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['fields']['field_s_course_co_person']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_s_course_co_person']['empty_zero'] = TRUE;
   /* Field: Field collection item: Instructor */
   $handler->display->display_options['fields']['field_s_course_person']['id'] = 'field_s_course_person';
   $handler->display->display_options['fields']['field_s_course_person']['table'] = 'field_data_field_s_course_person';
@@ -1314,6 +1307,13 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_person']['settings'] = array(
     'link' => 1,
   );
+  /* Field: Field collection item: Co Instructor */
+  $handler->display->display_options['fields']['field_s_course_co_person']['id'] = 'field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['table'] = 'field_data_field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['field'] = 'field_s_course_co_person';
+  $handler->display->display_options['fields']['field_s_course_co_person']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_co_person']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_co_person']['empty_zero'] = TRUE;
   /* Field: Field collection item: Year */
   $handler->display->display_options['fields']['field_s_course_section_year']['id'] = 'field_s_course_section_year';
   $handler->display->display_options['fields']['field_s_course_section_year']['table'] = 'field_data_field_s_course_section_year';
