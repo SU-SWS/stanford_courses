@@ -18,10 +18,10 @@ function stanford_courses_node_display_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'stanford_course';
   $field_group->mode = 'default';
-  $field_group->parent_name = '';
+  $field_group->parent_name = 'group_s_postcard_content';
   $field_group->data = array(
     'label' => 'Course Number Group',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_s_course_code',
       1 => 'field_s_course_subject',
@@ -53,7 +53,7 @@ function stanford_courses_node_display_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'More Link Group',
-    'weight' => '3',
+    'weight' => '2',
     'children' => array(
       0 => 'field_s_course_ec_link',
     ),
@@ -68,10 +68,42 @@ function stanford_courses_node_display_field_group_info() {
         'effect' => 'none',
         'speed' => 'fast',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'open',
     ),
   );
   $export['group_morelink_group|node|stanford_course|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_s_postcard_content|node|stanford_course|default';
+  $field_group->group_name = 'group_s_postcard_content';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'stanford_course';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Postcard Content',
+    'weight' => '1',
+    'children' => array(
+      0 => 'body',
+      1 => 'group_coursenum_group',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Postcard Content',
+      'instance_settings' => array(
+        'classes' => 'group-s-postcard-content field-group-div postcard-content',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_s_postcard_content|node|stanford_course|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -85,7 +117,9 @@ function stanford_courses_node_display_field_group_info() {
   $field_group->data = array(
     'label' => 'Postcard Image',
     'weight' => '7',
-    'children' => array(),
+    'children' => array(
+      0 => 'field_s_image_info',
+    ),
     'format_type' => 'div',
     'format_settings' => array(
       'label' => 'Postcard Image',

@@ -13,6 +13,7 @@
  * hook_views_pre_execute
  * hook_views_query_alter
  *
+ * hook_views_pre_view
  */
 
 /**
@@ -23,18 +24,18 @@
 function stanford_courses_link_to_page_views_pre_build(&$view) {
 
     $allowed = sucl_is_allowed_display($view);
-    if (!$allowed) { return; }
+    if (!$allowed) {
+      return;
+    }
 
-      // Initial attempt was to disable the rewrite and set the 'link to node' setting.
-      // Somewhere this breaks and does not render any link
+    // Initial attempt was to disable the rewrite and set the 'link to node' setting.
+    // Somewhere this breaks and does not render any link
 
-//    $view->field['title']->options['alter']['make_link'] = 0;
-//    $view->field['title']->options['alter']['absolute'] = 0;
-//    $view->field['title']->options['alter']['external'] = 1;
-//    $view->field['title']->options['alter']['path'] = '';
-//    $view->field['title']->options['link_to_node'] = 1;
-
-
+    //  $view->field['title']->options['alter']['make_link'] = 0;
+    //  $view->field['title']->options['alter']['absolute'] = 0;
+    //  $view->field['title']->options['alter']['external'] = 1;
+    //  $view->field['title']->options['alter']['path'] = '';
+    //  $view->field['title']->options['link_to_node'] = 1;
 
 }
 
@@ -48,7 +49,7 @@ function stanford_courses_link_to_page_views_pre_render(&$view) {
     return;
   }
 
-  if (!isset($view->field['field_s_course_ec_link'])) {
+  if (!isset($view->field['field_s_course_ec_link']) && isset($view->result[0]->field_field_s_course_ec_link)) {
     return;
   }
 

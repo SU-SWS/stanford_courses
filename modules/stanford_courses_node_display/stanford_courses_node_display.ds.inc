@@ -18,9 +18,14 @@ function stanford_courses_node_display_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'default';
   $ds_fieldsetting->settings = array(
     'section_information' => array(
-      'weight' => '4',
+      'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
+    ),
+    'field_s_image_info' => array(
+      'formatter_settings' => array(
+        'ft' => array(),
+      ),
     ),
   );
   $export['node|stanford_course|default'] = $ds_fieldsetting;
@@ -69,26 +74,30 @@ function stanford_courses_node_display_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'group_s_postcard',
-        1 => 'group_coursenum_group',
-        2 => 'field_s_course_ger',
-        3 => 'field_s_course_ec_link',
-        4 => 'group_morelink_group',
+        1 => 'group_s_postcard_content',
+        2 => 'field_s_course_ec_link',
+        3 => 'group_morelink_group',
+        4 => 'group_coursenum_group',
         5 => 'section_information',
         6 => 'field_s_course_subject',
-        7 => 'field_s_course_code',
-        8 => 'group_s_postcard_image',
+        7 => 'body',
+        8 => 'field_s_course_code',
+        9 => 'group_s_postcard_image',
+        10 => 'field_s_image_info',
       ),
     ),
     'fields' => array(
       'group_s_postcard' => 'ds_content',
-      'group_coursenum_group' => 'ds_content',
-      'field_s_course_ger' => 'ds_content',
+      'group_s_postcard_content' => 'ds_content',
       'field_s_course_ec_link' => 'ds_content',
       'group_morelink_group' => 'ds_content',
+      'group_coursenum_group' => 'ds_content',
       'section_information' => 'ds_content',
       'field_s_course_subject' => 'ds_content',
+      'body' => 'ds_content',
       'field_s_course_code' => 'ds_content',
       'group_s_postcard_image' => 'ds_content',
+      'field_s_image_info' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
