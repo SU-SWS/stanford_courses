@@ -658,7 +658,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 6,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -698,7 +698,7 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -751,7 +751,7 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -860,7 +860,45 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 9,
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-stanford_course-field_s_course_program'
+  $field_instances['node-stanford_course-field_s_course_program'] = array(
+    'bundle' => 'stanford_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Select the program(s) in which this course belongs to. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 23,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_s_course_program',
+    'label' => 'Program',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 8,
     ),
   );
 
@@ -929,7 +967,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -965,7 +1003,7 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1104,7 +1142,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -1173,7 +1211,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -1264,10 +1302,12 @@ function stanford_courses_field_default_field_instances() {
   t('Enter the start time of the course section.');
   t('ExploreCourses Link');
   t('Location(s)');
+  t('Program');
   t('Quarter');
   t('Requirements');
   t('Section Information');
   t('Section Number');
+  t('Select the program(s) in which this course belongs to. ');
   t('Start Time');
   t('Subject');
   t('Subject-Code-ID');
