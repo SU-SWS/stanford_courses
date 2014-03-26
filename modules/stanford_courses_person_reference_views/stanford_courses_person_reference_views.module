@@ -45,6 +45,7 @@ function stanford_courses_person_reference_views_get_subject_options() {
 
     $result = db_select('field_data_field_s_course_subject', 'fdfscs', array('DISTINCT' => TRUE))
         ->fields('fdfscs', array('field_s_course_subject_value'))
+        ->orderBy('field_s_course_subject_value', 'ASC')
         ->execute()
         ->fetchAllAssoc('field_s_course_subject_value');
 
