@@ -1,7 +1,7 @@
 name = Stanford Courses
 description = Automatically creates courses from explorecourses.stanford.edu
 core = 7.x
-package = Stanford
+package = Stanford Art & Art History
 version = 7.x-3.0-art1
 project = stanford_courses
 dependencies[] = ctools

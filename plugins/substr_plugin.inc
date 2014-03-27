@@ -36,6 +36,6 @@ function stanford_courses_substr_callback($source, $item_key, $element_key, &$fi
     $field = substr($field, $start, $length);
   }
   else {
-  $field = substr($field, $start);
+    $field = substr($field, $start);
   }
 }

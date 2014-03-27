@@ -329,6 +329,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -700,7 +702,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['operator_id'] = 'field_s_course_program_tid_op';
   $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['label'] = 'Program';
   $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['operator'] = 'field_s_course_program_tid_op';
-  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['identifier'] = 'field_s_course_program_tid';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['identifier'] = 'field_s_course_program_tid22';
   $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['multiple'] = TRUE;
   $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['remember_roles'] = array(
     2 => '2',
@@ -712,6 +714,14 @@ function stanford_courses_person_reference_views_views_default_views() {
     9 => 0,
     7 => 0,
     8 => 0,
+  );
+  $handler->display->display_options['filters']['field_s_course_program_tid']['group_info']['label'] = 'Program (field_s_course_program)';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['group_info']['identifier'] = 'field_s_course_program_tid';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_s_course_program_tid']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
   );
   $handler->display->display_options['filters']['field_s_course_program_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_s_course_program_tid']['vocabulary'] = 'stanford_program_type';

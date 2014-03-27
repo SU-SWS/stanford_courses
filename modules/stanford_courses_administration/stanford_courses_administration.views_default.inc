@@ -408,6 +408,29 @@ function stanford_courses_administration_views_default_views() {
     17 => 0,
     19 => 0,
   );
+  /* Filter criterion: Content: Program (field_s_course_program) */
+  $handler->display->display_options['filters']['field_s_course_program_tid']['id'] = 'field_s_course_program_tid';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['table'] = 'field_data_field_s_course_program';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['field'] = 'field_s_course_program_tid';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['operator_id'] = 'field_s_course_program_tid_op';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['label'] = 'Program';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['operator'] = 'field_s_course_program_tid_op';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['identifier'] = 'field_s_course_program_tid';
+  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['multiple'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_program_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    5 => 0,
+    4 => 0,
+    3 => 0,
+    9 => 0,
+    7 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['field_s_course_program_tid']['vocabulary'] = 'stanford_program_type';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -419,7 +442,7 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['menu']['name'] = 'menu-manage-content-by-type';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
-
   $export['courses_manage'] = $view;
+
   return $export;
 }

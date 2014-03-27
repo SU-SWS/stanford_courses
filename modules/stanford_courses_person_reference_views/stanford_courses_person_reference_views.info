@@ -1,7 +1,7 @@
 name = Stanford Courses Person Reference Views
 description = Views for courses with the instructor reference
 core = 7.x
-package = Stanford
+package = Stanford Art & Art History
 version = 7.x-1.0-art1
 project = stanford_courses_person_reference_views
 dependencies[] = stanford_courses_person_reference
