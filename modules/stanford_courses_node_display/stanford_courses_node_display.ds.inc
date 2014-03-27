@@ -22,9 +22,30 @@ function stanford_courses_node_display_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
-    'field_s_image_info' => array(
+    'field_s_course_code' => array(
       'formatter_settings' => array(
-        'ft' => array(),
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'span',
+          'ow-cl' => 'course-code',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
+      ),
+    ),
+    'field_s_course_subject' => array(
+      'formatter_settings' => array(
+        'ft' => array(
+          'func' => 'theme_ds_field_expert',
+          'ow' => TRUE,
+          'ow-el' => 'span',
+          'ow-cl' => 'course-subject',
+          'ow-def-cl' => FALSE,
+          'ow-at' => '',
+          'ow-def-at' => FALSE,
+        ),
       ),
     ),
   );
