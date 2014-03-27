@@ -93,7 +93,7 @@ function stanford_courses_strongarm() {
           'weight' => '3',
         ),
         'redirect' => array(
-          'weight' => '18',
+          'weight' => '17',
         ),
       ),
       'display' => array(),

@@ -41,13 +41,13 @@ function stanford_courses_person_reference_views_form_alter(&$form, &$form_state
  */
 function stanford_courses_person_reference_views_form_alter_submit2($form, &$form_state) {
   if (isset($form_state['values']) && isset($form_state['values']['field_s_course_program_tid22'])) {
-      $field = &$form_state['values']['field_s_course_program_tid22'];
-      if (count($field)){
-          $unique = array_unique(array_values($field));
-         if (count($unique) == 1 && $unique[0] === 0) {
-            form_set_value($form['field_s_course_program_tid22'], array(), $form_state);
-            $field = array();
-         }
+    $field = &$form_state['values']['field_s_course_program_tid22'];
+    if (count($field)){
+      $unique = array_unique(array_values($field));
+      if (count($unique) == 1 && $unique[0] === 0) {
+        form_set_value($form['field_s_course_program_tid22'], array(), $form_state);
+        $field = array();
       }
+    }
   }
 }

@@ -658,7 +658,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 6,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -860,7 +860,49 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 10,
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-stanford_course-field_s_course_level'
+  $field_instances['node-stanford_course-field_s_course_level'] = array(
+    'bundle' => 'stanford_course',
+    'default_value' => array(
+      0 => array(
+        'value' => 'undergraduate',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Please select the level for this course. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 24,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'ds_extras_field_template' => '',
+    'entity_type' => 'node',
+    'field_name' => 'field_s_course_level',
+    'label' => 'Level',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 7,
     ),
   );
 
@@ -898,7 +940,7 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -967,7 +1009,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1003,7 +1045,7 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -1073,7 +1115,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1142,7 +1184,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -1211,7 +1253,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -1301,7 +1343,9 @@ function stanford_courses_field_default_field_instances() {
   t('Enter the section number (e.g., 01, 02, 03, etc.)');
   t('Enter the start time of the course section.');
   t('ExploreCourses Link');
+  t('Level');
   t('Location(s)');
+  t('Please select the level for this course. ');
   t('Program');
   t('Quarter');
   t('Requirements');
