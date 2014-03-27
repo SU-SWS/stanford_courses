@@ -124,7 +124,7 @@ function stanford_courses_node_display_field_group_info() {
     'format_settings' => array(
       'label' => 'Postcard Image',
       'instance_settings' => array(
-        'classes' => 'group-s-postcard-image field-group-div postcard-image',
+        'classes' => 'group-s-postcard-image field-group-div postcard-image postcard float-right',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
