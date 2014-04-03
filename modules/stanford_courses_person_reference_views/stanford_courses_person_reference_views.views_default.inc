@@ -10,7 +10,7 @@
 function stanford_courses_person_reference_views_views_default_views() {
   $export = array();
 
-  $view = new view();
+  /* Display: Master */$view = new view();
   $view->name = 'courses_reference';
   $view->description = 'Courses imported from Explore Courses';
   $view->tag = 'default';
@@ -331,6 +331,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['defaults']['query'] = FALSE;
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
@@ -540,7 +541,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_person']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['alter']['text'] = '<div>[field_s_course_person]</div>
-    <div>[field_s_course_co_person]</div>';
+      <div>[field_s_course_co_person]</div>';
   $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['hide_alter_empty'] = FALSE;
@@ -945,7 +946,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter, starting two weeks before the first day of classes.</p>
-          <p>Please use the search form to find future or past courses.</p>';
+            <p>Please use the search form to find future or past courses.</p>';
   $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
   $handler->display->display_options['defaults']['relationships'] = FALSE;
   /* Relationship: Content: Section Information (field_s_course_section_info) */
@@ -1034,7 +1035,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_person']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_person']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['alter']['text'] = '<div>[field_s_course_person]</div>
-    <div>[field_s_course_co_person]</div>';
+      <div>[field_s_course_co_person]</div>';
   $handler->display->display_options['fields']['field_s_course_person']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_s_course_person']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_person']['empty_zero'] = TRUE;
@@ -1520,7 +1521,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>No current courses listed.</p>
-      <p><a class="more-link" href="https://sites.stanford.edu/english/courses">All Current Courses</a></p>';
+        <p><a class="more-link" href="https://sites.stanford.edu/english/courses">All Current Courses</a></p>';
   $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: ExploreCourses Link */
@@ -1567,7 +1568,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_s_course_term] [field_s_course_section_year]<br />
-      [title]';
+        [title]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Field collection item: Instructor (field_s_course_person) */
@@ -1624,6 +1625,7 @@ function stanford_courses_person_reference_views_views_default_views() {
     'PRC' => 'PRC',
     'T/D' => 'T/D',
   );
+
   $export['courses_reference'] = $view;
 
   return $export;
