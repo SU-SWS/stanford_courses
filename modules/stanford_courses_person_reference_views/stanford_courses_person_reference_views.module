@@ -6,48 +6,48 @@
 
 include_once 'stanford_courses_person_reference_views.features.inc';
 
-/**
- * Implements hook_form_alter().
- */
-function stanford_courses_person_reference_views_form_alter(&$form, &$form_state, $form_id) {
+// /**
+//  * Implements hook_form_alter().
+//  */
+// function stanford_courses_person_reference_views_form_alter(&$form, &$form_state, $form_id) {
 
-  // We only want views exposed forms
-  if ($form_id !== "views_exposed_form") {
-    return;
-  }
+//   // We only want views exposed forms
+//   if ($form_id !== "views_exposed_form") {
+//     return;
+//   }
 
-  // We only want the ones on the course search views.
-  if ($form['#id'] !== 'views-exposed-form-courses-reference-search-page' && $form['#id'] !== 'views-exposed-form-courses-search-page') {
-    return;
-  }
+//   // We only want the ones on the course search views.
+//   if ($form['#id'] !== 'views-exposed-form-courses-reference-search-page' && $form['#id'] !== 'views-exposed-form-courses-search-page') {
+//     return;
+//   }
 
-  // Make sure the subject value is there.
-  if (!isset($form['field_s_course_program_tid22'])) {
-    return;
-  }
+//   // Make sure the subject value is there.
+//   if (!isset($form['field_s_course_program_tid22'])) {
+//     return;
+//   }
 
-  $field = &$form['field_s_course_program_tid22'];
-  $field['#type'] = 'checkboxes';
+//   $field = &$form['field_s_course_program_tid22'];
+//   $field['#type'] = 'checkboxes';
 
-  array_unshift($form['#submit'], 'stanford_courses_person_reference_views_form_alter_submit2');
+//   array_unshift($form['#submit'], 'stanford_courses_person_reference_views_form_alter_submit2');
 
-}
+// }
 
-/**
- * [stanford_courses_person_reference_views_form_alter_submit description]
- * @param  [type] $form       [description]
- * @param  [type] $form_state [description]
- * @return [type]             [description]
- */
-function stanford_courses_person_reference_views_form_alter_submit2($form, &$form_state) {
-  if (isset($form_state['values']) && isset($form_state['values']['field_s_course_program_tid22'])) {
-    $field = &$form_state['values']['field_s_course_program_tid22'];
-    if (count($field)){
-      $unique = array_unique(array_values($field));
-      if (count($unique) == 1 && $unique[0] === 0) {
-        form_set_value($form['field_s_course_program_tid22'], array(), $form_state);
-        $field = array();
-      }
-    }
-  }
-}
+// /**
+//  * [stanford_courses_person_reference_views_form_alter_submit description]
+//  * @param  [type] $form       [description]
+//  * @param  [type] $form_state [description]
+//  * @return [type]             [description]
+//  */
+// function stanford_courses_person_reference_views_form_alter_submit2($form, &$form_state) {
+//   if (isset($form_state['values']) && isset($form_state['values']['field_s_course_program_tid22'])) {
+//     $field = &$form_state['values']['field_s_course_program_tid22'];
+//     if (count($field)){
+//       $unique = array_unique(array_values($field));
+//       if (count($unique) == 1 && $unique[0] === 0) {
+//         form_set_value($form['field_s_course_program_tid22'], array(), $form_state);
+//         $field = array();
+//       }
+//     }
+//   }
+// }
