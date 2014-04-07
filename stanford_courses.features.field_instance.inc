@@ -175,7 +175,7 @@ function stanford_courses_field_default_field_instances() {
     'bundle' => 'field_s_course_section_info',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Enter the screening time for this section (e.g., Monday 7:30pm Braun Auditorium).',
     'display' => array(
       'default' => array(
         'label' => 'above',

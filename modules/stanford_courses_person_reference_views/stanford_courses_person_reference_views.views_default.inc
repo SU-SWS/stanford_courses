@@ -636,6 +636,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_screening']['field'] = 'field_s_course_screening';
   $handler->display->display_options['fields']['field_s_course_screening']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_screening']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_screening']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_screening']['alter']['text'] = '<span class="course-screening-label">Screening: </span><span class="course-screening-value">[field_s_course_screening]</span>';
   $handler->display->display_options['fields']['field_s_course_screening']['alter']['nl2br'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_screening']['element_label_colon'] = FALSE;
   /* Field: Field collection item: Syllabus */
@@ -1167,6 +1169,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_screening']['field'] = 'field_s_course_screening';
   $handler->display->display_options['fields']['field_s_course_screening']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_screening']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_screening']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_screening']['alter']['text'] = '<span class="course-screening-label">Screening: </span><span class="course-screening-value">[field_s_course_screening]</span>';
   $handler->display->display_options['fields']['field_s_course_screening']['alter']['nl2br'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_screening']['element_label_colon'] = FALSE;
   /* Field: Field collection item: Syllabus */
@@ -1535,6 +1539,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_screening']['field'] = 'field_s_course_screening';
   $handler->display->display_options['fields']['field_s_course_screening']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_screening']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_screening']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_screening']['alter']['text'] = '<span class="course-screening-label">Screening: </span><span class="course-screening-value">[field_s_course_screening]</span>';
   $handler->display->display_options['fields']['field_s_course_screening']['alter']['nl2br'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_screening']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['sorts'] = FALSE;
