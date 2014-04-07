@@ -38,14 +38,15 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'views_bulk_operations' => 'views_bulk_operations',
-    'field_s_image_image' => 'field_s_image_image',
+    'field_s_course_subject' => 'field_s_course_subject',
     'field_s_course_code' => 'field_s_course_code',
     'title' => 'title',
     'timestamp' => 'title',
     'status' => 'status',
     'changed' => 'changed',
-    'field_s_course_featured' => 'field_s_course_featured',
     'field_s_course_year' => 'field_s_course_year',
+    'field_s_course_program' => 'field_s_course_program',
+    'field_s_course_level' => 'field_s_course_level',
     'nid' => 'nid',
     'edit_node' => 'edit_node',
     'view_node' => 'edit_node',
@@ -58,15 +59,15 @@ function stanford_courses_administration_views_default_views() {
       'separator' => ' | ',
       'empty_column' => 0,
     ),
-    'field_s_image_image' => array(
-      'sortable' => 0,
+    'field_s_course_subject' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_s_course_code' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -98,15 +99,20 @@ function stanford_courses_administration_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_s_course_featured' => array(
+    'field_s_course_year' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_s_course_year' => array(
-      'sortable' => 0,
+    'field_s_course_program' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_s_course_level' => array(
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -135,12 +141,6 @@ function stanford_courses_administration_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = '<h3><a href="/admin/manage">Back to Manage All Content</a></h3>';
-  $handler->display->display_options['header']['area']['format'] = 'content_editor_text_format';
   /* Field: Bulk operations: Content */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'node';
@@ -280,6 +280,10 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['display_result'] = 1;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['merge_single_action'] = 0;
   $handler->display->display_options['fields']['views_bulk_operations']['vbo']['force_single'] = 0;
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject']['id'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['field'] = 'field_s_course_subject';
   /* Field: Content: Code */
   $handler->display->display_options['fields']['field_s_course_code']['id'] = 'field_s_course_code';
   $handler->display->display_options['fields']['field_s_course_code']['table'] = 'field_data_field_s_course_code';
@@ -310,6 +314,16 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_year']['id'] = 'field_s_course_year';
   $handler->display->display_options['fields']['field_s_course_year']['table'] = 'field_data_field_s_course_year';
   $handler->display->display_options['fields']['field_s_course_year']['field'] = 'field_s_course_year';
+  /* Field: Content: Program */
+  $handler->display->display_options['fields']['field_s_course_program']['id'] = 'field_s_course_program';
+  $handler->display->display_options['fields']['field_s_course_program']['table'] = 'field_data_field_s_course_program';
+  $handler->display->display_options['fields']['field_s_course_program']['field'] = 'field_s_course_program';
+  $handler->display->display_options['fields']['field_s_course_program']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_s_course_program']['multi_type'] = 'ul';
+  /* Field: Content: Level */
+  $handler->display->display_options['fields']['field_s_course_level']['id'] = 'field_s_course_level';
+  $handler->display->display_options['fields']['field_s_course_level']['table'] = 'field_data_field_s_course_level';
+  $handler->display->display_options['fields']['field_s_course_level']['field'] = 'field_s_course_level';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
   $handler->display->display_options['fields']['nid']['table'] = 'node';
@@ -431,6 +445,26 @@ function stanford_courses_administration_views_default_views() {
     8 => 0,
   );
   $handler->display->display_options['filters']['field_s_course_program_tid']['vocabulary'] = 'stanford_program_type';
+  /* Filter criterion: Content: Level (field_s_course_level) */
+  $handler->display->display_options['filters']['field_s_course_level_value']['id'] = 'field_s_course_level_value';
+  $handler->display->display_options['filters']['field_s_course_level_value']['table'] = 'field_data_field_s_course_level';
+  $handler->display->display_options['filters']['field_s_course_level_value']['field'] = 'field_s_course_level_value';
+  $handler->display->display_options['filters']['field_s_course_level_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_level_value']['expose']['operator_id'] = 'field_s_course_level_value_op';
+  $handler->display->display_options['filters']['field_s_course_level_value']['expose']['label'] = 'Level';
+  $handler->display->display_options['filters']['field_s_course_level_value']['expose']['operator'] = 'field_s_course_level_value_op';
+  $handler->display->display_options['filters']['field_s_course_level_value']['expose']['identifier'] = 'field_s_course_level_value';
+  $handler->display->display_options['filters']['field_s_course_level_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    5 => 0,
+    4 => 0,
+    3 => 0,
+    9 => 0,
+    7 => 0,
+    8 => 0,
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
