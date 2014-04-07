@@ -116,3 +116,4 @@ features[variable][] = save_continue_stanford_course_importer
 features_exclude[field_base][body] = body
 features_exclude[taxonomy][stanford_program_type] = stanford_program_type
 project path = sites/default/modules/stanford
+stylesheets[all][] = css/stanford_courses.css
