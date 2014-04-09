@@ -30,6 +30,7 @@ function stanford_courses_administration_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '50';
   $handler->display->display_options['pager']['options']['offset'] = '0';
@@ -198,7 +199,9 @@ function stanford_courses_administration_views_default_views() {
       'settings' => array(
         'show_all_tokens' => 0,
         'display_values' => array(
-          'stanford_course::field_s_course_featured' => 'stanford_course::field_s_course_featured',
+          'stanford_course::field_s_image_info' => 'stanford_course::field_s_image_info',
+          'stanford_course::field_s_course_level' => 'stanford_course::field_s_course_level',
+          'stanford_course::field_s_course_program' => 'stanford_course::field_s_course_program',
         ),
       ),
     ),
