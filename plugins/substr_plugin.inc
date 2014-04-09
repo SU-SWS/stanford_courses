@@ -25,17 +25,16 @@ function stanford_courses_substr_form($importer, $element_key, $settings) {
   $form['length']['#size'] = '3';
   $form['length']['#description'] = t('Enter the length of your substring.');
 
-  
   return $form;
 }
 
 function stanford_courses_substr_callback($source, $item_key, $element_key, &$field, $settings) {
   $start = $settings['start'];
-  if(!empty($settings['length'])) {
+  if(!empty($settings['length']) && !empty($field)) {
     $length = $settings['length'];
     $field = substr($field, $start, $length);
   }
-  else {
-  $field = substr($field, $start);
+  else if (!empty($field)) {
+    $field = substr($field, $start);
   }
 }
