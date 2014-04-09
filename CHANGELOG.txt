@@ -1,6 +1,11 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-3.0-alpha2, 2014-03-31
+--------------------------------------------
+Minor change to base field for section to prevent Feature from installing in
+  an overridden state
+
 Stanford Courses 7.x-3.0-alpha1, 2014-03-11
 --------------------------------------------
 - Initial Version 3 Release.
