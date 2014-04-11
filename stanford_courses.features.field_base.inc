@@ -202,6 +202,35 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_s_course_instructor'
+  $field_bases['field_s_course_instructor'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_s_course_instructor',
+    'foreign keys' => array(
+      'format' => array(
+        'columns' => array(
+          'format' => 'format',
+        ),
+        'table' => 'filter_format',
+      ),
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_s_course_location'
   $field_bases['field_s_course_location'] = array(
     'active' => 1,
