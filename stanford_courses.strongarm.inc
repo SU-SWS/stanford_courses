@@ -29,14 +29,78 @@ function stanford_courses_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_field_collection_item__field_s_course_section_info';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_12_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_3_col_header' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_4_col_header' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_6_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_6_col_banner_short' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_6_col_banner_tall' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_8_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_8_col_banner_short' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_8_col_banner_tall' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_9_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_9_col_banner_short' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_icon_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_large_scaled' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_large_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_medium_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_sm_profile' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_small_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_thumbnail_square' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
           'weight' => '40',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
       ),
       'display' => array(),
