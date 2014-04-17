@@ -76,6 +76,7 @@ features[field_instance][] = field_collection_item-field_s_course_section_info-f
 features[field_instance][] = field_collection_item-field_s_course_section_info-field_s_course_term
 features[field_instance][] = field_collection_item-field_s_course_section_info-field_s_course_time
 features[field_instance][] = field_collection_item-field_s_course_section_info-field_s_course_time_end
+features[field_instance][] = node-stanford_course-body
 features[field_instance][] = node-stanford_course-field_s_course_code
 features[field_instance][] = node-stanford_course-field_s_course_code_integer
 features[field_instance][] = node-stanford_course-field_s_course_ec_link
