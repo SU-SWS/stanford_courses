@@ -652,74 +652,6 @@ function stanford_courses_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_course-body'
-  $field_instances['node-stanford_course-body'] = array(
-    'bundle' => 'stanford_course',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'body',
-    'label' => 'Body',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'content_editor_text_format' => 'content_editor_text_format',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'content_editor_text_format' => array(
-              'weight' => -10,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 1,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'display_summary' => 0,
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 20,
-        'summary_rows' => 5,
-      ),
-      'type' => 'text_textarea_with_summary',
-      'weight' => 15,
-    ),
-  );
-
   // Exported field_instance: 'node-stanford_course-field_s_course_code'
   $field_instances['node-stanford_course-field_s_course_code'] = array(
     'bundle' => 'stanford_course',
@@ -1391,7 +1323,6 @@ function stanford_courses_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Academic Year');
-  t('Body');
   t('Choose the start and end dates of the Quarter.');
   t('Class ID');
   t('Code');
