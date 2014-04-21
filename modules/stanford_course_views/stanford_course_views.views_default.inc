@@ -567,6 +567,7 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_instructor']['table'] = 'field_data_field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['field'] = 'field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_instructor']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_instructor']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_s_course_instructor']['delta_offset'] = '0';
   /* Field: Field collection item: Year */
@@ -1129,6 +1130,7 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_instructor']['table'] = 'field_data_field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['field'] = 'field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['fields']['field_s_course_instructor']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_instructor']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_s_course_instructor']['delta_offset'] = '0';
   /* Field: Field collection item: Year */
