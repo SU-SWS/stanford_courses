@@ -710,29 +710,6 @@ function stanford_course_views_views_default_views() {
     15 => 0,
     17 => 0,
   );
-  /* Filter criterion: Field collection item: Instructor(s) (field_s_course_instructor) */
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['id'] = 'field_s_course_instructor_value';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['table'] = 'field_data_field_s_course_instructor';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['field'] = 'field_s_course_instructor_value';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['operator_id'] = 'field_s_course_instructor_value_op';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['label'] = 'Search by instructor';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['operator'] = 'field_s_course_instructor_value_op';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['identifier'] = 'field_s_course_instructor_value';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    11 => 0,
-    9 => 0,
-    7 => 0,
-    5 => 0,
-    13 => 0,
-    15 => 0,
-    17 => 0,
-  );
   /* Filter criterion: Field collection item: Year (field_s_course_section_year) */
   $handler->display->display_options['filters']['field_s_course_section_year_value']['id'] = 'field_s_course_section_year_value';
   $handler->display->display_options['filters']['field_s_course_section_year_value']['table'] = 'field_data_field_s_course_section_year';
