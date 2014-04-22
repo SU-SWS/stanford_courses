@@ -45,8 +45,11 @@ function stanford_courses_field_multiple_values_form($importer, $element_key, $s
 }
 
 /**
- * Callback function for feeds tamper datemath plugin. Processes input data into
- * a time and performs date math like 'add one day' to it.
+ * Callback function for feeds tamper field_mulitple values plugin. Takes the
+ * results of an existing x-path results set as raw xml and runs another
+ * sub query on the results in order to get multiple values into one field. Very
+ * useful for when processing values on a field-collection.
+ *
  * @param  [type] $source      [description]
  * @param  [type] $item_key    [description]
  * @param  [type] $element_key [description]
@@ -83,6 +86,8 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
       continue;
     }
 
+    // On each result set of xml run another xpath over it to find the data
+    // that we want.
     foreach ($v->xpath($settings['subxpath']) as $result) {
       switch($settings['datatype']) {
         case "integer":
@@ -91,8 +96,9 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
         case "string":
         default:
           $field[$k][] = (string) $result;
-      }
-    }
-  }
+      } //switch
+    } // foreach
+
+  } // foreach
 
 }
