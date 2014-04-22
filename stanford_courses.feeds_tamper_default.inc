@@ -167,34 +167,17 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'stanford_course_importer-xpathparser_24-find_replace_regex';
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_24-field_multiple_values';
   $feeds_tamper->importer = 'stanford_course_importer';
   $feeds_tamper->source = 'xpathparser:24';
-  $feeds_tamper->plugin_id = 'find_replace_regex';
+  $feeds_tamper->plugin_id = 'field_multiple_values';
   $feeds_tamper->settings = array(
-    'find' => '/\\<\\/{0,1}name\\>/',
-    'replace' => '',
-    'limit' => '',
-    'real_limit' => -1,
+    'subxpath' => '//instructor/name',
+    'datatype' => 'string',
   );
-  $feeds_tamper->weight = 2;
-  $feeds_tamper->description = 'Find replace REGEX';
-  $export['stanford_course_importer-xpathparser_24-find_replace_regex'] = $feeds_tamper;
-
-  $feeds_tamper = new stdClass();
-  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
-  $feeds_tamper->api_version = 2;
-  $feeds_tamper->id = 'stanford_course_importer-xpathparser_24-implode';
-  $feeds_tamper->importer = 'stanford_course_importer';
-  $feeds_tamper->source = 'xpathparser:24';
-  $feeds_tamper->plugin_id = 'implode';
-  $feeds_tamper->settings = array(
-    'glue' => ', ',
-    'real_glue' => ', ',
-  );
-  $feeds_tamper->weight = 0;
-  $feeds_tamper->description = 'Implode';
-  $export['stanford_course_importer-xpathparser_24-implode'] = $feeds_tamper;
+  $feeds_tamper->weight = 3;
+  $feeds_tamper->description = 'Mulitple Values to Multiple Value Field';
+  $export['stanford_course_importer-xpathparser_24-field_multiple_values'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */

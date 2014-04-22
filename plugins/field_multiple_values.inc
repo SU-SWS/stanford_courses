@@ -2,7 +2,8 @@
 /**
  * @file
  * Feeds Tamper Plugin
- * Run values through some date math processing().
+ * Provides a sub xpath selector for parsing xml for field collections with
+ * multiple value fields.
  */
 
 /**
@@ -23,6 +24,23 @@ $plugin = array(
  */
 function stanford_courses_field_multiple_values_form($importer, $element_key, $settings) {
     $form = array();
+    $form['help']['#markup'] = 'Provide a secondary x-path selector. This selector starts from the results of the X-Path parser that this tamper is applied to. This will allow you to maintain the correct order in field collection items with multiple values.';
+    $form['subxpath'] = array(
+      '#type' => 'textfield',
+      '#title' => 'X-Path',
+      '#description' => t('Provide a secondary x-path selector for parsing individual items.'),
+      '#default_value' => $settings['subxpath'],
+    );
+    $form['datatype'] = array(
+      '#type' => 'select',
+      '#title' => 'Data Type',
+      '#options' => array(
+        'string' => t('String'),
+        'integer' => t('Integer'),
+      ),
+      '#description' => t('Provide the type of data the X-Path selector should return.'),
+      '#default_value' => $settings['datatype'],
+    );
     return $form;
 }
 
@@ -38,26 +56,43 @@ function stanford_courses_field_multiple_values_form($importer, $element_key, $s
  */
 function stanford_courses_field_multiple_values_callback($source, $item_key, $element_key, &$field, $settings) {
 
-   $new_field = array();
-   $values = array();
+  // Storage
+  $new_field = array();
+  $values = array();
 
-   if (is_array($field)) {
-     foreach ($field as $section) {
-         $values[] = new SimpleXMLElement($section);
-     }
-   }
-    else {
-        $values[] = new SimpleXMLElement($field);
+  // Check for single and multiple value results from previous x-path.
+  if (is_array($field)) {
+   foreach ($field as $section) {
+     // Turn raw result xml to a workable format.
+     $values[] = new SimpleXMLElement($section);
+    }
+  }
+  else {
+    // Turn raw result xml to a workable format.
+    $values[] = new SimpleXMLElement($field);
+  }
+
+  // Reset the field values.
+  $field = array();
+
+  // Loop through the previous x-path results and run through
+  foreach($values as $k => $v) {
+
+    // If not an xml object then just continue.
+    if (!is_object($v)) {
+      continue;
     }
 
-   $field = array();
-
-   foreach($values as $k => $v) {
-
-       foreach ($v->xpath('//instructor') as $instructor) {
-          $field[$k][] = (string) $instructor->name;
-       }
-
-   }
+    foreach ($v->xpath($settings['subxpath']) as $result) {
+      switch($settings['datatype']) {
+        case "integer":
+          $field[$k][] = (integer) $result;
+          break;
+        case "string":
+        default:
+          $field[$k][] = (string) $result;
+      }
+    }
+  }
 
 }
