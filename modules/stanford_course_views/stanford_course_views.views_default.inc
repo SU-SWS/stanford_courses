@@ -638,6 +638,8 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = 'Links';
+  $handler->display->display_options['fields']['edit_node']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['edit_node']['element_wrapper_class'] = 'edit-link';
   $handler->display->display_options['fields']['edit_node']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Edit';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
@@ -714,6 +716,7 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_instructor_value']['table'] = 'field_data_field_s_course_instructor';
   $handler->display->display_options['filters']['field_s_course_instructor_value']['field'] = 'field_s_course_instructor_value';
   $handler->display->display_options['filters']['field_s_course_instructor_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['operator'] = 'contains';
   $handler->display->display_options['filters']['field_s_course_instructor_value']['group'] = 1;
   $handler->display->display_options['filters']['field_s_course_instructor_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['operator_id'] = 'field_s_course_instructor_value_op';
