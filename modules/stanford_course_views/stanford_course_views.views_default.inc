@@ -567,7 +567,6 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_instructor']['table'] = 'field_data_field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['field'] = 'field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['fields']['field_s_course_instructor']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_instructor']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_s_course_instructor']['delta_offset'] = '0';
   /* Field: Field collection item: Year */
@@ -707,6 +706,28 @@ function stanford_course_views_views_default_views() {
     9 => 0,
     7 => 0,
     5 => 0,
+    15 => 0,
+    17 => 0,
+  );
+  /* Filter criterion: Field collection item: Instructor(s) (field_s_course_instructor) */
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['id'] = 'field_s_course_instructor_value';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['table'] = 'field_data_field_s_course_instructor';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['field'] = 'field_s_course_instructor_value';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['operator_id'] = 'field_s_course_instructor_value_op';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['label'] = 'Search by Instructor';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['operator'] = 'field_s_course_instructor_value_op';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['identifier'] = 'field_s_course_instructor_value';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    13 => 0,
     15 => 0,
     17 => 0,
   );
@@ -1107,7 +1128,6 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_instructor']['table'] = 'field_data_field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['field'] = 'field_s_course_instructor';
   $handler->display->display_options['fields']['field_s_course_instructor']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['fields']['field_s_course_instructor']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_instructor']['type'] = 'text_plain';
   $handler->display->display_options['fields']['field_s_course_instructor']['delta_offset'] = '0';
   /* Field: Field collection item: Year */
