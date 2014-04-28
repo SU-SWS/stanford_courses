@@ -54,8 +54,10 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:21' => 'sections/section/sectionNumber',
           'xpathparser:22' => 'sections/section/component',
           'xpathparser:23' => 'sections/section/classId',
+          'xpathparser:24' => 'sections/section',
         ),
         'rawXML' => array(
+          'xpathparser:24' => 'xpathparser:24',
           'xpathparser:0' => 0,
           'xpathparser:1' => 0,
           'xpathparser:2' => 0,
@@ -83,7 +85,7 @@ function stanford_courses_feeds_importer_default() {
         ),
         'context' => '//courses/course',
         'exp' => array(
-          'errors' => 0,
+          'errors' => 1,
           'debug' => array(
             'context' => 0,
             'xpathparser:0' => 0,
@@ -110,6 +112,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:21' => 0,
             'xpathparser:22' => 0,
             'xpathparser:23' => 0,
+            'xpathparser:24' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -239,6 +242,11 @@ function stanford_courses_feeds_importer_default() {
           23 => array(
             'source' => 'xpathparser:23',
             'target' => 'field_s_course_section_info:field_s_course_section_class_id',
+            'unique' => FALSE,
+          ),
+          24 => array(
+            'source' => 'xpathparser:24',
+            'target' => 'field_s_course_section_info:field_s_course_instructor',
             'unique' => FALSE,
           ),
         ),

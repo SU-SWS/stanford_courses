@@ -167,6 +167,21 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_24-field_multiple_values';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:24';
+  $feeds_tamper->plugin_id = 'field_multiple_values';
+  $feeds_tamper->settings = array(
+    'subxpath' => '//instructor/name',
+    'datatype' => 'string',
+  );
+  $feeds_tamper->weight = 3;
+  $feeds_tamper->description = 'Mulitple Values to Multiple Value Field';
+  $export['stanford_course_importer-xpathparser_24-field_multiple_values'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'stanford_course_importer-xpathparser_9-substr_plugin';
   $feeds_tamper->importer = 'stanford_course_importer';
   $feeds_tamper->source = 'xpathparser:9';

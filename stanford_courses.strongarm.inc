@@ -29,14 +29,78 @@ function stanford_courses_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_field_collection_item__field_s_course_section_info';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_12_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_3_col_header' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_4_col_header' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_6_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_6_col_banner_short' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_6_col_banner_tall' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_8_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_8_col_banner_short' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_8_col_banner_tall' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_9_col_banner' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_9_col_banner_short' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_icon_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_large_scaled' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_large_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_medium_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_sm_profile' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_small_square' => array(
+        'custom_settings' => FALSE,
+      ),
+      'stanford_thumbnail_square' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
           'weight' => '40',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
       ),
       'display' => array(),
@@ -84,7 +148,7 @@ function stanford_courses_strongarm() {
           'weight' => '1',
         ),
         'redirect' => array(
-          'weight' => '30',
+          'weight' => '16',
         ),
       ),
       'display' => array(),
@@ -129,78 +193,106 @@ function stanford_courses_strongarm() {
   $strongarm->value = array(
     'title' => array(
       'region' => 'main',
-      'weight' => '-5',
+      'weight' => '0',
       'has_required' => TRUE,
       'title' => 'Title',
     ),
     'additional_settings' => array(
       'region' => 'main',
-      'weight' => '99',
+      'weight' => '13',
       'has_required' => FALSE,
       'title' => 'Vertical tabs',
       'hidden' => 0,
     ),
     'actions' => array(
       'region' => 'main',
-      'weight' => '100',
+      'weight' => '14',
       'has_required' => FALSE,
       'title' => 'Save',
       'hidden' => 0,
     ),
     'body' => array(
       'region' => 'main',
-      'weight' => '3',
+      'weight' => '12',
       'has_required' => FALSE,
-      'title' => 'Description',
+      'title' => 'Body',
       'hidden' => 0,
     ),
     'field_s_course_year' => array(
       'region' => 'main',
-      'weight' => '4',
+      'weight' => '1',
       'has_required' => FALSE,
       'title' => 'Academic Year',
       'hidden' => 0,
     ),
     'field_s_course_ger' => array(
       'region' => 'main',
-      'weight' => '5',
+      'weight' => '2',
       'has_required' => FALSE,
       'title' => 'Requirements',
       'hidden' => 0,
     ),
     'field_s_course_code' => array(
       'region' => 'main',
-      'weight' => '7',
+      'weight' => '4',
       'has_required' => FALSE,
       'title' => 'Code',
       'hidden' => 0,
     ),
     'field_s_course_subject' => array(
       'region' => 'main',
-      'weight' => '6',
+      'weight' => '3',
       'has_required' => FALSE,
       'title' => 'Subject',
       'hidden' => 0,
     ),
     'field_s_course_id' => array(
       'region' => 'main',
-      'weight' => '8',
+      'weight' => '5',
       'has_required' => FALSE,
       'title' => 'Course ID',
       'hidden' => 0,
     ),
     'field_s_course_scid' => array(
       'region' => 'main',
-      'weight' => '9',
+      'weight' => '6',
       'has_required' => FALSE,
       'title' => 'Subject-Code-ID',
       'hidden' => 1,
     ),
     'field_s_course_section_info' => array(
       'region' => 'main',
-      'weight' => '10',
+      'weight' => '8',
       'has_required' => FALSE,
       'title' => 'Section Information',
+      'hidden' => 0,
+    ),
+    'field_s_course_code_integer' => array(
+      'region' => 'main',
+      'weight' => '11',
+      'has_required' => FALSE,
+      'title' => 'Code (Integer)',
+      'hidden' => 0,
+    ),
+    'field_s_course_ec_link' => array(
+      'region' => 'main',
+      'weight' => '10',
+      'has_required' => FALSE,
+      'title' => 'ExploreCourses Link',
+      'hidden' => 0,
+    ),
+    'field_s_course_tag_name' => array(
+      'region' => 'main',
+      'weight' => '9',
+      'has_required' => FALSE,
+      'title' => 'Tag: Name',
+      'hidden' => 0,
+    ),
+    'field_s_course_tag_org' => array(
+      'region' => 'main',
+      'weight' => '7',
+      'has_required' => FALSE,
+      'title' => 'Tag: Organization',
       'hidden' => 0,
     ),
   );
