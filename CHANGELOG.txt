@@ -1,6 +1,10 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 6.x-1.0-beta9, 2014-04-30
+------------------------------------------
+Fixed fatal call-time pass-by-reference error in PHP 5.4+
+
 Stanford Courses 6.x-1.0-beta8, 2012-09-11
 ------------------------------------------
 Changes since -beta7:
