@@ -148,6 +148,9 @@ function stanford_courses_feeds_set_target($source, $entity, $target, $value) {
     }
 
     if (isset($_sub_targets[$sub_target]['callback']) && function_exists($_sub_targets[$sub_target]['callback'])) {
+
+      stanford_courses_sub_target_pre_callback_parse($target, $sub_target, $entity, $field, $field_collection_item, $value);
+
       $callback = $_sub_targets[$sub_target]['callback'];
       $callback($source, $field_collection_item, $sub_target, $v);
     }
@@ -167,9 +170,35 @@ function stanford_courses_feeds_set_target($source, $entity, $target, $value) {
 }
 
 /**
+ * Multiple field values are a pain in the rear. They are additive and we do not
+ * always want them to be. This function targest a couple of items and truncates
+ * their values before saving the new ones.
+ * @param $target
+ * @param $entity
+ * @param $field
+ * @param $field_collection_item
+ * @param $value
+ */
+function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$entity, &$field, &$field_collection_item, $value) {
+
+    // Clear out all previous values for this field as we want a replace and not an additive.
+    if ($target == "field_s_course_section_info" && $sub_target == "field_s_course_instructor") {
+        $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
+    }
+
+    // Clear out all previous values for this field as we want a replace and not an additive.
+    if ($target == "field_s_course_section_info" && $sub_target == "field_s_course_term") {
+        $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
+    }
+
+
+}
+
+
+/**
  * Implements hook_feeds_presave().
  */
-function stanford_courses_feeds_presave($source, $entity) {
+function stanford_courses_feeds_presave($source, $entity, $item, $entity_id) {
   // Do not save any empty field collection items that may have been created
   // during the mapping process. Since the mapping is done field by field in
   // stanford_courses_feeds_set_target(), we have to wait until this hook (when
@@ -204,4 +233,9 @@ function stanford_courses_feeds_presave($source, $entity) {
       }
     }
   }
+
+  // Some fields need to be truncated before being saved. Lets do that now.
+
+
 }
+
