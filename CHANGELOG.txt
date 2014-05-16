@@ -1,6 +1,27 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-3.0-alpha3, 2014-05-16
+--------------------------------------------
+  -  Added truncate function that clears out the values for instructor and term on the field collection so that they are no additive and have duplicates.
+  - Merge pull request #27 from SU-SWS/7.x-3.x-instructors
+  - Change the instructor filter to contains
+  - Added dependency versions to .info file
+  - Added instructor column and exposed filter
+  - Small formatting fixes
+  - Rebuilt with dynamic processing field
+  - removed instructors exposed filter
+  - Added field collection group advanced
+  - Moved body instance from node display to content type feature
+  - Moved field_s_course_co_person from reference feature to content type feature
+  - Added instructor to course views
+  - Moved instructor to FC, added import xpathpasers
+  - Updated view with description and instructor
+  - Added instructor and body fields
+  - Removed program and level from fields
+  - Added field bases for level and program
+  - VBO Improvements
+
 Stanford Courses 7.x-3.0-alpha2, 2014-03-31
 --------------------------------------------
 Minor change to base field for section to prevent Feature from installing in
