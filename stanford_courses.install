@@ -102,6 +102,7 @@ function stanford_courses_update_7200(&$sandbox) {
   // collections. Do it here or die.
   if (drupal_is_cli()) {
     if(!_require_helper('field_collection')) {
+      throw new DrupalUpdateException('Missing Field Collection Dependency');
       return FALSE;
     }
   }
@@ -214,8 +215,7 @@ function stanford_courses_update_7200(&$sandbox) {
   variable_del('features_semaphore');
 
    features_revert(
-    array(
-      'stanford_courses' => array(
+    array('stanford_courses' => array(
         'field',
         'ctools',
         'feeds_importer',
@@ -324,6 +324,17 @@ function _stanford_courses_dump_views() {
 
   return TRUE;
 }
+
+/**
+ * Update from 7.x-2.x -> 7.x-3.x
+ */
+function stanford_courses_update_7300(&$sandbox) {
+
+  features_revert(array('stanford_courses'));
+
+}
+
+
 
 /**
  * Checks to see if a module exists and is enabled. If the module is not
