@@ -172,6 +172,15 @@ function stanford_courses_update_7200(&$sandbox) {
       continue;
     }
 
+    // Ok some fun things with going from 1.x -> 3.x and features. Looks like
+    // this code triggers the feature to create the new tables. Lets check to
+    // see if they already exist and kill em.
+
+    if(db_table_exists('field_data_' . $new_field_name)) {
+      db_drop_table('field_data_' . $new_field_name);
+      db_drop_table('field_revision_' . $new_field_name);
+    }
+
     // Define some things...
     $data_table_name = 'field_data_' . $field_name;
     $revision_table_name = 'field_revision_' . $field_name;
@@ -228,6 +237,14 @@ function stanford_courses_update_7200(&$sandbox) {
   // I wonder why this isnt in the semaphore table?
   variable_del('features_semaphore');
 
+  // Get the version of features that is installed.
+  $f_info = drupal_parse_info_file(drupal_get_path('module', 'features') . '/features.info');
+  $version_full = $f_info['version'];
+  $version_parts = explode("-", $version_full);
+  $minors = explode(".", $version_parts[1]);
+  $minor = intval($minors[0]);
+
+  if ($minor <= 1) {
    features_revert(
     array('stanford_courses' => array(
         'field',
@@ -239,6 +256,21 @@ function stanford_courses_update_7200(&$sandbox) {
         )
       )
     );
+  } else {
+    features_revert(
+    array('stanford_courses' => array(
+        'field',
+        'field_base',
+        'field_instance',
+        'ctools',
+        'feeds_importer',
+        'feeds_tamper',
+        'node',
+        'variable',
+        )
+      )
+    );
+  }
 
   // We are doing some very hacky things. Lets be sure the lock is removed
   // after we are done here.
@@ -345,7 +377,17 @@ function _stanford_courses_dump_views() {
 function stanford_courses_update_7300(&$sandbox) {
 
   // Revert for the user.
-  features_revert(array('stanford_courses'));
+  features_revert(
+    array('stanford_courses' => array(
+      'field_base',
+      'field_instance',
+      'ctools',
+      'feeds_importer',
+      'feeds_tamper',
+      'node',
+      'variable',
+    ))
+  );
 
 }
 
