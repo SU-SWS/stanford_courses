@@ -376,6 +376,19 @@ function _stanford_courses_dump_views() {
  */
 function stanford_courses_update_7300(&$sandbox) {
 
+  // Upadate the importers to use the new xml schema
+  // xml-20111011  ->>- xml-20130201
+
+  $rows = db_query("SELECT * FROM {feeds_source}");
+  foreach ($rows as $row) {
+    $source = feeds_source($row->id, $row->feed_nid);
+    $config = $source->getConfig();
+    $config['FeedsHTTPFetcher']['source'] = str_replace("xml-20111011", "xml-20130201", $config['FeedsHTTPFetcher']['source']);
+    var_dump($config['FeedsHTTPFetcher']['source']);
+    $source->setConfig($config);
+    $source->save();
+  }
+
   // Revert for the user.
   features_revert(
     array('stanford_courses' => array(
