@@ -1,6 +1,20 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-3.0.1, 2014-07-2
+--------------------------------------------
+- Added field group to requirements
+- fixes for upgrade path from 1.x -> 2.x -> 3.x
+- fixes for upgrade path from 1.x -> 3.x
+
+
+Stanford Courses 7.x-3.0.0, 2014-06-30
+--------------------------------------------
+- Added subject, apply to filters
+- Removed superflous manage content header from course views
+- Actually Cut a stable release number. Bye Bye Alpha
+
+
 Stanford Courses 7.x-3.0-alpha3, 2014-05-16
 --------------------------------------------
   -  Added truncate function that clears out the values for instructor and term on the field collection so that they are no additive and have duplicates.
