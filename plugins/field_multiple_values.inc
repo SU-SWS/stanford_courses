@@ -67,12 +67,22 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
   if (is_array($field)) {
    foreach ($field as $section) {
      // Turn raw result xml to a workable format.
-     $values[] = new SimpleXMLElement($section);
+      try {
+        $values[] = new SimpleXMLElement($section);
+      } catch(Exception $e) {
+        // Could not parse field we need to continue.
+        return;
+      }
     }
   }
   else {
     // Turn raw result xml to a workable format.
-    $values[] = new SimpleXMLElement($field);
+    try {
+      $values[] = new SimpleXMLElement($field);
+    } catch(Exception $e) {
+      // Could not parse field we need to continue.
+      return;
+    }
   }
 
   // Reset the field values.
