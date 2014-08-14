@@ -1,9 +1,11 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
-Stanford Courses 7.x-3.2, 2014-07-17
+Stanford Courses 7.x-3.?, 2014-08-14
 ------------------------------------
 By cjwest: On manage courses, added Code exposed filter, re-ordered exposed filters
+ - Added edit buttons to courses on views
+ - Updated no results text
 
 Stanford Courses 7.x-3.2, 2014-07-17
 ------------------------------------
