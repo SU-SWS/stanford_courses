@@ -3,6 +3,10 @@ Stanford Courses x.x-x.x, xxxx-xx-xx
 
 Stanford Courses 7.x-3.2, 2014-07-17
 ------------------------------------
+By cjwest: On manage courses, added Code exposed filter, re-ordered exposed filters
+
+Stanford Courses 7.x-3.2, 2014-07-17
+------------------------------------
 By sheamck: Bug fix with SimpleXML errors on invalid XML
 
 Stanford Courses 7.x-3.1, 2014-07-2

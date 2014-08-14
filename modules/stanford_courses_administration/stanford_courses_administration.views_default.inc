@@ -341,6 +341,28 @@ function stanford_courses_administration_views_default_views() {
     'stanford_course' => 'stanford_course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Code (field_s_course_code) */
+  $handler->display->display_options['filters']['field_s_course_code_value']['id'] = 'field_s_course_code_value';
+  $handler->display->display_options['filters']['field_s_course_code_value']['table'] = 'field_data_field_s_course_code';
+  $handler->display->display_options['filters']['field_s_course_code_value']['field'] = 'field_s_course_code_value';
+  $handler->display->display_options['filters']['field_s_course_code_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_s_course_code_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_code_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_code_value']['expose']['operator_id'] = 'field_s_course_code_value_op';
+  $handler->display->display_options['filters']['field_s_course_code_value']['expose']['label'] = 'Code';
+  $handler->display->display_options['filters']['field_s_course_code_value']['expose']['operator'] = 'field_s_course_code_value_op';
+  $handler->display->display_options['filters']['field_s_course_code_value']['expose']['identifier'] = 'field_s_course_code_value';
+  $handler->display->display_options['filters']['field_s_course_code_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    6 => 0,
+    5 => 0,
+    4 => 0,
+    3 => 0,
+    9 => 0,
+    7 => 0,
+    8 => 0,
+  );
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
@@ -363,6 +385,30 @@ function stanford_courses_administration_views_default_views() {
     15 => 0,
     17 => 0,
   );
+  /* Filter criterion: Content: Academic Year (field_s_course_year) */
+  $handler->display->display_options['filters']['field_s_course_year_value']['id'] = 'field_s_course_year_value';
+  $handler->display->display_options['filters']['field_s_course_year_value']['table'] = 'field_data_field_s_course_year';
+  $handler->display->display_options['filters']['field_s_course_year_value']['field'] = 'field_s_course_year_value';
+  $handler->display->display_options['filters']['field_s_course_year_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_s_course_year_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_year_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['operator_id'] = 'field_s_course_year_value_op';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['label'] = 'Academic Year';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['description'] = 'Ex. 2012-2013';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['operator'] = 'field_s_course_year_value_op';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['identifier'] = 'field_s_course_year_value';
+  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    13 => 0,
+    11 => 0,
+    9 => 0,
+    7 => 0,
+    5 => 0,
+    15 => 0,
+    17 => 0,
+    19 => 0,
+  );
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -384,29 +430,6 @@ function stanford_courses_administration_views_default_views() {
     5 => 0,
     15 => 0,
     17 => 0,
-  );
-  /* Filter criterion: Content: Academic Year (field_s_course_year) */
-  $handler->display->display_options['filters']['field_s_course_year_value']['id'] = 'field_s_course_year_value';
-  $handler->display->display_options['filters']['field_s_course_year_value']['table'] = 'field_data_field_s_course_year';
-  $handler->display->display_options['filters']['field_s_course_year_value']['field'] = 'field_s_course_year_value';
-  $handler->display->display_options['filters']['field_s_course_year_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['field_s_course_year_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['operator_id'] = 'field_s_course_year_value_op';
-  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['label'] = 'Academic Year';
-  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['description'] = 'Ex. 2012-2013';
-  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['operator'] = 'field_s_course_year_value_op';
-  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['identifier'] = 'field_s_course_year_value';
-  $handler->display->display_options['filters']['field_s_course_year_value']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    13 => 0,
-    11 => 0,
-    9 => 0,
-    7 => 0,
-    5 => 0,
-    15 => 0,
-    17 => 0,
-    19 => 0,
   );
 
   /* Display: Page */
