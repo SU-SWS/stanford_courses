@@ -26,4 +26,3 @@ features_exclude[field_base][field_s_person_program] = field_s_person_program
 features_exclude[taxonomy][stanford_program_type] = stanford_program_type
 features_exclude[field_instance][node-stanford_person-field_s_person_file] = node-stanford_person-field_s_person_file
 features_exclude[field_instance][node-stanford_person-field_s_person_program] = node-stanford_person-field_s_person_program
-project path = sites/default/modules/stanford/stanford_courses/modules
