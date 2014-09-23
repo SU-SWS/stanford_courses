@@ -117,7 +117,7 @@ function stanford_courses_feeds_processor_targets_alter(&$targets, $entity_type,
 /**
  * Process Field Collection items
  */
-function stanford_courses_feeds_set_target($source, $entity, $target, $value) {
+function stanford_courses_feeds_set_target($source, &$entity, $target, $value) {
   static $sub_targets = array();
 
   $args = explode(':', $target);
@@ -171,7 +171,7 @@ function stanford_courses_feeds_set_target($source, $entity, $target, $value) {
 
 /**
  * Multiple field values are a pain in the rear. They are additive and we do not
- * always want them to be. This function targest a couple of items and truncates
+ * always want them to be. This function targets a couple of items and truncates
  * their values before saving the new ones.
  * @param $target
  * @param $entity
@@ -181,16 +181,24 @@ function stanford_courses_feeds_set_target($source, $entity, $target, $value) {
  */
 function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$entity, &$field, &$field_collection_item, $value) {
 
-    // Clear out all previous values for this field as we want a replace and not an additive.
-    if ($target == "field_s_course_section_info" && $sub_target == "field_s_course_instructor") {
-        $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
+  // Clear out all previous values for this field as we want a replace and not an additive.
+  if ($target == "field_s_course_section_info") {
+    switch($sub_target) {
+      case "field_s_course_instructor":
+      case "field_s_course_term":
+      case "field_s_course_location":
+      case "field_s_course_section_year":
+      case "field_s_course_section_class_id":
+      case "field_s_course_co_person":
+      case "field_s_course_dow":
+      case "field_s_course_time":
+      case "field_s_course_time_end":
+      case "field_s_course_section_number":
+      case "field_s_course_location":
+      $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
+      break;
     }
-
-    // Clear out all previous values for this field as we want a replace and not an additive.
-    if ($target == "field_s_course_section_info" && $sub_target == "field_s_course_term") {
-        $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
-    }
-
+  }
 
 }
 
@@ -198,7 +206,7 @@ function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$
 /**
  * Implements hook_feeds_presave().
  */
-function stanford_courses_feeds_presave($source, $entity, $item, $entity_id) {
+function stanford_courses_feeds_presave($source, &$entity, $item, $entity_id) {
   // Do not save any empty field collection items that may have been created
   // during the mapping process. Since the mapping is done field by field in
   // stanford_courses_feeds_set_target(), we have to wait until this hook (when
@@ -233,8 +241,6 @@ function stanford_courses_feeds_presave($source, $entity, $item, $entity_id) {
       }
     }
   }
-
-  // Some fields need to be truncated before being saved. Lets do that now.
 
 
 }
