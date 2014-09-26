@@ -774,27 +774,32 @@ function stanford_courses_person_reference_views_views_default_views() {
     'stanford_course' => 'stanford_course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Title */
-  $handler->display->display_options['filters']['title']['id'] = 'title';
-  $handler->display->display_options['filters']['title']['table'] = 'node';
-  $handler->display->display_options['filters']['title']['field'] = 'title';
-  $handler->display->display_options['filters']['title']['operator'] = 'contains';
-  $handler->display->display_options['filters']['title']['group'] = 1;
-  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search courses by title';
-  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
-  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'title';
-  $handler->display->display_options['filters']['title']['expose']['remember_roles'] = array(
+  /* Filter criterion: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search courses by title';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
-    13 => 0,
-    11 => 0,
+    6 => 0,
+    5 => 0,
+    4 => 0,
+    3 => 0,
     9 => 0,
     7 => 0,
-    5 => 0,
-    15 => 0,
-    17 => 0,
+    8 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'field_s_course_subject' => 'field_s_course_subject',
+    'field_s_course_code' => 'field_s_course_code',
+    'title' => 'title',
   );
   /* Filter criterion: Field collection item: Year (field_s_course_section_year) */
   $handler->display->display_options['filters']['field_s_course_section_year_value']['id'] = 'field_s_course_section_year_value';
@@ -865,6 +870,7 @@ function stanford_courses_person_reference_views_views_default_views() {
     'PRC' => 'PRC',
     'T/D' => 'T/D',
   );
+  $handler->display->display_options['filters']['field_s_course_component_value']['group'] = 1;
   $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['path'] = 'courses/search';
   $handler->display->display_options['menu']['title'] = 'Courses';
