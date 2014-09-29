@@ -807,8 +807,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_section_year_value']['field'] = 'field_s_course_section_year_value';
   $handler->display->display_options['filters']['field_s_course_section_year_value']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['filters']['field_s_course_section_year_value']['value'] = array(
-    2012 => '2012',
     2013 => '2013',
+    2014 => '2014',
   );
   $handler->display->display_options['filters']['field_s_course_section_year_value']['group'] = 1;
   $handler->display->display_options['filters']['field_s_course_section_year_value']['exposed'] = TRUE;
