@@ -1,11 +1,22 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
-Stanford Courses 7.x-3.?, 2014-08-14
+Stanford Courses 7.x-3.3, 2014-10-23
 ------------------------------------
-By cjwest: On manage courses, added Code exposed filter, re-ordered exposed filters
- - Added edit buttons to courses on views
- - Updated no results text
+Changes since 7.x-3.2:
+By cjwest:
+  - On manage courses, added Code exposed filter, re-ordered exposed filters
+  - Added edit buttons to courses on views
+  - Updated no results text
+  - Added sort by updated date, removed new content, removed modify content (manage courses)
+  - Replaced exposed filter title with combined filter
+  - Removed ability to add a course to a menu
+  - Removed no results text for the faculty (person) block
+By sheamck:
+  - Added row to courses manage view
+  - Fixed single value field cardinality bug
+By jbickar:
+  - Updated exposed filter to include current year and one previous
 
 Stanford Courses 7.x-3.2, 2014-07-17
 ------------------------------------

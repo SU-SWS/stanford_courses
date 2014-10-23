@@ -1,7 +1,7 @@
 #[Stanford Courses](https://github.com/SU-SWS/stanford_courses)
-##### Version: 7.x-3.2
+##### Version: 7.x-3.3
 
-Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)   
+Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 [Changelog.txt](CHANGELOG.txt)
 
 Drupal Features module for pulling course information from explorecourses.stanford.edu. Contains a content type for courses, a content type for course importers, a feeds importer, a few default views, and some custom feeds plugins.
@@ -10,35 +10,35 @@ Drupal Features module for pulling course information from explorecourses.stanfo
 Sub Modules
 ---
 
-**[Stanford Course Views](modules/stanford_course_views)**   
-A collection of default views for use with the course module. This module should not be enabled when the Stanford Person Reference Views feature is enabled. Included in the views are: 
+**[Stanford Course Views](modules/stanford_course_views)**
+A collection of default views for use with the course module. This module should not be enabled when the Stanford Person Reference Views feature is enabled. Included in the views are:
 
-* **Search Courses Page with exposed filter block**   
+* **Search Courses Page with exposed filter block**
 A listing of all courses complete with an exposed filter block that allows users to search, sort, and filter through the list of courses.
 
-* **Current Courses Page**   
+* **Current Courses Page**
 A listing of all courses that are in progress. This view will only show courses that are active for the current term.
 
-* **Section Information Block**   
-The section information block is used when placed on a course node to display a table of section information. 
+* **Section Information Block**
+The section information block is used when placed on a course node to display a table of section information.
 
-* **Faculty Courses Block**   
+* **Faculty Courses Block**
 A listing of courses as taught by an instructor. Requires the Stanford person feature and uses entity references that are manually created.
 
-**[Stanford Course Administration](modules/stanford_courses_administration)**   
+**[Stanford Course Administration](modules/stanford_courses_administration)**
 This module contains a view for the stanford_manage feature. It provides a bulk operation view where content authors can make changes to multiple courses in one task.
 
-**[Stanford Course Link To Page](modules/stanford_courses_link_to_page)**   
-This is a simple module that changes both the Stanford views and the Stanford person reference views to link to the course node instead of the explore courses entry for that node. It is recommended that you enable the Stanford Courses Node View module in order to have an aesthetically pleasing layout. 
+**[Stanford Course Link To Page](modules/stanford_courses_link_to_page)**
+This is a simple module that changes both the Stanford views and the Stanford person reference views to link to the course node instead of the explore courses entry for that node. It is recommended that you enable the Stanford Courses Node View module in order to have an aesthetically pleasing layout.
 
-**[Stanford Courses Node View](modules/stanford_courses_node_display)**   
-This feature module contains a display suite view mode for the Stanford course content type. With out it the course node does not have much structure. If you are planning on using the Stanford Course Link To Page feature you should enable this module as well. 
+**[Stanford Courses Node View](modules/stanford_courses_node_display)**
+This feature module contains a display suite view mode for the Stanford course content type. With out it the course node does not have much structure. If you are planning on using the Stanford Course Link To Page feature you should enable this module as well.
 
-**[Stanford Courses Person Reference](modules/stanford_courses_person_reference)**   
-The Stanford Courses Person Reference feature adds an entity reference field to the stanford_course content type. This allows content authors to reference stanford_person content types by editing course nodes. It is recommended that when you enable this module that you also enable the Stanford courses person reference views and disable the default course views module. 
+**[Stanford Courses Person Reference](modules/stanford_courses_person_reference)**
+The Stanford Courses Person Reference feature adds an entity reference field to the stanford_course content type. This allows content authors to reference stanford_person content types by editing course nodes. It is recommended that when you enable this module that you also enable the Stanford courses person reference views and disable the default course views module.
 
-**[Stanford Courses Person Reference Views](modules/stanford_courses_person_reference_views)**   
-The person reference views is a replacement set of views for the default course views. When enabled the default course views module should be disabled. Included in this set of views is an extra field for a link to a Stanford Person content type but is otherwise identical to the default course views. 
+**[Stanford Courses Person Reference Views](modules/stanford_courses_person_reference_views)**
+The person reference views is a replacement set of views for the default course views. When enabled the default course views module should be disabled. Included in this set of views is an extra field for a link to a Stanford Person content type but is otherwise identical to the default course views.
 
 
 Installation
