@@ -25,7 +25,11 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['title'] = 'Current Courses';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '21600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '21600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -334,8 +338,6 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = '';
-  $handler->display->display_options['fields']['edit_node']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['edit_node']['alter']['text'] = '<a class="edit-link" href="https://sites.stanford.edu/siw/node/[nid]/edit">Edit</a>';
   $handler->display->display_options['fields']['edit_node']['element_type'] = 'div';
   $handler->display->display_options['fields']['edit_node']['element_label_type'] = 'div';
   $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
@@ -449,7 +451,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['filters']['combine']['operator'] = 'contains';
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
-  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search courses by title';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Search courses by keyword';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
   $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
@@ -695,7 +697,6 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler = $view->new_display('block', 'Featured Courses', 'block');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Featured Course';
-  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
@@ -786,7 +787,6 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler = $view->new_display('block', 'Section Information', 'section_info');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Section Information';
-  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
