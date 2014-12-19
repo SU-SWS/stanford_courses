@@ -185,7 +185,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter.</p>
 <p>&nbsp;</p>
-<a class="btn" href="courses/search">Search Courses</a>';
+[hook_views_pre_build:courses/search]';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Content: Section Information (field_s_course_section_info) */
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
@@ -425,7 +425,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>No courses are available based on your search.</p>
 <p>&nbsp;</p>
-<a class="btn" href="courses/search">Reset Search</a>';
+[hook_views_pre_build:courses/search]';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -666,7 +666,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>This displays upcoming courses.</p>
 <p>&nbsp;</p>
-<a class="btn" href="courses/search">Search Courses</a>';
+[hook_views_pre_build:courses/search]';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
