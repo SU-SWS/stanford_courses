@@ -1,6 +1,0 @@
-Stanford Course Views x.x-x.x, xxxx-xx-xx
------------------------------------------
-
-Stanford Course Views 7.x-1.0-alpha1, 2013-08-19
-------------------------------------------------
-Initial release.

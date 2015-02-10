@@ -1,6 +1,17 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+Stanford Courses 7.x-3.4, 2015-02-10
+------------------------------------
+Changes since 7.x-3.3:
+By cjwest, in stanford_courses_person_reference_views:
+  - Refactor of the courses_person_reference_view
+  - Added block for exposed filter in search display
+  - Edit link, caching, Keyword search, enable displays
+  - No result texts, reorder sort
+By sheamck, in stanford_courses:
+  - Fixed "Parameter 2 to stanford_courses_feeds_presave() expected to be a reference, value given" bug
+
 Stanford Courses 7.x-3.3, 2014-10-23
 ------------------------------------
 Changes since 7.x-3.2:
