@@ -25,4 +25,3 @@ features[field_group][] = group_s_postcard_image|node|stanford_course|default
 features[field_group][] = group_s_postcard|node|stanford_course|default
 features[field_instance][] = node-stanford_course-field_s_image_info
 features_exclude[dependencies][stanford_program] = stanford_program
-project path = sites/default/modules/stanford/stanford_courses/modules
