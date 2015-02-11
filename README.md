@@ -1,5 +1,5 @@
 #[Stanford Courses](https://github.com/SU-SWS/stanford_courses)
-##### Version: 7.x-3.3
+##### Version: 7.x-3.4
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 [Changelog.txt](CHANGELOG.txt)
@@ -54,9 +54,11 @@ Nothing special needed.
 Troubleshooting
 ---
 
-URL Example: view=xml-20130201
+Pretty URL:   
+http://explorecourses.stanford.edu/search?view=catalog&academicYear=&page=0&q=BIOE&filter-departmentcode-BIOE=on&filter-coursestatus-Active=on&filter-term-Spring=on
 
-https://explorecourses.stanford.edu/search;jsessionid=1m3aeahsus8zk1n30pj6b89prm?view=xml-20130201&academicYear=&page=0&q=BIOE&filter-departmentcode-BIOE=on&filter-coursestatus-Active=on&filter-term-Spring=on
+XML URL:   
+https://explorecourses.stanford.edu/search?view=xml-20130201&academicYear=&page=0&q=BIOE&filter-departmentcode-BIOE=on&filter-coursestatus-Active=on&filter-term-Spring=on
 
 If you are experiencing issues with this module try reverting the feature first. If you are still experiencing issues try posting an issue on the GitHub issues page.
 
