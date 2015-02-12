@@ -139,7 +139,7 @@ function stanford_courses_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '2',
+          'weight' => '3',
         ),
         'title' => array(
           'weight' => '0',
@@ -197,14 +197,14 @@ function stanford_courses_strongarm() {
     ),
     'additional_settings' => array(
       'region' => 'main',
-      'weight' => '13',
+      'weight' => '14',
       'has_required' => FALSE,
       'title' => 'Vertical tabs',
       'hidden' => 0,
     ),
     'actions' => array(
       'region' => 'main',
-      'weight' => '14',
+      'weight' => '15',
       'has_required' => FALSE,
       'title' => 'Save',
       'hidden' => 0,
@@ -213,7 +213,7 @@ function stanford_courses_strongarm() {
       'region' => 'main',
       'weight' => '12',
       'has_required' => FALSE,
-      'title' => 'Body',
+      'title' => 'Description',
       'hidden' => 0,
     ),
     'field_s_course_year' => array(
@@ -260,28 +260,28 @@ function stanford_courses_strongarm() {
     ),
     'field_s_course_section_info' => array(
       'region' => 'main',
-      'weight' => '8',
+      'weight' => '13',
       'has_required' => FALSE,
       'title' => 'Section Information',
       'hidden' => 0,
     ),
     'field_s_course_code_integer' => array(
       'region' => 'main',
-      'weight' => '11',
+      'weight' => '10',
       'has_required' => FALSE,
       'title' => 'Code (Integer)',
       'hidden' => 0,
     ),
     'field_s_course_ec_link' => array(
       'region' => 'main',
-      'weight' => '10',
+      'weight' => '9',
       'has_required' => FALSE,
       'title' => 'ExploreCourses Link',
       'hidden' => 0,
     ),
     'field_s_course_tag_name' => array(
       'region' => 'main',
-      'weight' => '9',
+      'weight' => '8',
       'has_required' => FALSE,
       'title' => 'Tag: Name',
       'hidden' => 0,
@@ -291,6 +291,13 @@ function stanford_courses_strongarm() {
       'weight' => '7',
       'has_required' => FALSE,
       'title' => 'Tag: Organization',
+      'hidden' => 0,
+    ),
+    'field_s_course_grading' => array(
+      'region' => 'main',
+      'weight' => '11',
+      'has_required' => FALSE,
+      'title' => 'Grading',
       'hidden' => 0,
     ),
   );
