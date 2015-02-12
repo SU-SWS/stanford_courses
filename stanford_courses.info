@@ -7,12 +7,12 @@ project = stanford_courses
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_popup
-dependencies[] = features
-dependencies[] = feeds
+dependencies[] = features (>=2.0)
+dependencies[] = feeds (>=2.0-alpha8)
 dependencies[] = feeds_tamper
 dependencies[] = feeds_xpathparser
-dependencies[] = field_collection
-dependencies[] = field_group
+dependencies[] = field_collection (>=1.0-beta7)
+dependencies[] = field_group (>=1.3)
 dependencies[] = file
 dependencies[] = image
 dependencies[] = link
@@ -124,5 +124,4 @@ features_exclude[field_instance][field_collection_item-field_s_image_info-field_
 features_exclude[field_instance][field_collection_item-field_s_image_info-field_s_image_credits] = field_collection_item-field_s_image_info-field_s_image_credits
 features_exclude[field_instance][field_collection_item-field_s_image_info-field_s_image_image] = field_collection_item-field_s_image_info-field_s_image_image
 features_exclude[field_instance][field_collection_item-field_s_image_info-field_s_image_source_info] = field_collection_item-field_s_image_info-field_s_image_source_info
-project path = sites/all/modules/stanford
 project status url = https://github.com/SU-SWS/stanford_courses
