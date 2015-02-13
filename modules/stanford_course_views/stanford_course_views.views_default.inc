@@ -16,7 +16,7 @@ function stanford_course_views_views_default_views() {
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'Courses';
-  $view->core = 7;q
+  $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = TRUE; /* Edit this to true to make a default view disabled initially */
 
