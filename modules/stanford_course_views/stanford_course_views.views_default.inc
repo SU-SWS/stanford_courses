@@ -16,7 +16,7 @@ function stanford_course_views_views_default_views() {
   $view->tag = 'default';
   $view->base_table = 'node';
   $view->human_name = 'Courses';
-  $view->core = 7;
+  $view->core = 7;q
   $view->api_version = '3.0';
   $view->disabled = TRUE; /* Edit this to true to make a default view disabled initially */
 
@@ -401,7 +401,7 @@ function stanford_course_views_views_default_views() {
   /* Display: Search Page */
   $handler = $view->new_display('page', 'Search Page', 'search_page');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Courses';
+  $handler->display->display_options['title'] = 'All Courses';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['exposed_block'] = TRUE;
@@ -1552,7 +1552,7 @@ function stanford_course_views_views_default_views() {
   /* Display: Search Page */
   $handler = $view->new_display('page', 'Search Page', 'search_page');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Courses';
+  $handler->display->display_options['title'] = 'All Courses';
   $handler->display->display_options['defaults']['cache'] = FALSE;
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['exposed_block'] = TRUE;
@@ -1633,7 +1633,7 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_instructor_value']['group'] = 1;
   $handler->display->display_options['filters']['field_s_course_instructor_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['operator_id'] = 'field_s_course_instructor_value_op';
-  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['label'] = 'Filter by instructor';
+  $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['label'] = 'Search by instructor';
   $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['operator'] = 'field_s_course_instructor_value_op';
   $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['identifier'] = 'field_s_course_instructor_value';
   $handler->display->display_options['filters']['field_s_course_instructor_value']['expose']['remember_roles'] = array(
