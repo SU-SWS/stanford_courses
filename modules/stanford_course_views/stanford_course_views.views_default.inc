@@ -12,10 +12,10 @@ function stanford_course_views_views_default_views() {
 
   $view = new view();
   $view->name = 'courses';
-  $view->description = 'Deprecated: Courses imported from Explore Courses using the instructor field from the feed';
+  $view->description = 'Courses imported from Explore Courses using the instructor field from the feed';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Courses';
+  $view->human_name = 'Courses Non-reference';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
