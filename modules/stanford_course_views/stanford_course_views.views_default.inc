@@ -554,8 +554,9 @@ function stanford_course_views_views_default_views() {
   $handler = $view->new_display('block', 'Faculty Courses', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Current Courses';
-  $handler->display->display_options['display_comment'] = 'Courses that a person instructs. These are for display on a person\'s profile page.';
+  $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'Courses by faculty block';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -563,29 +564,23 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $handler->display->display_options['defaults']['empty'] = FALSE;
+  /* No results behavior: Global: Text area */
+  $handler->display->display_options['empty']['area']['id'] = 'area';
+  $handler->display->display_options['empty']['area']['table'] = 'views';
+  $handler->display->display_options['empty']['area']['field'] = 'area';
+  $handler->display->display_options['empty']['area']['empty'] = TRUE;
+  $handler->display->display_options['empty']['area']['content'] = '<p>No current courses listed.</p>';
+  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Field: Content: ExploreCourses Link */
-  $handler->display->display_options['fields']['field_s_course_ec_link']['id'] = 'field_s_course_ec_link';
-  $handler->display->display_options['fields']['field_s_course_ec_link']['table'] = 'field_data_field_s_course_ec_link';
-  $handler->display->display_options['fields']['field_s_course_ec_link']['field'] = 'field_s_course_ec_link';
-  $handler->display->display_options['fields']['field_s_course_ec_link']['label'] = '';
-  $handler->display->display_options['fields']['field_s_course_ec_link']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_s_course_ec_link']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_s_course_ec_link']['click_sort_column'] = 'url';
-  $handler->display->display_options['fields']['field_s_course_ec_link']['type'] = 'link_plain';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['path'] = '[field_s_course_ec_link]';
-  $handler->display->display_options['fields']['title']['alter']['external'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
   /* Field: Field collection item: Quarter */
   $handler->display->display_options['fields']['field_s_course_term']['id'] = 'field_s_course_term';
   $handler->display->display_options['fields']['field_s_course_term']['table'] = 'field_data_field_s_course_term';
@@ -608,26 +603,9 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[field_s_course_term] [field_s_course_section_year]<br />
-[title]';
+    [title]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Field: Content: Edit link */
-  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['element_type'] = 'div';
-  $handler->display->display_options['fields']['edit_node']['element_class'] = 'edit-link';
-  $handler->display->display_options['fields']['edit_node']['element_label_type'] = 'div';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Field collection item: Instructor (field_s_course_person) */
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['id'] = 'field_s_course_person_target_id';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['table'] = 'field_data_field_s_course_person';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['field'] = 'field_s_course_person_target_id';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['default_argument_type'] = 'node';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_s_course_person_target_id']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
