@@ -12,5 +12,4 @@ dependencies[] = views_bulk_operations
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[views_view][] = courses
-mtime = 1424398510
-
+mtime = 1424457152
