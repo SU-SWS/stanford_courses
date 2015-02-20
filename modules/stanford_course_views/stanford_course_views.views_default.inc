@@ -551,7 +551,7 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['path'] = 'courses/search';
 
   /* Display: Faculty Courses */
-  $handler = $view->new_display('block', 'Faculty Courses', 'courses_reference_person_block');
+  $handler = $view->new_display('block', 'Faculty Courses', 'block_1');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Current Courses';
   $handler->display->display_options['display_comment'] = 'Courses that a person instructs. These are for display on a person\'s profile page.';
