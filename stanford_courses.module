@@ -51,7 +51,6 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
       $form['#validate'][] = 'stanford_courses_ec_link_validate';
     }
   }
-//  dsm($form);
 }
 
 /**
