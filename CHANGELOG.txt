@@ -1,6 +1,26 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-3.5                   2015-03-19
+------------------------------------
+
+- BASIC-1200: change combined search field to display results by any word
+- Reverted faculty courses view block
+- BASIC-1239: removed stanford_courses_default
+- BASIC-1200 Added contains any word to filter
+- Changed name label of the non-reference field view
+- Removed stanford_course_default view
+- Label changes to search page views
+- Added no results functionality to views
+- Added stanford_courses_default view, updated and disabled courses view
+- Set dependency on field_group >= 1.3
+- Set dependency on field_collection >= 1.0-beta7
+- Set dependency on feeds >= 2.0-alpha8
+- Set dependency on features >= 2.0
+- Added grading and units to the content type and to be pulled in through the feed
+- Removed project path from .info files
+
+
 Stanford Courses 7.x-3.4, 2015-02-10
 ------------------------------------
 Changes since 7.x-3.3:

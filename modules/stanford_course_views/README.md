@@ -1,4 +1,4 @@
-stanford_course_views
+Stanford Course Views
 =====================
 
 Default views for Stanford courses.
