@@ -201,7 +201,7 @@ function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$
 /**
  * Implements hook_feeds_presave().
  */
-function stanford_courses_feeds_presave($source, &$entity, $item, $entity_id) {
+function stanford_courses_feeds_presave($source, $entity, $item, $entity_id) {
   // Do not save any empty field collection items that may have been created
   // during the mapping process. Since the mapping is done field by field in
   // stanford_courses_feeds_set_target(), we have to wait until this hook (when
