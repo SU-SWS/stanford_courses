@@ -93,7 +93,6 @@ function stanford_courses_feeds_importer_default() {
         'exp' => array(
           'errors' => 1,
           'debug' => array(
-            'xpathparser:27' => 'xpathparser:27',
             'context' => 0,
             'xpathparser:0' => 0,
             'xpathparser:1' => 0,
@@ -122,6 +121,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:24' => 0,
             'xpathparser:25' => 0,
             'xpathparser:26' => 0,
+            'xpathparser:27' => 0,
           ),
         ),
         'allow_override' => 0,
