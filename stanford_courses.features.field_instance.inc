@@ -1573,10 +1573,9 @@ function stanford_courses_field_default_field_instances() {
     'description' => 'Full concatenated "ORG::tag" tag from ExploreCourses, e.g., "IR::wim"',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'text',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 17,
       ),
       'teaser' => array(
