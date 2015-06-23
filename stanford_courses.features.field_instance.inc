@@ -1565,8 +1565,8 @@ function stanford_courses_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-stanford_course-field_s_ec_tag'
-  $field_instances['node-stanford_course-field_s_ec_tag'] = array(
+  // Exported field_instance: 'node-stanford_course-field_s_course_ec_tag'
+  $field_instances['node-stanford_course-field_s_course_ec_tag'] = array(
     'bundle' => 'stanford_course',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1586,7 +1586,7 @@ function stanford_courses_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_s_ec_tag',
+    'field_name' => 'field_s_course_ec_tag',
     'label' => 'ExploreCourses Tag',
     'required' => 0,
     'settings' => array(

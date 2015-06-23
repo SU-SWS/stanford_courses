@@ -270,7 +270,7 @@ function stanford_courses_feeds_importer_default() {
           ),
           27 => array(
             'source' => 'xpathparser:27',
-            'target' => 'field_s_ec_tag',
+            'target' => 'field_s_course_ec_tag',
             'unique' => FALSE,
           ),
         ),

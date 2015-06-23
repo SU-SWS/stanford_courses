@@ -300,7 +300,7 @@ function stanford_courses_strongarm() {
       'title' => 'Grading',
       'hidden' => 0,
     ),
-    'field_s_ec_tag' => array(
+    'field_s_course_ec_tag' => array(
       'region' => 'main',
       'weight' => '7',
       'has_required' => FALSE,
