@@ -304,7 +304,7 @@ function stanford_courses_strongarm() {
       'region' => 'main',
       'weight' => '7',
       'has_required' => FALSE,
-      'title' => 'ExploreCourses Tag',
+      'title' => 'ExploreCourses Tag(s)',
       'hidden' => 0,
     ),
   );

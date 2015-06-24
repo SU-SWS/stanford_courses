@@ -1587,7 +1587,7 @@ function stanford_courses_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_s_course_ec_tag',
-    'label' => 'ExploreCourses Tag',
+    'label' => 'ExploreCourses Tag(s)',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1649,7 +1649,7 @@ function stanford_courses_field_default_field_instances() {
   t('Enter the section number (e.g., 01, 02, 03, etc.)');
   t('Enter the start time of the course section.');
   t('ExploreCourses Link');
-  t('ExploreCourses Tag');
+  t('ExploreCourses Tag(s)');
   t('Full concatenated "ORG::tag" tag from ExploreCourses, e.g., "IR::wim"');
   t('Grading');
   t('Instructor(s)');
