@@ -13,7 +13,7 @@ $plugin = array(
     'form' => 'stanford_courses_field_multiple_values_form',
     'callback' => 'stanford_courses_field_multiple_values_callback',
     'multi' => 'direct',
-    'name' => 'Mulitple Values to Multiple Value Field',
+    'name' => 'Multiple Values to Multiple Value Field',
     'category' => 'Field Collection',
 );
 
@@ -24,11 +24,11 @@ $plugin = array(
  */
 function stanford_courses_field_multiple_values_form($importer, $element_key, $settings) {
     $form = array();
-    $form['help']['#markup'] = 'Provide a secondary x-path selector. This selector starts from the results of the X-Path parser that this tamper is applied to. This will allow you to maintain the correct order in field collection items with multiple values.';
+    $form['help']['#markup'] = 'Provide a secondary XPath selector. This selector starts from the results of the XPath parser that this tamper is applied to. This will allow you to maintain the correct order in field collection items with multiple values.';
     $form['subxpath'] = array(
       '#type' => 'textfield',
-      '#title' => 'X-Path',
-      '#description' => t('Provide a secondary x-path selector for parsing individual items.'),
+      '#title' => 'XPath',
+      '#description' => t('Provide a secondary XPath selector for parsing individual items.'),
       '#default_value' => $settings['subxpath'],
     );
     $form['datatype'] = array(
@@ -38,15 +38,15 @@ function stanford_courses_field_multiple_values_form($importer, $element_key, $s
         'string' => t('String'),
         'integer' => t('Integer'),
       ),
-      '#description' => t('Provide the type of data the X-Path selector should return.'),
+      '#description' => t('Provide the type of data the XPath selector should return.'),
       '#default_value' => $settings['datatype'],
     );
     return $form;
 }
 
 /**
- * Callback function for feeds tamper field_mulitple values plugin. Takes the
- * results of an existing x-path results set as raw xml and runs another
+ * Callback function for feeds tamper field_multiple values plugin. Takes the
+ * results of an existing XPath results set as raw xml and runs another
  * sub query on the results in order to get multiple values into one field. Very
  * useful for when processing values on a field-collection.
  *
@@ -63,7 +63,7 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
   $new_field = array();
   $values = array();
 
-  // Check for single and multiple value results from previous x-path.
+  // Check for single and multiple value results from previous XPath.
   if (is_array($field)) {
    foreach ($field as $section) {
      // Turn raw result xml to a workable format.
@@ -88,7 +88,7 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
   // Reset the field values.
   $field = array();
 
-  // Loop through the previous x-path results and run through
+  // Loop through the previous XPath results and run through
   foreach($values as $k => $v) {
 
     // If not an xml object then just continue.
