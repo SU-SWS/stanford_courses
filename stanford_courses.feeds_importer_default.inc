@@ -57,11 +57,13 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:24' => 'sections/section',
           'xpathparser:25' => 'sections/section/units',
           'xpathparser:26' => 'grading',
+          'xpathparser:27' => 'tags/tag',
         ),
         'rawXML' => array(
           // Return raw XML. See $feeds_tamper->source = 'xpathparser:24' in
           // stanford_courses.feeds_tamper_default.inc.
           'xpathparser:24' => 'xpathparser:24',
+          'xpathparser:27' => 'xpathparser:27',
           'xpathparser:0' => 0,
           'xpathparser:1' => 0,
           'xpathparser:2' => 0,
@@ -121,6 +123,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:24' => 0,
             'xpathparser:25' => 0,
             'xpathparser:26' => 0,
+            'xpathparser:27' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -265,6 +268,11 @@ function stanford_courses_feeds_importer_default() {
           26 => array(
             'source' => 'xpathparser:26',
             'target' => 'field_s_course_grading',
+            'unique' => FALSE,
+          ),
+          27 => array(
+            'source' => 'xpathparser:27',
+            'target' => 'field_s_course_ec_tag',
             'unique' => FALSE,
           ),
         ),

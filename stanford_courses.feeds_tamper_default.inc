@@ -182,6 +182,40 @@ function stanford_courses_feeds_tamper_default() {
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
   $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_27-find_replace_regex';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:27';
+  $feeds_tamper->plugin_id = 'find_replace_regex';
+  $feeds_tamper->settings = array(
+    'find' => '/<\\/organization>\\s{1,}<name>/',
+    'replace' => '::',
+    'limit' => '',
+    'real_limit' => -1,
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Replace closing/opening tags with double-colon';
+  $export['stanford_course_importer-xpathparser_27-find_replace_regex'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_27-find_replace_regex_2';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:27';
+  $feeds_tamper->plugin_id = 'find_replace_regex';
+  $feeds_tamper->settings = array(
+    'find' => '/<\\/?organization>|<\\/?tag>|<\\/?name>|\\s{2,}/',
+    'replace' => '',
+    'limit' => '',
+    'real_limit' => -1,
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Clean up additional XML';
+  $export['stanford_course_importer-xpathparser_27-find_replace_regex_2'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
   $feeds_tamper->id = 'stanford_course_importer-xpathparser_9-substr_plugin';
   $feeds_tamper->importer = 'stanford_course_importer';
   $feeds_tamper->source = 'xpathparser:9';
