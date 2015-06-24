@@ -59,6 +59,8 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:26' => 'grading',
         ),
         'rawXML' => array(
+          // Return raw XML. See $feeds_tamper->source = 'xpathparser:24' in
+          // stanford_courses.feeds_tamper_default.inc.
           'xpathparser:24' => 'xpathparser:24',
           'xpathparser:0' => 0,
           'xpathparser:1' => 0,
