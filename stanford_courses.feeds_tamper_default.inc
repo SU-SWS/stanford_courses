@@ -176,7 +176,7 @@ function stanford_courses_feeds_tamper_default() {
     'datatype' => 'string',
   );
   $feeds_tamper->weight = 3;
-  $feeds_tamper->description = 'Mulitple Values to Multiple Value Field';
+  $feeds_tamper->description = 'Multiple Values to Multiple Value Field';
   $export['stanford_course_importer-xpathparser_24-field_multiple_values'] = $feeds_tamper;
 
   $feeds_tamper = new stdClass();
