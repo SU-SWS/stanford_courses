@@ -1,6 +1,16 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-3.6                   2015-06-26
+------------------------------------
+- Removed foreign keys from feature
+- Updated explorecourses link field
+- Added documentation for XML
+- Added field_s_ec_tag field
+- Removed debug output
+- Corrected field naming conventions
+- Add Feeds importer and Feeds Tamper plugin to map ExploreCourses Tags Re-order field definition code.
+
 7.x-3.5                   2015-03-19
 ------------------------------------
 
