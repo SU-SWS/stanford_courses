@@ -93,7 +93,7 @@ function stanford_courses_feeds_importer_default() {
         ),
         'context' => '//courses/course',
         'exp' => array(
-          'errors' => 1,
+          'errors' => 0,
           'debug' => array(
             'context' => 0,
             'xpathparser:0' => 0,
