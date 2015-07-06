@@ -61,6 +61,8 @@ http://explorecourses.stanford.edu/search?view=catalog&academicYear=&page=0&q=BI
 XML URL:
 https://explorecourses.stanford.edu/search?view=xml-20130201&academicYear=&page=0&q=BIOE&filter-departmentcode-BIOE=on&filter-coursestatus-Active=on&filter-term-Spring=on
 
+view options: xml-20130201, xml-20140630
+
 If you are experiencing issues with this module try reverting the feature first. If you are still experiencing issues try posting an issue on the GitHub issues page.
 
 Contribution / Collaboration
