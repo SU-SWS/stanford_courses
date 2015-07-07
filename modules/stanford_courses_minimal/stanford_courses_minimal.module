@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Stanford Course (Class) Importer feature.
+ */
+
+include_once 'stanford_courses_minimal.features.inc';
