@@ -28,3 +28,4 @@ features[variable][] = menu_parent_stanford_course_minimal_importer
 features[variable][] = node_options_stanford_course_minimal_importer
 features[variable][] = node_preview_stanford_course_minimal_importer
 features[variable][] = node_submitted_stanford_course_minimal_importer
+features[variable][] = pathauto_node_stanford_course_minimal_importer_pattern

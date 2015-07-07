@@ -25,7 +25,7 @@ function stanford_courses_minimal_ctools_plugin_api($module = NULL, $api = NULL)
 function stanford_courses_minimal_node_info() {
   $items = array(
     'stanford_course_minimal_importer' => array(
-      'name' => t('Minimal Course Importer'),
+      'name' => t('Course Importer (Minimal)'),
       'base' => 'node_content',
       'description' => t('This is a content type for importing the slimmed-down version of courses (no section information) from explorecourses.stanford.edu.'),
       'has_title' => '1',
