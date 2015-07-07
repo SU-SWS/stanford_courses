@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * stanford_course_class_importer.features.field_instance.inc
+ * stanford_courses_minimal.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function stanford_course_class_importer_field_default_field_instances() {
+function stanford_courses_minimal_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-stanford_course_class_importer-body'
-  $field_instances['node-stanford_course_class_importer-body'] = array(
-    'bundle' => 'stanford_course_class_importer',
+  // Exported field_instance: 'node-stanford_course_minimal_importer-body'
+  $field_instances['node-stanford_course_minimal_importer-body'] = array(
+    'bundle' => 'stanford_course_minimal_importer',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',

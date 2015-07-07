@@ -1,11 +1,11 @@
-#[Stanford Courses](https://github.com/SU-SWS/stanford_courses)
+#Stanford Courses Minimal Importer
 ##### Version: 7.x-3.6
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 
 [Changelog.txt](CHANGELOG.txt)
 
-Drupal Features module for pulling course information from explorecourses.stanford.edu. Contains a content type for course importer, a feeds importer, and some custom feeds plugins.
+Drupal Features module for pulling course information (no section information) from explorecourses.stanford.edu. Contains a content type for course importer, a feeds importer, and some custom feeds plugins.
 
 
 

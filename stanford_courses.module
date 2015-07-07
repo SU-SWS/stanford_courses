@@ -33,7 +33,7 @@ function stanford_courses_help($path, $arg) {
  * Modify the search URL to retrieve the XML URL instead.
  */
 function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
-  if (($form_id == 'stanford_course_importer_node_form') || ($form_id == 'stanford_course_section_importer_node_form') || $form_id == 'stanford_course_class_importer_node_form' || $form_id == 'feeds_import_tab_form') {
+  if (($form_id == 'stanford_course_importer_node_form') || ($form_id == 'stanford_course_section_importer_node_form') || $form_id == 'stanford_course_minimal_importer_node_form' || $form_id == 'feeds_import_tab_form') {
     //make our validation function run first
     if (is_array($form['#validate'])) {
       array_unshift($form['#validate'], 'stanford_courses_feed_url_validate');

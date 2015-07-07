@@ -1,19 +1,19 @@
 <?php
 /**
  * @file
- * stanford_course_class_importer.feeds_importer_default.inc
+ * stanford_courses_minimal.feeds_importer_default.inc
  */
 
 /**
  * Implements hook_feeds_importer_default().
  */
-function stanford_course_class_importer_feeds_importer_default() {
+function stanford_courses_minimal_feeds_importer_default() {
   $export = array();
 
   $feeds_importer = new stdClass();
   $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
   $feeds_importer->api_version = 1;
-  $feeds_importer->id = 'stanford_course_class_importer';
+  $feeds_importer->id = 'stanford_course_minimal_importer';
   $feeds_importer->config = array(
     'name' => 'Course (Class) Importer',
     'description' => 'A slimmed-down version of the Stanford Course Importer, that does not import section information.',
@@ -201,14 +201,14 @@ function stanford_course_class_importer_feeds_importer_default() {
         'bundle' => 'stanford_course',
       ),
     ),
-    'content_type' => 'stanford_course_class_importer',
+    'content_type' => 'stanford_course_minimal_importer',
     'update' => 0,
     'import_period' => '86400',
     'expire_period' => 3600,
     'import_on_create' => 1,
     'process_in_background' => 0,
   );
-  $export['stanford_course_class_importer'] = $feeds_importer;
+  $export['stanford_course_minimal_importer'] = $feeds_importer;
 
   return $export;
 }
