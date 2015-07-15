@@ -829,6 +829,43 @@ function stanford_courses_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-stanford_course-field_s_course_academic_career'
+  $field_instances['node-stanford_course-field_s_course_academic_career'] = array(
+    'bundle' => 'stanford_course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'E.g., Undergraduate, Graduate, Graduate School of Business, Law School, or Medical School. This field is imported from ExploreCourses',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_s_course_academic_career',
+    'label' => 'Academic Career',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 18,
+    ),
+  );
+
   // Exported field_instance: 'node-stanford_course-field_s_course_code'
   $field_instances['node-stanford_course-field_s_course_code'] = array(
     'bundle' => 'stanford_course',
@@ -1632,6 +1669,7 @@ function stanford_courses_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Academic Career');
   t('Academic Year');
   t('Choose the start and end dates of the Quarter.');
   t('Class ID');
@@ -1643,6 +1681,7 @@ function stanford_courses_field_default_field_instances() {
   t('Date Range');
   t('Day(s) of Week');
   t('Description');
+  t('E.g., Undergraduate, Graduate, Graduate School of Business, Law School, or Medical School. This field is imported from ExploreCourses');
   t('End Time');
   t('Enter the course component, e.g., DIS for discussion section. See http://studentaffairs.stanford.edu/registrar/staff/course-components for a full list of course components');
   t('Enter the end time of the course section.');

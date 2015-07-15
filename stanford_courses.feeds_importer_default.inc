@@ -58,10 +58,9 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:25' => 'sections/section/units',
           'xpathparser:26' => 'grading',
           'xpathparser:27' => 'tags/tag',
+          'xpathparser:28' => 'administrativeInformation/academicCareer',
         ),
         'rawXML' => array(
-          // Return raw XML. See $feeds_tamper->source = 'xpathparser:24' in
-          // stanford_courses.feeds_tamper_default.inc.
           'xpathparser:24' => 'xpathparser:24',
           'xpathparser:27' => 'xpathparser:27',
           'xpathparser:0' => 0,
@@ -90,6 +89,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:23' => 0,
           'xpathparser:25' => 0,
           'xpathparser:26' => 0,
+          'xpathparser:28' => 0,
         ),
         'context' => '//courses/course',
         'exp' => array(
@@ -124,6 +124,7 @@ function stanford_courses_feeds_importer_default() {
             'xpathparser:25' => 0,
             'xpathparser:26' => 0,
             'xpathparser:27' => 0,
+            'xpathparser:28' => 0,
           ),
         ),
         'allow_override' => 0,
@@ -273,6 +274,11 @@ function stanford_courses_feeds_importer_default() {
           27 => array(
             'source' => 'xpathparser:27',
             'target' => 'field_s_course_ec_tag',
+            'unique' => FALSE,
+          ),
+          28 => array(
+            'source' => 'xpathparser:28',
+            'target' => 'field_s_course_academic_career',
             'unique' => FALSE,
           ),
         ),

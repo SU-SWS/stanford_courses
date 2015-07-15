@@ -10,6 +10,34 @@
 function stanford_courses_field_default_field_bases() {
   $field_bases = array();
 
+  // Exported field_base: 'field_s_course_academic_career'
+  $field_bases['field_s_course_academic_career'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_s_course_academic_career',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'UG' => 'Undergraduate',
+        'GR' => 'Graduate',
+        'GSB' => 'Graduate School of Business',
+        'LAW' => 'Law School',
+        'MED' => 'Medical School',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_s_course_co_person'
   $field_bases['field_s_course_co_person'] = array(
     'active' => 1,
