@@ -98,7 +98,14 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
 
     // On each result set of xml run another xpath over it to find the data
     // that we want.
-    foreach ($v->xpath($settings['subxpath']) as $result) {
+    $subset = $v->xpath($settings['subxpath']);
+
+    if (empty($subset)) {
+      $field[$k][] = "";
+      continue;
+    }
+
+    foreach ($subset as $result) {
       switch($settings['datatype']) {
         case "integer":
           $field[$k][] = (integer) $result;
