@@ -1,6 +1,20 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-3.7                   2015-10-19
+------------------------------------
+
+- ECON-125: Pad out return array for field_multiple_values as tamper does not respect associative array key index alone
+- VPSADEV-146: Added the author filter back in
+- VPSADEV-146: fix to avoid overridden feature
+- Reverted VBO stuff in manage view
+- VPSADEV-146: Added author to exposed filters of manage view
+- Updating hook_help to remove references to the Course Section content type
+- Added new feeds tamper plugin: Array keyword filter
+- Support stanford_courses_minimal
+- Update README.md
+
+
 7.x-3.6                   2015-06-26
 ------------------------------------
 - Removed foreign keys from feature
