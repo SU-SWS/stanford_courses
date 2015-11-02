@@ -399,6 +399,53 @@ function stanford_course_views_views_default_views() {
   $handler = $view->new_display('page', 'Current Page', 'current_courses_page');
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Current Courses';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'stanford_course' => 'stanford_course',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Field collection item: Component (field_s_course_component) */
+  $handler->display->display_options['filters']['field_s_course_component_value']['id'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['table'] = 'field_data_field_s_course_component';
+  $handler->display->display_options['filters']['field_s_course_component_value']['field'] = 'field_s_course_component_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_component_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['field_s_course_component_value']['value'] = array(
+    'DIS' => 'DIS',
+    'INS' => 'INS',
+    'PRC' => 'PRC',
+    'T/D' => 'T/D',
+  );
+  $handler->display->display_options['filters']['field_s_course_component_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
+  /* Filter criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now +2 weeks';
+  /* Filter criterion: Field collection item: Date Range - end date (field_s_course_section_dates:value2) */
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['id'] = 'field_s_course_section_dates_value2';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['table'] = 'field_data_field_s_course_section_dates';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['field'] = 'field_s_course_section_dates_value2';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['group'] = 1;
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'courses';
 
   /* Display: Search Page */
