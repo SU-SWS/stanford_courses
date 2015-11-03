@@ -445,7 +445,7 @@ function stanford_course_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['operator'] = '>=';
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['group'] = 1;
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now +2 weeks';
   $handler->display->display_options['path'] = 'courses';
 
   /* Display: Search Page */
