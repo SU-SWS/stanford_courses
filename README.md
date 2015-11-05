@@ -18,7 +18,7 @@ A collection of default views for use with the course module. This module should
 A listing of all courses complete with an exposed filter block that allows users to search, sort, and filter through the list of courses.
 
 * **Current Courses Page**
-A listing of all courses that are in progress. This view will only show courses that are active for the current term.
+A listing of all courses that are in progress. This view will only show courses that are active for the current term. All components are included with the exception of Discussion Section (DIS), Independent Study (INS),  Practicum (PRC), and Thesis/Dissertation (T/D).
 
 * **Section Information Block**
 The section information block is used when placed on a course node to display a table of section information.
