@@ -1,0 +1,57 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_install().
+ */
+function stanford_module_install() {}
+
+/**
+ * Implements hook_enable().
+ */
+function stanford_module_enable() {}
+
+/**
+ * Implements hook_disable().
+ */
+function stanford_module_disable() {}
+
+/**
+ * Implements hook_uninstall().
+ */
+function stanford_module_uninstall() {}
+
+
+/**
+ * Implements hook_schema().
+ */
+function stanford_courses_tag_translate_schema() {
+  $schema['stanford_courses_tag'] = array(
+    'description' => 'Mapping table for course tags from explorecourses to a human readable field.',
+    'fields' => array(
+      'ctag' => array(
+        'description' => 'the tag from explore courses',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 255
+      ),
+      'chuman' => array(
+        'description' => 'human readable translation',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'length' => 255
+      ),
+    ),
+    'indexes' => array(
+      'course_tag' => array('ctag'),
+      'tag_human' => array('ctag', 'chuman'),
+    ),
+    'unique keys' => array(
+      'ctag' => array('ctag')
+    ),
+    'primary key' => array('ctag'),
+  );
+  return $schema;
+}
