@@ -23,7 +23,7 @@ $plugin = array(
  */
 function stanford_courses_tag_translate_tamper_form($importer, $element_key, $settings) {
   $form = array();
-  $form['help']['#markup'] = t('Translate these results.');
+  $form['help']['#markup'] = t('Translate these results. You can configure the translation set at !link', array("!link" => l("the configuration page.", "admin/config/stanford/courses/tag-translate")));
   return $form;
 }
 
@@ -39,6 +39,15 @@ function stanford_courses_tag_translate_tamper_form($importer, $element_key, $se
  */
 function stanford_courses_tag_translate_tamper_callback($source, $item_key, $element_key, &$field, $settings) {
 
-  // Nothing yet
+  // Get the translation table. Don't worry this function is cached.
+  $translates = stanford_courses_tag_translate_get_translation_table();
+  $index = strtolower($field);
+
+  // If not in the translation table just leave the value alone.
+  if (!isset($translates[$index])) {
+    return;
+  }
+
+  $field = t(check_plain($translates[$index]->chuman));
 
 }
