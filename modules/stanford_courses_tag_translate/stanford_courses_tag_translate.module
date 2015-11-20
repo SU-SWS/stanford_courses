@@ -6,6 +6,8 @@
  * Long description
  */
 
+include_once 'stanford_courses_tag_translate.features.inc';
+
 /**
  * Implements hook_help().
  */
@@ -62,4 +64,124 @@ function stanford_courses_tag_translate_get_translation_table() {
   ksort($results, SORT_NATURAL, SORT_FLAG_CASE);
   $ttable = $results;
   return $ttable;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function stanford_courses_tag_translate_form_node_form_alter(&$form, &$form_state) {
+
+  // Only on courses.
+  if (!isset($form["#id"]) || $form["#id"] !== "stanford-course-node-form") {
+    return;
+  }
+
+  // Put the human right after the ec tags.
+  $form["field_s_course_tag_human"]["#weight"] = 8;
+
+}
+
+/**
+ * [stanford_courses_tag_translate_feeds_importer_default_alter description]
+ * @return [type] [description]
+ */
+function stanford_courses_tag_translate_feeds_importer_default_alter(&$importers) {
+
+  // Only want the one.
+  if (!isset($importers['stanford_course_importer'])) {
+    return NULL;
+  }
+
+  // Define the importer.
+  $importer = $importers['stanford_course_importer'];
+
+  // Get the xpath count for this.
+  $xcount = count($importer->config['parser']['config']['sources']);
+
+  // Set the parser source.
+  $importer->config['parser']['config']['sources']["xpathparser:" . $xcount] = "tags/tag";
+
+  // Set to return back raw XML.
+  $importer->config['parser']['config']['rawXML']["xpathparser:" . $xcount] = "xpathparser:" . $xcount;
+
+  // No debug.
+  $importer->config['parser']['config']['sources']["exp"]['debug']["xpathparser:" . $xcount] = 0;
+
+  // Processor.
+  $importer->config['processor']['config']['mappings'][$xcount] = array(
+    'source' => "xpathparser:" . $xcount,
+    'target' => "field_s_course_tag_human",
+    'unique' => FALSE,
+  );
+
+}
+
+/**
+ * [stanford_courses_tag_translate_feeds_tamper_default_alter description]
+ * @param  [type] &$tampers [description]
+ * @return [type]           [description]
+ */
+function stanford_courses_tag_translate_feeds_tamper_default_alter(&$tampers) {
+
+  $importer = feeds_importer_load("stanford_course_importer");
+
+  if (!$importer) {
+    return;
+  }
+
+  // Get the xpath count for this.
+  $xcount = count($importer->config['parser']['config']['sources']);
+
+  // Assume the last xpathparser item is the one we want.
+  // Index starts at 0 and there is an extra value in the array (exp);
+  $xcount--;
+  $xcount--;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_' . $xcount . '-clean_up_additional_xml';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:' . $xcount;
+  $feeds_tamper->plugin_id = 'find_replace_regex';
+  $feeds_tamper->settings = array(
+    'find' => '/<\\/?organization>|<\\/?tag>|<\\/?name>|\\s{2,}/',
+    'replace' => '',
+    'limit' => '',
+    'real_limit' => -1,
+  );
+  $feeds_tamper->weight = 1;
+  $feeds_tamper->description = 'Clean up additional XML';
+  $tampers['stanford_course_importer-xpathparser_' . $xcount . '-clean_up_additional_xml'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_' . $xcount . '-course_translate_tamper';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:' . $xcount;
+  $feeds_tamper->plugin_id = 'stanford_courses_tag_translate_tamper';
+  $feeds_tamper->settings = array();
+  $feeds_tamper->weight = 2;
+  $feeds_tamper->description = 'Translate into human readable values';
+  $tampers['stanford_course_importer-xpathparser_' . $xcount . '-course_translate_tamper'] = $feeds_tamper;
+
+  $feeds_tamper = new stdClass();
+  $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
+  $feeds_tamper->api_version = 2;
+  $feeds_tamper->id = 'stanford_course_importer-xpathparser_' . $xcount . '-replace_close_op_doub';
+  $feeds_tamper->importer = 'stanford_course_importer';
+  $feeds_tamper->source = 'xpathparser:' . $xcount;
+  $feeds_tamper->plugin_id = 'find_replace_regex';
+  $feeds_tamper->settings = array(
+    'find' => '/<\\/organization>\\s{1,}<name>/',
+    'replace' => '::',
+    'limit' => '',
+    'real_limit' => -1,
+  );
+  $feeds_tamper->weight = 0;
+  $feeds_tamper->description = 'Replace closing/opening tags with double-colon';
+
+  $tampers['stanford_course_importer-xpathparser_' . $xcount . '-replace_close_op_doub'] = $feeds_tamper;
+
 }

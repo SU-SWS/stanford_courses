@@ -41,7 +41,7 @@ function stanford_courses_tag_translate_tamper_callback($source, $item_key, $ele
 
   // Get the translation table. Don't worry this function is cached.
   $translates = stanford_courses_tag_translate_get_translation_table();
-  $index = strtolower($field);
+  $index = strtoupper($field);
 
   // If not in the translation table just leave the value alone.
   if (!isset($translates[$index])) {
