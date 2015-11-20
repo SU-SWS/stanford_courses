@@ -67,21 +67,6 @@ function stanford_courses_tag_translate_get_translation_table() {
 }
 
 /**
- * Implements hook_form_alter().
- */
-function stanford_courses_tag_translate_form_node_form_alter(&$form, &$form_state) {
-
-  // Only on courses.
-  if (!isset($form["#id"]) || $form["#id"] !== "stanford-course-node-form") {
-    return;
-  }
-
-  // Put the human right after the ec tags.
-  $form["field_s_course_tag_human"]["#weight"] = 8;
-
-}
-
-/**
  * [stanford_courses_tag_translate_feeds_importer_default_alter description]
  * @return [type] [description]
  */

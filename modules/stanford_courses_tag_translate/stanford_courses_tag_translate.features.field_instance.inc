@@ -71,7 +71,7 @@ function stanford_courses_tag_translate_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 18,
+      'weight' => 8,
     ),
   );
 
