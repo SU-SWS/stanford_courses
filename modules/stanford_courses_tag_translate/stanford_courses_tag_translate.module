@@ -77,27 +77,36 @@ function stanford_courses_tag_translate_feeds_importer_default_alter(&$importers
     return NULL;
   }
 
-  // Define the importer.
-  $importer = $importers['stanford_course_importer'];
+  $importer = &$importers['stanford_course_importer'];
+
+  $config = $importer->config;
 
   // Get the xpath count for this.
-  $xcount = count($importer->config['parser']['config']['sources']);
+  ksort($config['parser']['config']['sources'], SORT_NATURAL);
+  $keys = array_keys($config['parser']['config']['sources']);
+  $key = array_pop($keys);
+  $xcurrent = str_replace("xpathparser:", "", $key);
+  $xcount = (int) $xcurrent + 1;
 
-  // Set the parser source.
-  $importer->config['parser']['config']['sources']["xpathparser:" . $xcount] = "tags/tag";
+  // // Set the parser source.
+  $config['parser']['config']['sources']["xpathparser:" . $xcount] = "tags/tag";
 
-  // Set to return back raw XML.
-  $importer->config['parser']['config']['rawXML']["xpathparser:" . $xcount] = "xpathparser:" . $xcount;
+  // // Set to return back raw XML.
+  $config['parser']['config']['rawXML']["xpathparser:" . $xcount] = "xpathparser:" . $xcount;
 
-  // No debug.
-  $importer->config['parser']['config']['sources']["exp"]['debug']["xpathparser:" . $xcount] = 0;
+  // // No debug.
+  $config['parser']['config']["exp"]['debug']["xpathparser:" . $xcount] = 0;
 
-  // Processor.
-  $importer->config['processor']['config']['mappings'][$xcount] = array(
+  // // Processor.
+  $config['processor']['config']['mappings'][$xcount] = array(
     'source' => "xpathparser:" . $xcount,
     'target' => "field_s_course_tag_human",
     'unique' => FALSE,
   );
+
+
+  $importer->config = $config;
+  $importers["stanford_course_importer"] = $importer;
 
 }
 
@@ -115,11 +124,8 @@ function stanford_courses_tag_translate_feeds_tamper_default_alter(&$tampers) {
   }
 
   // Get the xpath count for this.
-  $xcount = count($importer->config['parser']['config']['sources']);
-
-  // Assume the last xpathparser item is the one we want.
-  // Index starts at 0 and there is an extra value in the array (exp);
-  $xcount--;
+  $config = $importer->getConfig();
+  $xcount = count($config['parser']['config']['sources']);
   $xcount--;
 
   $feeds_tamper = new stdClass();

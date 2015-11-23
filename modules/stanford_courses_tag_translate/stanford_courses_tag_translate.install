@@ -6,22 +6,50 @@
 /**
  * Implements hook_install().
  */
-function stanford_module_install() {}
+function stanford_courses_tag_translate_install() {
+
+  ctools_include('export');
+
+  // Check to see if the importer has been modified and is in the database.
+  $importers = ctools_export_load_object('feeds_importer', 'conditions', array('id' => 'stanford_course_importer'));
+  // Does not exist. This is strange but end anyway. Should we log here?
+  if (!isset($importers['stanford_course_importer']) || empty($importers["stanford_course_importer"])) {
+    return;
+  }
+
+  // Define just it .
+  $importer = $importers['stanford_course_importer'];
+
+  // If the export is in code we don't need to do anything as the alters work.
+  if ($importer->export_type == EXPORT_IN_CODE) {
+    return;
+  }
+
+  // Run the importer through the alter.
+  stanford_courses_tag_translate_feeds_importer_default_alter($importers);
+
+  // Add the stuff and save.
+  $save = new stdClass();
+  $save->id = "stanford_course_importer";
+  $save->config = $importers["stanford_course_importer"]->config;
+  drupal_write_record('feeds_importer', $save, 'id');
+
+}
 
 /**
  * Implements hook_enable().
  */
-function stanford_module_enable() {}
+function stanford_courses_tag_translate_enable() {}
 
 /**
  * Implements hook_disable().
  */
-function stanford_module_disable() {}
+function stanford_courses_tag_translate_disable() {}
 
 /**
  * Implements hook_uninstall().
  */
-function stanford_module_uninstall() {}
+function stanford_courses_tag_translate_uninstall() {}
 
 
 /**
