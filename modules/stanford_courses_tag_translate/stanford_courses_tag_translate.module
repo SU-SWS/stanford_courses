@@ -124,9 +124,20 @@ function stanford_courses_tag_translate_feeds_tamper_default_alter(&$tampers) {
   }
 
   // Get the xpath count for this.
-  $config = $importer->getConfig();
-  $xcount = count($config['parser']['config']['sources']);
-  $xcount--;
+  $xcount = NULL;
+  $options = $importer->processor->config["mappings"];
+  $options = array_reverse($options);
+  foreach ($options as $xkey => $opt) {
+    if ($opt['target'] == "field_s_course_tag_human") {
+      $xcount = (int) str_replace("xpathparser:", "", $opt['source']);
+      break;
+    }
+  }
+
+  // No altering if not found.
+  if (!$xcount) {
+    return;
+  }
 
   $feeds_tamper = new stdClass();
   $feeds_tamper->disabled = FALSE; /* Edit this to true to make a default feeds_tamper disabled initially */
