@@ -5,6 +5,11 @@
 
 /**
  * Implements hook_install().
+ *
+ * Look up wether or not the feed importer we want to modify is in the database.
+ * If the settings are in the datbase then we need to alter it and save it back.
+ * If the settings are in code do nothing and let the alters to their work.
+ *
  */
 function stanford_courses_tag_translate_install() {
 
@@ -52,6 +57,8 @@ function stanford_courses_tag_translate_uninstall() {}
 
 /**
  * Implements hook_schema().
+ *
+ * For storing the key = value translations of tags in to human readable lables.
  */
 function stanford_courses_tag_translate_schema() {
   $schema['stanford_courses_tag'] = array(

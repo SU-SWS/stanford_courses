@@ -49,7 +49,9 @@ function stanford_courses_tag_translate_ctools_plugin_directory($module, $plugin
 
 /**
  * Gets all the translations out of the database keyed with the tag.
- * @return [type] [description]
+ *
+ * @return array
+ *   An array of translations keyed by the tag.
  */
 function stanford_courses_tag_translate_get_translation_table() {
   $ttable = &drupal_static(__FUNCTION__);
@@ -67,8 +69,14 @@ function stanford_courses_tag_translate_get_translation_table() {
 }
 
 /**
- * [stanford_courses_tag_translate_feeds_importer_default_alter description]
- * @return [type] [description]
+ * Alters the stanford_course_importer feed importer.
+ *
+ * If the feed importer is in code then alter it to add the human translated
+ * field mapping and configuration. This function is also called by hook_install
+ * if the feed importer settings are in the database.
+ *
+ * @param array $importers
+ *   An array of default feed importers.
  */
 function stanford_courses_tag_translate_feeds_importer_default_alter(&$importers) {
 
@@ -111,9 +119,13 @@ function stanford_courses_tag_translate_feeds_importer_default_alter(&$importers
 }
 
 /**
- * [stanford_courses_tag_translate_feeds_tamper_default_alter description]
- * @param  [type] &$tampers [description]
- * @return [type]           [description]
+ * Add in the required tampers to make the translation work.
+ *
+ * Need to look up which mapping the human field is on as it could change. This
+ * alter seems to work regardless of in code or in database settings.
+ *
+ * @param array $tampers
+ *   An array of tamper items.
  */
 function stanford_courses_tag_translate_feeds_tamper_default_alter(&$tampers) {
 
