@@ -12,16 +12,14 @@ function stanford_courses_tag_translate_install() {
 
   // Check to see if the importer has been modified and is in the database.
   $importers = ctools_export_load_object('feeds_importer', 'conditions', array('id' => 'stanford_course_importer'));
+
   // Does not exist. This is strange but end anyway. Should we log here?
   if (!isset($importers['stanford_course_importer']) || empty($importers["stanford_course_importer"])) {
     return;
   }
 
-  // Define just it .
-  $importer = $importers['stanford_course_importer'];
-
-  // If the export is in code we don't need to do anything as the alters work.
-  if ($importer->export_type == EXPORT_IN_CODE) {
+  // If the export is in code we don't need to do anything as the alters will do the work.
+  if ($importers['stanford_course_importer']->export_type == EXPORT_IN_CODE) {
     return;
   }
 
