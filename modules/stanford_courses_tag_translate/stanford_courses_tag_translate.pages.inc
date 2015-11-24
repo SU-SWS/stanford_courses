@@ -150,7 +150,7 @@ function stanford_courses_tag_translate_fields_form_submit(&$form, &$form_state)
   $values = $form_state["values"];
 
   $insert = array(
-    "ctag" => filter_xss($values["ctag"]),
+    "ctag" => strtoupper(filter_xss($values["ctag"])),
     "chuman" => filter_xss($values['chuman']),
     "ctid" => filter_xss($values['ctid']),
   );
@@ -249,9 +249,53 @@ function stanford_courses_tag_translate_delete_form_submit($form, &$form_state) 
 function stanford_courses_tag_translate_import() {
   $render = array();
 
-  $render["tmp"]["#markup"] = "<p>Import tags form page</p>";
+  // Caution:
+  drupal_set_message("WARNING: Importing new values will empty and replace all existing values. This action is not recoverable.", "warning");
 
+  // Get basic form block.
+  $render["theform"] = drupal_get_form("stanford_courses_tag_translate_export_form");
+  // Done done delta 58.
   return $render;
+}
+
+/**
+ * [stanford_courses_tag_translate_import_validate description]
+ * @param  [type] $form       [description]
+ * @param  [type] $form_state [description]
+ * @return [type]             [description]
+ */
+function stanford_courses_tag_translate_import_form_validate($form, &$form_state) {
+  $values = $form_state["values"];
+  $json = filter_xss($values["txtxprt"]);
+  $decode = drupal_json_decode($json);
+  if (!$decode) {
+    form_set_error("txtxprt", "Invalid input code. Please check the integrity of the export.");
+  }
+}
+
+/**
+ * [stanford_courses_tag_translate_import_submit description]
+ * @param  [type] $form        [description]
+ * @param  [type] &$form_state [description]
+ * @return [type]              [description]
+ */
+function stanford_courses_tag_translate_import_form_submit($form, &$form_state) {
+  $values = $form_state["values"];
+  $json = filter_xss($values["txtxprt"]);
+  $decode = drupal_json_decode($json);
+
+  // Remove existing ones.
+  db_truncate("stanford_courses_tag")->execute();
+
+  // Add new ones.
+  foreach($decode as $key => $value) {
+    $insert = array("ctag" => $key, "chuman" => $value);
+    drupal_write_record("stanford_courses_tag", $insert);
+  }
+
+  drupal_set_message("Import successfull", "status");
+  drupal_goto("admin/config/stanford/courses/tag-translate");
+
 }
 
 /**
@@ -261,7 +305,54 @@ function stanford_courses_tag_translate_import() {
 function stanford_courses_tag_translate_export() {
   $render = array();
 
-  $render["tmp"]["#markup"] = "<p>Export tag form page</p>";
+  $results = stanford_courses_tag_translate_get_translation_table();
+
+  if (empty($results)) {
+    $render["tmp"]["#markup"] = "<h3>" . t("Nothing to export.") . "</h3>";
+    return $render;
+  }
+
+  $xport_values = array();
+  foreach ($results as $key => $values) {
+    $xport_values[$key] = $values->chuman;
+  }
+
+  $xport_code = drupal_json_encode($xport_values);
+  $xport_code = str_replace("{\"", "{\n\"", $xport_code);
+  $xport_code = str_replace("\"}", "\"\n}", $xport_code);
+  $xport_code = str_replace("\":\"", "\": \"", $xport_code);
+  $xport_code = preg_replace("\",\"", ",\n", $xport_code);
+
+  $render['theform'] = drupal_get_form("stanford_courses_tag_translate_export_form", $xport_code);
+  unset($render["theform"]["submit"]);
 
   return $render;
+}
+
+/**
+ * [stanford_courses_tag_translate_export_form description]
+ * @param  [type] $form       [description]
+ * @param  [type] $form_state [description]
+ * @return [type]             [description]
+ */
+function stanford_courses_tag_translate_export_form($form, &$form_state, $default_value) {
+
+  $form["txtxprt"] = array(
+    "#type" => "textarea",
+    "#title" => t("Export code"),
+    "#default_value" => $default_value,
+    "#rows" => 30,
+  );
+
+  // Add submit button.
+  $form["submit"] = array(
+    "#type" => "submit",
+    "#value" => "Import",
+  );
+
+  // Add submit and validate hooks.
+  $form["#validate"][] = "stanford_courses_tag_translate_import_form_validate";
+  $form["#submit"][] = "stanford_courses_tag_translate_import_form_submit";
+
+  return $form;
 }
