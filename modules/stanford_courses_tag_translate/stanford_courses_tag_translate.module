@@ -34,6 +34,67 @@ function stanford_courses_tag_translate_menu() {
     'file' => "stanford_courses_tag_translate.pages.inc",
   );
 
+  // Overview.
+  $items['admin/config/stanford/courses/tag-translate/list'] = array(
+    'title' => 'List',
+    'page callback' => 'stanford_courses_tag_translate_settings',
+    'page arguments' => array(),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'file' => "stanford_courses_tag_translate.pages.inc",
+  );
+
+  // Create a new item.
+  $items['admin/config/stanford/courses/tag-translate/new'] = array(
+    'title' => 'New tag translation',
+    'page callback' => 'stanford_courses_tag_translate_new',
+    'page arguments' => array(),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_LOCAL_ACTION,
+    'file' => "stanford_courses_tag_translate.pages.inc",
+  );
+
+  // Edit an item.
+  $items['admin/config/stanford/courses/tag-translate/edit/%'] = array(
+    'title' => 'Edit tag translation',
+    'page callback' => 'stanford_courses_tag_translate_edit',
+    'page arguments' => array(6),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => "stanford_courses_tag_translate.pages.inc",
+  );
+
+  // Delete an item.
+  $items['admin/config/stanford/courses/tag-translate/delete/%'] = array(
+    'title' => 'Delete tag translation',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array("stanford_courses_tag_translate_delete_form", 6),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => "stanford_courses_tag_translate.pages.inc",
+  );
+
+  // Import a bunch of translations.
+  $items['admin/config/stanford/courses/tag-translate/import'] = array(
+    'title' => 'Import',
+    'page callback' => 'stanford_courses_tag_translate_import',
+    'page arguments' => array(),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => "stanford_courses_tag_translate.pages.inc",
+  );
+
+  // Export a bunch of translations.
+  $items['admin/config/stanford/courses/tag-translate/export'] = array(
+    'title' => 'Export',
+    'page callback' => 'stanford_courses_tag_translate_export',
+    'page arguments' => array(),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_LOCAL_TASK,
+    'file' => "stanford_courses_tag_translate.pages.inc",
+  );
+
+
   return $items;
 }
 
@@ -54,18 +115,40 @@ function stanford_courses_tag_translate_ctools_plugin_directory($module, $plugin
  *   An array of translations keyed by the tag.
  */
 function stanford_courses_tag_translate_get_translation_table() {
+
   $ttable = &drupal_static(__FUNCTION__);
+
   if ($ttable) {
     return $ttable;
   }
+
   $results = db_select("stanford_courses_tag", "sct")
-              ->fields("sct", array("ctag", "chuman"))
+              ->fields("sct", array("ctag", "chuman", "ctid"))
+              ->orderBy("ctag")
               ->execute()
               ->fetchAllAssoc("ctag");
 
   ksort($results, SORT_NATURAL, SORT_FLAG_CASE);
+
   $ttable = $results;
+
   return $ttable;
+}
+
+/**
+ * [stanford_courses_tag_translate_load_translation description]
+ * @param  [type] $id [description]
+ * @return [type]     [description]
+ */
+function stanford_courses_tag_translate_get_translation($id) {
+  $results = db_select("stanford_courses_tag", "sct")
+              ->fields("sct", array("ctag", "chuman", "ctid"))
+              ->condition("ctid", $id)
+              ->orderBy("ctag")
+              ->execute()
+              ->fetchAllAssoc("ctid");
+
+  return $results[$id];
 }
 
 /**

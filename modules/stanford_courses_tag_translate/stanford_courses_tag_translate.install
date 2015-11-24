@@ -64,6 +64,12 @@ function stanford_courses_tag_translate_schema() {
   $schema['stanford_courses_tag'] = array(
     'description' => 'Mapping table for course tags from explorecourses to a human readable field.',
     'fields' => array(
+      'ctid' => array(
+        'description' => 'The primary identifier for a tag translation.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
       'ctag' => array(
         'description' => 'the tag from explore courses',
         'type' => 'varchar',
@@ -84,7 +90,7 @@ function stanford_courses_tag_translate_schema() {
     'unique keys' => array(
       'ctag' => array('ctag')
     ),
-    'primary key' => array('ctag'),
+    'primary key' => array('ttid'),
   );
   return $schema;
 }
