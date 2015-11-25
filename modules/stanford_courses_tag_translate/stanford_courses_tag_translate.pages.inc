@@ -394,7 +394,7 @@ function stanford_courses_tag_translate_import_form_submit($form, &$form_state) 
   }
 
   // Message and redirect.
-  drupal_set_message("Import successfull", "status");
+  drupal_set_message("Import successful", "status");
   drupal_goto("admin/config/stanford/courses/tag-translate");
 
 }
