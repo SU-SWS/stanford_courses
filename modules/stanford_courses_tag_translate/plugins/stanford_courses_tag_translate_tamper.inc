@@ -3,6 +3,10 @@
  * @file
  * Feeds Tamper Plugin to take one string and translate it into another based
  * on a table in the database...
+ *
+ *  This is a pretty simple plugin. It does a straight compare to what is
+ *  provided in $field to keys in the database.
+ *
  */
 
 /**
@@ -19,7 +23,10 @@ $plugin = array(
 /**
  * Implements hook_form().
  *
- * Returns a configuration form for this plugin
+ * Returns a configuration form for this plugin. But there is none as I decided
+ * to move the interface to it's own part as it was too complicated/large
+ * for the plugin form page.
+ *
  */
 function stanford_courses_tag_translate_tamper_form($importer, $element_key, $settings) {
   $form = array();
@@ -35,7 +42,6 @@ function stanford_courses_tag_translate_tamper_form($importer, $element_key, $se
  * @param  [type] $element_key [description]
  * @param  [type] $field       [description]
  * @param  [type] $settings    [description]
- * @return [type]              [description]
  */
 function stanford_courses_tag_translate_tamper_callback($source, $item_key, $element_key, &$field, $settings) {
 
@@ -45,9 +51,9 @@ function stanford_courses_tag_translate_tamper_callback($source, $item_key, $ele
 
   // If not in the translation table just leave the value alone.
   if (!isset($translates[$index])) {
-    return;
+    return NULL;
   }
 
+  // Make the adjustment.
   $field = t(check_plain($translates[$index]->chuman));
-
 }
