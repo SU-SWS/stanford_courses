@@ -105,7 +105,7 @@ function stanford_courses_tag_translate_fields_form($form, &$form_state, $ftype 
   // Explore courses tag to translate from.
   $form["ctag"] = array(
     "#type" => 'textfield',
-    "#description" => t("The tag used on explore courses. eg: ABC:defg"),
+    "#description" => t('The tag used on explorecourses, e.g., "REGISTRAR::training"'),
     "#default_value" => isset($tobj->ctag) ? $tobj->ctag : "",
     "#required" => TRUE,
   );
