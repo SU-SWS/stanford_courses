@@ -91,7 +91,7 @@ function stanford_courses_tag_translate_schema() {
     'unique keys' => array(
       'ctag' => array('ctag')
     ),
-    'primary key' => array('ttid'),
+    'primary key' => array('ctid'),
   );
   return $schema;
 }
