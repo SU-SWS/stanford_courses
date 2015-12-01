@@ -15,6 +15,9 @@
 function stanford_courses_tag_translate_settings() {
   $render = array();
 
+  // More configuration.
+  $render["default_form"] = drupal_get_form("stanford_courses_tag_default_value_form");
+
   // Get the stuff out of the DB.
   $results = stanford_courses_tag_translate_get_translation_table();
 
@@ -35,6 +38,51 @@ function stanford_courses_tag_translate_settings() {
   }
 
   return $render;
+}
+
+/**
+ * [stanford_courses_tag_default_value_form description]
+ * @param  [type] $form       [description]
+ * @param  [type] $form_state [description]
+ * @return [type]             [description]
+ */
+function stanford_courses_tag_default_value_form($form, &$form_state) {
+
+  $form["configgroup"] = array(
+    "#type" => "fieldset",
+    "#description" => t(""),
+    "#title" => t("Default Settings"),
+    "#collapsed" => FALSE,
+    "#collaspible" => FALSE,
+  );
+
+  $form["configgroup"]["tag_default"] = array(
+    "#type" => 'textfield',
+    "#title" => "Default value for translations",
+    "#description" => t("This value is used for anything that does not have a translation below. Use the key \"[original]\" to use the original source as the default."),
+    "#default_value" => variable_get("stanford_courses_tag_translation_tag_default", "[original]"),
+  );
+
+  $form["configgroup"]["submit"] = array(
+    "#type" => "submit",
+    "#value" => "Save",
+  );
+
+
+  return $form;
+}
+
+/**
+ * [stanford_courses_tag_default_value_form_submit description]
+ * @param  [type] $form        [description]
+ * @param  [type] &$form_state [description]
+ * @return [type]              [description]
+ */
+function stanford_courses_tag_default_value_form_submit($form, &$form_state) {
+  $values = $form_state["values"];
+  $clean = check_plain($values["tag_default"]);
+  variable_set("stanford_courses_tag_translation_tag_default", $clean);
+  drupal_set_message("Default values successfully updated");
 }
 
 /**
@@ -334,6 +382,7 @@ function stanford_courses_tag_translate_import() {
 
   // Get basic form block.
   $render["theform"] = drupal_get_form("stanford_courses_tag_translate_export_form");
+  $render["theform"]["txtxprt"]['#title'] = t("Import");
 
   // Done done delta 58.
   return $render;
