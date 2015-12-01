@@ -79,7 +79,7 @@ function stanford_courses_tag_translate_menu() {
     'title' => 'Import',
     'page callback' => 'stanford_courses_tag_translate_import',
     'page arguments' => array(),
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('administer feeds_tamper'),
     'type' => MENU_LOCAL_TASK,
     'file' => "stanford_courses_tag_translate.pages.inc",
   );
@@ -89,7 +89,7 @@ function stanford_courses_tag_translate_menu() {
     'title' => 'Export',
     'page callback' => 'stanford_courses_tag_translate_export',
     'page arguments' => array(),
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('administer feeds_tamper'),
     'type' => MENU_LOCAL_TASK,
     'file' => "stanford_courses_tag_translate.pages.inc",
   );
