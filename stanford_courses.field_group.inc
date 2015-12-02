@@ -21,14 +21,14 @@ function stanford_courses_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Deprecated',
-    'weight' => '17',
+    'weight' => '15',
     'children' => array(
       0 => 'field_s_course_tag_name',
       1 => 'field_s_course_tag_org',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'formatter' => 'collapsed',
       'instance_settings' => array(
         'description' => '',
         'classes' => 'group-deprecated field-group-fieldset',
