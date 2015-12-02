@@ -1055,7 +1055,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 9,
     ),
   );
 
@@ -1237,7 +1237,7 @@ function stanford_courses_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -1488,7 +1488,7 @@ function stanford_courses_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 

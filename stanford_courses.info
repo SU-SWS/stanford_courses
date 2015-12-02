@@ -69,6 +69,7 @@ features[field_base][] = field_s_course_time
 features[field_base][] = field_s_course_time_end
 features[field_base][] = field_s_course_units
 features[field_base][] = field_s_course_year
+features[field_group][] = group_deprecated|node|stanford_course|form
 features[field_group][] = group_s_course_advanced|field_collection_item|field_s_course_section_info|form
 features[field_instance][] = field_collection_item-field_s_course_section_info-field_s_course_co_person
 features[field_instance][] = field_collection_item-field_s_course_section_info-field_s_course_component
