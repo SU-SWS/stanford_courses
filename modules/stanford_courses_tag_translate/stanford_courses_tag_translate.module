@@ -122,6 +122,19 @@ function stanford_courses_tag_translate_get_translation_table() {
     return $ttable;
   }
 
+  $results = stanford_courses_tag_translate_get_all_translations();
+
+  // Because. Raisons.
+  $ttable = $results;
+
+  return $ttable;
+}
+
+/**
+ * [stanford_courses_tag_translate_get_all_translations description]
+ * @return [type] [description]
+ */
+function stanford_courses_tag_translate_get_all_translations() {
   $results = db_select("stanford_courses_tag", "sct")
               ->fields("sct", array("ctag", "chuman", "ctid"))
               ->orderBy("ctag")
@@ -130,11 +143,19 @@ function stanford_courses_tag_translate_get_translation_table() {
 
   // Tags are in a weird THIS::3that format and needs some fancy sorting.
   ksort($results, SORT_NATURAL, SORT_FLAG_CASE);
+  return $results;
+}
 
-  // Because. Raisons.
-  $ttable = $results;
-
-  return $ttable;
+/**
+ * [stanford_courses_tag_translate_get_all_translations_array description]
+ * @return [type] [description]
+ */
+function stanford_courses_tag_translate_get_all_translations_array() {
+  $tags = stanford_courses_tag_translate_get_all_translations();
+  foreach ($tags as $k => $v) {
+    $tags[$k] = $v->chuman;
+  }
+  return $tags;
 }
 
 /**
@@ -304,3 +325,44 @@ function stanford_courses_tag_translate_feeds_tamper_default_alter(&$tampers) {
   $tampers['stanford_course_importer-xpathparser_' . $xcount . '-course_translate_tamper'] = $feeds_tamper;
 
 }
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Change the textfield to drop down with options.
+ */
+function stanford_courses_tag_translate_form_views_exposed_form_alter(&$form, &$form_state) {
+  // Only act on the form for this one exposed block.
+  // if ($form["#id"] !== "views-exposed-form-stanford-courses-ref-human-tag-search-page-human") {
+  //   return;
+  // }
+
+  // Only act if the field is available.
+  if (!isset($form["field_s_course_tag_human_value"])) {
+    return;
+  }
+
+  // Remove the original.
+  unset($form["field_s_course_tag_human_value"]);
+
+  // Get the options.
+  $tags = stanford_courses_tag_translate_get_all_translations_array();
+  $tag_values = array_values($tags);
+  $keyed = array_combine($tag_values, $tag_values);
+  $default = variable_get("stanford_courses_tag_translation_tag_default", "[original]");
+
+  $options = array("" => "- Any -");
+
+  if ($default !== "[original]" && !empty($default)) {
+    $options = $options + array($default => $default);
+  }
+
+  $options = $options + $keyed;
+
+  $form["field_s_course_tag_human_value"]["#type"] = "select";
+  $form["field_s_course_tag_human_value"]["#multiple"] = FALSE;
+  $form["field_s_course_tag_human_value"]["#options"] = $options;
+  $form["field_s_course_tag_human_value"]["#validated"] = TRUE;
+
+}
+
