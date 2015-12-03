@@ -184,8 +184,8 @@ function stanford_courses_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter.</p>
-<p>&nbsp;</p>
-[hook_views_pre_build:courses/search]';
+  <p>&nbsp;</p>
+  [hook_views_pre_build:courses/search]';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Content: Section Information (field_s_course_section_info) */
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
@@ -407,7 +407,23 @@ function stanford_courses_views_default_views() {
   /* Display: Contextual Filter */
   $handler = $view->new_display('page', 'Contextual Filter', 'current_courses_page_human');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Current Courses';
+  $handler->display->display_options['title'] = 'Courses by tags';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Course Tags Human (field_s_course_tag_human) */
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['id'] = 'field_s_course_tag_human_tid';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['table'] = 'field_data_field_s_course_tag_human';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['field'] = 'field_s_course_tag_human_tid';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['validate']['type'] = 'taxonomy_term';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['validate_options']['vocabularies'] = array(
+    'course_tags_human' => 'course_tags_human',
+  );
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['validate_options']['transform'] = TRUE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -437,20 +453,6 @@ function stanford_courses_views_default_views() {
     'T/D' => 'T/D',
   );
   $handler->display->display_options['filters']['field_s_course_component_value']['reduce_duplicates'] = TRUE;
-  /* Filter criterion: Field collection item: Date Range -  start date (field_s_course_section_dates) */
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['id'] = 'field_s_course_section_dates_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['table'] = 'field_data_field_s_course_section_dates';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now +2 weeks';
-  /* Filter criterion: Field collection item: Date Range - end date (field_s_course_section_dates:value2) */
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['id'] = 'field_s_course_section_dates_value2';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['table'] = 'field_data_field_s_course_section_dates';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['field'] = 'field_s_course_section_dates_value2';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['relationship'] = 'field_s_course_section_info_value';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['operator'] = '>=';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now';
   $handler->display->display_options['path'] = 'courses/tag/%';
 
   /* Display: Search Page */
@@ -467,8 +469,8 @@ function stanford_courses_views_default_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>No courses are available based on your search.</p>
-<p>&nbsp;</p>
-[hook_views_pre_build:courses/search]';
+  <p>&nbsp;</p>
+  [hook_views_pre_build:courses/search]';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
@@ -572,16 +574,16 @@ function stanford_courses_views_default_views() {
     7 => 0,
     8 => 0,
   );
-  /* Filter criterion: Content: Tag: Human (field_s_course_tag_human) */
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['id'] = 'field_s_course_tag_human_value';
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['table'] = 'field_data_field_s_course_tag_human';
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['field'] = 'field_s_course_tag_human_value';
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['expose']['operator_id'] = 'field_s_course_tag_human_value_op';
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['expose']['label'] = 'Tags';
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['expose']['operator'] = 'field_s_course_tag_human_value_op';
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['expose']['identifier'] = 'field_s_course_tag_human_value';
-  $handler->display->display_options['filters']['field_s_course_tag_human_value']['expose']['remember_roles'] = array(
+  /* Filter criterion: Content: Course Tags Human (field_s_course_tag_human) */
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['id'] = 'field_s_course_tag_human_tid';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['table'] = 'field_data_field_s_course_tag_human';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['field'] = 'field_s_course_tag_human_tid';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['expose']['operator_id'] = 'field_s_course_tag_human_tid_op';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['expose']['label'] = 'Tags';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['expose']['operator'] = 'field_s_course_tag_human_tid_op';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['expose']['identifier'] = 'field_s_course_tag_human_tid';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['expose']['remember_roles'] = array(
     2 => '2',
     1 => 0,
     6 => 0,
@@ -593,7 +595,10 @@ function stanford_courses_views_default_views() {
     8 => 0,
     9 => 0,
   );
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_s_course_tag_human_tid']['vocabulary'] = 'course_tags_human';
   $handler->display->display_options['path'] = 'courses/tags';
+
   $export['stanford_courses_ref_human_tag'] = $view;
 
   return $export;
