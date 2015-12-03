@@ -49,12 +49,18 @@ function stanford_courses_tag_translate_tamper_callback($source, $item_key, $ele
   $translates = stanford_courses_tag_translate_get_translation_table();
   $index = strtoupper($field);
 
-
   // If not in the translation table set to the defualt value.
   if (!isset($translates[$index])) {
     $default = variable_get("stanford_courses_tag_translation_tag_default", "[original]");
 
     if ($default == "[original]") {
+      return;
+    }
+
+    if (empty($default)) {
+      $index_key = array_search($field, $source->items[$item_key][$element_key]);
+      unset($source->items[$item_key][$element_key][$index_key]);
+      $field = FALSE;
       return;
     }
 
