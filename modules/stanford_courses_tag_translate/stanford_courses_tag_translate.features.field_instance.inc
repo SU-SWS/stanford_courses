@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * stanford_courses_tag_translate2.features.field_instance.inc
+ * stanford_courses_tag_translate.features.field_instance.inc
  */
 
 /**
@@ -13,15 +13,23 @@ function stanford_courses_tag_translate_field_default_field_instances() {
   // Exported field_instance: 'node-stanford_course-field_s_course_tag_human'
   $field_instances['node-stanford_course-field_s_course_tag_human'] = array(
     'bundle' => 'stanford_course',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'tid' => 'autocreate',
+        'vid' => 15,
+        'name' => 'No Translations Available',
+        'vocabulary_machine_name' => 'course_tags_human',
+      ),
+    ),
     'deleted' => 0,
-    'description' => 'The human readable translation for the tags coming in from explore courses.',
+    'description' => 'The human translated text version of the tags that come from explore courses',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'above',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -32,53 +40,27 @@ function stanford_courses_tag_translate_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_s_course_tag_human',
-    'label' => 'Tag: Human',
+    'label' => 'Course Tags Human',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'content_editor_text_format' => 'content_editor_text_format',
-          'filtered_html' => 'filtered_html',
-          'full_html' => 'full_html',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'content_editor_text_format' => array(
-              'weight' => -10,
-            ),
-            'filtered_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 1,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
-      'module' => 'text',
+      'active' => 0,
+      'module' => 'taxonomy',
       'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
         'size' => 60,
       ),
-      'type' => 'text_textfield',
-      'weight' => 7,
+      'type' => 'taxonomy_autocomplete',
+      'weight' => 10,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Tag: Human');
-  t('The human readable translation for the tags coming in from explore courses.');
+  t('Course Tags Human');
+  t('The human translated text version of the tags that come from explore courses');
 
   return $field_instances;
 }

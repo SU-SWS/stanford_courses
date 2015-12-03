@@ -1,7 +1,7 @@
 <?php
 /**
  * @file
- * stanford_courses_tag_translate2.features.field_base.inc
+ * stanford_courses_tag_translate.features.field_base.inc
  */
 
 /**
@@ -18,17 +18,22 @@ function stanford_courses_tag_translate_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_s_course_tag_human',
     'indexes' => array(
-      'format' => array(
-        0 => 'format',
+      'tid' => array(
+        0 => 'tid',
       ),
     ),
     'locked' => 0,
-    'module' => 'text',
+    'module' => 'taxonomy',
     'settings' => array(
-      'max_length' => 255,
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'course_tags_human',
+          'parent' => 0,
+        ),
+      ),
     ),
     'translatable' => 0,
-    'type' => 'text',
+    'type' => 'taxonomy_term_reference',
   );
 
   return $field_bases;
