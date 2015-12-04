@@ -180,8 +180,8 @@ function stanford_courses_tag_translate_get_install_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter.</p>
-  <p>&nbsp;</p>
-  [hook_views_pre_build:courses/search]';
+    <p>&nbsp;</p>
+    [hook_views_pre_build:courses/search]';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Content: Section Information (field_s_course_section_info) */
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
@@ -409,6 +409,8 @@ function stanford_courses_tag_translate_get_install_views() {
   $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['id'] = 'field_s_course_tag_human_tid';
   $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['table'] = 'field_data_field_s_course_tag_human';
   $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['field'] = 'field_s_course_tag_human_tid';
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['title'] = 'Courses by tag %1';
   $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_s_course_tag_human_tid']['summary']['format'] = 'default_summary';
@@ -465,8 +467,8 @@ function stanford_courses_tag_translate_get_install_views() {
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>No courses are available based on your search.</p>
-  <p>&nbsp;</p>
-  [hook_views_pre_build:courses/search]';
+    <p>&nbsp;</p>
+    [hook_views_pre_build:courses/search]';
   $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
