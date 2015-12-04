@@ -37,6 +37,15 @@ function stanford_courses_tag_translate_install() {
   $save->config = $importers["stanford_course_importer"]->config;
   drupal_write_record('feeds_importer', $save, 'id');
 
+  // Get and install the views.
+  module_load_include("inc", "stanford_courses_tag_translate", "views/views");
+  $views = stanford_courses_tag_translate_get_install_views();
+
+  // Loop and save the views.
+  foreach ($views as $view) {
+    $view->save();
+  }
+
 }
 
 /**
@@ -98,6 +107,17 @@ function stanford_courses_tag_translate_uninstall() {
   $save->id = "stanford_course_importer";
   $save->config = $config;
   drupal_write_record('feeds_importer', $save, 'id');
+
+  // Get and un-install the views.
+  module_load_include("inc", "stanford_courses_tag_translate", "views/views");
+  $views = stanford_courses_tag_translate_get_install_views();
+
+  // Loop and remove the views.
+  foreach ($views as $machine_name => $view) {
+    db_delete("views_view")
+      ->condition("name", $machine_name)
+      ->execute();
+  }
 
 }
 

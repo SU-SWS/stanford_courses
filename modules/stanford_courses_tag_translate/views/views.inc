@@ -1,13 +1,9 @@
 <?php
-/**
- * @file
- * stanford_courses.views_default.inc
- */
 
 /**
  * Implements hook_views_default_views().
  */
-function stanford_courses_views_default_views() {
+function stanford_courses_tag_translate_get_install_views() {
   $export = array();
 
   $view = new view();
