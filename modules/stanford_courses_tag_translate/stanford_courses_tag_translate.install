@@ -24,18 +24,16 @@ function stanford_courses_tag_translate_install() {
   }
 
   // If the export is in code we don't need to do anything as the alters will do the work.
-  if ($importers['stanford_course_importer']->export_type == EXPORT_IN_CODE) {
-    return;
+  if ($importers['stanford_course_importer']->export_type !== EXPORT_IN_CODE) {
+    // Run the importer through the alter.
+    stanford_courses_tag_translate_feeds_importer_default_alter($importers);
+
+    // Add the stuff and save.
+    $save = new stdClass();
+    $save->id = "stanford_course_importer";
+    $save->config = $importers["stanford_course_importer"]->config;
+    drupal_write_record('feeds_importer', $save, 'id');
   }
-
-  // Run the importer through the alter.
-  stanford_courses_tag_translate_feeds_importer_default_alter($importers);
-
-  // Add the stuff and save.
-  $save = new stdClass();
-  $save->id = "stanford_course_importer";
-  $save->config = $importers["stanford_course_importer"]->config;
-  drupal_write_record('feeds_importer', $save, 'id');
 
   // Get and install the views.
   module_load_include("inc", "stanford_courses_tag_translate", "views/views");
@@ -65,6 +63,17 @@ function stanford_courses_tag_translate_disable() {}
 function stanford_courses_tag_translate_uninstall() {
 
   ctools_include('export');
+
+  // Get and un-install the views.
+  module_load_include("inc", "stanford_courses_tag_translate", "views/views");
+  $views = stanford_courses_tag_translate_get_install_views();
+
+  // Loop and remove the views.
+  foreach ($views as $machine_name => $view) {
+    db_delete("views_view")
+      ->condition("name", $machine_name)
+      ->execute();
+  }
 
   // Check to see if the importer has been modified and is in the database.
   $importers = ctools_export_load_object('feeds_importer', 'conditions', array('id' => 'stanford_course_importer'));
@@ -107,17 +116,6 @@ function stanford_courses_tag_translate_uninstall() {
   $save->id = "stanford_course_importer";
   $save->config = $config;
   drupal_write_record('feeds_importer', $save, 'id');
-
-  // Get and un-install the views.
-  module_load_include("inc", "stanford_courses_tag_translate", "views/views");
-  $views = stanford_courses_tag_translate_get_install_views();
-
-  // Loop and remove the views.
-  foreach ($views as $machine_name => $view) {
-    db_delete("views_view")
-      ->condition("name", $machine_name)
-      ->execute();
-  }
 
 }
 
