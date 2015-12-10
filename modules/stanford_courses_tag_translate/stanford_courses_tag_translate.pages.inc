@@ -57,10 +57,11 @@ function stanford_courses_tag_default_value_form($form, &$form_state) {
   );
 
   $form["configgroup"]["tag_default"] = array(
-    "#type" => 'textfield',
-    "#title" => "Default value for translations",
-    "#description" => t("This value is used for anything that does not have a translation below. Use the key \"[original]\" to use the original source as the default."),
-    "#default_value" => variable_get("stanford_courses_tag_translation_tag_default", "[original]"),
+    "#type" => 'checkbox',
+    "#title" => "Use the original source if no translation is available for a tag.",
+    "#description" => t("Check this box to use the original source as the translation if no translation is provided below. If left unchecked, any tags that don't have a translation will be ignored."),
+    "#default_value" => variable_get("stanford_courses_tag_translation_tag_default", ""),
+    "#return_value" => "[original]",
   );
 
   $form["configgroup"]["submit"] = array(

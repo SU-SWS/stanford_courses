@@ -13,14 +13,6 @@ function stanford_courses_tag_translate_field_default_field_instances() {
   // Exported field_instance: 'node-stanford_course-field_s_course_tag_human'
   $field_instances['node-stanford_course-field_s_course_tag_human'] = array(
     'bundle' => 'stanford_course',
-    'default_value' => array(
-      0 => array(
-        'tid' => 'autocreate',
-        'vid' => 15,
-        'name' => 'No Translations Available',
-        'vocabulary_machine_name' => 'course_tags_human',
-      ),
-    ),
     'deleted' => 0,
     'description' => 'The human translated text version of the tags that come from explore courses',
     'display' => array(
