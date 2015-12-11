@@ -326,3 +326,28 @@ function stanford_courses_tag_translate_feeds_tamper_default_alter(&$tampers) {
 
 }
 
+
+/**
+ * Implements hook_form_alter().
+ */
+function stanford_courses_tag_translate_form_node_form_alter(&$form, &$form_state) {
+
+  /**
+   * Only node forms.
+   */
+  if (!isset($form["#node_edit_form"]) || !$form["#node_edit_form"]) {
+    return;
+  }
+
+  /**
+   * Only stanford_course node forms.
+   */
+  if (!isset($form["type"]["#value"]) || $form["type"]["#value"] !== "stanford_course") {
+    return;
+  }
+
+  // Disable the sucka so that people are not tempted to edit them.
+  $form["field_s_course_ec_tag"]["#disabled"] = TRUE;
+  $form["field_s_course_tag_human"]["#disabled"] = TRUE;
+
+}
