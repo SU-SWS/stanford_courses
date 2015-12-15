@@ -167,7 +167,7 @@ function stanford_courses_tag_translate_fields_form($form, &$form_state, $ftype 
     "#required" => TRUE,
   );
 
-  // The type of form that is being submit. Used in validation and submit hooks.
+  // The type of form that is being submitted. Used in validation and submit hooks.
   $form["ftype"] = array(
     '#type' => 'value',
     '#value' => $ftype,
@@ -331,7 +331,7 @@ function stanford_courses_tag_translate_delete_form($form, &$form_state, $ctid) 
   );
 
   // Prompt the user to confirm their choices in life.
-  $question = t("Are you sure you want to remove this tag translation");
+  $question = t("Are you sure you want to remove this tag translation?");
   $path = "admin/config/stanford/courses/tag-translate";
   $description = t("This action cannot be un-done. Choose wisely.");
   $yes = t("Yes, delete this forever");
