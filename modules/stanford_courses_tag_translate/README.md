@@ -26,11 +26,14 @@ database with what is being imported. The import must be a valid json object
 with key pairs where the key is the tag from explorecourses.stanford.edu and the
 value is the human readable version.
 
-eg:
+e.g.:
+
+```
 {
   "course::tag": "Course Tag",
   "other::tag": "Another tag"
 }
+```
 
 
 Troubleshooting

@@ -24,7 +24,7 @@ $plugin = array(
  * Implements hook_form().
  *
  * Returns a configuration form for this plugin. But there is none as I decided
- * to move the interface to it's own part as it was too complicated/large
+ * to move the interface to its own part as it was too complicated/large
  * for the plugin form page.
  *
  */
@@ -49,7 +49,7 @@ function stanford_courses_tag_translate_tamper_callback($source, $item_key, $ele
   $translates = stanford_courses_tag_translate_get_translation_table();
   $index = strtoupper($field);
 
-  // If not in the translation table set to the defualt value.
+  // If not in the translation table set to the default value.
   if (!isset($translates[$index])) {
     $default = variable_get("stanford_courses_tag_translation_tag_default", "");
 

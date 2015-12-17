@@ -16,8 +16,10 @@ include_once 'stanford_courses_tag_translate.features.inc';
 function stanford_courses_tag_translate_help($path, $arg) {
   switch ($path) {
     // Main module help for the block module.
-    case 'admin/help#course-tag-translate':
-      return '<p>' . t('Ask John !email', array('!email' => l("jbickar@stanford.edu","mailto://jbickar@stanford.edu"))) . '</p>';
+    case 'admin/help#stanford_courses_tag_translate':
+      $output = "<h3>" . t("How to Use the Stanford Courses Tag Translate Module") . "</h3>";
+      $output .= l(t("See README"), drupal_get_path('module', 'stanford_courses_tag_translate') . '/README.md');
+      return $output;
   }
 }
 

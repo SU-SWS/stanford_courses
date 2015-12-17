@@ -123,8 +123,8 @@ function stanford_courses_tag_translate_uninstall() {
 /**
  * Implements hook_schema().
  *
- * For storing the key = value translations of tags in to human readable lables.
- * The ctid field is used for created menu paths for edit/delete.
+ * For storing the key = value translations of tags in to human readable labels.
+ * The ctid field is used for creating menu paths for edit/delete.
  */
 function stanford_courses_tag_translate_schema() {
   $schema['stanford_courses_tag'] = array(

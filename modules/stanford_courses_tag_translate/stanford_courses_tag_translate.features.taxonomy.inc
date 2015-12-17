@@ -10,9 +10,9 @@
 function stanford_courses_tag_translate_taxonomy_default_vocabularies() {
   return array(
     'course_tags_human' => array(
-      'name' => 'Course Tags Human',
+      'name' => 'Human-Readable Course Tags',
       'machine_name' => 'course_tags_human',
-      'description' => 'Fort he human readable tags',
+      'description' => 'For the human-readable tags',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
