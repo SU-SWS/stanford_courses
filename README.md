@@ -41,6 +41,9 @@ The Stanford Courses Person Reference feature adds an entity reference field to 
 **[Stanford Courses Person Reference Views](modules/stanford_courses_person_reference_views)**
 The person reference views is a replacement set of views for the default course views. When enabled the default course views module should be disabled. Included in this set of views is an extra field for a link to a Stanford Person content type but is otherwise identical to the default course views.
 
+**[Stanford Courses Tag Translate](modules/stanford_courses_tag_translate)**
+Adds a field to the course content type that allows for the storage of a human readable version of the explore courses tags. Also, by default, this module alters the course importer to allow you to automatically have the translations.
+
 
 Installation
 ---
