@@ -135,8 +135,10 @@ function stanford_courses_tag_translate_get_translation_table() {
 }
 
 /**
- * [stanford_courses_tag_translate_get_all_translations description]
- * @return [type] [description]
+ * Returns an array of sorted results from the translation table.
+ *
+ * @return array
+ *   An array of sorted (alphabetically) results.
  */
 function stanford_courses_tag_translate_get_all_translations() {
   $results = db_select("stanford_courses_tag", "sct")
@@ -151,8 +153,10 @@ function stanford_courses_tag_translate_get_all_translations() {
 }
 
 /**
- * [stanford_courses_tag_translate_get_all_translations_array description]
- * @return [type] [description]
+ * Returns a key => value array of tag translations.
+ *
+ * @return array
+ *   A single dimension array of key => value translations.
  */
 function stanford_courses_tag_translate_get_all_translations_array() {
   $tags = stanford_courses_tag_translate_get_all_translations();
