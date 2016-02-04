@@ -194,6 +194,8 @@ function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$
       case "field_s_course_time_end":
       case "field_s_course_section_number":
       case "field_s_course_location":
+      case "field_s_course_enrollment_curr":
+      case "field_s_course_enrollment_max":
       $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
       break;
     }
