@@ -58,7 +58,9 @@ function stanford_courses_tag_translate_tamper_callback($source, $item_key, $ele
     }
 
     $index_key = array_search($field, $source->items[$item_key][$element_key]);
-    unset($source->items[$item_key][$element_key][$index_key]);
+    if (!is_null($index_key) && isset($source->items[$item_key][$element_key][$index_key])) {
+      unset($source->items[$item_key][$element_key][$index_key]);
+    }
     $field = FALSE;
 
     return;
