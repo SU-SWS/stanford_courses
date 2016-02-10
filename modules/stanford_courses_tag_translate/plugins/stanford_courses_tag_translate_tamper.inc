@@ -47,11 +47,11 @@ function stanford_courses_tag_translate_tamper_callback($source, $item_key, $ele
 
   // Get the translation table. Don't worry this function is cached.
   $translates = stanford_courses_tag_translate_get_translation_table();
+  $translates = array_change_key_case($translates, CASE_UPPER);
   $index = strtoupper($field);
-  $keys = array_keys($translates);
 
   // If not in the translation table set to the default value.
-  if (!preg_grep("/" . $index . "/i", $keys)) {
+  if (!isset($translates[$index])) {
     $default = variable_get("stanford_courses_tag_translation_tag_default", "");
 
     if ($default == "[original]") {
