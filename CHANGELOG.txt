@@ -1,6 +1,12 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-3.9                   2016-02-17
+------------------------------------
+- mapping of tags to human readable things
+- added field collection additions on introsems course section
+
+
 7.x-3.8                   2015-11-10
 ------------------------------------
 - Offset list date by two weeks so no overlap.
