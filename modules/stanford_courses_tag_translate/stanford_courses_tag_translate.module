@@ -148,7 +148,7 @@ function stanford_courses_tag_translate_get_all_translations() {
               ->fetchAllAssoc("ctag");
 
   // Tags are in a weird THIS::3that format and needs some fancy sorting.
-  ksort($results, SORT_NATURAL, SORT_FLAG_CASE);
+  ksort($results, SORT_NATURAL | SORT_FLAG_CASE);
   return $results;
 }
 
