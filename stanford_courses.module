@@ -134,7 +134,7 @@ function stanford_courses_feeds_set_target($source, &$entity, $target, $value) {
   $info = field_info_field($target);
 
   // Sometimes courses have waaaaaaaay too many sections and we might want to
-  // restrict how many are being set because it breaks everyting. This is how.
+  // restrict how many are being set because it breaks everything. This is how.
   $limit_collections = variable_get("stanford_courses_limit_field_collections", -1);
 
   // Iterate over all values.
