@@ -127,15 +127,27 @@ function stanford_courses_feeds_set_target($source, &$entity, $target, $value) {
   if (!isset($sub_targets[$target])) {
     feeds_alter('feeds_processor_targets', $sub_targets[$target], 'field_collection_item', $target);
   }
+
   $_sub_targets = $sub_targets[$target];
 
   $value = is_array($value) ? $value : array($value);
   $info = field_info_field($target);
 
+  // Sometimes courses have waaaaaaaay too many sections and we might want to
+  // restrict how many are being set because it breaks everything. This is how.
+  $limit_collections = variable_get("stanford_courses_limit_field_collections", -1);
+
   // Iterate over all values.
   $delta = 0;
   $field = isset($entity->$target) ? $entity->$target : array();
   foreach ($value as $v) {
+
+    if ($limit_collections !== -1 && $limit_collections > 0) {
+      if ($delta >= $limit_collections) {
+        break;
+      }
+    }
+
     if (isset($field['und'][$delta]['entity'])) {
       $field_collection_item = $field['und'][$delta]['entity'];
     }
@@ -194,11 +206,11 @@ function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$
       case "field_s_course_time_end":
       case "field_s_course_section_number":
       case "field_s_course_location":
-      case "field_s_course_units":  
+      case "field_s_course_units":
       case "field_s_course_enrollment_curr":
       case "field_s_course_enrollment_max":
       case "field_department_consent":
-      case "field_actual_enrollment": 
+      case "field_actual_enrollment":
       $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
       break;
     }
