@@ -237,6 +237,11 @@ function stanford_courses_tag_translate_fields_form_validate(&$form, &$form_stat
 function stanford_courses_tag_translate_fields_form_submit(&$form, &$form_state) {
   $values = $form_state["values"];
 
+  // Protection against php notices.
+  if (!isset($values['ctid'])) {
+    $values['ctid'] = '';
+  }
+
   // The insert array for drupal_write_record.
   $insert = array(
     "ctag" => strtoupper(filter_xss($values["ctag"])),
