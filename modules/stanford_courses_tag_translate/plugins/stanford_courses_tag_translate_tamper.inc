@@ -58,12 +58,21 @@ function stanford_courses_tag_translate_tamper_callback($source, $item_key, $ele
       return;
     }
 
-    $index_key = array_search($field, $source->items[$item_key][$element_key]);
-    if (!is_null($index_key) && isset($source->items[$item_key][$element_key][$index_key])) {
-      unset($source->items[$item_key][$element_key][$index_key]);
+    // If the result is an array we need to find out what index of that array
+    // it is in so we can unset it. This tamper plugin gets an array when there
+    // more than one value and a single string when there is only one.
+    if (is_array($source->items[$item_key][$element_key])) {
+      $index_key = array_search($field, $source->items[$item_key][$element_key]);
+      if (!is_null($index_key) && isset($source->items[$item_key][$element_key][$index_key])) {
+        unset($source->items[$item_key][$element_key][$index_key]);
+      }
     }
-    $field = FALSE;
+    else {
+      // We have a single value and it is a string.
+      unset($source->items[$item_key][$element_key]);
+    }
 
+    $field = FALSE;
     return;
   }
 
