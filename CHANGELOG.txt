@@ -1,6 +1,13 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-3.10                  2016-05-30
+------------------------------------
+- Multiple bug fixes around the course tagging
+- Multiple result index bug fixes
+- Added field collection throttle
+-
+
 7.x-3.9                   2016-02-17
 ------------------------------------
 - mapping of tags to human readable things
