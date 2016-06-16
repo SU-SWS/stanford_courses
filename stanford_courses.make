@@ -1,7 +1,7 @@
 core = 7.x
 api = 2
 
-; 7.x-1.x branch
+; 7.x-1.x branch (beta11+8-dev)
 projects[field_collection][type] = "module"
 projects[field_collection][subdir] = "contrib"
 projects[field_collection][download][type] = "git"
