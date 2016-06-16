@@ -17,12 +17,6 @@ function stanford_courses_help($path, $arg) {
       $output .= '<p>' . t('To import from a feed, first construct the search for the courses that you want to import at !explorecourses.', array('!explorecourses' => l('explorecourses.stanford.edu', 'http://explorecourses.stanford.edu'))) .'</p>';
       $output .= '<p>' . t('Paste the URL of your search into the URL box (e.g., &quot;http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on...&quot; etc.) at !import and click the <strong>Save</strong> button to import <em>course</em> information. (The module will &quot;automagically&quot; convert the search URL into an XML URL.)', array('!import' => l('node/add/stanford-course-importer', 'node/add/stanford-course-importer'))) .'</p>';
       $output .= '<p>' . t('A link to the course listing on ExploreCourses automatically will be created for each course node.') . '</p>';
-/*      $output .= '<h2>' . t('Course Sections') . '</h2>';
-      $output .= '<p>' . t('It is possible to import Course Section information as well. Note that there are some limitations to this approach, and users are advised to use the link to the ExploreCourses website that is provided on each course node. ');
-      $output .= t('It is likely that the Course Section importer will be removed from future versions of the Stanford Courses module.') . '</p>';
-      $output .= '<p>' . t('Paste the <em>same</em> search URL into the URL box at !import and click the <strong>Save</strong> button to import <em>course section</em> information.', array('!import' => l('node/add/stanford-course-section-importer', 'node/add/stanford-course-section-importer'))) .'</p>';
-      $output .= '<p>' . t('<strong>Courses</strong> and <strong>Course Sections</strong> can have !nodereference relationships. ', array('!nodereference' => l('Entity Reference', 'http://drupal.org/project/entityreference'))) . '</p>';
-      $output .= '<p>' . t('After importing course and course section nodes, two table Views are created at !stanfordcourses and !stanfordcoursesections, respectively.', array('!stanfordcourses' => l('stanford-courses', 'stanford-courses'), '!stanfordcoursesections' => l('stanford-course-sections', 'stanford-course-sections'))) .'</p>'; */
       return $output;
   }
 }
@@ -34,7 +28,7 @@ function stanford_courses_help($path, $arg) {
  */
 function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
   if (($form_id == 'stanford_course_importer_node_form') || ($form_id == 'stanford_course_section_importer_node_form') || $form_id == 'stanford_course_class_importer_node_form' || $form_id == 'feeds_import_tab_form') {
-    //make our validation function run first
+    // Make our validation function run first.
     if (is_array($form['#validate'])) {
       array_unshift($form['#validate'], 'stanford_courses_feed_url_validate');
     }
@@ -43,7 +37,7 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
     }
   }
   if ($form_id == 'stanford_course_node_form') {
-    //make our validation function run first
+    // Make our validation function run first.
     if (is_array($form['#validate'])) {
       array_unshift($form['#validate'], 'stanford_courses_ec_link_validate');
     }
@@ -58,9 +52,9 @@ function stanford_courses_form_alter(&$form, &$form_state, $form_id) {
  */
 function stanford_courses_feed_url_validate($form, &$form_state) {
   if (isset($form_state['values']['feeds'])) {
-    //Let's make things a little easier on the user
+    // Let's make things a little easier on the user.
     $feed_url = $form_state['values']['feeds']['FeedsHTTPFetcher']['source'];
-    $feed_url = preg_replace('/view\=catalog/', 'view=xml-20130201', $feed_url);
+    $feed_url = preg_replace('/view\=catalog/', 'view=xml-20140630', $feed_url);
     $feed_url = preg_replace('/https/', 'http', $feed_url);
     form_set_value(array('#parents' => array('feeds', 'FeedsHTTPFetcher', 'source')), $feed_url, $form_state);
   }
@@ -91,96 +85,6 @@ function stanford_courses_ctools_plugin_directory($module, $plugin) {
 // /////////////////////////////////////////////////////////////////////////////
 
 /**
- * Implements hook_feeds_processor_targets_alter()
- */
-function stanford_courses_feeds_processor_targets_alter(&$targets, $entity_type, $bundle_name) {
-  foreach (field_info_instances($entity_type, $bundle_name) as $name => $instance) {
-    $info = field_info_field($name);
-    if ($info['type'] == 'field_collection') {
-      $new_targets = array();
-      feeds_alter('feeds_processor_targets', $new_targets, 'field_collection_item', $info['field_name']);
-      foreach ($new_targets as $sub_name => $target) {
-        $new_name = $info['field_name'] . ':' . $sub_name;
-        $targets[$new_name] = $target;
-        if (isset($target['name'])) {
-          $targets[$new_name]['name'] = $instance['label'] . ': ' . $target['name'];
-        }
-
-        // We override callback for now and retrieve original later.
-        $targets[$new_name]['callback'] = 'stanford_courses_feeds_set_target';
-      }
-    }
-  }
-}
-
-/**
- * Process Field Collection items
- */
-function stanford_courses_feeds_set_target($source, &$entity, $target, $value) {
-  static $sub_targets = array();
-
-  $args = explode(':', $target);
-  $target = array_shift($args);
-  $sub_target = implode(':', $args);
-
-  // Now we retrieve old callbacks and keep then on a static cache
-  if (!isset($sub_targets[$target])) {
-    feeds_alter('feeds_processor_targets', $sub_targets[$target], 'field_collection_item', $target);
-  }
-
-  $_sub_targets = $sub_targets[$target];
-
-  $value = is_array($value) ? $value : array($value);
-  $info = field_info_field($target);
-
-  // Sometimes courses have waaaaaaaay too many sections and we might want to
-  // restrict how many are being set because it breaks everything. This is how.
-  $limit_collections = variable_get("stanford_courses_limit_field_collections", -1);
-
-  // Iterate over all values.
-  $delta = 0;
-  $field = isset($entity->$target) ? $entity->$target : array();
-  foreach ($value as $v) {
-
-    if ($limit_collections !== -1 && $limit_collections > 0) {
-      if ($delta >= $limit_collections) {
-        break;
-      }
-    }
-
-    if (isset($field['und'][$delta]['entity'])) {
-      $field_collection_item = $field['und'][$delta]['entity'];
-    }
-    elseif (isset($field['und'][$delta]['value'])) {
-      $field_collection_item = field_collection_item_load($field['und'][$delta]['value']);
-    }
-    if (empty($field_collection_item)) {
-      $field_collection_item = entity_create('field_collection_item', array('field_name' => $target));
-    }
-
-    if (isset($_sub_targets[$sub_target]['callback']) && function_exists($_sub_targets[$sub_target]['callback'])) {
-
-      stanford_courses_sub_target_pre_callback_parse($target, $sub_target, $entity, $field, $field_collection_item, $value);
-
-      $callback = $_sub_targets[$sub_target]['callback'];
-      $callback($source, $field_collection_item, $sub_target, $v);
-    }
-
-    $field['und'][$delta]['entity'] = $field_collection_item;
-    $field['und'][$delta]['value'] = $field_collection_item->item_id;
-
-    unset($field_collection_item);
-
-    if ($info['cardinality'] == 1) {
-      break;
-    }
-    $delta++;
-  }
-
-  $entity->{$target} = $field;
-}
-
-/**
  * Multiple field values are a pain in the rear. They are additive and we do not
  * always want them to be. This function targets a couple of items and truncates
  * their values before saving the new ones.
@@ -193,71 +97,28 @@ function stanford_courses_feeds_set_target($source, &$entity, $target, $value) {
 function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$entity, &$field, &$field_collection_item, $value) {
 
   // Clear out all previous values for this field as we want a replace and not an additive.
-  if ($target == "field_s_course_section_info") {
-    switch($sub_target) {
-      case "field_s_course_instructor":
-      case "field_s_course_term":
-      case "field_s_course_location":
-      case "field_s_course_section_year":
-      case "field_s_course_section_class_id":
-      case "field_s_course_co_person":
-      case "field_s_course_dow":
-      case "field_s_course_time":
-      case "field_s_course_time_end":
-      case "field_s_course_section_number":
-      case "field_s_course_location":
-      case "field_s_course_units":
-      case "field_s_course_enrollment_curr":
-      case "field_s_course_enrollment_max":
-      case "field_department_consent":
-      case "field_actual_enrollment":
-      $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
-      break;
-    }
-  }
-
-}
-
-
-/**
- * Implements hook_feeds_presave().
- */
-function stanford_courses_feeds_presave($source, $entity, $item, $entity_id) {
-  // Do not save any empty field collection items that may have been created
-  // during the mapping process. Since the mapping is done field by field in
-  // stanford_courses_feeds_set_target(), we have to wait until this hook (when
-  // the field collection item is fully built up) before we can check if it's
-  // empty.
-  $config = $source->importer()->getConfig();
-  if (!empty($config['processor']['config']['mappings'])) {
-    // Find all field collection mappings.
-    foreach ($config['processor']['config']['mappings'] as $mapping) {
-      if (isset($mapping['target'])) {
-        $args = explode(':', $mapping['target']);
-        $field_name = array_shift($args);
-        if (($field = field_info_field($field_name)) && $field['type'] == 'field_collection') {
-          // If the field collection item is empty, do not save it.
-          if (!empty($entity->{$field_name})) {
-            foreach ($entity->{$field_name} as $langcode => &$items) {
-              foreach ($items as $delta => $item) {
-                if (isset($item['entity']) && field_collection_item_is_empty($item['entity'])) {
-                  unset($items[$delta]);
-                }
-              }
-              // Clean up the final array.
-              if (empty($items)) {
-                unset($entity->{$field_name}[$langcode]);
-              }
-              else {
-                $items = array_values($items);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
+//  if ($target == "field_s_course_section_info") {
+//    switch($sub_target) {
+//      case "field_s_course_instructor":
+//      case "field_s_course_term":
+//      case "field_s_course_location":
+//      case "field_s_course_section_year":
+//      case "field_s_course_section_class_id":
+//      case "field_s_course_co_person":
+//      case "field_s_course_dow":
+//      case "field_s_course_time":
+//      case "field_s_course_time_end":
+//      case "field_s_course_section_number":
+//      case "field_s_course_location":
+//      case "field_s_course_units":
+//      case "field_s_course_enrollment_curr":
+//      case "field_s_course_enrollment_max":
+//      case "field_department_consent":
+//      case "field_actual_enrollment":
+//      $field_collection_item->{$sub_target}[LANGUAGE_NONE] = array();
+//      break;
+//    }
+//  }
 
 }
 

@@ -384,7 +384,6 @@ function stanford_courses_update_7300(&$sandbox) {
     $source = feeds_source($row->id, $row->feed_nid);
     $config = $source->getConfig();
     $config['FeedsHTTPFetcher']['source'] = str_replace("xml-20111011", "xml-20130201", $config['FeedsHTTPFetcher']['source']);
-    var_dump($config['FeedsHTTPFetcher']['source']);
     $source->setConfig($config);
     $source->save();
   }
@@ -404,7 +403,19 @@ function stanford_courses_update_7300(&$sandbox) {
 
 }
 
-
+/**
+ * Update xml schema from 20130201 -> 20140630
+ */
+function stanford_courses_update_7301(&$sandbox) {
+  $rows = db_query("SELECT * FROM {feeds_source}");
+  foreach ($rows as $row) {
+    $source = feeds_source($row->id, $row->feed_nid);
+    $config = $source->getConfig();
+    $config['FeedsHTTPFetcher']['source'] = str_replace("xml-20130201", "xml-20140630", $config['FeedsHTTPFetcher']['source']);
+    $source->setConfig($config);
+    $source->save();
+  }
+}
 
 /**
  * Checks to see if a module exists and is enabled. If the module is not
