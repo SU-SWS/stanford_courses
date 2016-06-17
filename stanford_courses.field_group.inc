@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function stanford_courses_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function stanford_courses_field_group_info() {
       ),
     ),
   );
-  $export['group_deprecated|node|stanford_course|form'] = $field_group;
+  $field_groups['group_deprecated|node|stanford_course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -64,7 +64,12 @@ function stanford_courses_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_s_course_advanced|field_collection_item|field_s_course_section_info|form'] = $field_group;
+  $field_groups['group_s_course_advanced|field_collection_item|field_s_course_section_info|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Advanced');
+  t('Deprecated');
+
+  return $field_groups;
 }

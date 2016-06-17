@@ -10,10 +10,10 @@
 function stanford_courses_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_s_course_co_person'
+  // Exported field_base: 'field_s_course_co_person'.
   $field_bases['field_s_course_co_person'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_s_course_co_person',
@@ -31,7 +31,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_code'
+  // Exported field_base: 'field_s_course_code'.
   $field_bases['field_s_course_code'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -52,7 +52,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_code_integer'
+  // Exported field_base: 'field_s_course_code_integer'.
   $field_bases['field_s_course_code_integer'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -67,7 +67,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_s_course_component'
+  // Exported field_base: 'field_s_course_component'.
   $field_bases['field_s_course_component'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -109,7 +109,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_s_course_dow'
+  // Exported field_base: 'field_s_course_dow'.
   $field_bases['field_s_course_dow'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -130,7 +130,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_ec_link'
+  // Exported field_base: 'field_s_course_ec_link'.
   $field_bases['field_s_course_ec_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -159,7 +159,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_s_course_ec_tag'
+  // Exported field_base: 'field_s_course_ec_tag'.
   $field_bases['field_s_course_ec_tag'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -180,7 +180,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_ger'
+  // Exported field_base: 'field_s_course_ger'.
   $field_bases['field_s_course_ger'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -201,7 +201,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_grading'
+  // Exported field_base: 'field_s_course_grading'.
   $field_bases['field_s_course_grading'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -222,7 +222,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_id'
+  // Exported field_base: 'field_s_course_id'.
   $field_bases['field_s_course_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -237,7 +237,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_s_course_instructor'
+  // Exported field_base: 'field_s_course_instructor'.
   $field_bases['field_s_course_instructor'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -258,7 +258,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_location'
+  // Exported field_base: 'field_s_course_location'.
   $field_bases['field_s_course_location'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -279,7 +279,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_scid'
+  // Exported field_base: 'field_s_course_scid'.
   $field_bases['field_s_course_scid'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -300,7 +300,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_section_class_id'
+  // Exported field_base: 'field_s_course_section_class_id'.
   $field_bases['field_s_course_section_class_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -321,7 +321,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_section_dates'
+  // Exported field_base: 'field_s_course_section_dates'.
   $field_bases['field_s_course_section_dates'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -350,7 +350,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_s_course_section_info'
+  // Exported field_base: 'field_s_course_section_info'.
   $field_bases['field_s_course_section_info'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -360,6 +360,9 @@ function stanford_courses_field_default_field_bases() {
     'indexes' => array(
       'revision_id' => array(
         0 => 'revision_id',
+      ),
+      'value' => array(
+        0 => 'value',
       ),
     ),
     'locked' => 0,
@@ -372,7 +375,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_s_course_section_number'
+  // Exported field_base: 'field_s_course_section_number'.
   $field_bases['field_s_course_section_number'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -387,7 +390,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_s_course_section_year'
+  // Exported field_base: 'field_s_course_section_year'.
   $field_bases['field_s_course_section_year'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -545,7 +548,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_s_course_subject'
+  // Exported field_base: 'field_s_course_subject'.
   $field_bases['field_s_course_subject'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -566,7 +569,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_syllabus'
+  // Exported field_base: 'field_s_course_syllabus'.
   $field_bases['field_s_course_syllabus'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -589,7 +592,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_s_course_tag_name'
+  // Exported field_base: 'field_s_course_tag_name'.
   $field_bases['field_s_course_tag_name'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -610,7 +613,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_tag_org'
+  // Exported field_base: 'field_s_course_tag_org'.
   $field_bases['field_s_course_tag_org'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -631,7 +634,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_term'
+  // Exported field_base: 'field_s_course_term'.
   $field_bases['field_s_course_term'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -658,7 +661,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_s_course_time'
+  // Exported field_base: 'field_s_course_time'.
   $field_bases['field_s_course_time'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -679,7 +682,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_time_end'
+  // Exported field_base: 'field_s_course_time_end'.
   $field_bases['field_s_course_time_end'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -700,7 +703,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_units'
+  // Exported field_base: 'field_s_course_units'.
   $field_bases['field_s_course_units'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -721,7 +724,7 @@ function stanford_courses_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_s_course_year'
+  // Exported field_base: 'field_s_course_year'.
   $field_bases['field_s_course_year'] = array(
     'active' => 1,
     'cardinality' => 1,

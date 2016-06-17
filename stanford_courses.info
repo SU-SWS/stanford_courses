@@ -7,11 +7,14 @@ project = stanford_courses
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_popup
+dependencies[] = features
 dependencies[] = features (>=2.0)
 dependencies[] = feeds (>=2.0-beta8)
 dependencies[] = feeds_tamper
 dependencies[] = feeds_xpathparser
+dependencies[] = field_collection
 dependencies[] = field_collection (>=1.0-beta11)
+dependencies[] = field_group
 dependencies[] = field_group (>=1.3)
 dependencies[] = file
 dependencies[] = image
@@ -19,16 +22,15 @@ dependencies[] = link
 dependencies[] = list
 dependencies[] = number
 dependencies[] = options
+dependencies[] = stanford_feeds_helper
 dependencies[] = strongarm
 dependencies[] = text
-dependencies[] = stanford_feeds_helper
 features[ctools][] = feeds:feeds_importer_default:1
 features[ctools][] = feeds_tamper:feeds_tamper_default:2
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[feeds_importer][] = stanford_course_importer
-features[feeds_tamper][] = stanford_course_importer-xpathparser_9-substr_plugin
 features[feeds_tamper][] = stanford_course_importer-xpathparser_10-find_replace_regex
 features[feeds_tamper][] = stanford_course_importer-xpathparser_10-trim
 features[feeds_tamper][] = stanford_course_importer-xpathparser_12-format_plugin
@@ -43,6 +45,8 @@ features[feeds_tamper][] = stanford_course_importer-xpathparser_20-strtotime
 features[feeds_tamper][] = stanford_course_importer-xpathparser_24-field_multiple_values
 features[feeds_tamper][] = stanford_course_importer-xpathparser_27-find_replace_regex
 features[feeds_tamper][] = stanford_course_importer-xpathparser_27-find_replace_regex_2
+features[feeds_tamper][] = stanford_course_importer-xpathparser_28-field_multiple_values
+features[feeds_tamper][] = stanford_course_importer-xpathparser_9-substr_plugin
 features[field_base][] = field_s_course_co_person
 features[field_base][] = field_s_course_code
 features[field_base][] = field_s_course_code_integer
