@@ -7,14 +7,11 @@ project = stanford_courses
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_popup
-dependencies[] = features
 dependencies[] = features (>=2.0)
 dependencies[] = feeds (>=2.0-beta8)
 dependencies[] = feeds_tamper
 dependencies[] = feeds_xpathparser
-dependencies[] = field_collection
 dependencies[] = field_collection (>=1.0-beta11)
-dependencies[] = field_group
 dependencies[] = field_group (>=1.3)
 dependencies[] = file
 dependencies[] = image
