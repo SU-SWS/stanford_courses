@@ -8,7 +8,7 @@ dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_popup
 dependencies[] = features (>=2.0)
-dependencies[] = feeds (>=2.0-beta8)
+dependencies[] = feeds (>=2.0-beta2)
 dependencies[] = feeds_tamper
 dependencies[] = feeds_xpathparser
 dependencies[] = field_collection (>=1.0-beta11)
