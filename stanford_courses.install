@@ -13,13 +13,13 @@
 function stanford_courses_requirements($phase) {
   $requirements = array();
 
-  switch($phase) {
+  switch ($phase) {
     case 'update':
 
       // Ensure that field_collection module is enabled before updating.
       if (!module_exists('field_collection')) {
         // Be nice and try to enable it for the user.
-        if(!module_enable(array('field_collection'))) {
+        if (!module_enable(array('field_collection'))) {
           // Still no dice. Throw out requirement.
           $requirements['fieldcollections_enabled'] = array(
             'title' => 'Field Collection Module Required',
@@ -30,22 +30,32 @@ function stanford_courses_requirements($phase) {
         }
       }
 
-     // Ensure that field_group module is enabled before updating.
-    if (!module_exists('field_group')) {
-      // Be nice and try to enable it for the user.
-      if(!module_enable(array('field_group'))) {
-        // Still no dice. Throw out requirement.
-        $requirements['fieldgroup_enabled'] = array(
-          'title' => 'Field Group Module Required',
+      // Ensure that field_group module is enabled before updating.
+      if (!module_exists('field_group')) {
+        // Be nice and try to enable it for the user.
+        if (!module_enable(array('field_group'))) {
+          // Still no dice. Throw out requirement.
+          $requirements['fieldgroup_enabled'] = array(
+            'title' => 'Field Group Module Required',
+            'value' => 'Not installed',
+            'description' => 'Field Group module required for version 2.x of the stanford courses module. Please download and enable the field_group module before proceeding. http://drupal.org/project/field_group',
+            'severity' => REQUIREMENT_ERROR,
+          );
+        }
+      }
+      break;
+
+    case 'runtime':
+      // Ensure that stanford_feeds_helper is available
+      if (!module_exists('stanford_feeds_helper')) {
+        $requirements['stanford_feeds_helper_enabled'] = array(
+          'title' => 'Stanford Feeds Helper Module Required',
           'value' => 'Not installed',
-          'description' => 'Field Group module required for version 2.x of the stanford courses module. Please download and enable the field_group module before proceeding. http://drupal.org/project/field_group',
+          'description' => 'Stanford Feeds Helper module required for version 4.x of the stanford courses module. Please download and enable the stanford_feeds_helper module before proceeding. https://github.com/SU-SWS/stanford_feeds_helper',
           'severity' => REQUIREMENT_ERROR,
         );
       }
-    }
 
-      break;
-      default:
   }
 
   return $requirements;
@@ -384,27 +394,54 @@ function stanford_courses_update_7300(&$sandbox) {
     $source = feeds_source($row->id, $row->feed_nid);
     $config = $source->getConfig();
     $config['FeedsHTTPFetcher']['source'] = str_replace("xml-20111011", "xml-20130201", $config['FeedsHTTPFetcher']['source']);
-    var_dump($config['FeedsHTTPFetcher']['source']);
     $source->setConfig($config);
     $source->save();
   }
 
   // Revert for the user.
   features_revert(
-    array('stanford_courses' => array(
-      'field_base',
-      'field_instance',
-      'ctools',
-      'feeds_importer',
-      'feeds_tamper',
-      'node',
-      'variable',
-    ))
+    array(
+      'stanford_courses' => array(
+        'field_base',
+        'field_instance',
+        'ctools',
+        'feeds_importer',
+        'feeds_tamper',
+        'node',
+        'variable',
+      )
+    )
   );
 
 }
 
+/**
+ * Update xml schema from 20130201 -> 20140630
+ */
+function stanford_courses_update_7400(&$sandbox) {
+  $rows = db_query("SELECT * FROM {feeds_source}");
+  foreach ($rows as $row) {
+    $source = feeds_source($row->id, $row->feed_nid);
+    $config = $source->getConfig();
+    $config['FeedsHTTPFetcher']['source'] = str_replace("xml-20130201", "xml-20140630", $config['FeedsHTTPFetcher']['source']);
+    $source->setConfig($config);
+    $source->save();
+  }
+}
 
+/**
+ * Enable new dependency stanford_feeds_helper.
+ */
+function stanford_courses_update_7401(&$sandbox) {
+  if (!module_exists("stanford_feeds_helper")) {
+    try {
+      module_enable(array("stanford_feeds_helper"), FALSE);
+    }
+    catch (Exception $e) {
+      throw new DrupalUpdateException("Could not enable stanford_helper_module.");
+    }
+  }
+}
 
 /**
  * Checks to see if a module exists and is enabled. If the module is not
