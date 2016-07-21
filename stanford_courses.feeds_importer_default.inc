@@ -57,7 +57,7 @@ function stanford_courses_feeds_importer_default() {
           'xpathparser:25' => 'sections/section/units',
           'xpathparser:26' => 'grading',
           'xpathparser:27' => 'tags/tag',
-          'xpathparser:28' => 'sections/section',
+          'xpathparser:28' => 'sections/section/schedules/schedule/instructors/instructor/name',
         ),
         'rawXML' => array(
           'xpathparser:27' => 'xpathparser:27',
@@ -294,6 +294,11 @@ function stanford_courses_feeds_importer_default() {
             'target' => 'field_s_course_ec_tag',
             'unique' => FALSE,
             'language' => 'und',
+          ),
+          27 => array(
+            'source' => 'xpathparser:28',
+            'target' => 'field_s_course_section_info:field_s_course_co_person',
+            'unique' => FALSE,
           ),
         ),
         'update_existing' => '2',
