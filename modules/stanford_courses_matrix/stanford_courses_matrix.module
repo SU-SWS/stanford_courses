@@ -75,7 +75,7 @@ function stanford_courses_matrix_get_results_course_code($result) {
 function stanford_courses_matrix_views_matrix_columns_renders_alter(&$column_renders, $view) {
 
   // Only act on the views we want them to.
-  if ($view->name !== "dance_courses") {
+  if ($view->name !== "stanford_courses_matrix") {
     return;
   }
 
