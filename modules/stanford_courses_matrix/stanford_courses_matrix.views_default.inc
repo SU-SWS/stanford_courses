@@ -103,7 +103,6 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_instructor']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['fields']['field_s_course_instructor']['label'] = '';
   $handler->display->display_options['fields']['field_s_course_instructor']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_s_course_instructor']['empty'] = 'No instructors scheduled ';
   $handler->display->display_options['fields']['field_s_course_instructor']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['field_s_course_instructor']['delta_offset'] = '0';
   /* Field: Field collection item: Quarter */
@@ -114,6 +113,13 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_term']['label'] = '';
   $handler->display->display_options['fields']['field_s_course_term']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_term']['element_label_colon'] = FALSE;
+  /* Field: Content: Subject */
+  $handler->display->display_options['fields']['field_s_course_subject']['id'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['table'] = 'field_data_field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['field'] = 'field_s_course_subject';
+  $handler->display->display_options['fields']['field_s_course_subject']['label'] = '';
+  $handler->display->display_options['fields']['field_s_course_subject']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_s_course_subject']['element_label_colon'] = FALSE;
   /* Field: Content: Code */
   $handler->display->display_options['fields']['field_s_course_code_1']['id'] = 'field_s_course_code_1';
   $handler->display->display_options['fields']['field_s_course_code_1']['table'] = 'field_data_field_s_course_code';
@@ -121,8 +127,8 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_code_1']['label'] = '';
   $handler->display->display_options['fields']['field_s_course_code_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_code_1']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_s_course_code_1']['alter']['text'] = '<p>[field_s_course_code_1]</p>
-<h3>[title]</h3>';
+  $handler->display->display_options['fields']['field_s_course_code_1']['alter']['text'] = '<p>[field_s_course_subject] [field_s_course_code_1]</p>
+  <h3>[title]</h3>';
   $handler->display->display_options['fields']['field_s_course_code_1']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Code (field_s_course_code) */
   $handler->display->display_options['sorts']['field_s_course_code_value']['id'] = 'field_s_course_code_value';
@@ -164,7 +170,7 @@ function stanford_courses_matrix_views_default_views() {
   /* Display: Course Matrix Page */
   $handler = $view->new_display('page', 'Course Matrix Page', 'course_matrix_page');
   $handler->display->display_options['path'] = 'course-matrix/%';
-  
+
   $export['stanford_courses_matrix'] = $view;
 
   return $export;
