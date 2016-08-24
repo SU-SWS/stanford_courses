@@ -35,7 +35,8 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'matrix';
-  $handler->display->display_options['style_options']['sticky'] = 0;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
+  $handler->display->display_options['style_options']['sticky'] = 1;
   $handler->display->display_options['style_options']['xconfig'] = array(
     'field' => 'field_s_course_term',
     'sort' => 'asc',
@@ -54,6 +55,7 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['table'] = 'field_data_field_s_course_section_info';
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['field'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['relationships']['field_s_course_section_info_value']['required'] = TRUE;
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['delta'] = '-1';
   /* Field: Content: Nid */
   $handler->display->display_options['fields']['nid']['id'] = 'nid';
@@ -134,24 +136,22 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['sorts']['field_s_course_code_value']['id'] = 'field_s_course_code_value';
   $handler->display->display_options['sorts']['field_s_course_code_value']['table'] = 'field_data_field_s_course_code';
   $handler->display->display_options['sorts']['field_s_course_code_value']['field'] = 'field_s_course_code_value';
-  /* Contextual filter: Content: Subject (field_s_course_subject) */
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['id'] = 'field_s_course_subject_value';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['table'] = 'field_data_field_s_course_subject';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['field'] = 'field_s_course_subject_value';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['exception']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['exception']['title'] = '';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['title'] = '%1 Courses';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['default_argument_skip_url'] = TRUE;
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['summary_options']['items_per_page'] = '25';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['specify_validation'] = TRUE;
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['limit'] = '0';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['case'] = 'ucwords';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['path_case'] = 'upper';
-  $handler->display->display_options['arguments']['field_s_course_subject_value']['transform_dash'] = TRUE;
+  /* Contextual filter: Field collection item: Year (field_s_course_section_year) */
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['id'] = 'field_s_course_section_year_value';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['table'] = 'field_data_field_s_course_section_year';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['field'] = 'field_s_course_section_year_value';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['relationship'] = 'field_s_course_section_info_value';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['title'] = 'Title overridden in module alter';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['default_argument_options']['argument'] = '2016';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['validate']['type'] = 'numeric';
+  $handler->display->display_options['arguments']['field_s_course_section_year_value']['limit'] = '0';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
