@@ -53,6 +53,30 @@ function stanford_courses_matrix_preprocess_views_view_matrix(&$vars) {
 }
 
 /**
+ * This hook is called right before the render process. The query has been executed, and the pre_render() phase has already happened for handlers, so all data should be available.
+ */
+function stanford_courses_matrix_views_pre_render(&$view) {
+  // Reduce the duplicate results on instructor.
+  $results = &$view->result;
+  $unique_keys = array();
+  foreach ($results as $key => $item) {
+
+    $season = $item->field_field_s_course_term[0]["rendered"]["#markup"];
+    $instructor = $item->field_field_s_course_instructor[0]["rendered"]["#markup"];
+
+    // If key already exists remove it.
+    if (in_array($instructor, $unique_keys[$item->nid][$season])) {
+      unset($results[$key]);
+      continue;
+    }
+
+    $unique_keys[$item->nid][$season][] = $instructor;
+  }
+
+}
+
+
+/**
  * Returns the course code value from a view result array value.
  * @param  [type] $result [description]
  * @return [type]         [description]
@@ -106,4 +130,5 @@ function stanford_courses_matrix_views_matrix_columns_renders_alter(&$column_ren
 
   // Updates the passed by reference variable.
   $column_renders = $new_renders;
+
 }

@@ -25,7 +25,11 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['title'] = 'Course Matrix';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -130,7 +134,7 @@ function stanford_courses_matrix_views_default_views() {
   $handler->display->display_options['fields']['field_s_course_code_1']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_code_1']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_s_course_code_1']['alter']['text'] = '<p>[field_s_course_subject] [field_s_course_code_1]</p>
-  <h3>[title]</h3>';
+    <h3>[title]</h3>';
   $handler->display->display_options['fields']['field_s_course_code_1']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Code (field_s_course_code) */
   $handler->display->display_options['sorts']['field_s_course_code_value']['id'] = 'field_s_course_code_value';
