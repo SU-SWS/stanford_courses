@@ -3,7 +3,7 @@
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 
-The Stanford Module feature is used to display a view of courses in a matrix grid. This module is build upon the views_matrix contrib module and requires a patch.
+The Stanford Module feature is used to display a view of courses in a matrix grid. This module is build upon the views_matrix contrib module and requires a patch. Once installed you will have a view available to you at the path: /course-matrix/[year]
 
 *APPLY PATCH*
 Please apply the patch from: https://www.drupal.org/node/2785887
