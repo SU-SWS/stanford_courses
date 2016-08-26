@@ -65,12 +65,12 @@ function stanford_courses_matrix_views_pre_render(&$view) {
     $instructor = $item->field_field_s_course_instructor[0]["rendered"]["#markup"];
 
     // If key already exists remove it.
-    if (in_array($instructor, $unique_keys[$item->nid][$season])) {
+    if (isset($instructor, $unique_keys[$item->nid][$season][$instructor])) {
       unset($results[$key]);
       continue;
     }
 
-    $unique_keys[$item->nid][$season][] = $instructor;
+    $unique_keys[$item->nid][$season][$instructor] = "hello";
   }
 
 }
