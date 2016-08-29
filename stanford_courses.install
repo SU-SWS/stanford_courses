@@ -90,7 +90,7 @@ function stanford_courses_disable() {
  * Implements hook_uninstall().
  */
 function stanford_courses_uninstall() {
-  // Uninstall module functions
+  variable_del("stanford_courses_limit_field_collections");
 }
 
 /**
@@ -447,14 +447,14 @@ function stanford_courses_update_7401(&$sandbox) {
  * Checks to see if a module exists and is enabled. If the module is not
  * enabled it trys to enable it. Failing that it returns false and logs a
  * watchdog message
- * @param  [string] $module_name The name of the module to enable
- * @param boolean $clear_caches true to clear all caches.
- * @return Boolean. True if successfully enabled or is already enabled.
+ * @param [string] $module_name The name of the module to enable
+ * @param bool $clear_caches true to clear all caches.
+ * @return bool True if successfully enabled or is already enabled.
  */
 function _require_helper($module_name, $clear_caches = TRUE) {
 
-  if(!module_exists($module_name)) {
-    if(!module_enable(array($module_name))) {
+  if (!module_exists($module_name)) {
+    if (!module_enable(array($module_name))) {
       watchdog('stanford_courses', 'Could not enable the ' . $module_name . '. Terminated update_7200.');
       return FALSE;
     }
@@ -471,3 +471,14 @@ function _require_helper($module_name, $clear_caches = TRUE) {
   return TRUE;
 }
 
+/**
+ * Change the feeds field collection importer limit to the new feeds helper
+ * module instead of with us.
+ */
+function stanford_courses_update_7402(&$sandbox) {
+  $limit = variable_get("stanford_courses_limit_field_collections", -1);
+  if ($limit !== -1) {
+    variable_set("stanford_feeds_helper_limit_field_collections", $limit);
+  }
+  variable_del("stanford_courses_limit_field_collections");
+}
