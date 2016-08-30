@@ -1,6 +1,14 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-4.0                   2016-08-30
+------------------------------------
+- Removed field collection throttle functionality
+- Removed field collection sub target code in favor of new helper module
+- Added dependency on new stanford_feeds_helper module
+- Added upgrade paths for new XML schema version
+- New contrib version dependencies for feeds and field_collection
+
 7.x-3.10                  2016-05-30
 ------------------------------------
 - Multiple bug fixes around the course tagging
