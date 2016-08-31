@@ -14,6 +14,10 @@ table.views-matrix thead tr th.views-matrix-col-header {
   color: #333333;
 }
 
+td.views-matrix-col-header.views-matrix-col-first {
+  border: none;
+}
+
 // Wrapper scope.
 .view-stanford-courses-matrix {
   .sticky-header th {
@@ -70,10 +74,15 @@ and also iPads specifically.
 
   table.views-matrix td {
     /* Behave  like a "row" */
-    border: none;
-    border-bottom: 1px solid #eee;
+    border: 1px solid #333333;
+    border-bottom: none;
     position: relative;
     padding-left: 50%;
+  }
+
+  table.views-matrix tr.even,
+  table.views-matrix tr.odd {
+    padding: 0;
   }
 
   td:before {
@@ -103,7 +112,6 @@ and also iPads specifically.
   td:nth-of-type(4) {
     padding-left: 75px;
     min-height: 1em;
-    border-bottom: none;
   }
 
   tr.odd {
