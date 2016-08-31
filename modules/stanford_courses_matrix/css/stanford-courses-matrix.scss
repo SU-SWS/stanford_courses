@@ -119,3 +119,34 @@ and also iPads specifically.
   }
 
 }
+
+
+// Dark theme
+.style-custom-styles-dark table.views-matrix tbody tr th.views-matrix-row-header,
+.style-custom-styles-dark table.views-matrix thead tr th.views-matrix-col-header {
+  background: #232220;
+  color: #fbfbf9;
+}
+
+.style-custom-styles-dark .view-stanford-courses-matrix {
+  .sticky-header th {
+    background: #232220;
+    color: #fbfbf9;
+  }
+}
+
+.style-custom-styles-dark table.views-matrix th,
+.style-custom-styles-dark table.views-matrix td {
+  border: 1px solid #fbfbf9;
+}
+
+@media only screen and (max-width: 768px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  .style-custom-styles-dark table.views-matrix tbody {
+    border-bottom: 1px solid #fbfbf9;
+  }
+
+  .style-custom-styles-dark table.views-matrix td {
+    border: 1px solid #fbfbf9;
+  }
+}
