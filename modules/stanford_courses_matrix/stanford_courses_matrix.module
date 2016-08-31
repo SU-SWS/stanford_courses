@@ -108,7 +108,7 @@ function stanford_courses_matrix_views_matrix_columns_renders_alter(&$column_ren
   // Format: 2016 / 2017 courses.
   $a1 = arg(1);
   if (is_numeric($a1)) {
-    $new_title = $a1 . " / " . (++$a1) . " " . t("Courses");
+    $new_title = $a1 . " - " . (++$a1) . " " . t("Courses");
     $view->set_title($new_title);
   }
 
