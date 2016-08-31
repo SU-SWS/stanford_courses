@@ -217,6 +217,7 @@ and also iPads specifically.
 
 .style-custom-styles-contrast table.views-matrix th {
     border: 1px solid #ffffff;
+    border-bottom: none;
 }
 
 @media only screen and (max-width: 768px), (min-device-width: 768px) and (max-device-width: 1024px)  {
@@ -254,4 +255,12 @@ and also iPads specifically.
 
 .style-custom-styles-vivid table.views-matrix th {
     border: 1px solid #ffffff;
+}
+
+@media only screen and (max-width: 768px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  .style-custom-styles-vivid table.views-matrix th {
+    border: 1px solid #333333;
+    border-bottom: none;
+  }
 }
