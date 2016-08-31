@@ -129,7 +129,8 @@ and also iPads specifically.
 }
 
 .style-custom-styles-dark .view-stanford-courses-matrix {
-  .sticky-header th {
+  .sticky-header th,
+  .sticky-header td {
     background: #232220;
     color: #fbfbf9;
   }
@@ -138,6 +139,10 @@ and also iPads specifically.
 .style-custom-styles-dark table.views-matrix th,
 .style-custom-styles-dark table.views-matrix td {
   border: 1px solid #fbfbf9;
+}
+
+.style-custom-styles-dark td.views-matrix-col-header.views-matrix-col-first {
+  border: none;
 }
 
 @media only screen and (max-width: 768px), (min-device-width: 768px) and (max-device-width: 1024px)  {
