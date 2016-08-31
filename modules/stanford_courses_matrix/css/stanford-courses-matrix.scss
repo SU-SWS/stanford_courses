@@ -7,12 +7,32 @@
   border: 0;
 }
 
+// Table header
+table.views-matrix tbody tr th.views-matrix-row-header,
+table.views-matrix thead tr th.views-matrix-col-header {
+  background: #e9e6df;
+  color: #333333;
+}
+
 // Wrapper scope.
 .view-stanford-courses-matrix {
   .sticky-header th {
-    background: rgba(0, 0, 0, 0.51);
-    color: #EEEEEE;
+    background: #e9e6df;
+    color: #333333;
   }
+}
+
+.views-matrix-row-header p {
+  margin-bottom: 0;
+}
+
+.views-matrix-row-header h3 {
+  margin-top: 0;
+}
+
+table.views-matrix th,
+table.views-matrix td {
+  border: 1px solid #333333;
 }
 
 /*
@@ -35,9 +55,20 @@ and also iPads specifically.
     left: -9999px;
   }
 
-  tr { border: 1px solid #ccc; }
+  table.views-matrix tbody {
+    border-top: none;
+    border-bottom: 1px solid #333333;
+  }
 
-  td {
+  table.views-matrix th {
+    border-bottom: none;
+  }
+
+  table.views-matrix tr {
+    border: none;
+  }
+
+  table.views-matrix td {
     /* Behave  like a "row" */
     border: none;
     border-bottom: 1px solid #eee;
@@ -72,6 +103,7 @@ and also iPads specifically.
   td:nth-of-type(4) {
     padding-left: 75px;
     min-height: 1em;
+    border-bottom: none;
   }
 
   tr.odd {
