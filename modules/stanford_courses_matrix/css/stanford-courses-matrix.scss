@@ -120,7 +120,6 @@ and also iPads specifically.
 
 }
 
-
 // Dark theme
 .style-custom-styles-dark table.views-matrix tbody tr th.views-matrix-row-header,
 .style-custom-styles-dark table.views-matrix thead tr th.views-matrix-col-header {
@@ -129,10 +128,12 @@ and also iPads specifically.
 }
 
 .style-custom-styles-dark .view-stanford-courses-matrix {
-  .sticky-header th,
-  .sticky-header td {
+  .sticky-header th {
     background: #232220;
     color: #fbfbf9;
+  }
+  .sticky-header td {
+    background: #2e2d29;
   }
 }
 
@@ -154,4 +155,102 @@ and also iPads specifically.
   .style-custom-styles-dark table.views-matrix td {
     border: 1px solid #fbfbf9;
   }
+}
+
+// Plain theme
+.style-custom-styles-plain table.views-matrix tbody tr th.views-matrix-row-header,
+.style-custom-styles-plain table.views-matrix thead tr th.views-matrix-col-header {
+  background: #e9e9e9;
+}
+
+.style-custom-styles-plain .view-stanford-courses-matrix {
+  .sticky-header th {
+    background: #e9e9e9;
+  }
+}
+
+// Rich theme
+.style-custom-styles-rich table.views-matrix tbody tr th.views-matrix-row-header,
+.style-custom-styles-rich table.views-matrix thead tr th.views-matrix-col-header {
+  background: #d5d0c0;
+  color: #3f3c30;
+}
+
+.style-custom-styles-rich .view-stanford-courses-matrix {
+  .sticky-header th {
+    background: #d5d0c0;
+    color: #3f3c30;
+  }
+  .sticky-header td {
+    background: #fbfbf9;
+  }
+}
+
+// Bright theme
+.style-custom-styles-bright table.views-matrix tbody tr th.views-matrix-row-header,
+.style-custom-styles-bright table.views-matrix thead tr th.views-matrix-col-header {
+  background: #006374;
+  color: #ffffff;
+}
+
+.style-custom-styles-bright .view-stanford-courses-matrix {
+  .sticky-header th {
+    background: #006374;
+    color: #ffffff;
+  }
+}
+
+// High Contrast theme
+.style-custom-styles-contrast table.views-matrix tbody tr th.views-matrix-row-header,
+.style-custom-styles-contrast table.views-matrix thead tr th.views-matrix-col-header {
+  background: #333333;
+  color: #ffffff;
+}
+
+.style-custom-styles-contrast .view-stanford-courses-matrix {
+  .sticky-header th {
+    background: #333333;
+    color: #ffffff;
+  }
+}
+
+.style-custom-styles-contrast table.views-matrix th {
+    border: 1px solid #ffffff;
+}
+
+@media only screen and (max-width: 768px), (min-device-width: 768px) and (max-device-width: 1024px)  {
+
+  .style-custom-styles-contrast table.views-matrix th {
+    border: 1px solid #333333;
+  }
+}
+
+// Cardinal theme
+.style-custom-styles-cardinal table.views-matrix tbody tr th.views-matrix-row-header,
+.style-custom-styles-cardinal table.views-matrix thead tr th.views-matrix-col-header {
+  background: #f2f1eb;
+}
+
+.style-custom-styles-cardinal .view-stanford-courses-matrix {
+  .sticky-header th {
+    background: #f2f1eb;
+  }
+}
+
+// Vivid theme
+.style-custom-styles-vivd table.views-matrix tbody tr th.views-matrix-row-header,
+.style-custom-styles-vivd table.views-matrix thead tr th.views-matrix-col-header {
+  background: #0f6c91;
+  color: #ffffff;
+}
+
+.style-custom-styles-vivd .view-stanford-courses-matrix {
+  .sticky-header th {
+    background: #0f6c91;
+    color: #ffffff;
+  }
+}
+
+.style-custom-styles-vivid table.views-matrix th {
+    border: 1px solid #ffffff;
 }
