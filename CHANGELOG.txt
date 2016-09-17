@@ -1,6 +1,11 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-4.1                   2016-09-16
+------------------------------------
+- 	Added new course matrix module and view with styling
+
+
 7.x-4.0                   2016-08-30
 ------------------------------------
 - Removed field collection throttle functionality
