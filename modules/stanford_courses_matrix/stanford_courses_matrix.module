@@ -53,9 +53,17 @@ function stanford_courses_matrix_preprocess_views_view_matrix(&$vars) {
 }
 
 /**
- * This hook is called right before the render process. The query has been executed, and the pre_render() phase has already happened for handlers, so all data should be available.
+ * This hook is called right before the render process.
+ * The query has been executed, and the pre_render() phase has already happened
+ * for handlers, so all data should be available.
  */
 function stanford_courses_matrix_views_pre_render(&$view) {
+
+  // Only on the view we want.
+  if ($view->name !== "stanford_courses_matrix") {
+    return;
+  }
+
   // Reduce the duplicate results on instructor.
   $results = &$view->result;
   $unique_keys = array();
