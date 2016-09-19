@@ -69,8 +69,15 @@ function stanford_courses_matrix_views_pre_render(&$view) {
   $unique_keys = array();
   foreach ($results as $key => $item) {
 
-    $season = $item->field_field_s_course_term[0]["rendered"]["#markup"];
-    $instructor = $item->field_field_s_course_instructor[0]["rendered"]["#markup"];
+    $season = NULL;
+    if (isset($item->field_field_s_course_term)) {
+      $season = $item->field_field_s_course_term[0]["rendered"]["#markup"];
+    }
+
+    $instructor = NULL;
+    if (isset($item->field_field_s_course_instructor[0])) {
+      $instructor = $item->field_field_s_course_instructor[0]["rendered"]["#markup"];
+    }
 
     // If key already exists remove it.
     if (isset($instructor, $unique_keys[$item->nid][$season][$instructor])) {
