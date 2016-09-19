@@ -58,7 +58,7 @@ function stanford_courses_matrix_preprocess_views_view_matrix(&$vars) {
  * The query has been executed, and the pre_render() phase has already happened
  * for handlers, so all data should be available.
  */
-function stanford_courses_matrix_views_pre_render(&$view) {
+function stanford_courses_matrix_views_do_more(&$view) {
 
   // Only on the view we want.
   if ($view->name !== "stanford_courses_matrix") {
@@ -146,5 +146,8 @@ function stanford_courses_matrix_views_matrix_columns_renders_alter(&$column_ren
 
   // Updates the passed by reference variable.
   $column_renders = $new_renders;
+
+  // Hook this in earlier.
+  stanford_courses_matrix_views_do_more($view);
 
 }
