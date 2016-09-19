@@ -47,6 +47,7 @@ function stanford_courses_matrix_preprocess_views_view_matrix(&$vars) {
     foreach ($row as $data_key => $data) {
       // Pop the last class as it should be the odd/even.
       array_pop($vars['rows'][$row_key][$data_key]['attributes']['class']);
+      $vars['rows'][$row_key][$data_key]['attributes']['class'][] = "thisisjustatest";
     }
   }
 
