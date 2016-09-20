@@ -19,6 +19,54 @@ td.views-matrix-col-header.views-matrix-col-first {
   border: none;
 }
 
+// NO SIDEBAR REGIONS ACTIVE
+
+table.sticky-header {
+  width: 1170px;
+  background: transparent;
+}
+
+@media (max-width: 1200px) {
+  table.sticky-header {
+      width: 940px;
+  }
+}
+
+@media (max-width: 979px) {
+  table.sticky-header {
+      width: 723px;
+  }
+}
+
+// FIRST OR SECOND SIDEBAR REGIONS ARE ACTIVE INDIVIDUALLY
+
+.sidebar-first table.sticky-header,
+.sidebar-second table.sticky-header {
+  width: 870px;
+}
+
+@media (max-width: 1200px) {
+  .sidebar-first table.sticky-header,
+  .sidebar-second table.sticky-header {
+      width: 699px;
+  }
+}
+
+@media (max-width: 979px) {
+  .sidebar-first table.sticky-header {
+      width: 689px;
+  }
+  .sidebar-second table.sticky-header {
+      width: 723px;
+  }
+}
+
+// FIRST AND SECOND SIDEBAR REGIONS ARE ACTIVE SIMULTANEOUSLY
+
+.two-sidebars table.sticky-header {
+  width: 689px;
+}
+
 // Wrapper scope.
 .view-stanford-courses-matrix {
   .sticky-header th {
