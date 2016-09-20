@@ -57,6 +57,27 @@ function stanford_courses_matrix_preprocess_views_view_matrix(&$vars) {
 }
 
 /**
+ * Set the title of the view for the course matix module.
+ *
+ * @param $view the view object.
+ */
+function stanford_courses_matrix_views_post_render(&$view) {
+
+  // Only on the view we want.
+  if ($view->name !== "stanford_courses_matrix") {
+    return;
+  }
+
+  // Format: 2016 / 2017 courses.
+  $a1 = arg(1);
+  if (is_numeric($a1)) {
+    $new_title = $a1 . " - " . (++$a1) . " " . t("Courses");
+    $view->set_title($new_title);
+  }
+
+}
+
+/**
  * This hook is called right before the render process.
  * The query has been executed, and the pre_render() phase has already happened
  * for handlers, so all data should be available.
@@ -66,14 +87,6 @@ function stanford_courses_matrix_views_pre_render(&$view) {
   // Only on the view we want.
   if ($view->name !== "stanford_courses_matrix") {
     return;
-  }
-
-  // Also, override the title since we are already here.
-  // Format: 2016 / 2017 courses.
-  $a1 = arg(1);
-  if (is_numeric($a1)) {
-    $new_title = $a1 . " - " . (++$a1) . " " . t("Courses");
-    $view->set_title($new_title);
   }
 
   // Reduce the duplicate results on instructor.
@@ -101,7 +114,6 @@ function stanford_courses_matrix_views_pre_render(&$view) {
   }
 
 }
-
 
 /**
  * Returns the course code value from a view result array value.
