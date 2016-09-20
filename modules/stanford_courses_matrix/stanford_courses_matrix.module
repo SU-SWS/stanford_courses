@@ -27,6 +27,8 @@ function stanford_courses_matrix_preprocess_views_view_matrix(&$vars) {
 
   // Re-arrange the views-rows with the new index keys.
   $rows = array();
+  $row_classes = array();
+
   foreach ($result_order as $index_key) {
 
     // If the row is not available stop.
@@ -37,10 +39,12 @@ function stanford_courses_matrix_preprocess_views_view_matrix(&$vars) {
 
     // Key it up.
     $rows[] = $vars['rows'][$index_key];
+    $row_classes[] = $vars['row_classes'][$index_key];
   }
 
   // Apply the new order.
   $vars['rows'] = $rows;
+  $vars['row_classes'] = $row_classes;
 
   // Remove the 'even/odd' classes in the results output.
   foreach ($vars['rows'] as $row_key => $row) {
@@ -62,6 +66,14 @@ function stanford_courses_matrix_views_pre_render(&$view) {
   // Only on the view we want.
   if ($view->name !== "stanford_courses_matrix") {
     return;
+  }
+
+  // Also, override the title since we are already here.
+  // Format: 2016 / 2017 courses.
+  $a1 = arg(1);
+  if (is_numeric($a1)) {
+    $new_title = $a1 . " - " . (++$a1) . " " . t("Courses");
+    $view->set_title($new_title);
   }
 
   // Reduce the duplicate results on instructor.
@@ -118,14 +130,6 @@ function stanford_courses_matrix_views_matrix_columns_renders_alter(&$column_ren
   // Attach some css/js here.
   drupal_add_css(drupal_get_path("module", "stanford_courses_matrix") . "/css/stanford-courses-matrix.min.css");
   drupal_add_js(drupal_get_path("module", "stanford_courses_matrix") . "/js/stanford-courses-matrix.js");
-
-  // Also, override the title since we are already here.
-  // Format: 2016 / 2017 courses.
-  $a1 = arg(1);
-  if (is_numeric($a1)) {
-    $new_title = $a1 . " - " . (++$a1) . " " . t("Courses");
-    $view->set_title($new_title);
-  }
 
   // Set the order of the seasons. Any other value gets dropped.
   $order = array("Autumn", "Winter", "Spring", "Summer");
