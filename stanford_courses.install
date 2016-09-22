@@ -66,10 +66,8 @@ function stanford_courses_requirements($phase) {
  * Implementats hook_install().
  */
 function stanford_courses_install() {
-
   // Install a default view for the user to play with.
   _stanford_courses_dump_views();
-
 }
 
 /**
