@@ -2,6 +2,9 @@
 /**
  * @file
  * Academic date filter handler.
+ *
+ * This filter allows views admins to put in exceptions to the date filter where
+ * the filter range and be dependant on the current date.
  */
 
 /**
@@ -15,8 +18,17 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
    * {@inheritdoc}
    */
   public function extra_options_submit($form, &$form_state) {
+
     // Errors occur if this is not unset.
+
+    // From Pook:
+    // basically when you add a date filter it starts with the granularity form,
+    // then after submitting that it goes to the actual value form. it kept
+    // giving me an error after trying to save the granularity form.
+
+    // Clues here: https://api.drupal.org/api/views/includes%21admin.inc/function/views_ui_add_form_to_stack/7.x-3.x
     unset($form_state['view']->stack);
+
     parent::extra_options_submit($form, $form_state);
   }
 
@@ -24,6 +36,8 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
    * {@inheritdoc}
    */
   public function operators() {
+    // Store the simple operator for our own use later.
+    // eg: > , <, =, !=
     $operators = parent::operators();
     foreach ($operators as $key => $operator) {
       if ($operator['method'] == 'op_simple') {
@@ -64,25 +78,47 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
    */
   public function options_form(&$form, &$form_state) {
     parent::options_form($form, $form_state);
+
+    // Set the values to relative if the add exception is available.
     if ($this->options['add_exception']) {
       $form['value']['value_group']['value_choose_input_type']['#default_value'] = 'relative';
+      $form['value']['min_group']['min_choose_input_type']['#default_value'] = 'relative';
+      $form['value']['max_group']['max_choose_input_type']['#default_value'] = 'relative';
     }
 
+    // Show / Hide states for the exception options.
     $states = array(array(':input[name="options[add_exception]"]' => array('checked' => TRUE)));
+
+    // Loop each one.
     foreach ($this->simpleOps as $op) {
       $op_states[] = array(':input[name="options[operator]"]' => array('value' => $op));
     }
 
-    // Hide type selector.
+    // Hide type selectors.
     $form['value']['value_group']['value_choose_input_type']['#states']['invisible'] = $this->splitStates($states);
+    $form['value']['min_group']['min_choose_input_type']['#states']['invisible'] = $this->splitStates($states);
+    $form['value']['max_group']['max_choose_input_type']['#states']['invisible'] = $this->splitStates($states);
 
     // Hide date select field.
     $form['value']['value_group']['value']['#states']['invisible'] = $this->splitStates($states);
+    $form['value']['min_group']['min']['#states']['invisible'] = $this->splitStates($states);
+    $form['value']['max_group']['max']['#states']['invisible'] = $this->splitStates($states);
 
-    // Show relative date input field.
-    $visible_states = array($form['value']['value_group']['default_date']['#states']['visible']);
-    $visible_states = array_merge($visible_states, $states);
-    $form['value']['value_group']['default_date']['#states']['visible'] = $this->splitStates($visible_states);
+    // Show the relative options.
+    $form['value']['value_group']['default_date']['#states']['visible'] = array(
+      array(':input.value-choose-input-type' => array('value' => 'relative')),
+      array(':input[name="options[add_exception]"]' => array('checked' => TRUE)),
+    );
+
+    $form['value']['min_group']['default_date']['#states']['visible'] = array(
+      array(':input.min-choose-input-type' => array('value' => 'relative')),
+      array(':input[name="options[add_exception]"]' => array('checked' => TRUE)),
+    );
+
+    $form['value']['max_group']['default_to_date']['#states']['visible'] = array(
+      array(':input.max-choose-input-type' => array('value' => 'relative')),
+      array(':input[name="options[add_exception]"]' => array('checked' => TRUE)),
+    );
 
     $form['add_exception'] = array(
       '#type' => 'checkbox',
@@ -93,7 +129,6 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
         'visible' => $this->splitStates($op_states),
       ),
     );
-
 
     $form['exception'] = array(
       '#type' => 'fieldset',
@@ -131,7 +166,6 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
       '#suffix' => '</div>',
     );
 
-
     $form['exception']['to'] = array(
       '#type' => 'fieldset',
       '#title' => t('To'),
@@ -162,8 +196,16 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
       '#default_value' => $this->options['exception']['value'],
     );
 
+
+
   }
 
+  /**
+   * [options_validate description]
+   * @param  [type] $form       [description]
+   * @param  [type] $form_state [description]
+   * @return [type]             [description]
+   */
   public function options_validate(&$form, &$form_state) {
     if ($form_state['values']['options']['add_exception']) {
       $exception = $form_state['values']['options']['exception'];
@@ -171,10 +213,11 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
         form_error($form['exception'], t('Invalid timeframe.'));
       }
 
-      if(empty($form_state['values']['options']['value']['value_group']['default_date'])){
+      if (empty($form_state['values']['options']['value']['value_group']['default_date'])) {
         form_error($form['value']['value_group']['default_date'], t('Invalid relative time.'));
       }
     }
+
     return parent::options_validate($form, $form_state); // TODO: Change the autogenerated stub
   }
 

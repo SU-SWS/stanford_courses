@@ -6,8 +6,14 @@
 
 include_once 'stanford_course_views.features.inc';
 
+/**
+ * Views prebuild to replace a token in the courses content area.
+ *
+ * @param object $view
+ *   The view.
+ */
 function stanford_course_views_views_pre_build(&$view) {
-  // We want to provide a link to the search view when there are no results
+  // We want to provide a link to the search view when there are no results.
 
   if (($view->name == "courses_reference") || ($view->name == "courses")) {
     if (($view->current_display == "current_courses_page") ||
@@ -27,17 +33,6 @@ function stanford_course_views_views_pre_build(&$view) {
           $view->empty["area"]->options["content"] = $subject;
         }
       }
-    }
-  }
-}
-
-/**
- * Implements hook_views_data_alter().
- */
-function stanford_course_views_views_data_alter(&$data) {
-  foreach (field_info_fields() as $field_name => $field) {
-    if ($field['type'] == 'datetime') {
-      $data["field_data_$field_name"][$field_name . '_value']['filter']['handler'] = 'DateViewsFilterAcademic';
     }
   }
 }
