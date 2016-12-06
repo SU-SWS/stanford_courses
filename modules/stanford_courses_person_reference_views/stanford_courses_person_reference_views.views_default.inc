@@ -444,6 +444,12 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['operator'] = '<=';
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now +2 weeks';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['add_exception'] = 1;
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['exception']['from']['month'] = '12';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['exception']['from']['day'] = '1';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['exception']['to']['month'] = '12';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['exception']['to']['day'] = '31';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['exception']['value'] = 'now +8weeks';
   /* Filter criterion: Field collection item: Date Range - end date (field_s_course_section_dates:value2) */
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['id'] = 'field_s_course_section_dates_value2';
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['table'] = 'field_data_field_s_course_section_dates';
@@ -451,6 +457,12 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['operator'] = '>=';
   $handler->display->display_options['filters']['field_s_course_section_dates_value2']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['add_exception'] = 1;
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['exception']['from']['month'] = '7';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['exception']['from']['day'] = '1';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['exception']['to']['month'] = '8';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['exception']['to']['day'] = '31';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value2']['exception']['value'] = 'now +8weeks';
   $handler->display->display_options['path'] = 'courses';
 
   /* Display: Search Page */
@@ -798,7 +810,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Body */
+  /* Field: Content: Description */
   $handler->display->display_options['fields']['body']['id'] = 'body';
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
