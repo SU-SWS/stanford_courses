@@ -196,8 +196,6 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
       '#default_value' => $this->options['exception']['value'],
     );
 
-
-
   }
 
   /**

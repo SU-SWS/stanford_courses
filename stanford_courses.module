@@ -156,7 +156,10 @@ function stanford_courses_views_data_alter(&$data) {
   // that allows for current date exceptions right inline with the other config.
   foreach (field_info_fields() as $field_name => $field) {
     if ($field['type'] == 'datetime') {
-      $data["field_data_$field_name"][$field_name . '_value']['filter']['handler'] = 'DateViewsFilterAcademic';
+      $column_keys = array_keys($field['columns']);
+      foreach ($column_keys as $column_name) {
+        $data["field_data_$field_name"][$field_name . '_' . $column_name]['filter']['handler'] = 'DateViewsFilterAcademic';
+      }
     }
   }
 }
