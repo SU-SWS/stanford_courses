@@ -9,12 +9,28 @@
  */
 class DateViewsFilterAcademic extends date_views_filter_handler_simple {
 
+  private $simpleOps = array();
+
   /**
    * {@inheritdoc}
    */
   public function extra_options_submit($form, &$form_state) {
+    // Errors occur if this is not unset.
     unset($form_state['view']->stack);
     parent::extra_options_submit($form, $form_state);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function operators() {
+    $operators = parent::operators();
+    foreach ($operators as $key => $operator) {
+      if ($operator['method'] == 'op_simple') {
+        $this->simpleOps[] = $key;
+      }
+    }
+    return $operators;
   }
 
   /**
@@ -50,6 +66,9 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
     parent::options_form($form, $form_state);
 
     $states = array(array(':input[name="options[add_exception]"]' => array('checked' => TRUE)));
+    foreach ($this->simpleOps as $op) {
+      $op_states[] = array(':input[name="options[operator]"]' => array('value' => $op));
+    }
 
     // Hide type selector.
     $form['value']['value_group']['value_choose_input_type']['#states']['invisible'] = $this->splitStates($states);
@@ -67,7 +86,11 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
       '#title' => t('Add Exception Timeframe'),
       '#description' => t('Only works with relative dates & non-exposed filters.'),
       '#default_value' => $this->options['add_exception'],
+      '#states' => array(
+        'visible' => $this->splitStates($op_states),
+      ),
     );
+
 
     $form['exception'] = array(
       '#type' => 'fieldset',
@@ -240,7 +263,10 @@ class DateViewsFilterAcademic extends date_views_filter_handler_simple {
    *   If filter is configured to have an exception time period.
    */
   private function addException() {
-    if (isset($this->options['add_exception']) && $this->options['add_exception']) {
+    if (in_array($this->options['operator'], $this->simpleOps) &&
+      isset($this->options['add_exception']) &&
+      $this->options['add_exception']
+    ) {
       return TRUE;
     }
     return FALSE;
