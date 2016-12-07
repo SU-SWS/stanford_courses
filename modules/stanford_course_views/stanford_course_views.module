@@ -13,8 +13,8 @@ include_once 'stanford_course_views.features.inc';
  *   The view.
  */
 function stanford_course_views_views_pre_build(&$view) {
-  // We want to provide a link to the search view when there are no results.
 
+  // We want to provide a link to the search view when there are no results.
   if (($view->name == "courses_reference") || ($view->name == "courses")) {
     if (($view->current_display == "current_courses_page") ||
       ($view->current_display == "search_page") ||

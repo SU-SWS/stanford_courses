@@ -12,7 +12,7 @@ include_once 'stanford_courses.features.inc';
 function stanford_courses_help($path, $arg) {
   switch ($path) {
     case 'admin/help#stanford_courses':
-      $output = '<p>' . t('This module provides a turnkey solution for importing course information from !explorecourses. It includes a &quot;Stanford Course&quot; content type and a &quot;meta&quot; content type for importing (&quot;Stanford Course Importer&quot;). ', array('!explorecourses' => l(t('explorecourses.stanford.edu'), 'http://explorecourses.stanford.edu'))) . '</p>';
+      $output = '<p>' . t('This module provides a turnkey solution for importing course information from !explorecourses. It includes a &quot;Stanford Course&quot; content type and a &quot;meta&quot; content type for importing (&quot;Stanford Course Importer&quot;).', array('!explorecourses' => l(t('explorecourses.stanford.edu'), 'http://explorecourses.stanford.edu'))) . '</p>';
       $output .= '<h2>' . t('Importing Courses') . '</h2>';
       $output .= '<p>' . t('To import from a feed, first construct the search for the courses that you want to import at !explorecourses.', array('!explorecourses' => l(t('explorecourses.stanford.edu'), 'http://explorecourses.stanford.edu'))) . '</p>';
       $output .= '<p>' . t('Paste the URL of your search into the URL box (e.g., &quot;http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on...&quot; etc.) at !import and click the <strong>Save</strong> button to import <em>course</em> information. (The module will &quot;automagically&quot; convert the search URL into an XML URL.)', array('!import' => l(t('node/add/stanford-course-importer'), 'node/add/stanford-course-importer'))) . '</p>';
@@ -62,8 +62,8 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
     form_set_value(
       array(
         '#parents' => array(
-          'feeds', 'FeedsHTTPFetcher', 'source'
-        )
+          'feeds', 'FeedsHTTPFetcher', 'source',
+        ),
       ),
       $feed_url, $form_state);
   }
@@ -84,8 +84,8 @@ function stanford_courses_ec_link_validate($form, &$form_state) {
   form_set_value(
     array(
       '#parents' => array(
-        'field_s_course_ec_link', 'und', 0, 'url'
-      )
+        'field_s_course_ec_link', 'und', 0, 'url',
+      ),
     ),
     $ec_link, $form_state);
 }
@@ -141,9 +141,9 @@ function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$
   }
 }
 
-///////////////////////////
+// /////////////////////////
 // VIEWS HOOKS.
-///////////////////////////
+// /////////////////////////.
 
 /**
  * Implements hook_views_data_alter().
