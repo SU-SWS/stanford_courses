@@ -12,10 +12,10 @@ include_once 'stanford_courses.features.inc';
 function stanford_courses_help($path, $arg) {
   switch ($path) {
     case 'admin/help#stanford_courses':
-      $output = '<p>' . t('This module provides a turnkey solution for importing course information from !explorecourses. It includes a &quot;Stanford Course&quot; content type and a &quot;meta&quot; content type for importing (&quot;Stanford Course Importer&quot;). ', array('!explorecourses' => l('explorecourses.stanford.edu', 'http://explorecourses.stanford.edu'))) . '</p>';
+      $output = '<p>' . t('This module provides a turnkey solution for importing course information from !explorecourses. It includes a &quot;Stanford Course&quot; content type and a &quot;meta&quot; content type for importing (&quot;Stanford Course Importer&quot;).', array('!explorecourses' => l(t('explorecourses.stanford.edu'), 'http://explorecourses.stanford.edu'))) . '</p>';
       $output .= '<h2>' . t('Importing Courses') . '</h2>';
-      $output .= '<p>' . t('To import from a feed, first construct the search for the courses that you want to import at !explorecourses.', array('!explorecourses' => l('explorecourses.stanford.edu', 'http://explorecourses.stanford.edu'))) .'</p>';
-      $output .= '<p>' . t('Paste the URL of your search into the URL box (e.g., &quot;http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on...&quot; etc.) at !import and click the <strong>Save</strong> button to import <em>course</em> information. (The module will &quot;automagically&quot; convert the search URL into an XML URL.)', array('!import' => l('node/add/stanford-course-importer', 'node/add/stanford-course-importer'))) .'</p>';
+      $output .= '<p>' . t('To import from a feed, first construct the search for the courses that you want to import at !explorecourses.', array('!explorecourses' => l(t('explorecourses.stanford.edu'), 'http://explorecourses.stanford.edu'))) . '</p>';
+      $output .= '<p>' . t('Paste the URL of your search into the URL box (e.g., &quot;http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on...&quot; etc.) at !import and click the <strong>Save</strong> button to import <em>course</em> information. (The module will &quot;automagically&quot; convert the search URL into an XML URL.)', array('!import' => l(t('node/add/stanford-course-importer'), 'node/add/stanford-course-importer'))) . '</p>';
       $output .= '<p>' . t('A link to the course listing on ExploreCourses automatically will be created for each course node.') . '</p>';
       return $output;
   }
@@ -59,18 +59,35 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
     $feed_url = preg_replace('/view\=xml\-20111011/', 'view=xml-20140630', $feed_url);
     $feed_url = preg_replace('/view\=xml\-20130201/', 'view=xml-20140630', $feed_url);
     $feed_url = preg_replace('/https/', 'http', $feed_url);
-    form_set_value(array('#parents' => array('feeds', 'FeedsHTTPFetcher', 'source')), $feed_url, $form_state);
+    form_set_value(
+      array(
+        '#parents' => array(
+          'feeds', 'FeedsHTTPFetcher', 'source',
+        ),
+      ),
+      $feed_url, $form_state);
   }
 }
 
-/*
+/**
  * Modify the ExploreCourses link to pass the subject and code through urlencode().
+ *
+ * @param array $form
+ *   The form array.
+ * @param array $form_state
+ *   The form state array.
  */
 function stanford_courses_ec_link_validate($form, &$form_state) {
   $subject = $form_state['values']['field_s_course_subject']['und'][0]['value'];
   $code = $form_state['values']['field_s_course_code']['und'][0]['value'];
   $ec_link = 'http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&q=' . urlencode($subject) . urlencode($code);
-  form_set_value(array('#parents' => array('field_s_course_ec_link', 'und', 0, 'url')), $ec_link, $form_state);
+  form_set_value(
+    array(
+      '#parents' => array(
+        'field_s_course_ec_link', 'und', 0, 'url',
+      ),
+    ),
+    $ec_link, $form_state);
 }
 
 /*
@@ -124,3 +141,25 @@ function stanford_courses_sub_target_pre_callback_parse($target, $sub_target, &$
   }
 }
 
+// /////////////////////////
+// VIEWS HOOKS.
+// /////////////////////////.
+
+/**
+ * Implements hook_views_data_alter().
+ *
+ * @todo: Review if this is more or less performant than:
+ * hook_field_views_data_views_data_alter.
+ */
+function stanford_courses_views_data_alter(&$data) {
+  // For any datetime field we want to replace the handler with our custom one
+  // that allows for current date exceptions right inline with the other config.
+  foreach (field_info_fields() as $field_name => $field) {
+    if ($field['type'] == 'datetime') {
+      $column_keys = array_keys($field['columns']);
+      foreach ($column_keys as $column_name) {
+        $data["field_data_$field_name"][$field_name . '_' . $column_name]['filter']['handler'] = 'DateViewsFilterAcademic';
+      }
+    }
+  }
+}
