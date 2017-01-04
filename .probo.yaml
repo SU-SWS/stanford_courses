@@ -1,0 +1,17 @@
+# This file includes the minimum code required to build and test a site with ProboCI.
+# All other code is stored in SU-SWS/proboci_assets and should be updated there.
+
+# Add which product you would like to build by running the script with the name of the profile,
+# ie. /srv/proboci_assets/probo.sh jumpstart-academic
+# Choices include stanford, jumpstart, jumpstart-academic, etc.
+
+assets:
+ - proboci_id_rsa
+ - proboci_id_rsa.pub
+
+steps:
+  - name: Run tests from external proboci_assets repository
+    command: "git clone https://github.com/SU-SWS/proboci_assets.git /srv/proboci_assets;
+      cp $ASSET_DIR/proboci_id_rsa.pub /root/.ssh/id_rsa.pub;
+      cp $ASSET_DIR/proboci_id_rsa /root/.ssh/id_rsa;
+      /srv/proboci_assets/probo.sh"
