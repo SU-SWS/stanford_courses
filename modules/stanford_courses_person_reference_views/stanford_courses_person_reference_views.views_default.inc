@@ -443,7 +443,7 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['field'] = 'field_s_course_section_dates_value';
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['relationship'] = 'field_s_course_section_info_value';
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['operator'] = '<=';
-  $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now +45days';
+  $handler->display->display_options['filters']['field_s_course_section_dates_value']['default_date'] = 'now +2weeks';
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['add_exception'] = 1;
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['exception']['from']['month'] = '7';
   $handler->display->display_options['filters']['field_s_course_section_dates_value']['exception']['from']['day'] = '21';
