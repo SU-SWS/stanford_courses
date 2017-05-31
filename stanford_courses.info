@@ -23,6 +23,7 @@ dependencies[] = stanford_feeds_helper
 dependencies[] = strongarm
 dependencies[] = text
 files[] = views/DateViewsFilterAcademic.inc
+files[] = views/StanfordDateViewsSortCustom.inc
 features[ctools][] = feeds:feeds_importer_default:1
 features[ctools][] = feeds_tamper:feeds_tamper_default:2
 features[ctools][] = field_group:field_group:1

@@ -62,7 +62,9 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
     form_set_value(
       array(
         '#parents' => array(
-          'feeds', 'FeedsHTTPFetcher', 'source',
+          'feeds',
+          'FeedsHTTPFetcher',
+          'source',
         ),
       ),
       $feed_url, $form_state);
@@ -70,7 +72,8 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
 }
 
 /**
- * Modify the ExploreCourses link to pass the subject and code through urlencode().
+ * Modify the ExploreCourses link to pass the subject and code through
+ * urlencode().
  *
  * @param array $form
  *   The form array.
@@ -84,7 +87,10 @@ function stanford_courses_ec_link_validate($form, &$form_state) {
   form_set_value(
     array(
       '#parents' => array(
-        'field_s_course_ec_link', 'und', 0, 'url',
+        'field_s_course_ec_link',
+        'und',
+        0,
+        'url',
       ),
     ),
     $ec_link, $form_state);
@@ -108,6 +114,7 @@ function stanford_courses_ctools_plugin_directory($module, $plugin) {
  * Multiple field values are a pain in the rear. They are additive and we do not
  * always want them to be. This function targets a couple of items and truncates
  * their values before saving the new ones.
+ *
  * @param $target
  * @param $entity
  * @param $field
@@ -162,4 +169,54 @@ function stanford_courses_views_data_alter(&$data) {
       }
     }
   }
+  $fields = field_read_fields(array('type' => 'list_text'));
+  foreach (array_keys($fields) as $field_name) {
+    if (isset($data["field_data_$field_name"])) {
+      $value = $data["field_data_$field_name"]["{$field_name}_value"];
+      $value['title'] = t('!title Customized', array('!title' => $value['title']));
+      $value['title short'] = t('!short Customized', array('!short' => $value['title short']));
+      unset($value['filter'], $value['argument']);
+      $value['sort']['handler'] = 'StanfordDateViewsSortCustom';
+      $data["field_data_$field_name"]["{$field_name}_value_customize"] = $value;
+    }
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function stanford_courses_theme($existing, $type, $theme, $path) {
+  return array(
+    'stanford_date_views_sort_custom' => array(
+      'render element' => 'form',
+    ),
+  );
+}
+
+function theme_stanford_date_views_sort_custom($vars) {
+  $form = $vars['form'];
+  $item_order = $vars['form']['item_order'];
+  foreach (element_children($item_order) as $value) {
+    $form['item_order'][$value]['weight']['#attributes']['class'] = array('slides-order-weight');
+    $rows[] = array(
+      'data' => array(
+        array('class' => array('slide-cross')),
+        drupal_render($form['item_order'][$value]['label']),
+        drupal_render($form['item_order'][$value]['weight']),
+      ),
+      'class' => array('draggable'),
+    );
+  }
+
+  $header = array('', t('Key'), t('Weight'));
+  $output = theme('table', array(
+    'header' => $header,
+    'rows' => $rows,
+    'attributes' => array('id' => 'slides-order'),
+  ));
+  $output .= drupal_render_children($form);
+
+  drupal_add_tabledrag('slides-order', 'order', 'sibling', 'slides-order-weight');
+
+  return $output;
 }
