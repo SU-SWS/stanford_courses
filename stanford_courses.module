@@ -72,8 +72,7 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
 }
 
 /**
- * Modify the ExploreCourses link to pass the subject and code through
- * urlencode().
+ * Modify the ExploreCourses link to pass the subject & code to urlencode().
  *
  * @param array $form
  *   The form array.
@@ -81,8 +80,8 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
  *   The form state array.
  */
 function stanford_courses_ec_link_validate($form, &$form_state) {
-  $subject = $form_state['values']['field_s_course_subject']['und'][0]['value'];
-  $code = $form_state['values']['field_s_course_code']['und'][0]['value'];
+  $subject = $form_state['values']['field_s_course_subject'][LANGUAGE_NONE][0]['value'];
+  $code = $form_state['values']['field_s_course_code'][LANGUAGE_NONE][0]['value'];
   $ec_link = 'http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&q=' . urlencode($subject) . urlencode($code);
   form_set_value(
     array(
@@ -193,6 +192,15 @@ function stanford_courses_theme($existing, $type, $theme, $path) {
   );
 }
 
+/**
+ * Create the draggable table for the StanfordDateViewsSortCustom.
+ *
+ * @param array $vars
+ *   Theme array values.
+ *
+ * @return string
+ *   Rendered output
+ */
 function theme_stanford_date_views_sort_custom($vars) {
   $form = $vars['form'];
   $item_order = $vars['form']['item_order'];

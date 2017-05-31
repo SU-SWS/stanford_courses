@@ -9,7 +9,7 @@ $plugin = array(
   'multi' => 'loop',
   'name' => 'Substring',
   'category' => 'Text',
- );
+);
 
 function stanford_courses_substr_form($importer, $element_key, $settings) {
   $form = array();
@@ -30,11 +30,13 @@ function stanford_courses_substr_form($importer, $element_key, $settings) {
 
 function stanford_courses_substr_callback($source, $item_key, $element_key, &$field, $settings) {
   $start = $settings['start'];
-  if(!empty($settings['length']) && !empty($field)) {
+  if (!empty($settings['length']) && !empty($field)) {
     $length = $settings['length'];
     $field = substr($field, $start, $length);
   }
-  else if (!empty($field)) {
-    $field = substr($field, $start);
+  else {
+    if (!empty($field)) {
+      $field = substr($field, $start);
+    }
   }
 }

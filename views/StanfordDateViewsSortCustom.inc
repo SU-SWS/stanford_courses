@@ -41,7 +41,7 @@ class StanfordDateViewsSortCustom extends views_handler_sort {
       );
     }
     $form['#theme'] = 'stanford_date_views_sort_custom';
-    $form['#attached']['css'][] = drupal_get_path('module','stanford_courses') . '/css/stanford_courses_views.admin.css';
+    $form['#attached']['css'][] = drupal_get_path('module', 'stanford_courses') . '/css/stanford_courses_views.admin.css';
   }
 
   /**
@@ -66,7 +66,7 @@ class StanfordDateViewsSortCustom extends views_handler_sort {
 
     $replace_string = '';
     foreach ($order as $weight => $value) {
-      $weight = str_pad($weight, 5, 0, STR_PAD_LEFT);
+      $weight = str_pad((string) $weight, 5, 0, STR_PAD_LEFT);
       if (!(int) $weight) {
         $replace_string = "replace(`{$this->real_field}`, '$value', '$weight-$value')";
       }
@@ -102,4 +102,5 @@ class StanfordDateViewsSortCustom extends views_handler_sort {
     asort($ordered_items);
     return array_keys($ordered_items);
   }
+
 }

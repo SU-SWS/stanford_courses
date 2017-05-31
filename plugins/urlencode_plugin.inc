@@ -9,7 +9,7 @@ $plugin = array(
   'multi' => 'loop',
   'name' => 'URL Encode',
   'category' => 'Other',
- );
+);
 
 function stanford_courses_urlencode_form($importer, $element_key, $settings) {
   $form = array();
