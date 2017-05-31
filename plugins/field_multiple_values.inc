@@ -10,38 +10,39 @@
  * Plugin definition
  */
 $plugin = array(
-    'form' => 'stanford_courses_field_multiple_values_form',
-    'callback' => 'stanford_courses_field_multiple_values_callback',
-    'multi' => 'direct',
-    'name' => 'Multiple Values to Multiple Value Field',
-    'category' => 'Field Collection',
+  'form' => 'stanford_courses_field_multiple_values_form',
+  'callback' => 'stanford_courses_field_multiple_values_callback',
+  'multi' => 'direct',
+  'name' => 'Multiple Values to Multiple Value Field',
+  'category' => 'Field Collection',
 );
 
 /**
  * Implements hook_form().
  *
- * Returns a configuration form for the field_multiple_values feeds tamper plugin
+ * Returns a configuration form for the field_multiple_values feeds tamper
+ * plugin
  */
 function stanford_courses_field_multiple_values_form($importer, $element_key, $settings) {
-    $form = array();
-    $form['help']['#markup'] = 'Provide a secondary XPath selector. This selector starts from the results of the XPath parser that this tamper is applied to. This will allow you to maintain the correct order in field collection items with multiple values.';
-    $form['subxpath'] = array(
-      '#type' => 'textfield',
-      '#title' => 'XPath',
-      '#description' => t('Provide a secondary XPath selector for parsing individual items.'),
-      '#default_value' => $settings['subxpath'],
-    );
-    $form['datatype'] = array(
-      '#type' => 'select',
-      '#title' => 'Data Type',
-      '#options' => array(
-        'string' => t('String'),
-        'integer' => t('Integer'),
-      ),
-      '#description' => t('Provide the type of data the XPath selector should return.'),
-      '#default_value' => $settings['datatype'],
-    );
-    return $form;
+  $form = array();
+  $form['help']['#markup'] = 'Provide a secondary XPath selector. This selector starts from the results of the XPath parser that this tamper is applied to. This will allow you to maintain the correct order in field collection items with multiple values.';
+  $form['subxpath'] = array(
+    '#type' => 'textfield',
+    '#title' => 'XPath',
+    '#description' => t('Provide a secondary XPath selector for parsing individual items.'),
+    '#default_value' => $settings['subxpath'],
+  );
+  $form['datatype'] = array(
+    '#type' => 'select',
+    '#title' => 'Data Type',
+    '#options' => array(
+      'string' => t('String'),
+      'integer' => t('Integer'),
+    ),
+    '#description' => t('Provide the type of data the XPath selector should return.'),
+    '#default_value' => $settings['datatype'],
+  );
+  return $form;
 }
 
 /**
@@ -55,6 +56,7 @@ function stanford_courses_field_multiple_values_form($importer, $element_key, $s
  * @param  [type] $element_key [description]
  * @param  [type] $field       [description]
  * @param  [type] $settings    [description]
+ *
  * @return [type]              [description]
  */
 function stanford_courses_field_multiple_values_callback($source, $item_key, $element_key, &$field, $settings) {
@@ -65,11 +67,12 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
 
   // Check for single and multiple value results from previous XPath.
   if (is_array($field)) {
-   foreach ($field as $section) {
-     // Turn raw result xml to a workable format.
+    foreach ($field as $section) {
+      // Turn raw result xml to a workable format.
       try {
         $values[] = new SimpleXMLElement($section);
-      } catch(Exception $e) {
+      }
+      catch (Exception $e) {
         // Could not parse field we need to continue.
         return;
       }
@@ -79,7 +82,8 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
     // Turn raw result xml to a workable format.
     try {
       $values[] = new SimpleXMLElement($field);
-    } catch(Exception $e) {
+    }
+    catch (Exception $e) {
       // Could not parse field we need to continue.
       return;
     }
@@ -89,7 +93,7 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
   $field = array();
 
   // Loop through the previous XPath results and run through
-  foreach($values as $k => $v) {
+  foreach ($values as $k => $v) {
 
     // If not an xml object then just continue.
     if (!is_object($v)) {
@@ -106,7 +110,7 @@ function stanford_courses_field_multiple_values_callback($source, $item_key, $el
     }
 
     foreach ($subset as $result) {
-      switch($settings['datatype']) {
+      switch ($settings['datatype']) {
         case "integer":
           $field[$k][] = (integer) $result;
           break;

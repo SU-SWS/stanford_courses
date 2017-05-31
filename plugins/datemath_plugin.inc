@@ -14,11 +14,11 @@ $plugin = array(
   'multi' => 'loop',
   'name' => 'Unix TimeStamp Date Math',
   'category' => 'Date/time',
- );
+);
 
 /**
  * Implements hook_form().
- * 
+ *
  * Returns a configuration form for the datemath feeds tamper plugin
  */
 function stanford_courses_datemath_form($importer, $element_key, $settings) {
@@ -47,11 +47,13 @@ function stanford_courses_datemath_form($importer, $element_key, $settings) {
 /**
  * Callback function for feeds tamper datemath plugin. Processes input data into
  * a time and performs date math like 'add one day' to it.
+ *
  * @param  [type] $source      [description]
  * @param  [type] $item_key    [description]
  * @param  [type] $element_key [description]
  * @param  [type] $field       [description]
  * @param  [type] $settings    [description]
+ *
  * @return [type]              [description]
  */
 function stanford_courses_datemath_callback($source, $item_key, $element_key, &$field, $settings) {
