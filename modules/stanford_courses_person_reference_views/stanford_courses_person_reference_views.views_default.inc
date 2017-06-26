@@ -185,8 +185,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>Current Courses displays all courses offered in the current quarter.</p>
 <p>&nbsp;</p>
-<a class="btn" href="/courses/search">Search courses</a>';
-  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
+[hook_views_pre_build:courses/search]';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   /* Relationship: Content: Section Information (field_s_course_section_info) */
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['id'] = 'field_s_course_section_info_value';
   $handler->display->display_options['relationships']['field_s_course_section_info_value']['table'] = 'field_data_field_s_course_section_info';
@@ -480,8 +480,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>No courses are available based on your search.</p>
 <p>&nbsp;</p>
-<a class="btn" href="/courses/search">Search courses</a>';
-  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
+[hook_views_pre_build:courses/search]';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -721,8 +721,8 @@ function stanford_courses_person_reference_views_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p>This displays upcoming courses.</p>
 <p>&nbsp;</p>
-<a class="btn" href="/courses/search">Search courses</a>';
-  $handler->display->display_options['empty']['area']['format'] = 'content_editor_text_format';
+[hook_views_pre_build:courses/search]';
+  $handler->display->display_options['empty']['area']['format'] = 'filtered_html';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
