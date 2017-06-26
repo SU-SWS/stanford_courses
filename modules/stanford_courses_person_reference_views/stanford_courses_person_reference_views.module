@@ -17,8 +17,8 @@ function stanford_courses_person_reference_views_views_pre_build(&$view) {
     if (!empty($matches)) {
       $parts = explode(":", $matches[0]);
       $url = str_replace("]", "", $parts[1]);
-      $a = l("Search courses", $url, ['attributes' => ['class' => ['btn']]]);
-      $subject = preg_replace($pattern, $a, $subject);
+      $link = l(t('Search courses'), $url, ['attributes' => ['class' => ['btn']]]);
+      $subject = preg_replace($pattern, $link, $subject);
       $view->empty["area"]->options["content"] = $subject;
     }
   }
