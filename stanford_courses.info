@@ -7,6 +7,7 @@ project = stanford_courses
 dependencies[] = ctools
 dependencies[] = date
 dependencies[] = date_popup
+dependencies[] = date_views
 dependencies[] = features (>=2.0)
 dependencies[] = feeds (>=2.0-beta2)
 dependencies[] = feeds_tamper
