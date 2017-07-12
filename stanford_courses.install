@@ -379,7 +379,7 @@ function _stanford_courses_dump_views() {
 
   // Save the views.
   $views = stanford_courses_get_views();
-  foreach ($views as $view_name => $view_object) {
+  foreach ($views as $view_object) {
     $view_object->save();
   }
 
@@ -512,11 +512,10 @@ function stanford_courses_update_7403() {
  */
 function stanford_courses_update_7404(&$sandbox) {
   if (!isset($sandbox['ids'])) {
-    $item_ids = db_select('field_collection_item', 'f')
+    $sandbox['ids'] = db_select('field_collection_item', 'f')
       ->fields('f', array('item_id', 'field_name'))
       ->condition('field_name', 'field_s_course_section_info')
       ->execute()->fetchAllKeyed();
-    $sandbox['ids'] = $item_ids;
     $sandbox['total'] = count($sandbox['ids']);
   }
 
