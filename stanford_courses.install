@@ -519,7 +519,7 @@ function stanford_courses_update_7404(&$sandbox) {
       ->condition('field_name', 'field_s_course_section_info')
       ->execute();
 
-    foreach ($collection_id = $collection_ids->fetchField()) {
+    while ($collection_id = $collection_ids->fetchField()) {
       $sandbox['ids'][$collection_id] = $collection_id;
     }
 
