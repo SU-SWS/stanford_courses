@@ -512,10 +512,17 @@ function stanford_courses_update_7403() {
  */
 function stanford_courses_update_7404(&$sandbox) {
   if (!isset($sandbox['ids'])) {
-    $sandbox['ids'] = db_select('field_collection_item', 'f')
-      ->fields('f', array('item_id', 'field_name'))
+    $sandbox['ids'] = array();
+
+    $collection_ids = db_select('field_collection_item', 'f')
+      ->fields('f', array('item_id'))
       ->condition('field_name', 'field_s_course_section_info')
-      ->execute()->fetchAllKeyed();
+      ->execute();
+
+    foreach ($collection_id = $collection_ids->fetchField()) {
+      $sandbox['ids'][$collection_id] = $collection_id;
+    }
+
     $sandbox['total'] = count($sandbox['ids']);
   }
 
