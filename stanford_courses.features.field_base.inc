@@ -369,6 +369,7 @@ function stanford_courses_field_default_field_bases() {
     'module' => 'field_collection',
     'settings' => array(
       'hide_blank_items' => 1,
+      'hide_initial_item' => FALSE,
       'path' => '',
     ),
     'translatable' => 0,
@@ -773,7 +774,6 @@ function stanford_courses_field_default_field_bases() {
     'translatable' => 0,
     'type' => 'datetime',
   );
-
 
   return $field_bases;
 }
