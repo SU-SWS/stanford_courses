@@ -218,16 +218,36 @@ function stanford_courses_rules_action_info() {
   );
 }
 
+/**
+ * Get padding options.
+ *
+ * @return array
+ *   Padding options.
+ */
 function stanford_courses_string_to_time_pad_side_options() {
   return array(
+    0 => t('None'),
     'left' => t('Left'),
     'right' => t('Right'),
     'both' => t('Both'),
   );
 }
 
+/**
+ * Rules action to attempt to parse string to date stamp.
+ *
+ * @param string $input
+ *   String to parse.
+ * @param string $padding_string
+ *   Any before, after or both string to pad such as "Jan 1 ".
+ * @param string $padding_side
+ *   Which side to add padding.
+ *
+ * @return array
+ *   Parsed date stamp.
+ */
 function stanford_courses_string_to_time($input, $padding_string, $padding_side) {
-  if ($padding_string) {
+  if ($padding_string && $padding_side) {
     switch ($padding_side) {
       case 'left':
         $input = "$padding_string$input";
