@@ -25,11 +25,11 @@ function stanford_courses_tag_translate_settings() {
   if (!$results) {
 
     $render["ttable"]["#markup"] = "<h3>" . t("No, translations found. Please start by !create or !import.",
-      array(
-        '!create' => l(t("creating one"), "admin/config/stanford/courses/tag-translate/new"),
-        '!import' => l(t("importing some defaults"), "admin/config/stanford/courses/tag-translate/import"),
-      )
-    );
+        array(
+          '!create' => l(t("creating one"), "admin/config/stanford/courses/tag-translate/new"),
+          '!import' => l(t("importing some defaults"), "admin/config/stanford/courses/tag-translate/import"),
+        )
+      );
   }
 
   // Put all of the values in to one big table.
@@ -42,8 +42,10 @@ function stanford_courses_tag_translate_settings() {
 
 /**
  * [stanford_courses_tag_default_value_form description]
+ *
  * @param  [type] $form       [description]
  * @param  [type] $form_state [description]
+ *
  * @return [type]             [description]
  */
 function stanford_courses_tag_default_value_form($form, &$form_state) {
@@ -75,8 +77,10 @@ function stanford_courses_tag_default_value_form($form, &$form_state) {
 
 /**
  * [stanford_courses_tag_default_value_form_submit description]
+ *
  * @param  [type] $form        [description]
  * @param  [type] &$form_state [description]
+ *
  * @return [type]              [description]
  */
 function stanford_courses_tag_default_value_form_submit($form, &$form_state) {
@@ -210,9 +214,9 @@ function stanford_courses_tag_translate_fields_form_validate(&$form, &$form_stat
 
     // Look for what was submitted in the database.
     $result = db_select('stanford_courses_tag', 'sct')
-            ->fields('sct')
-            ->condition("ctag", check_plain($values["ctag"]))
-            ->execute();
+      ->fields('sct')
+      ->condition("ctag", check_plain($values["ctag"]))
+      ->execute();
 
     // If we get a result then throw up an error in that users face!
     if ($result->rowCount()) {
@@ -276,7 +280,7 @@ function stanford_courses_tag_translate_edit($ctid) {
   // $ctid is passed in through the menu hook and should be numeric but users
   // do funny things and we don't trust them hobbitses.
   if (!is_numeric($ctid)) {
-     drupal_set_message(t("Invalid course tag translation id."), "error");
+    drupal_set_message(t("Invalid course tag translation id."), "error");
     return drupal_not_found();
   }
 
@@ -284,7 +288,7 @@ function stanford_courses_tag_translate_edit($ctid) {
   $tobj = stanford_courses_tag_translate_get_translation($ctid);
 
   if (!$tobj) {
-     drupal_set_message(t("Invalid course tag translation id."), "error");
+    drupal_set_message(t("Invalid course tag translation id."), "error");
     return drupal_not_found();
   }
 
@@ -314,7 +318,7 @@ function stanford_courses_tag_translate_delete_form($form, &$form_state, $ctid) 
 
   // If not a valid param then we should stop doing more.
   if (!is_numeric($ctid)) {
-     drupal_set_message(t("Invalid course tag translation id."), "error");
+    drupal_set_message(t("Invalid course tag translation id."), "error");
     drupal_not_found();
     exit();
   }
