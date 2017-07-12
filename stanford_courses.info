@@ -19,6 +19,7 @@ dependencies[] = link
 dependencies[] = list
 dependencies[] = number
 dependencies[] = options
+dependencies[] = rules
 dependencies[] = stanford_feeds_helper
 dependencies[] = strongarm
 dependencies[] = text
@@ -133,3 +134,6 @@ features_exclude[field_instance][field_collection_item-field_s_image_info-field_
 features_exclude[field_instance][field_collection_item-field_s_image_info-field_s_image_image] = field_collection_item-field_s_image_info-field_s_image_image
 features_exclude[field_instance][field_collection_item-field_s_image_info-field_s_image_source_info] = field_collection_item-field_s_image_info-field_s_image_source_info
 project status url = https://github.com/SU-SWS/stanford_courses
+features[rules_config][] = rules_courses_academic_year
+features[field_base][] = field_s_course_year_computed
+features[field_instance][] = field_collection_item-field_s_course_section_info-field_s_course_year_computed
