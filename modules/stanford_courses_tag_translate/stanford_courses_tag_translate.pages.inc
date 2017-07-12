@@ -420,7 +420,7 @@ function stanford_courses_tag_translate_import_form_validate($form, &$form_state
 
   // If it fails then prompt the user to fix it.
   if (!$decode) {
-    form_set_error("txtxprt", "Invalid input code. Please check the integrity of the export.");
+    form_set_error("txtxprt", t("Invalid input code. Please check the integrity of the export."));
   }
 
 }

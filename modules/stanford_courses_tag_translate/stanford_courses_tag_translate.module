@@ -1,12 +1,14 @@
 <?php
+
 /**
  * @file
+ * stanford_courses_tag_translate.module
+ *
  * This module has a plugin for allowing direct string replacement from a table
- * in the database. It is primarily used on the new field in this module. The
+ *   in the database. It is primarily used on the new field in this module. The
  *   new field is appended to stanford_course content types to allow for a
  *   translation between the tags that come from explorecourses.stanford.edu
  *   and the end user.
- *
  */
 
 include_once 'stanford_courses_tag_translate.features.inc';

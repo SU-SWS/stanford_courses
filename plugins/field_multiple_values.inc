@@ -60,7 +60,6 @@ function stanford_courses_field_multiple_values_form($importer, $element_key, $s
 function stanford_courses_field_multiple_values_callback($source, $item_key, $element_key, &$field, $settings) {
 
   // Storage
-  $new_field = array();
   $values = array();
 
   // Check for single and multiple value results from previous XPath.
