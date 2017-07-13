@@ -7,5 +7,5 @@ dependencies[] = views
 dependencies[] = views_matrix
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
-features[views_view][] = dance_courses
+features[views_view][] = stanford_courses_matrix
 features_exclude[dependencies][ctools] = ctools
