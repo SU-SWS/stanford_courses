@@ -62,7 +62,9 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
     form_set_value(
       array(
         '#parents' => array(
-          'feeds', 'FeedsHTTPFetcher', 'source',
+          'feeds',
+          'FeedsHTTPFetcher',
+          'source',
         ),
       ),
       $feed_url, $form_state);
@@ -70,7 +72,7 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
 }
 
 /**
- * Modify the ExploreCourses link to pass the subject and code through urlencode().
+ * Modify the ExploreCourses link to pass the subject & code through urlencode.
  *
  * @param array $form
  *   The form array.
@@ -78,13 +80,16 @@ function stanford_courses_feed_url_validate($form, &$form_state) {
  *   The form state array.
  */
 function stanford_courses_ec_link_validate($form, &$form_state) {
-  $subject = $form_state['values']['field_s_course_subject']['und'][0]['value'];
-  $code = $form_state['values']['field_s_course_code']['und'][0]['value'];
+  $subject = $form_state['values']['field_s_course_subject'][LANGUAGE_NONE][0]['value'];
+  $code = $form_state['values']['field_s_course_code'][LANGUAGE_NONE][0]['value'];
   $ec_link = 'http://explorecourses.stanford.edu/search?view=catalog&filter-coursestatus-Active=on&q=' . urlencode($subject) . urlencode($code);
   form_set_value(
     array(
       '#parents' => array(
-        'field_s_course_ec_link', 'und', 0, 'url',
+        'field_s_course_ec_link',
+        'und',
+        0,
+        'url',
       ),
     ),
     $ec_link, $form_state);
@@ -108,6 +113,7 @@ function stanford_courses_ctools_plugin_directory($module, $plugin) {
  * Multiple field values are a pain in the rear. They are additive and we do not
  * always want them to be. This function targets a couple of items and truncates
  * their values before saving the new ones.
+ *
  * @param $target
  * @param $entity
  * @param $field
@@ -162,4 +168,98 @@ function stanford_courses_views_data_alter(&$data) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_field_attach_form().
+ */
+function stanford_courses_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  if ($entity_type == 'field_collection_item' && isset($form['field_s_course_year_computed'])) {
+    unset($form['field_s_course_year_computed']);
+  }
+}
+
+/**
+ * Implements hook_rules_action_info().
+ */
+function stanford_courses_rules_action_info() {
+  return array(
+    'stanford_courses_string_to_time' => array(
+      'label' => t('String to Time'),
+      'module' => 'stanford_courses',
+      'group' => t('Data'),
+      'parameter' => array(
+        'input' => array(
+          'type' => array('text', 'integer'),
+          'label' => t('Input value'),
+          'description' => t('The value for the calculation.'),
+        ),
+        'padding_string' => array(
+          'type' => 'text',
+          'label' => t('Padding'),
+          'description' => t('Pad the string before getting date.'),
+          'optional' => TRUE,
+        ),
+        'padding_side' => array(
+          'type' => 'text',
+          'label' => t('Padding Side'),
+          'description' => t('Which side to pad.'),
+          'options list' => 'stanford_courses_string_to_time_pad_side_options',
+        ),
+      ),
+      'provides' => array(
+        'parsed_date' => array(
+          'type' => 'date',
+          'label' => t('Date Stamp'),
+        ),
+      ),
+    ),
+  );
+}
+
+/**
+ * Get padding options.
+ *
+ * @return array
+ *   Padding options.
+ */
+function stanford_courses_string_to_time_pad_side_options() {
+  return array(
+    0 => t('None'),
+    'left' => t('Left'),
+    'right' => t('Right'),
+    'both' => t('Both'),
+  );
+}
+
+/**
+ * Rules action to attempt to parse string to date stamp.
+ *
+ * @param string $input
+ *   String to parse.
+ * @param string $padding_string
+ *   Any before, after or both string to pad such as "Jan 1 ".
+ * @param string $padding_side
+ *   Which side to add padding.
+ *
+ * @return array
+ *   Parsed date stamp.
+ */
+function stanford_courses_string_to_time($input, $padding_string, $padding_side) {
+  if ($padding_string && $padding_side) {
+    switch ($padding_side) {
+      case 'left':
+        $input = "$padding_string$input";
+        break;
+
+      case 'right':
+        $input = "$input$padding_string";
+        break;
+
+      default:
+        $input = "$padding_string$input$padding_string";
+        break;
+    }
+  }
+  return array('parsed_date' => strtotime($input));
 }
