@@ -1,5 +1,15 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
+7.x-4.2                   2017-07-18
+------------------------------------
+- Behat Tests written
+- HSDO-874 fixed no results display using the token
+- HSDO-919 HSDO-933 Added Academic year computed as date field: populated by rules that parses the academic year select
+  option.
+- Added Travis integration
+- Alot of code climate fixup
+- Track the course matrix view in the info file.
+
 
 7.x-4.1+19-dev            2017-01-20
 ------------------------------------
