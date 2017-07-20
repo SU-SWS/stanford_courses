@@ -2,7 +2,7 @@
 
 /**
  * @file
- * stanford_course_views_views.install
+ * Stanford_course_views_views.install.
  */
 
 /**
@@ -27,7 +27,9 @@ function stanford_course_views_enable_module($module) {
   return TRUE;
 }
 
-
+/**
+ * Enables views_filters_selective module.
+ */
 function stanford_course_views_update_7040() {
   if (!stanford_course_views_enable_module('views_filters_selective')) {
     throw new DrupalUpdateException("Could not enable views_filters_selective module. Please check that the module exists.");
