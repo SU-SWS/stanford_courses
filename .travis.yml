@@ -70,7 +70,7 @@ env:
     - BEHAT_TAG=""
     - DEPLOYER_BRANCH=""
     - DRUPAL_PROFILE_BRANCH=""
-    - CLICKY_BRANCH=""
+    - CLICKY_BRANCH="HSDO-957-views-selective-filters"
     - SCRIPTS_BRANCH=""
 
 language: php
