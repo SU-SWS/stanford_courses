@@ -63,12 +63,12 @@
 
 env:
   global:
-    - PRODUCT_NAME=""
+    - PRODUCT_NAME="jumpstart-academic"
     - ENABLE_MODULES="stanford_courses stanford_course_views stanford_courses_administration stanford_courses_link_to_page stanford_courses_matrix stanford_courses_node_display stanford_courses_person_reference stanford_courses_person_reference_views stanford_courses_tag_translate"
     - DISABLE_MODULES="webauth"
     - ONLY_TEST=""
     - BEHAT_TAG=""
-    - DEPLOYER_BRANCH=""
+    - DEPLOYER_BRANCH="jsa-labs-updates"
     - DRUPAL_PROFILE_BRANCH=""
     - CLICKY_BRANCH="HSDO-957-views-selective-filters"
     - SCRIPTS_BRANCH=""
