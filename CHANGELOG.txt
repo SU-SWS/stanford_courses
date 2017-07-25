@@ -1,8 +1,9 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
-7.x-4.x                   2017-07-20
+7.x-4.3                   2017-07-25
 ------------------------------------
 - New Dependency for stanford_news_views & stanford_courses_person_reference_views: views_selective_filters (views_filters_selective)
+- Configured views_select_filters on stanford_course_views & stanford_course_person_reference_views views
 
 7.x-4.2                   2017-07-18
 ------------------------------------
