@@ -539,7 +539,12 @@ function stanford_courses_update_7404(&$sandbox) {
         'timezone_db' => 'America/Los_Angeles',
         'date_type' => 'datetime',
       );
-      $field_collection->save();
+      try {
+        $field_collection->save();
+      }
+      catch (Exception $e) {
+        watchdog('stanford_courses', 'Unable to save field collection !id', array('id' => $item_id));
+      }
     }
   }
 
