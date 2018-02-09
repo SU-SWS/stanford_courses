@@ -68,10 +68,10 @@ env:
     - DISABLE_MODULES="webauth"
     - ONLY_TEST=""
     - BEHAT_TAG=""
-    - DEPLOYER_BRANCH="jsa-labs-updates"
+    - DEPLOYER_BRANCH=""
     - DRUPAL_PROFILE_BRANCH=""
-    - CLICKY_BRANCH="HSDO-957-views-selective-filters"
-    - SCRIPTS_BRANCH=""
+    - CLICKY_BRANCH=""
+    - SCRIPTS_BRANCH="test-chrome-update"
 
 language: php
 php:
