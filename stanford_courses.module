@@ -263,3 +263,31 @@ function stanford_courses_string_to_time($input, $padding_string, $padding_side)
   }
   return array('parsed_date' => strtotime($input));
 }
+
+/**
+ * Implements hook_feeds_presave().
+ */
+function stanford_courses_feeds_presave(FeedsSource $source, $entity, $item, $entity_id) {
+  if ($entity->type != 'stanford_course') {
+    return;
+  }
+
+  $field_collections = field_get_items('node', $entity, 'field_s_course_section_info');
+  if (empty($field_collections)) {
+    return;
+  }
+
+  // When feeds runs and imports the course entity, it places the field
+  // collection entity into the field value. When the course is updated, we
+  // check to see if the field collection entity has been create/updated. If it
+  // was not in the feed source, the entity will be empty and therefore we want
+  // to delete it form the course node. This will remove manually created course
+  // sections. But since we are keeping this in sync with the courses API,
+  // nobody should be manually creating course sections on the site.
+  foreach ($field_collections as $delta => $field_value) {
+    if (!isset($field_value['entity'])) {
+      entity_delete('field_collection_item', $field_value['value']);
+      unset($entity->field_s_course_section_info[LANGUAGE_NONE][$delta]);
+    }
+  }
+}
