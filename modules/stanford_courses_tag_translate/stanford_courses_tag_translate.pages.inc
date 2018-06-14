@@ -516,7 +516,7 @@ function stanford_courses_tag_translate_export() {
  * @return array
  *   a Drupal form array.
  */
-function stanford_courses_tag_translate_export_form($form, &$form_state, $default_value) {
+function stanford_courses_tag_translate_export_form($form, &$form_state, $default_value = "") {
 
   // The big ol code block.
   $form["txtxprt"] = array(
