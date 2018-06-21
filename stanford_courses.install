@@ -541,7 +541,8 @@ function stanford_courses_update_7404(&$sandbox) {
         );
         try {
           $field_collection->save();
-        } catch (Exception $e) {
+        }
+        catch (Exception $e) {
           watchdog('stanford_courses', 'Unable to save field collection !id', array('id' => $item_id));
         }
       }
