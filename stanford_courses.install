@@ -526,30 +526,32 @@ function stanford_courses_update_7404(&$sandbox) {
     $sandbox['total'] = count($sandbox['ids']);
   }
 
-  // Chunk the nodes into 10 per execution.
+  // Chunk the nodes into 50 per execution.
   $chunks = array_chunk($sandbox['ids'], 50, TRUE);
+  if (is_array($chunks[0])) {
+    foreach (field_collection_item_load_multiple(array_keys($chunks[0])) as $item_id => $field_collection) {
+      /** @var FieldCollectionViewMode $field_collection */
+      $year = field_get_items('field_collection_item', $field_collection, 'field_s_course_section_year');
+      if ($year) {
+        $field_collection->field_s_course_year_computed[LANGUAGE_NONE][0] = array(
+          'value' => ($year[0]['value'] + 1) . "-01-01 00:00:00",
+          'timezone' => 'America/Los_Angeles',
+          'timezone_db' => 'America/Los_Angeles',
+          'date_type' => 'datetime',
+        );
+        try {
+          $field_collection->save();
+        }
+        catch (Exception $e) {
+          watchdog('stanford_courses', 'Unable to save field collection !id', array('id' => $item_id));
+        }
+      }
+    }
 
-  foreach (field_collection_item_load_multiple(array_keys($chunks[0])) as $item_id => $field_collection) {
-    /** @var FieldCollectionViewMode $field_collection */
-    $year = field_get_items('field_collection_item', $field_collection, 'field_s_course_section_year');
-    if ($year) {
-      $field_collection->field_s_course_year_computed[LANGUAGE_NONE][0] = array(
-        'value' => ($year[0]['value'] + 1) . "-01-01 00:00:00",
-        'timezone' => 'America/Los_Angeles',
-        'timezone_db' => 'America/Los_Angeles',
-        'date_type' => 'datetime',
-      );
-      try {
-        $field_collection->save();
-      }
-      catch (Exception $e) {
-        watchdog('stanford_courses', 'Unable to save field collection !id', array('id' => $item_id));
-      }
+    foreach (array_keys($chunks[0]) as $item_id) {
+      unset($sandbox['ids'][$item_id]);
     }
   }
 
-  foreach (array_keys($chunks[0]) as $item_id) {
-    unset($sandbox['ids'][$item_id]);
-  }
   $sandbox['#finished'] = 1 - (count($sandbox['ids']) / $sandbox['total']);
 }
