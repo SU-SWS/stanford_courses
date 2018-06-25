@@ -551,7 +551,8 @@ function stanford_courses_update_7404(&$sandbox) {
     foreach (array_keys($chunks[0]) as $item_id) {
       unset($sandbox['ids'][$item_id]);
     }
+    if (is_numeric($sandbox['total'])) {
+      $sandbox['#finished'] = 1 - (count($sandbox['ids']) / $sandbox['total']);
+    }
   }
-
-  $sandbox['#finished'] = 1 - (count($sandbox['ids']) / $sandbox['total']);
 }
