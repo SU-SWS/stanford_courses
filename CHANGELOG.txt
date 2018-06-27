@@ -1,5 +1,11 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
+
+7.x-4.4                   2018-06-26
+------------------------------------
+- Added composer.json
+- Fixed upgrade path error in stanford_courses_update_7404
+
 7.x-4.3                   2017-07-25
 ------------------------------------
 - New Dependency for stanford_news_views & stanford_courses_person_reference_views: views_selective_filters (views_filters_selective)
