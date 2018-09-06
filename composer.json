@@ -5,6 +5,17 @@
   "license": "GPL-2.0+",
   "minimum-stability": "dev",
   "require": {
-      "composer/installers": "^1.2"
+      "composer/installers": "^1.2",
+      "drupal/ctools": "~1.10",
+      "drupal/date": "~2.0",
+      "drupal/features": "~2.0",
+      "drupal/feeds": "~2.0@beta",
+      "drupal/feeds_tamper": "~1.0",
+      "drupal/feeds_xpathparser": "~1.0",
+      "drupal/field_collection": "~1.0@beta",
+      "drupal/field_group": "~1.3",
+      "drupal/rules": "~2.0",
+      "drupal/strongarm": "~2.0",
+      "drupal/views_selective_filters": "~1.5"
   }
 }
