@@ -7,7 +7,10 @@
   "require": {
       "composer/installers": "^1.2",
       "drupal/ctools": "~1.10",
+      "drupal/context": "~3.0",
       "drupal/date": "~2.0",
+      "drupal/ds": "~2.0",
+      "drupal/entityreference": "~1.0",
       "drupal/features": "~2.0",
       "drupal/feeds": "~2.0@beta",
       "drupal/feeds_tamper": "~1.0",
