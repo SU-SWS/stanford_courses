@@ -511,6 +511,7 @@ function stanford_courses_update_7403() {
  * Resave all courses to populate computed field.
  */
 function stanford_courses_update_7404(&$sandbox) {
+
   if (!isset($sandbox['ids'])) {
     $sandbox['ids'] = array();
 
@@ -527,9 +528,11 @@ function stanford_courses_update_7404(&$sandbox) {
   }
 
   // Chunk the nodes into 50 per execution.
-  $chunks = array_chunk($sandbox['ids'], 50, TRUE);
-  if (is_array($chunks[0])) {
-    foreach (field_collection_item_load_multiple(array_keys($chunks[0])) as $item_id => $field_collection) {
+  $chunk = array_shift(array_chunk($sandbox['ids'], 50, TRUE));
+
+  if (is_array($chunk)) {
+    $loaded_fcs = field_collection_item_load_multiple(array_keys($chunk));
+    foreach ($loaded_fcs as $item_id => $field_collection) {
       /** @var FieldCollectionViewMode $field_collection */
       $year = field_get_items('field_collection_item', $field_collection, 'field_s_course_section_year');
       if ($year) {
@@ -548,7 +551,7 @@ function stanford_courses_update_7404(&$sandbox) {
       }
     }
 
-    foreach (array_keys($chunks[0]) as $item_id) {
+    foreach (array_keys($chunk) as $item_id) {
       unset($sandbox['ids'][$item_id]);
     }
     if (is_numeric($sandbox['total'])) {
