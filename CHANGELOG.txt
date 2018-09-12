@@ -1,6 +1,10 @@
 Stanford Courses x.x-x.x, xxxx-xx-xx
 ------------------------------------
 
+7.x-4.5                   2018-09-12
+------------------------------------
+- Added module dependencies in composer.json
+
 7.x-4.4                   2018-06-26
 ------------------------------------
 - Added composer.json
