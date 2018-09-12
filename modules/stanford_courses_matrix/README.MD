@@ -1,4 +1,4 @@
-#[Stanford Courses Matrix](https://github.com/SU-SWS/stanford_corses)
+# [Stanford Courses Matrix](https://github.com/SU-SWS/stanford_corses)
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 
