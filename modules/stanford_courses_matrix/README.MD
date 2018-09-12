@@ -1,5 +1,4 @@
 #[Stanford Courses Matrix](https://github.com/SU-SWS/stanford_corses)
-##### version: 7.x-4.4
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
 
