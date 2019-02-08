@@ -63,7 +63,7 @@ function stanford_courses_requirements($phase) {
 
 
 /**
- * Implementats hook_install().
+ * Implements hook_install().
  */
 function stanford_courses_install() {
 
