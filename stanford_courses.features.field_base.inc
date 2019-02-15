@@ -84,6 +84,8 @@ function stanford_courses_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         'ACT' => 'ACT',
+        'API' => 'API',
+        'CAS' => 'CAS',
         'CLK' => 'CLK',
         'COL' => 'COL',
         'DIS' => 'DIS',
@@ -94,6 +96,7 @@ function stanford_courses_field_default_field_bases() {
         'LBS' => 'LBS',
         'LAB' => 'LAB',
         'LEC' => 'LEC',
+        'PRA' => 'PRA',
         'PRC' => 'PRC',
         'LNG' => 'LNG',
         'IDS' => 'IDS',
