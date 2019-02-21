@@ -1,4 +1,4 @@
-#[Stanford Courses](https://github.com/SU-SWS/stanford_courses)
+# [Stanford Courses](https://github.com/SU-SWS/stanford_courses)
 ##### version: 7.x-4.x-dev
 
 Maintainers: [jbickar](https://github.com/jbickar), [sherakama](https://github.com/sherakama)
