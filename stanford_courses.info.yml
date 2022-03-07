@@ -1,6 +1,6 @@
-name: 'Stanford Module Example'
+name: 'Stanford Courses'
 type: module
-description: 'Does some stuff'
+description: 'Drupal 9 module for handling course imports and content on Stanford Sites'
 core_version_requirement: ^8 || ^9
 package: Stanford
 version: 8.x-1.0-dev
