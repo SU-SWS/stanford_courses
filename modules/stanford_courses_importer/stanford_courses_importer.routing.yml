@@ -1,0 +1,10 @@
+stanford_courses_importer.course_importer:
+  path: '/admin/structure/migrate/course-importer'
+  defaults:
+    _form: '\Drupal\stanford_courses_importer\Form\CourseImporter'
+    _title: 'Course Importer Settings'
+  requirements:
+    _permission: 'administer course importer settings'
+  options:
+    _admin_route: TRUE
+

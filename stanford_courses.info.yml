@@ -1,8 +1,32 @@
-name: 'Stanford Courses'
+name: 'H&S Courses'
 type: module
-description: 'Drupal 9 module for handling course imports and content on Stanford Sites'
-core_version_requirement: ^8 || ^9
-package: Stanford
-version: 8.x-1.0-dev
-# dependencies:
-#   - layout_plugin
+description: 'Courses content type'
+core_version_requirement: ^8.8 || ^9
+version: 8.2.7
+package: 'Humanities & Sciences'
+dependencies:
+  - datetime
+  - eck
+  - field_formatter_class
+  - field_group
+  - hs_field_helpers
+  - hs_layouts
+  - hs_person
+  - inline_entity_form
+  - layout_builder
+  - layout_discovery
+  - link
+  - media
+  - menu_block
+  - menu_ui
+  - node
+  - options
+  - path
+  - taxonomy
+  - text
+  - ui_patterns_views
+  - user
+  - views_infinite_scroll
+  - stanford_media
+  - rabbit_hole
+  - pathauto

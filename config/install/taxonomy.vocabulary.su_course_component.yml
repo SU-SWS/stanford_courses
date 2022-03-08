@@ -1,0 +1,11 @@
+
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: WDaz4dgCph-oh3miMn4f7-tRfYsqmpGV3uwTXuFBA4Q
+name: 'Course Component'
+vid: hs_course_component
+description: ''
+hierarchy: 0
+weight: 0
