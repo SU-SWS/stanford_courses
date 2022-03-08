@@ -30,7 +30,6 @@ dependencies:
     - node.type.su_course
     - system.menu.main
   module:
-    - hs_layouts
     - layout_builder
     - menu_block
     - options

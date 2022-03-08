@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.file_browser
     - field.field.node.su_course.body
     - field.field.node.su_course.field_su_course_academic_career
     - field.field.node.su_course.field_su_course_academic_year
@@ -31,8 +30,6 @@ dependencies:
     - node.type.su_course
   module:
     - datetime
-    - entity_browser
-    - entity_browser_entity_form
     - field_group
     - inline_entity_form
     - link
