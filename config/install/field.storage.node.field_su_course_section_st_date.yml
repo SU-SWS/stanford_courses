@@ -5,8 +5,8 @@ dependencies:
   module:
     - datetime
     - node
-id: node.field_hs_course_section_st_date
-field_name: field_hs_course_section_st_date
+id: node.field_su_course_section_st_date
+field_name: field_su_course_section_st_date
 entity_type: node
 type: datetime
 settings:

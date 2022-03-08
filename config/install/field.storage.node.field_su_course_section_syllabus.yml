@@ -5,8 +5,8 @@ dependencies:
   module:
     - media
     - node
-id: node.field_hs_course_section_syllabus
-field_name: field_hs_course_section_syllabus
+id: node.field_su_course_section_syllabus
+field_name: field_su_course_section_syllabus
 entity_type: node
 type: entity_reference
 settings:

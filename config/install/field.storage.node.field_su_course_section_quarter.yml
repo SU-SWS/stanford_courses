@@ -7,8 +7,8 @@ dependencies:
     - options
 _core:
   default_config_hash: 9Km-cBe4cDg7mVfgX4s57DxdjWHm9D349QnEW1je-h0
-id: node.field_hs_course_section_quarter
-field_name: field_hs_course_section_quarter
+id: node.field_su_course_section_quarter
+field_name: field_su_course_section_quarter
 entity_type: node
 type: list_string
 settings:

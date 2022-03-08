@@ -3,24 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hs_course_academic_year
-    - field.storage.node.field_hs_course_code
-    - field.storage.node.field_hs_course_section_days
-    - field.storage.node.field_hs_course_section_end_time
-    - field.storage.node.field_hs_course_section_instruc
-    - field.storage.node.field_hs_course_section_quarter
-    - field.storage.node.field_hs_course_section_st_time
-    - field.storage.node.field_hs_course_subject
-    - node.type.hs_course
+    - field.storage.node.field_su_course_academic_year
+    - field.storage.node.field_su_course_code
+    - field.storage.node.field_su_course_section_days
+    - field.storage.node.field_su_course_section_end_time
+    - field.storage.node.field_su_course_section_instruc
+    - field.storage.node.field_su_course_section_quarter
+    - field.storage.node.field_su_course_section_st_time
+    - field.storage.node.field_su_course_subject
+    - node.type.su_course
   module:
     - datetime
-    - eck
-    - hs_field_helpers
     - node
     - options
     - ui_patterns_views
     - user
-id: hs_courses
+id: su_courses
 label: Courses
 module: views
 description: ''
@@ -78,10 +76,10 @@ display:
           hide_empty: false
           default_field_elements: true
       fields:
-        field_hs_course_subject:
-          id: field_hs_course_subject
-          table: node__field_hs_course_subject
-          field: field_hs_course_subject
+        field_su_course_subject:
+          id: field_su_course_subject
+          table: node__field_su_course_subject
+          field: field_su_course_subject
           relationship: none
           group_type: group
           admin_label: ''
@@ -141,10 +139,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_hs_course_code:
-          id: field_hs_course_code
-          table: node__field_hs_course_code
-          field: field_hs_course_code
+        field_su_course_code:
+          id: field_su_course_code
+          table: node__field_su_course_code
+          field: field_su_course_code
           relationship: none
           group_type: group
           admin_label: ''
@@ -152,7 +150,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '{{ field_hs_course_subject }} {{ field_hs_course_code }}'
+            text: '{{ field_su_course_subject }} {{ field_su_course_code }}'
             make_link: false
             path: ''
             absolute: false
@@ -185,7 +183,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: '{{ field_hs_course_subject }}'
+          empty: '{{ field_su_course_subject }}'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -269,10 +267,10 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
-        field_hs_course_section_instruc:
-          id: field_hs_course_section_instruc
-          table: node__field_hs_course_section_instruc
-          field: field_hs_course_section_instruc
+        field_su_course_section_instruc:
+          id: field_su_course_section_instruc
+          table: node__field_su_course_section_instruc
+          field: field_su_course_section_instruc
           relationship: none
           group_type: group
           admin_label: ''
@@ -332,10 +330,10 @@ display:
           separator: '<br />'
           field_api_classes: false
           plugin_id: field
-        field_hs_course_academic_year:
-          id: field_hs_course_academic_year
-          table: node__field_hs_course_academic_year
-          field: field_hs_course_academic_year
+        field_su_course_academic_year:
+          id: field_su_course_academic_year
+          table: node__field_su_course_academic_year
+          field: field_su_course_academic_year
           relationship: none
           group_type: group
           admin_label: ''
@@ -395,10 +393,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_hs_course_section_quarter:
-          id: field_hs_course_section_quarter
-          table: node__field_hs_course_section_quarter
-          field: field_hs_course_section_quarter
+        field_su_course_section_quarter:
+          id: field_su_course_section_quarter
+          table: node__field_su_course_section_quarter
+          field: field_su_course_section_quarter
           relationship: none
           group_type: group
           admin_label: ''
@@ -457,10 +455,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_hs_course_section_days:
-          id: field_hs_course_section_days
-          table: node__field_hs_course_section_days
-          field: field_hs_course_section_days
+        field_su_course_section_days:
+          id: field_su_course_section_days
+          table: node__field_su_course_section_days
+          field: field_su_course_section_days
           relationship: none
           group_type: group
           admin_label: ''
@@ -520,10 +518,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_hs_course_section_st_time:
-          id: field_hs_course_section_st_time
-          table: node__field_hs_course_section_st_time
-          field: field_hs_course_section_st_time
+        field_su_course_section_st_time:
+          id: field_su_course_section_st_time
+          table: node__field_su_course_section_st_time
+          field: field_su_course_section_st_time
           relationship: none
           group_type: group
           admin_label: ''
@@ -583,10 +581,10 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_hs_course_section_end_time:
-          id: field_hs_course_section_end_time
-          table: node__field_hs_course_section_end_time
-          field: field_hs_course_section_end_time
+        field_su_course_section_end_time:
+          id: field_su_course_section_end_time
+          table: node__field_su_course_section_end_time
+          field: field_su_course_section_end_time
           relationship: none
           group_type: group
           admin_label: ''
@@ -663,7 +661,7 @@ display:
           table: node_field_data
           field: type
           value:
-            hs_course: hs_course
+            su_course: su_course
           entity_type: node
           entity_field: type
           plugin_id: bundle
@@ -712,10 +710,10 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-        field_hs_course_section_quarter_value:
-          id: field_hs_course_section_quarter_value
-          table: node__field_hs_course_section_quarter
-          field: field_hs_course_section_quarter_value
+        field_su_course_section_quarter_value:
+          id: field_su_course_section_quarter_value
+          table: node__field_su_course_section_quarter
+          field: field_su_course_section_quarter_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -724,11 +722,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_section_quarter_value_op
+            operator_id: field_su_course_section_quarter_value_op
             label: Quarter
             description: ''
             use_operator: false
-            operator: field_hs_course_section_quarter_value_op
+            operator: field_su_course_section_quarter_value_op
             identifier: quarter
             required: false
             remember: false
@@ -755,10 +753,10 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
-        field_hs_course_requirements_value:
-          id: field_hs_course_requirements_value
-          table: node__field_hs_course_requirements
-          field: field_hs_course_requirements_value
+        field_su_course_requirements_value:
+          id: field_su_course_requirements_value
+          table: node__field_su_course_requirements
+          field: field_su_course_requirements_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -767,11 +765,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_requirements_value_op
+            operator_id: field_su_course_requirements_value_op
             label: 'Concentration or Requirements'
             description: ''
             use_operator: false
-            operator: field_hs_course_requirements_value_op
+            operator: field_su_course_requirements_value_op
             identifier: reqs
             required: false
             remember: false
@@ -797,10 +795,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
-        field_hs_course_academic_career_value:
-          id: field_hs_course_academic_career_value
-          table: node__field_hs_course_academic_career
-          field: field_hs_course_academic_career_value
+        field_su_course_academic_career_value:
+          id: field_su_course_academic_career_value
+          table: node__field_su_course_academic_career
+          field: field_su_course_academic_career_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -809,11 +807,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_academic_career_value_op
+            operator_id: field_su_course_academic_career_value_op
             label: Undergrad/Grad
             description: ''
             use_operator: false
-            operator: field_hs_course_academic_career_value_op
+            operator: field_su_course_academic_career_value_op
             identifier: academic_career
             required: false
             remember: false
@@ -844,7 +842,7 @@ display:
           id: title_1
           table: course_collections_field_data
           field: title
-          relationship: field_hs_course_section_instruc
+          relationship: field_su_course_section_instruc
           group_type: group
           admin_label: ''
           operator: word
@@ -886,7 +884,7 @@ display:
           plugin_id: string
         delta_1:
           id: delta_1
-          table: node__field_hs_course_section_instruc
+          table: node__field_su_course_section_instruc
           field: delta
           relationship: none
           group_type: group
@@ -928,7 +926,7 @@ display:
           plugin_id: numeric
         delta:
           id: delta
-          table: node__field_hs_course_section_instruc
+          table: node__field_su_course_section_instruc
           field: delta
           relationship: none
           group_type: group
@@ -969,10 +967,10 @@ display:
             group_items: {  }
           plugin_id: numeric
       sorts:
-        field_hs_course_code_value:
-          id: field_hs_course_code_value
-          table: node__field_hs_course_code
-          field: field_hs_course_code_value
+        field_su_course_code_value:
+          id: field_su_course_code_value
+          table: node__field_su_course_code
+          field: field_su_course_code_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -981,10 +979,10 @@ display:
           expose:
             label: ''
           plugin_id: standard
-        field_hs_course_subject_value:
-          id: field_hs_course_subject_value
-          table: node__field_hs_course_subject
-          field: field_hs_course_subject_value
+        field_su_course_subject_value:
+          id: field_su_course_subject_value
+          table: node__field_su_course_subject
+          field: field_su_course_subject_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -993,10 +991,10 @@ display:
           expose:
             label: ''
           plugin_id: standard
-        field_hs_course_section_st_date_value:
-          id: field_hs_course_section_st_date_value
-          table: node__field_hs_course_section_st_date
-          field: field_hs_course_section_st_date_value
+        field_su_course_section_st_date_value:
+          id: field_su_course_section_st_date_value
+          table: node__field_su_course_section_st_date
+          field: field_su_course_section_st_date_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1006,10 +1004,10 @@ display:
             label: ''
           granularity: second
           plugin_id: datetime
-        field_hs_course_section_number_value:
-          id: field_hs_course_section_number_value
-          table: node__field_hs_course_section_number
-          field: field_hs_course_section_number_value
+        field_su_course_section_number_value:
+          id: field_su_course_section_number_value
+          table: node__field_su_course_section_number
+          field: field_su_course_section_number_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1063,13 +1061,13 @@ display:
             format: basic_html
           plugin_id: text
       relationships:
-        field_hs_course_section_instruc:
-          id: field_hs_course_section_instruc
-          table: node__field_hs_course_section_instruc
-          field: field_hs_course_section_instruc
+        field_su_course_section_instruc:
+          id: field_su_course_section_instruc
+          table: node__field_su_course_section_instruc
+          field: field_su_course_section_instruc
           relationship: none
           group_type: group
-          admin_label: 'field_hs_course_section_instruc: Course Collections'
+          admin_label: 'field_su_course_section_instruc: Course Collections'
           required: false
           plugin_id: standard
       arguments: {  }
@@ -1090,14 +1088,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_hs_course_academic_year'
-        - 'config:field.storage.node.field_hs_course_code'
-        - 'config:field.storage.node.field_hs_course_section_days'
-        - 'config:field.storage.node.field_hs_course_section_end_time'
-        - 'config:field.storage.node.field_hs_course_section_instruc'
-        - 'config:field.storage.node.field_hs_course_section_quarter'
-        - 'config:field.storage.node.field_hs_course_section_st_time'
-        - 'config:field.storage.node.field_hs_course_subject'
+        - 'config:field.storage.node.field_su_course_academic_year'
+        - 'config:field.storage.node.field_su_course_code'
+        - 'config:field.storage.node.field_su_course_section_days'
+        - 'config:field.storage.node.field_su_course_section_end_time'
+        - 'config:field.storage.node.field_su_course_section_instruc'
+        - 'config:field.storage.node.field_su_course_section_quarter'
+        - 'config:field.storage.node.field_su_course_section_st_time'
+        - 'config:field.storage.node.field_su_course_subject'
         - extensions
   list:
     display_plugin: block
@@ -1128,59 +1126,59 @@ display:
         options:
           default_field_elements: 1
           inline:
-            field_hs_course_subject: 0
-            field_hs_course_code: 0
+            field_su_course_subject: 0
+            field_su_course_code: 0
             title: 0
-            field_hs_course_section_instruc: 0
-            field_hs_course_academic_year: 0
-            field_hs_course_section_quarter: 0
-            field_hs_course_section_days: 0
-            field_hs_course_section_st_time: 0
-            field_hs_course_section_end_time: 0
+            field_su_course_section_instruc: 0
+            field_su_course_academic_year: 0
+            field_su_course_section_quarter: 0
+            field_su_course_section_days: 0
+            field_su_course_section_st_time: 0
+            field_su_course_section_end_time: 0
           separator: ''
           hide_empty: 0
           pattern: table_row
           pattern_mapping:
-            'views_row:field_hs_course_code':
+            'views_row:field_su_course_code':
               destination: column_1
               weight: 0
               plugin: views_row
-              source: field_hs_course_code
-            'views_row:field_hs_course_section_st_time':
+              source: field_su_course_code
+            'views_row:field_su_course_section_st_time':
               destination: column_4
               weight: 1
               plugin: views_row
-              source: field_hs_course_section_st_time
+              source: field_su_course_section_st_time
             'views_row:title':
               destination: column_1
               weight: 2
               plugin: views_row
               source: title
-            'views_row:field_hs_course_section_instruc':
+            'views_row:field_su_course_section_instruc':
               destination: column_2
               weight: 3
               plugin: views_row
-              source: field_hs_course_section_instruc
-            'views_row:field_hs_course_academic_year':
+              source: field_su_course_section_instruc
+            'views_row:field_su_course_academic_year':
               destination: column_3
               weight: 4
               plugin: views_row
-              source: field_hs_course_academic_year
-            'views_row:field_hs_course_section_quarter':
+              source: field_su_course_academic_year
+            'views_row:field_su_course_section_quarter':
               destination: column_3
               weight: 5
               plugin: views_row
-              source: field_hs_course_section_quarter
-            'views_row:field_hs_course_section_days':
+              source: field_su_course_section_quarter
+            'views_row:field_su_course_section_days':
               destination: column_4
               weight: 6
               plugin: views_row
-              source: field_hs_course_section_days
-            'views_row:field_hs_course_section_end_time':
+              source: field_su_course_section_days
+            'views_row:field_su_course_section_end_time':
               destination: column_4
               weight: 7
               plugin: views_row
-              source: field_hs_course_section_end_time
+              source: field_su_course_section_end_time
       exposed_block: true
       block_category: 'Courses (Views)'
       display_description: ''
@@ -1193,14 +1191,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_hs_course_academic_year'
-        - 'config:field.storage.node.field_hs_course_code'
-        - 'config:field.storage.node.field_hs_course_section_days'
-        - 'config:field.storage.node.field_hs_course_section_end_time'
-        - 'config:field.storage.node.field_hs_course_section_instruc'
-        - 'config:field.storage.node.field_hs_course_section_quarter'
-        - 'config:field.storage.node.field_hs_course_section_st_time'
-        - 'config:field.storage.node.field_hs_course_subject'
+        - 'config:field.storage.node.field_su_course_academic_year'
+        - 'config:field.storage.node.field_su_course_code'
+        - 'config:field.storage.node.field_su_course_section_days'
+        - 'config:field.storage.node.field_su_course_section_end_time'
+        - 'config:field.storage.node.field_su_course_section_instruc'
+        - 'config:field.storage.node.field_su_course_section_quarter'
+        - 'config:field.storage.node.field_su_course_section_st_time'
+        - 'config:field.storage.node.field_su_course_subject'
         - extensions
   not_offered_list:
     display_plugin: block
@@ -1227,15 +1225,15 @@ display:
           table: node_field_data
           field: type
           value:
-            hs_course: hs_course
+            su_course: su_course
           entity_type: node
           entity_field: type
           plugin_id: bundle
           group: 1
-        field_hs_course_section_id_value:
-          id: field_hs_course_section_id_value
-          table: node__field_hs_course_section_id
-          field: field_hs_course_section_id_value
+        field_su_course_section_id_value:
+          id: field_su_course_section_id_value
+          table: node__field_su_course_section_id
+          field: field_su_course_section_id_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1318,10 +1316,10 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-        field_hs_course_section_quarter_value:
-          id: field_hs_course_section_quarter_value
-          table: node__field_hs_course_section_quarter
-          field: field_hs_course_section_quarter_value
+        field_su_course_section_quarter_value:
+          id: field_su_course_section_quarter_value
+          table: node__field_su_course_section_quarter
+          field: field_su_course_section_quarter_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1330,11 +1328,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_section_quarter_value_op
+            operator_id: field_su_course_section_quarter_value_op
             label: Quarter
             description: ''
             use_operator: false
-            operator: field_hs_course_section_quarter_value_op
+            operator: field_su_course_section_quarter_value_op
             identifier: quarter
             required: false
             remember: false
@@ -1361,10 +1359,10 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
-        field_hs_course_requirements_value:
-          id: field_hs_course_requirements_value
-          table: node__field_hs_course_requirements
-          field: field_hs_course_requirements_value
+        field_su_course_requirements_value:
+          id: field_su_course_requirements_value
+          table: node__field_su_course_requirements
+          field: field_su_course_requirements_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1373,11 +1371,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_requirements_value_op
+            operator_id: field_su_course_requirements_value_op
             label: 'Concentration or Requirements'
             description: ''
             use_operator: false
-            operator: field_hs_course_requirements_value_op
+            operator: field_su_course_requirements_value_op
             identifier: reqs
             required: false
             remember: false
@@ -1403,10 +1401,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
-        field_hs_course_academic_career_value:
-          id: field_hs_course_academic_career_value
-          table: node__field_hs_course_academic_career
-          field: field_hs_course_academic_career_value
+        field_su_course_academic_career_value:
+          id: field_su_course_academic_career_value
+          table: node__field_su_course_academic_career
+          field: field_su_course_academic_career_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1415,11 +1413,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_academic_career_value_op
+            operator_id: field_su_course_academic_career_value_op
             label: Undergrad/Grad
             description: ''
             use_operator: false
-            operator: field_hs_course_academic_career_value_op
+            operator: field_su_course_academic_career_value_op
             identifier: academic_career
             required: false
             remember: false
@@ -1450,7 +1448,7 @@ display:
           id: title_1
           table: course_collections_field_data
           field: title
-          relationship: field_hs_course_section_instruc
+          relationship: field_su_course_section_instruc
           group_type: group
           admin_label: ''
           operator: word
@@ -1492,7 +1490,7 @@ display:
           plugin_id: string
         delta_1:
           id: delta_1
-          table: node__field_hs_course_section_instruc
+          table: node__field_su_course_section_instruc
           field: delta
           relationship: none
           group_type: group
@@ -1534,7 +1532,7 @@ display:
           plugin_id: numeric
         delta:
           id: delta
-          table: node__field_hs_course_section_instruc
+          table: node__field_su_course_section_instruc
           field: delta
           relationship: none
           group_type: group
@@ -1603,64 +1601,64 @@ display:
         options:
           default_field_elements: 1
           inline:
-            field_hs_course_subject: 0
-            field_hs_course_code: 0
+            field_su_course_subject: 0
+            field_su_course_code: 0
             title: 0
-            field_hs_course_section_instruc: 0
-            field_hs_course_academic_year: 0
-            field_hs_course_section_quarter: 0
-            field_hs_course_section_days: 0
-            field_hs_course_section_st_time: 0
-            field_hs_course_section_end_time: 0
+            field_su_course_section_instruc: 0
+            field_su_course_academic_year: 0
+            field_su_course_section_quarter: 0
+            field_su_course_section_days: 0
+            field_su_course_section_st_time: 0
+            field_su_course_section_end_time: 0
           separator: ''
           hide_empty: 0
           pattern: table_row
           pattern_mapping:
-            'views_row:field_hs_course_subject':
+            'views_row:field_su_course_subject':
               destination: column_1
               weight: 0
               plugin: views_row
-              source: field_hs_course_subject
-            'views_row:field_hs_course_code':
+              source: field_su_course_subject
+            'views_row:field_su_course_code':
               destination: column_1
               weight: 1
               plugin: views_row
-              source: field_hs_course_code
+              source: field_su_course_code
             'views_row:title':
               destination: column_1
               weight: 2
               plugin: views_row
               source: title
-            'views_row:field_hs_course_section_instruc':
+            'views_row:field_su_course_section_instruc':
               destination: column_2
               weight: 3
               plugin: views_row
-              source: field_hs_course_section_instruc
-            'views_row:field_hs_course_academic_year':
+              source: field_su_course_section_instruc
+            'views_row:field_su_course_academic_year':
               destination: column_3
               weight: 4
               plugin: views_row
-              source: field_hs_course_academic_year
-            'views_row:field_hs_course_section_quarter':
+              source: field_su_course_academic_year
+            'views_row:field_su_course_section_quarter':
               destination: column_3
               weight: 5
               plugin: views_row
-              source: field_hs_course_section_quarter
-            'views_row:field_hs_course_section_days':
+              source: field_su_course_section_quarter
+            'views_row:field_su_course_section_days':
               destination: column_4
               weight: 6
               plugin: views_row
-              source: field_hs_course_section_days
-            'views_row:field_hs_course_section_st_time':
+              source: field_su_course_section_days
+            'views_row:field_su_course_section_st_time':
               destination: column_4
               weight: 7
               plugin: views_row
-              source: field_hs_course_section_st_time
-            'views_row:field_hs_course_section_end_time':
+              source: field_su_course_section_st_time
+            'views_row:field_su_course_section_end_time':
               destination: column_4
               weight: 8
               plugin: views_row
-              source: field_hs_course_section_end_time
+              source: field_su_course_section_end_time
     cache_metadata:
       max-age: -1
       contexts:
@@ -1670,14 +1668,14 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_hs_course_academic_year'
-        - 'config:field.storage.node.field_hs_course_code'
-        - 'config:field.storage.node.field_hs_course_section_days'
-        - 'config:field.storage.node.field_hs_course_section_end_time'
-        - 'config:field.storage.node.field_hs_course_section_instruc'
-        - 'config:field.storage.node.field_hs_course_section_quarter'
-        - 'config:field.storage.node.field_hs_course_section_st_time'
-        - 'config:field.storage.node.field_hs_course_subject'
+        - 'config:field.storage.node.field_su_course_academic_year'
+        - 'config:field.storage.node.field_su_course_code'
+        - 'config:field.storage.node.field_su_course_section_days'
+        - 'config:field.storage.node.field_su_course_section_end_time'
+        - 'config:field.storage.node.field_su_course_section_instruc'
+        - 'config:field.storage.node.field_su_course_section_quarter'
+        - 'config:field.storage.node.field_su_course_section_st_time'
+        - 'config:field.storage.node.field_su_course_subject'
         - extensions
   offered_list:
     display_plugin: block
@@ -1714,64 +1712,64 @@ display:
         options:
           default_field_elements: 1
           inline:
-            field_hs_course_subject: 0
-            field_hs_course_code: 0
+            field_su_course_subject: 0
+            field_su_course_code: 0
             title: 0
-            field_hs_course_section_instruc: 0
-            field_hs_course_academic_year: 0
-            field_hs_course_section_quarter: 0
-            field_hs_course_section_days: 0
-            field_hs_course_section_st_time: 0
-            field_hs_course_section_end_time: 0
+            field_su_course_section_instruc: 0
+            field_su_course_academic_year: 0
+            field_su_course_section_quarter: 0
+            field_su_course_section_days: 0
+            field_su_course_section_st_time: 0
+            field_su_course_section_end_time: 0
           separator: ''
           hide_empty: 0
           pattern: table_row
           pattern_mapping:
-            'views_row:field_hs_course_subject':
+            'views_row:field_su_course_subject':
               destination: column_1
               weight: 0
               plugin: views_row
-              source: field_hs_course_subject
-            'views_row:field_hs_course_code':
+              source: field_su_course_subject
+            'views_row:field_su_course_code':
               destination: column_1
               weight: 1
               plugin: views_row
-              source: field_hs_course_code
+              source: field_su_course_code
             'views_row:title':
               destination: column_1
               weight: 2
               plugin: views_row
               source: title
-            'views_row:field_hs_course_section_instruc':
+            'views_row:field_su_course_section_instruc':
               destination: column_2
               weight: 3
               plugin: views_row
-              source: field_hs_course_section_instruc
-            'views_row:field_hs_course_academic_year':
+              source: field_su_course_section_instruc
+            'views_row:field_su_course_academic_year':
               destination: column_3
               weight: 4
               plugin: views_row
-              source: field_hs_course_academic_year
-            'views_row:field_hs_course_section_quarter':
+              source: field_su_course_academic_year
+            'views_row:field_su_course_section_quarter':
               destination: column_3
               weight: 5
               plugin: views_row
-              source: field_hs_course_section_quarter
-            'views_row:field_hs_course_section_days':
+              source: field_su_course_section_quarter
+            'views_row:field_su_course_section_days':
               destination: column_4
               weight: 6
               plugin: views_row
-              source: field_hs_course_section_days
-            'views_row:field_hs_course_section_st_time':
+              source: field_su_course_section_days
+            'views_row:field_su_course_section_st_time':
               destination: column_4
               weight: 7
               plugin: views_row
-              source: field_hs_course_section_st_time
-            'views_row:field_hs_course_section_end_time':
+              source: field_su_course_section_st_time
+            'views_row:field_su_course_section_end_time':
               destination: column_4
               weight: 8
               plugin: views_row
-              source: field_hs_course_section_end_time
+              source: field_su_course_section_end_time
       filters:
         status:
           value: '1'
@@ -1789,15 +1787,15 @@ display:
           table: node_field_data
           field: type
           value:
-            hs_course: hs_course
+            su_course: su_course
           entity_type: node
           entity_field: type
           plugin_id: bundle
           group: 1
-        field_hs_course_section_id_value:
-          id: field_hs_course_section_id_value
-          table: node__field_hs_course_section_id
-          field: field_hs_course_section_id_value
+        field_su_course_section_id_value:
+          id: field_su_course_section_id_value
+          table: node__field_su_course_section_id
+          field: field_su_course_section_id_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1880,10 +1878,10 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-        field_hs_course_section_quarter_value:
-          id: field_hs_course_section_quarter_value
-          table: node__field_hs_course_section_quarter
-          field: field_hs_course_section_quarter_value
+        field_su_course_section_quarter_value:
+          id: field_su_course_section_quarter_value
+          table: node__field_su_course_section_quarter
+          field: field_su_course_section_quarter_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1892,11 +1890,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_section_quarter_value_op
+            operator_id: field_su_course_section_quarter_value_op
             label: Quarter
             description: ''
             use_operator: false
-            operator: field_hs_course_section_quarter_value_op
+            operator: field_su_course_section_quarter_value_op
             identifier: quarter
             required: false
             remember: false
@@ -1923,10 +1921,10 @@ display:
             group_items: {  }
           reduce_duplicates: false
           plugin_id: list_field
-        field_hs_course_requirements_value:
-          id: field_hs_course_requirements_value
-          table: node__field_hs_course_requirements
-          field: field_hs_course_requirements_value
+        field_su_course_requirements_value:
+          id: field_su_course_requirements_value
+          table: node__field_su_course_requirements
+          field: field_su_course_requirements_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1935,11 +1933,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_requirements_value_op
+            operator_id: field_su_course_requirements_value_op
             label: 'Concentration or Requirements'
             description: ''
             use_operator: false
-            operator: field_hs_course_requirements_value_op
+            operator: field_su_course_requirements_value_op
             identifier: reqs
             required: false
             remember: false
@@ -1965,10 +1963,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: string
-        field_hs_course_academic_career_value:
-          id: field_hs_course_academic_career_value
-          table: node__field_hs_course_academic_career
-          field: field_hs_course_academic_career_value
+        field_su_course_academic_career_value:
+          id: field_su_course_academic_career_value
+          table: node__field_su_course_academic_career
+          field: field_su_course_academic_career_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -1977,11 +1975,11 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: field_hs_course_academic_career_value_op
+            operator_id: field_su_course_academic_career_value_op
             label: Undergrad/Grad
             description: ''
             use_operator: false
-            operator: field_hs_course_academic_career_value_op
+            operator: field_su_course_academic_career_value_op
             identifier: academic_career
             required: false
             remember: false
@@ -2012,7 +2010,7 @@ display:
           id: title_1
           table: course_collections_field_data
           field: title
-          relationship: field_hs_course_section_instruc
+          relationship: field_su_course_section_instruc
           group_type: group
           admin_label: ''
           operator: word
@@ -2054,7 +2052,7 @@ display:
           plugin_id: string
         delta_1:
           id: delta_1
-          table: node__field_hs_course_section_instruc
+          table: node__field_su_course_section_instruc
           field: delta
           relationship: none
           group_type: group
@@ -2096,7 +2094,7 @@ display:
           plugin_id: numeric
         delta:
           id: delta
-          table: node__field_hs_course_section_instruc
+          table: node__field_su_course_section_instruc
           field: delta
           relationship: none
           group_type: group
@@ -2136,10 +2134,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: numeric
-        field_hs_course_section_end_date_value:
-          id: field_hs_course_section_end_date_value
-          table: node__field_hs_course_section_end_date
-          field: field_hs_course_section_end_date_value
+        field_su_course_section_end_date_value:
+          id: field_su_course_section_end_date_value
+          table: node__field_su_course_section_end_date
+          field: field_su_course_section_end_date_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -2179,10 +2177,10 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           plugin_id: datetime
-        field_hs_course_section_st_date_value:
-          id: field_hs_course_section_st_date_value
-          table: node__field_hs_course_section_st_date
-          field: field_hs_course_section_st_date_value
+        field_su_course_section_st_date_value:
+          id: field_su_course_section_st_date_value
+          table: node__field_su_course_section_st_date
+          field: field_su_course_section_st_date_value
           relationship: none
           group_type: group
           admin_label: ''
@@ -2237,12 +2235,12 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_hs_course_academic_year'
-        - 'config:field.storage.node.field_hs_course_code'
-        - 'config:field.storage.node.field_hs_course_section_days'
-        - 'config:field.storage.node.field_hs_course_section_end_time'
-        - 'config:field.storage.node.field_hs_course_section_instruc'
-        - 'config:field.storage.node.field_hs_course_section_quarter'
-        - 'config:field.storage.node.field_hs_course_section_st_time'
-        - 'config:field.storage.node.field_hs_course_subject'
+        - 'config:field.storage.node.field_su_course_academic_year'
+        - 'config:field.storage.node.field_su_course_code'
+        - 'config:field.storage.node.field_su_course_section_days'
+        - 'config:field.storage.node.field_su_course_section_end_time'
+        - 'config:field.storage.node.field_su_course_section_instruc'
+        - 'config:field.storage.node.field_su_course_section_quarter'
+        - 'config:field.storage.node.field_su_course_section_st_time'
+        - 'config:field.storage.node.field_su_course_subject'
         - extensions

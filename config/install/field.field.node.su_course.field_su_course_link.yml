@@ -3,16 +3,16 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hs_course_link
-    - node.type.hs_course
+    - field.storage.node.field_su_course_link
+    - node.type.su_course
   module:
     - link
 _core:
   default_config_hash: MvRrPIUTeabIU6brJBH0_CDyn1aETDspDuOO2fJ74Cw
-id: node.hs_course.field_hs_course_link
-field_name: field_hs_course_link
+id: node.su_course.field_su_course_link
+field_name: field_su_course_link
 entity_type: node
-bundle: hs_course
+bundle: su_course
 label: 'Course Link'
 description: ''
 required: false

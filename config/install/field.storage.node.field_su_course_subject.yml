@@ -6,8 +6,8 @@ dependencies:
     - node
 _core:
   default_config_hash: ArBjMQk0BM0iAcgQx7cFORnsqdauU5wdjYZbgF9gzIk
-id: node.field_hs_course_subject
-field_name: field_hs_course_subject
+id: node.field_su_course_subject
+field_name: field_su_course_subject
 entity_type: node
 type: string
 settings:

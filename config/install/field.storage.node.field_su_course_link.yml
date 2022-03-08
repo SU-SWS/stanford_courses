@@ -7,8 +7,8 @@ dependencies:
     - node
 _core:
   default_config_hash: vkZlCAFkkmkJNX2xyW4bDrCIhkw25Qf7FqZo4KPx04M
-id: node.field_hs_course_link
-field_name: field_hs_course_link
+id: node.field_su_course_link
+field_name: field_su_course_link
 entity_type: node
 type: link
 settings: {  }

@@ -7,8 +7,8 @@ dependencies:
     - taxonomy
 _core:
   default_config_hash: QFplfa7tMhaQlkn_ysukFGhcId_Abg0zXhOXngAqUgU
-id: node.field_hs_course_tags
-field_name: field_hs_course_tags
+id: node.field_su_course_tags
+field_name: field_su_course_tags
 entity_type: node
 type: entity_reference
 settings:

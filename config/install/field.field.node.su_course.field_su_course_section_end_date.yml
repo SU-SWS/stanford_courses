@@ -3,14 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hs_course_section_end_date
-    - node.type.hs_course
+    - field.storage.node.field_su_course_section_end_date
+    - node.type.su_course
   module:
     - datetime
-id: node.hs_course.field_hs_course_section_end_date
-field_name: field_hs_course_section_end_date
+id: node.su_course.field_su_course_section_end_date
+field_name: field_su_course_section_end_date
 entity_type: node
-bundle: hs_course
+bundle: su_course
 label: 'End Date'
 description: ''
 required: false

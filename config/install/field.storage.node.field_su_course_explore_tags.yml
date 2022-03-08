@@ -5,8 +5,8 @@ dependencies:
   module:
     - node
     - taxonomy
-id: node.field_hs_course_explore_tags
-field_name: field_hs_course_explore_tags
+id: node.field_su_course_explore_tags
+field_name: field_su_course_explore_tags
 entity_type: node
 type: entity_reference
 settings:

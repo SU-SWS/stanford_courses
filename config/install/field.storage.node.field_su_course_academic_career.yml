@@ -5,8 +5,8 @@ dependencies:
   module:
     - node
     - options
-id: node.field_hs_course_academic_career
-field_name: field_hs_course_academic_career
+id: node.field_su_course_academic_career
+field_name: field_su_course_academic_career
 entity_type: node
 type: list_string
 settings:

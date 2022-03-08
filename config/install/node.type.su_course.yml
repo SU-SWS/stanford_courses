@@ -11,7 +11,7 @@ third_party_settings:
 _core:
   default_config_hash: T65l74n_n5mKjcyV7KEuDEozegldUb-zN6qyK7XsTMQ
 name: Course
-type: hs_course
+type: su_course
 description: 'A course includes information such as title, year, quarter, day(s) and time(s), etc.'
 help: ''
 new_revision: true

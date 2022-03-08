@@ -3,15 +3,15 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hs_course_tags
-    - node.type.hs_course
-    - taxonomy.vocabulary.hs_course_tags
+    - field.storage.node.field_su_course_tags
+    - node.type.su_course
+    - taxonomy.vocabulary.su_course_tags
 _core:
   default_config_hash: UMU8CiqNBgyaYZ4hlq9_rAeSyh6eXnP3Jpttn1HbIiY
-id: node.hs_course.field_hs_course_tags
-field_name: field_hs_course_tags
+id: node.su_course.field_su_course_tags
+field_name: field_su_course_tags
 entity_type: node
-bundle: hs_course
+bundle: su_course
 label: 'Course Tags'
 description: ''
 required: false
@@ -22,7 +22,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      hs_course_tags: hs_course_tags
+      su_course_tags: su_course_tags
     sort:
       field: name
       direction: asc

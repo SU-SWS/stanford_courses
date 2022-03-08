@@ -4,7 +4,7 @@ status: true
 dependencies: {  }
 _core:
   default_config_hash: clAGSyS52mRJGgyBl2D8ycl_2etjxg97CfigKlcpg0g
-id: hs_courses
+id: su_courses
 label: Courses
 description: 'H&S Courses Importer.'
 source_type: null

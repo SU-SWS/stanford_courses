@@ -3,12 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hs_course_section_st_time
-    - node.type.hs_course
-id: node.hs_course.field_hs_course_section_st_time
-field_name: field_hs_course_section_st_time
+    - field.storage.node.field_su_course_section_st_time
+    - node.type.su_course
+id: node.su_course.field_su_course_section_st_time
+field_name: field_su_course_section_st_time
 entity_type: node
-bundle: hs_course
+bundle: su_course
 label: 'Start Time'
 description: ''
 required: false

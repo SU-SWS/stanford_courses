@@ -3,31 +3,31 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.hs_course.body
-    - field.field.node.hs_course.field_hs_course_academic_career
-    - field.field.node.hs_course.field_hs_course_academic_year
-    - field.field.node.hs_course.field_hs_course_code
-    - field.field.node.hs_course.field_hs_course_explore_tags
-    - field.field.node.hs_course.field_hs_course_grading
-    - field.field.node.hs_course.field_hs_course_id
-    - field.field.node.hs_course.field_hs_course_link
-    - field.field.node.hs_course.field_hs_course_requirements
-    - field.field.node.hs_course.field_hs_course_section_comp
-    - field.field.node.hs_course.field_hs_course_section_days
-    - field.field.node.hs_course.field_hs_course_section_end_date
-    - field.field.node.hs_course.field_hs_course_section_end_time
-    - field.field.node.hs_course.field_hs_course_section_id
-    - field.field.node.hs_course.field_hs_course_section_instruc
-    - field.field.node.hs_course.field_hs_course_section_location
-    - field.field.node.hs_course.field_hs_course_section_number
-    - field.field.node.hs_course.field_hs_course_section_quarter
-    - field.field.node.hs_course.field_hs_course_section_st_date
-    - field.field.node.hs_course.field_hs_course_section_st_time
-    - field.field.node.hs_course.field_hs_course_section_syllabus
-    - field.field.node.hs_course.field_hs_course_section_units
-    - field.field.node.hs_course.field_hs_course_subject
-    - field.field.node.hs_course.field_hs_course_tags
-    - node.type.hs_course
+    - field.field.node.su_course.body
+    - field.field.node.su_course.field_su_course_academic_career
+    - field.field.node.su_course.field_su_course_academic_year
+    - field.field.node.su_course.field_su_course_code
+    - field.field.node.su_course.field_su_course_explore_tags
+    - field.field.node.su_course.field_su_course_grading
+    - field.field.node.su_course.field_su_course_id
+    - field.field.node.su_course.field_su_course_link
+    - field.field.node.su_course.field_su_course_requirements
+    - field.field.node.su_course.field_su_course_section_comp
+    - field.field.node.su_course.field_su_course_section_days
+    - field.field.node.su_course.field_su_course_section_end_date
+    - field.field.node.su_course.field_su_course_section_end_time
+    - field.field.node.su_course.field_su_course_section_id
+    - field.field.node.su_course.field_su_course_section_instruc
+    - field.field.node.su_course.field_su_course_section_location
+    - field.field.node.su_course.field_su_course_section_number
+    - field.field.node.su_course.field_su_course_section_quarter
+    - field.field.node.su_course.field_su_course_section_st_date
+    - field.field.node.su_course.field_su_course_section_st_time
+    - field.field.node.su_course.field_su_course_section_syllabus
+    - field.field.node.su_course.field_su_course_section_units
+    - field.field.node.su_course.field_su_course_subject
+    - field.field.node.su_course.field_su_course_tags
+    - node.type.su_course
     - system.menu.main
   module:
     - hs_layouts
@@ -69,7 +69,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:title'
+              id: 'field_block:node:su_course:title'
               label: Title
               provider: layout_builder
               label_display: '0'
@@ -81,8 +81,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -91,7 +89,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_requirements'
+              id: 'field_block:node:su_course:field_su_course_requirements'
               label: Requirements
               provider: layout_builder
               label_display: '0'
@@ -103,8 +101,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -113,7 +109,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_academic_year'
+              id: 'field_block:node:su_course:field_su_course_academic_year'
               label: 'Academic Year'
               provider: layout_builder
               label_display: '0'
@@ -125,8 +121,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -135,7 +129,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:body'
+              id: 'field_block:node:su_course:body'
               label: Body
               provider: layout_builder
               label_display: '0'
@@ -146,8 +140,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -156,7 +148,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_link'
+              id: 'field_block:node:su_course:field_su_course_link'
               label: 'Course Link'
               provider: layout_builder
               label_display: '0'
@@ -172,8 +164,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -182,7 +172,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_end_date'
+              id: 'field_block:node:su_course:field_su_course_section_end_date'
               label: 'End Date'
               provider: layout_builder
               label_display: '0'
@@ -195,8 +185,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -205,7 +193,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_end_time'
+              id: 'field_block:node:su_course:field_su_course_section_end_time'
               label: 'End Time'
               provider: layout_builder
               label_display: '0'
@@ -217,8 +205,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -227,7 +213,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_grading'
+              id: 'field_block:node:su_course:field_su_course_grading'
               label: Grading
               provider: layout_builder
               label_display: '0'
@@ -239,8 +225,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -249,7 +233,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_instruc'
+              id: 'field_block:node:su_course:field_su_course_section_instruc'
               label: Instructors
               provider: layout_builder
               label_display: '0'
@@ -263,8 +247,6 @@ third_party_settings:
                     class: ''
                   ds:
                     ds_limit: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -273,7 +255,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_location'
+              id: 'field_block:node:su_course:field_su_course_section_location'
               label: Location
               provider: layout_builder
               label_display: '0'
@@ -285,8 +267,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -295,7 +275,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_quarter'
+              id: 'field_block:node:su_course:field_su_course_section_quarter'
               label: Quarter
               provider: layout_builder
               label_display: '0'
@@ -306,8 +286,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -316,7 +294,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_requirements'
+              id: 'field_block:node:su_course:field_su_course_requirements'
               label: Requirements
               provider: layout_builder
               label_display: '0'
@@ -328,8 +306,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -338,7 +314,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_days'
+              id: 'field_block:node:su_course:field_su_course_section_days'
               label: 'Section Days'
               provider: layout_builder
               label_display: '0'
@@ -350,8 +326,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -360,7 +334,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_number'
+              id: 'field_block:node:su_course:field_su_course_section_number'
               label: 'Section Number'
               provider: layout_builder
               label_display: '0'
@@ -373,8 +347,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -383,7 +355,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_st_date'
+              id: 'field_block:node:su_course:field_su_course_section_st_date'
               label: 'Start Date'
               provider: layout_builder
               label_display: '0'
@@ -396,8 +368,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -406,7 +376,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_st_time'
+              id: 'field_block:node:su_course:field_su_course_section_st_time'
               label: 'Start Time'
               provider: layout_builder
               label_display: '0'
@@ -418,8 +388,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -428,7 +396,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_subject'
+              id: 'field_block:node:su_course:field_su_course_subject'
               label: Subject
               provider: layout_builder
               label_display: '0'
@@ -440,8 +408,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -450,7 +416,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_syllabus'
+              id: 'field_block:node:su_course:field_su_course_section_syllabus'
               label: Syllabus
               provider: layout_builder
               label_display: '0'
@@ -462,8 +428,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -472,7 +436,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_section_units'
+              id: 'field_block:node:su_course:field_su_course_section_units'
               label: Units
               provider: layout_builder
               label_display: '0'
@@ -484,8 +448,6 @@ third_party_settings:
                 third_party_settings:
                   field_formatter_class:
                     class: ''
-                  hs_field_helpers:
-                    inline_contents: 0
               context_mapping:
                 entity: layout_builder.entity
             additional: {  }
@@ -494,7 +456,7 @@ third_party_settings:
 
             region: main
             configuration:
-              id: 'field_block:node:hs_course:field_hs_course_academic_career'
+              id: 'field_block:node:su_course:field_su_course_academic_career'
               label_display: ''
               formatter:
                 label: above
@@ -504,7 +466,7 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
             additional:
-              field_name: field_hs_course_academic_career
+              field_name: field_su_course_academic_career
             weight: 19
           6fed084f-8afe-4e81-b523-59a03d581ff0:
 
@@ -513,7 +475,7 @@ third_party_settings:
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:hs_course:field_hs_course_explore_tags'
+              id: 'field_block:node:su_course:field_su_course_explore_tags'
               formatter:
                 label: above
                 settings:
@@ -522,19 +484,19 @@ third_party_settings:
                 type: entity_reference_label
             additional: {  }
             weight: 20
-id: node.hs_course.default
+id: node.su_course.default
 targetEntityType: node
-bundle: hs_course
+bundle: su_course
 mode: default
 content:
-  field_hs_course_academic_career:
+  field_su_course_academic_career:
     weight: 101
     label: above
     settings: {  }
     third_party_settings: {  }
     type: list_default
     region: main
-  field_hs_course_explore_tags:
+  field_su_course_explore_tags:
     weight: 102
     label: above
     settings:
@@ -549,24 +511,24 @@ content:
     third_party_settings: {  }
 hidden:
   body: true
-  field_hs_course_academic_year: true
-  field_hs_course_code: true
-  field_hs_course_grading: true
-  field_hs_course_id: true
-  field_hs_course_link: true
-  field_hs_course_requirements: true
-  field_hs_course_section_comp: true
-  field_hs_course_section_days: true
-  field_hs_course_section_end_date: true
-  field_hs_course_section_end_time: true
-  field_hs_course_section_id: true
-  field_hs_course_section_instruc: true
-  field_hs_course_section_location: true
-  field_hs_course_section_number: true
-  field_hs_course_section_quarter: true
-  field_hs_course_section_st_date: true
-  field_hs_course_section_st_time: true
-  field_hs_course_section_syllabus: true
-  field_hs_course_section_units: true
-  field_hs_course_subject: true
-  field_hs_course_tags: true
+  field_su_course_academic_year: true
+  field_su_course_code: true
+  field_su_course_grading: true
+  field_su_course_id: true
+  field_su_course_link: true
+  field_su_course_requirements: true
+  field_su_course_section_comp: true
+  field_su_course_section_days: true
+  field_su_course_section_end_date: true
+  field_su_course_section_end_time: true
+  field_su_course_section_id: true
+  field_su_course_section_instruc: true
+  field_su_course_section_location: true
+  field_su_course_section_number: true
+  field_su_course_section_quarter: true
+  field_su_course_section_st_date: true
+  field_su_course_section_st_time: true
+  field_su_course_section_syllabus: true
+  field_su_course_section_units: true
+  field_su_course_subject: true
+  field_su_course_tags: true

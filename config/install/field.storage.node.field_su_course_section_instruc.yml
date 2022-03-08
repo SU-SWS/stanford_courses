@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - eck
     - node
-id: node.field_hs_course_section_instruc
-field_name: field_hs_course_section_instruc
+id: node.field_su_course_section_instruc
+field_name: field_su_course_section_instruc
 entity_type: node
 type: entity_reference
 settings:

@@ -6,8 +6,8 @@ dependencies:
     - node
 _core:
   default_config_hash: MaNx8al519EBJEFFvrI8_JuZILd7JxwtJC1miLYnccc
-id: node.field_hs_course_grading
-field_name: field_hs_course_grading
+id: node.field_su_course_grading
+field_name: field_su_course_grading
 entity_type: node
 type: string
 settings:

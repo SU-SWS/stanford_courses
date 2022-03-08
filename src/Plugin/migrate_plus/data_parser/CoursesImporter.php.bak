@@ -1,0 +1,31 @@
+<?php
+
+namespace Drupal\stanford_courses\Plugin\migrate_plus\data_parser;
+
+use Drupal\migrate_plus\DataParserPluginBase;
+
+/**
+* Provides a 'CoursesImporter' data parser plugin.
+*
+* @DataParser(
+*  id = "courses_importer"
+*  title = @Translation("courses_importer")
+* )
+*/
+class CoursesImporter extends DataParserPluginBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function openSourceUrl($url) {
+    // Plugin logic goes here.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function fetchNextRow() {
+    // Plugin logic goes here.
+  }
+
+}

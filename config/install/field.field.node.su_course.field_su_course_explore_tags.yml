@@ -3,13 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_hs_course_explore_tags
-    - node.type.hs_course
-    - taxonomy.vocabulary.hs_course_tags
-id: node.hs_course.field_hs_course_explore_tags
-field_name: field_hs_course_explore_tags
+    - field.storage.node.field_su_course_explore_tags
+    - node.type.su_course
+    - taxonomy.vocabulary.su_course_tags
+id: node.su_course.field_su_course_explore_tags
+field_name: field_su_course_explore_tags
 entity_type: node
-bundle: hs_course
+bundle: su_course
 label: 'Explore Course Tags'
 description: ''
 required: false
@@ -20,7 +20,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      hs_course_tags: hs_course_tags
+      su_course_tags: su_course_tags
     sort:
       field: name
       direction: asc

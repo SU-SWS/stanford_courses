@@ -7,8 +7,8 @@ dependencies:
     - taxonomy
 _core:
   default_config_hash: sqlL7HQD_o5B_9ygamg3fH8gNYl5_Vl_JC6j7X6mdLU
-id: node.field_hs_course_section_comp
-field_name: field_hs_course_section_comp
+id: node.field_su_course_section_comp
+field_name: field_su_course_section_comp
 entity_type: node
 type: entity_reference
 settings:

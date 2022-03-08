@@ -4,8 +4,8 @@ status: true
 dependencies:
   module:
     - node
-id: node.field_hs_course_section_location
-field_name: field_hs_course_section_location
+id: node.field_su_course_section_location
+field_name: field_su_course_section_location
 entity_type: node
 type: string
 settings:

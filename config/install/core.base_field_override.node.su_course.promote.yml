@@ -3,13 +3,13 @@ langcode: en
 status: true
 dependencies:
   config:
-    - node.type.hs_course
+    - node.type.su_course
 _core:
   default_config_hash: V7ISAIJsiEtCsbDRdV7N4Sasa_PVEuh69nvnsb5hrJM
-id: node.hs_course.promote
+id: node.su_course.promote
 field_name: promote
 entity_type: node
-bundle: hs_course
+bundle: su_course
 label: 'Promoted to front page'
 description: ''
 required: false
