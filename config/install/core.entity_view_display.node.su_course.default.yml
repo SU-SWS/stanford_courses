@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.su_course.field_su_course_section_end_date
     - field.field.node.su_course.field_su_course_section_end_time
     - field.field.node.su_course.field_su_course_section_id
-    - field.field.node.su_course.field_su_course_section_instruc
     - field.field.node.su_course.field_su_course_section_location
     - field.field.node.su_course.field_su_course_section_number
     - field.field.node.su_course.field_su_course_section_quarter
@@ -228,28 +227,6 @@ third_party_settings:
                 entity: layout_builder.entity
             additional: {  }
             weight: 7
-          027ebe6d-d697-48c5-a62c-df46b4e78968:
-
-            region: main
-            configuration:
-              id: 'field_block:node:su_course:field_su_course_section_instruc'
-              label: Instructors
-              provider: layout_builder
-              label_display: '0'
-              formatter:
-                label: above
-                type: entity_reference_entity_view
-                settings:
-                  view_mode: default
-                third_party_settings:
-                  field_formatter_class:
-                    class: ''
-                  ds:
-                    ds_limit: ''
-              context_mapping:
-                entity: layout_builder.entity
-            additional: {  }
-            weight: 8
           9874e34a-e131-4a8c-a787-2e3827c34b44:
 
             region: main
@@ -521,7 +498,6 @@ hidden:
   field_su_course_section_end_date: true
   field_su_course_section_end_time: true
   field_su_course_section_id: true
-  field_su_course_section_instruc: true
   field_su_course_section_location: true
   field_su_course_section_number: true
   field_su_course_section_quarter: true

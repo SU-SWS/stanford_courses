@@ -17,7 +17,6 @@ dependencies:
     - field.field.node.su_course.field_su_course_section_end_date
     - field.field.node.su_course.field_su_course_section_end_time
     - field.field.node.su_course.field_su_course_section_id
-    - field.field.node.su_course.field_su_course_section_instruc
     - field.field.node.su_course.field_su_course_section_location
     - field.field.node.su_course.field_su_course_section_number
     - field.field.node.su_course.field_su_course_section_quarter
@@ -41,7 +40,6 @@ third_party_settings:
       children:
         - field_su_course_section_id
         - field_su_course_section_number
-        - field_su_course_section_instruc
         - field_su_course_section_syllabus
         - field_su_course_section_location
         - group_section_dates
@@ -188,24 +186,6 @@ content:
     settings:
       placeholder: ''
     third_party_settings: {  }
-  field_su_course_section_instruc:
-    type: inline_entity_form_complex
-    weight: 10
-    region: content
-    settings:
-      form_mode: default
-      override_labels: true
-      label_singular: Instructor
-      label_plural: Instructors
-      allow_new: true
-      allow_existing: true
-      match_operator: CONTAINS
-      collapsible: false
-      collapsed: false
-      allow_duplicate: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
   field_su_course_section_location:
     type: string_textfield
     weight: 12
