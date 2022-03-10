@@ -222,18 +222,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_su_course_section_syllabus:
-    type: entity_browser_entity_reference
-    weight: 11
+    type: string_textfield
+    weight: 9
     region: content
     settings:
-      entity_browser: file_browser
-      field_widget_display: label
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_replace: false
-      open: false
-      field_widget_display_settings: {  }
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_su_course_section_units:
     type: string_textfield

@@ -39,7 +39,7 @@ third_party_settings:
     allow_custom: false
     sections:
       -
-        layout_id: three_column
+        layout_id: jumpstart_ui_three_column
         layout_settings:
           section_width: decanter-grid
           region_widths: center
@@ -113,7 +113,7 @@ third_party_settings:
               label_display: '0'
               formatter:
                 label: above
-                type: datetime_academic_year
+                type: text_default
                 settings:
                   timezone_override: ''
                 third_party_settings:
