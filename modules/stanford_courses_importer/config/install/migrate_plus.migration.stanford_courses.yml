@@ -1,23 +1,21 @@
+uuid: d3961043-6561-413f-ab82-833655a44fb0
 langcode: en
 status: true
-dependencies:
-  config:
-    - node.type.su_course
-    - migrate_plus.migration_group.stanford_courses
+dependencies: {  }
 _core:
-  default_config_hash: 2DJ5AzPeTfHylbydpZgbiPH85AJUWuiotQgawcg3SU8
-id: su_courses
+  default_config_hash: zO08rG4j8Ebfjjir-Yj3gO1PZ8jZVhQiiO63YIRMmxs
+id: stanford_courses
 class: null
 field_plugin_method: null
 cck_plugin_method: null
 migration_tags: {  }
-migration_group: su_courses
+migration_group: stanford_courses
 label: 'Course importer'
 source:
   track_changes: true
   plugin: url
   data_fetcher_plugin: http
-  urls: 'http://events-legacy.stanford.edu/xml/drupal/v2.php?organization=0'
+  urls: 'https://explorecourses.stanford.edu/search?view=xml-20200810&academicYear=&page=0&q=ACCT&filter-departmentcode-ACCT=on&filter-coursestatus-Active=on'
   data_parser_plugin: simple_xml
   item_selector: //courses/course/sections/section
   fields:
