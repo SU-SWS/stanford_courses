@@ -1,13 +1,13 @@
-
+uuid: ffb9d5db-79bb-4e6c-9c9c-f67ade8f6836
 langcode: en
 status: true
 dependencies:
   module:
     - node
 _core:
-  default_config_hash: kuYlLwp3EHXCxbuc60g0PdO174MhxqPEWelxbOy9as0
-id: node.field_su_course_section_id
-field_name: field_su_course_section_id
+  default_config_hash: 7H8hU5uNhoxGhtgGhkQhG0Q8VrTl7yMl0XZXPiqKsjc
+id: node.su_course_id
+field_name: su_course_id
 entity_type: node
 type: integer
 settings:

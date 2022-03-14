@@ -1,18 +1,18 @@
-
+uuid: 8c845ad8-15b4-488e-9bdc-efede7e3833f
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.body
-    - node.type.su_course
+    - node.type.stanford_course
   module:
     - text
 _core:
-  default_config_hash: i0q_fEjQsqvG7VrfLxBrj62iC566L1uWB-4cFyM2sCA
-id: node.su_course.body
+  default_config_hash: wfCexHzc4xfdwUR3B7mmx-DvHbd7IhJYYCfTZedJdxo
+id: node.stanford_course.body
 field_name: body
 entity_type: node
-bundle: su_course
+bundle: stanford_course
 label: Body
 description: ''
 required: false
@@ -21,4 +21,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   display_summary: true
+  required_summary: false
 field_type: text_with_summary

@@ -1,4 +1,4 @@
-
+uuid: 57b49503-7c39-4d18-98f2-c01da72e911c
 langcode: en
 status: true
 dependencies:
@@ -6,9 +6,9 @@ dependencies:
     - link
     - node
 _core:
-  default_config_hash: vkZlCAFkkmkJNX2xyW4bDrCIhkw25Qf7FqZo4KPx04M
-id: node.field_su_course_link
-field_name: field_su_course_link
+  default_config_hash: gkTJvIExPTWGZWHKM5MLqP0kn2dJtYRFrBUFejeqz7s
+id: node.su_course_link
+field_name: su_course_link
 entity_type: node
 type: link
 settings: {  }
