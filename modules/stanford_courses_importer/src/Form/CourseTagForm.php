@@ -41,30 +41,30 @@ class CourseTagForm extends EntityForm {
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
-    /** @var \Drupal\stanford_courses_importer\Entity\CourseTagInterface $hs_course_tag */
-    $hs_course_tag = $this->entity;
+    /** @var \Drupal\stanford_courses_importer\Entity\CourseTagInterface $su_course_tag */
+    $su_course_tag = $this->entity;
     $form['label'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Explore Courses Tag'),
       '#maxlength' => 255,
-      '#default_value' => $hs_course_tag->label(),
+      '#default_value' => $su_course_tag->label(),
       '#description' => $this->t("Machine tag name from explorecourses.stanford.edu."),
       '#required' => TRUE,
     ];
 
     $form['id'] = [
       '#type' => 'machine_name',
-      '#default_value' => $hs_course_tag->id(),
+      '#default_value' => $su_course_tag->id(),
       '#machine_name' => [
         'exists' => '\Drupal\stanford_courses_importer\Entity\CourseTag::load',
       ],
-      '#disabled' => !$hs_course_tag->isNew(),
+      '#disabled' => !$su_course_tag->isNew(),
     ];
 
     $form['tag'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Translated Tag'),
-      '#default_value' => $hs_course_tag->tag(),
+      '#default_value' => $su_course_tag->tag(),
       '#required' => TRUE,
     ];
 
@@ -75,31 +75,31 @@ class CourseTagForm extends EntityForm {
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
-    $hs_course_tag = $this->entity;
-    $status = $hs_course_tag->save();
+    $su_course_tag = $this->entity;
+    $status = $su_course_tag->save();
     $this->invalidateHashes();
 
     switch ($status) {
       case SAVED_NEW:
         $this->messenger()->addMessage($this->t('Created the %label Course Tag Translation.', [
-          '%label' => $hs_course_tag->label(),
+          '%label' => $su_course_tag->label(),
         ]));
         break;
 
       default:
         $this->messenger()->addMessage($this->t('Saved the %label Course Tag Translation.', [
-          '%label' => $hs_course_tag->label(),
+          '%label' => $su_course_tag->label(),
         ]));
     }
-    $form_state->setRedirectUrl($hs_course_tag->toUrl('collection'));
+    $form_state->setRedirectUrl($su_course_tag->toUrl('collection'));
   }
 
   /**
    * Invalidates migration hashes.
    */
   protected function invalidateHashes() {
-    if ($this->database->schema()->tableExists('migrate_map_hs_courses')) {
-      $this->database->update('migrate_map_hs_courses')
+    if ($this->database->schema()->tableExists('migrate_map_su_course_tags')) {
+      $this->database->update('migrate_map_su_course_tags')
         ->fields(['hash' => ''])
         ->execute();
     }

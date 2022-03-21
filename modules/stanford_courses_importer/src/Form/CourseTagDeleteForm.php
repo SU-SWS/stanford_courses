@@ -50,7 +50,7 @@ class CourseTagDeleteForm extends EntityConfirmFormBase {
    * {@inheritdoc}
    */
   public function getCancelUrl() {
-    return new Url('entity.hs_course_tag.collection');
+    return new Url('entity.su_course_tag.collection');
   }
 
   /**
@@ -81,8 +81,8 @@ class CourseTagDeleteForm extends EntityConfirmFormBase {
    * Invalidates migration hashes.
    */
   protected function invalidateHashes() {
-    if ($this->database->schema()->tableExists('migrate_map_hs_courses')) {
-      $this->database->update('migrate_map_hs_courses')
+    if ($this->database->schema()->tableExists('migrate_map_su_course_tags')) {
+      $this->database->update('migrate_map_su_course_tags')
         ->fields(['hash' => ''])
         ->execute();
     }

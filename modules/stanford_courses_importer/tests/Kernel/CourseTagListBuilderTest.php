@@ -31,7 +31,7 @@ class CourseTagListBuilderTest extends EntityKernelTestBase {
    */
   protected function setUp(): void {
     parent::setUp();
-    $this->listBuilder = $this->entityTypeManager->getListBuilder('hs_course_tag');
+    $this->listBuilder = $this->entityTypeManager->getListBuilder('su_course_tag');
   }
 
   /**
@@ -41,7 +41,7 @@ class CourseTagListBuilderTest extends EntityKernelTestBase {
     $header = $this->listBuilder->buildHeader();
     $this->assertArrayHasKey('label', $header);
     $this->assertArrayHasKey('id', $header);
-    $entity = $this->entityTypeManager->createInstance('hs_course_tag', [
+    $entity = $this->entityTypeManager->createInstance('su_course_tag', [
       'id' => $this->randomMachineName(),
       'label' => $this->randomString(),
       'tag' => $this->randomString(),

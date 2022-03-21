@@ -8,7 +8,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  * Defines the Course Tag Translation entity.
  *
  * @ConfigEntityType(
- *   id = "hs_course_tag",
+ *   id = "su_course_tag",
  *   label = @Translation("Course Tag Translation"),
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
@@ -22,7 +22,7 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *       "html" = "Drupal\stanford_courses_importer\CourseTagHtmlRouteProvider",
  *     },
  *   },
- *   config_prefix = "hs_course_tag",
+ *   config_prefix = "su_course_tag",
  *   admin_permission = "administer site configuration",
  *   entity_keys = {
  *     "id" = "id",
@@ -30,11 +30,11 @@ use Drupal\Core\Config\Entity\ConfigEntityBase;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "canonical" = "/admin/structure/migrate/hs_course_tag/{hs_course_tag}",
- *     "add-form" = "/admin/structure/migrate/hs_course_tag/add",
- *     "edit-form" = "/admin/structure/migrate/hs_course_tag/{hs_course_tag}/edit",
- *     "delete-form" = "/admin/structure/migrate/hs_course_tag/{hs_course_tag}/delete",
- *     "collection" = "/admin/structure/migrate/hs_course_tag"
+ *     "canonical" = "/admin/structure/migrate/su_course_tag/{su_course_tag}",
+ *     "add-form" = "/admin/structure/migrate/su_course_tag/add",
+ *     "edit-form" = "/admin/structure/migrate/su_course_tag/{su_course_tag}/edit",
+ *     "delete-form" = "/admin/structure/migrate/su_course_tag/{su_course_tag}/delete",
+ *     "collection" = "/admin/structure/migrate/su_course_tag"
  *   },
  *   config_export = {
  *     "id",

@@ -186,7 +186,7 @@ class CourseImporter extends ConfigFormBase {
     $role = $this->entityTypeManager->getStorage('user_role')
       ->load('site_manager');
     if ($role) {
-      $role->grantPermission('import hs_courses migration');
+      $role->grantPermission('import su_course_tags migration');
       $role->save();
     }
   }

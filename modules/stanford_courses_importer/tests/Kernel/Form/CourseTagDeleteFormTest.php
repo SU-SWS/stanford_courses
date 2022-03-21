@@ -19,12 +19,12 @@ class CourseTagDeleteFormTest extends HsCoursesImporterTestBase {
    */
   public function testForm() {
     /** @var \Drupal\stanford_courses_importer\Form\CourseTagDeleteForm $form_object */
-    $form_object = $this->entityTypeManager->getFormObject('hs_course_tag', 'delete');
+    $form_object = $this->entityTypeManager->getFormObject('su_course_tag', 'delete');
     $form_object->setEntity($this->courseTag);
     $this->assertEquals("Are you sure you want to delete {$this->courseTag->label()}?", strip_tags($form_object->getQuestion()
       ->render()));
 
-    $this->assertEquals('admin/structure/migrate/hs_course_tag', $form_object->getCancelUrl()
+    $this->assertEquals('admin/structure/migrate/su_course_tag', $form_object->getCancelUrl()
       ->getInternalPath());
     $this->assertEquals('Delete', $form_object->getConfirmText()->render());
     $form_state = new FormState();

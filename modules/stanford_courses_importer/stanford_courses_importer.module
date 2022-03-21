@@ -22,7 +22,7 @@ function stanford_courses_importer_search_api_index_items_alter(IndexInterface $
   /** @var \Drupal\search_api\Item\Item $item */
   foreach ($items as $item_id => $item) {
     $entity = $item->getOriginalObject()->getValue();
-    if ($entity instanceof NodeInterface && $entity->bundle() == 'hs_course') {
+    if ($entity instanceof NodeInterface && $entity->bundle() == 'su_course_tag') {
       $nid = $entity->id();
       if (!stanford_courses_importer_index_item($nid)) {
         unset($items[$item_id]);
@@ -41,7 +41,7 @@ function stanford_courses_importer_search_api_index_items_alter(IndexInterface $
  *   If this item should be indexed.
  */
 function stanford_courses_importer_index_item($nid) {
-  $source_ids = \Drupal::database()->select('migrate_map_hs_courses', 'm')
+  $source_ids = \Drupal::database()->select('migrate_map_su_course_tags', 'm')
     ->fields('m', ['sourceid1', 'sourceid2'])
     ->condition('destid1', $nid)
     ->execute()
@@ -57,7 +57,7 @@ function stanford_courses_importer_index_item($nid) {
   // sorted by the destination id (nid) this will give us the very first node
   // that was imported from the source.
   $first_course_id = \Drupal::database()
-    ->select('migrate_map_hs_courses', 'm')
+    ->select('migrate_map_su_course_tags', 'm')
     ->fields('m', ['destid1'])
     ->condition('sourceid1', $source_ids['sourceid1'])
     ->condition('sourceid2', $source_ids['sourceid2'])

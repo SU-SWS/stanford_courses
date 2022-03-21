@@ -116,7 +116,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
       return;
     }
     try {
-      $response = $this->client->request('GET', '/api/2/events', ['base_uri' => $input]);
+      $response = $this->client->request('GET', 'search?view=xml-20200810', ['base_uri' => $input]);
       $response = json_decode((string) $response->getBody(), TRUE);
 
       if (!is_array($response)) {
@@ -124,7 +124,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
       }
     }
     catch (\Throwable $e) {
-      $form_state->setError($element, $this->t('URL is not a Localist domain.'));
+      $form_state->setError($element, $this->t('URL is not a ExploreCourses URL.'));
     }
   }
 
@@ -148,11 +148,10 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
-    $element['uri']['#access'] = FALSE;
+    $element['uri']['#access'] = TRUE;
     $element['title']['#access'] = FALSE;
     $element['attributes']['#access'] = FALSE;
     $item = $items[$delta];
-
 
     return $element;
   }
@@ -176,9 +175,6 @@ class ExploreCoursesUrlWidget extends LinkWidget {
         unset($values[$delta]);
         continue;
       }
-
-      $value['filters']['days'] = '365';
-      $value['filters']['pp'] = '100';
 
       // We may in the future have a configuration value
       // to include the "distinct"key to our API call.

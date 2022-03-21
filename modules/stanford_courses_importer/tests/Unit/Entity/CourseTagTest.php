@@ -22,7 +22,7 @@ class CourseTagTest extends UnitTestCase {
       'id' => $this->randomMachineName(),
       'label' => $this->randomMachineName(),
       'tag' => $tag_string,
-    ], 'hs_course_tag');
+    ], 'su_course_tag');
     $this->assertEquals($tag_string, $tag->tag());
   }
 

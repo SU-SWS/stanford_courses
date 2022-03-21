@@ -10,14 +10,14 @@
  */
 function stanford_courses_importer_update_8101() {
   $database = \Drupal::database();
-  $entity_ids = $database->select('node__field_hs_course_link', 'l')
+  $entity_ids = $database->select('node__field_su_course_tag_link', 'l')
     ->fields('l', ['entity_id', 'revision_id'])
-    ->condition('field_hs_course_link_uri', '%&%', 'LIKE')
+    ->condition('field_su_course_tag_link_uri', '%&%', 'LIKE')
     ->execute()
     ->fetchAllKeyed();
 
   if ($entity_ids) {
-    $database->update('migrate_map_hs_courses')
+    $database->update('migrate_map_su_course_tags')
       ->fields(['hash' => ''])
       ->condition('destid1', array_keys($entity_ids), 'IN')
       ->execute();

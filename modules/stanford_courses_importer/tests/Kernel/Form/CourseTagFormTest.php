@@ -21,10 +21,10 @@ class CourseTagFormTest extends HsCoursesImporterTestBase {
   public function testForm() {
     $name = strtolower($this->randomMachineName());
     $tag_value = $this->randomString();
-    $tag = $this->entityTypeManager->createInstance('hs_course_tag', ['enforceIsNew' => TRUE]);
+    $tag = $this->entityTypeManager->createInstance('su_course_tag', ['enforceIsNew' => TRUE]);
 
     /** @var \Drupal\stanford_courses_importer\Form\CourseTagForm $form_object */
-    $form_object = $this->entityTypeManager->getFormObject('hs_course_tag', 'add');
+    $form_object = $this->entityTypeManager->getFormObject('su_course_tag', 'add');
     $form = [];
     $form_state = new FormState();
     $form_object->setEntity($tag);
@@ -43,7 +43,7 @@ class CourseTagFormTest extends HsCoursesImporterTestBase {
     $form_object->submitForm($form, $form_state);
     $form_object->save($form, $form_state);
 
-    $this->assertEquals($tag_value, $this->config('stanford_courses_importer.hs_course_tag.' . $name)
+    $this->assertEquals($tag_value, $this->config('stanford_courses_importer.su_course_tag.' . $name)
       ->get('tag'));
     $messages = \Drupal::messenger()
       ->messagesByType(MessengerInterface::TYPE_STATUS);

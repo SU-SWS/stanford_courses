@@ -9,7 +9,7 @@ stanford_courses_importer.importer_settings:
         type: string
         label: 'Importer URL'
 
-stanford_courses_importer.hs_course_tag.*:
+stanford_courses_importer.su_course_tag.*:
   type: config_entity
   label: 'Course Tag Translation config'
   mapping:

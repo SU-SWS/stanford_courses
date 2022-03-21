@@ -34,7 +34,7 @@ abstract class HsCoursesImporterTestBase extends EntityKernelTestBase {
   protected function setUp(): void {
     parent::setUp();
     $name = $this->randomMachineName();
-    $this->courseTag = $this->entityTypeManager->createInstance('hs_course_tag', [
+    $this->courseTag = $this->entityTypeManager->createInstance('su_course_tag', [
       'id' => strtolower($name),
       'label' => $name,
       'tag' => $this->randomString(),
@@ -66,7 +66,7 @@ abstract class HsCoursesImporterTestBase extends EntityKernelTestBase {
     ];
     \Drupal::database()
       ->schema()
-      ->createTable('migrate_map_hs_courses', $table_definition);
+      ->createTable('migrate_map_su_course_tags', $table_definition);
   }
 
 }

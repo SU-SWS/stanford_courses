@@ -48,11 +48,11 @@ class CourseImporterOverrides implements ConfigFactoryOverrideInterface {
   public function loadOverrides($names) {
     $overrides = [];
 
-    if (in_array('migrate_plus.migration.hs_courses', $names)) {
+    if (in_array('migrate_plus.migration.su_course_tags', $names)) {
       if ($urls = $this->getMigrationUrls()) {
         // Point the migration to our local url where we process the feed into
         // usable data.
-        $overrides['migrate_plus.migration.hs_courses'] = [
+        $overrides['migrate_plus.migration.su_course_tags'] = [
           'source' => [
             'urls' => $urls,
           ],
