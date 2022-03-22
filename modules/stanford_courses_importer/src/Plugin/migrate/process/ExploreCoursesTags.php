@@ -19,7 +19,23 @@ class ExploreCoursesTags extends ProcessPluginBase {
    * {@inheritdoc}
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
-    // Plugin logic goes here.
+    if (!is_string($value)) {
+      return '';
+    }
+
+    try {
+      $xml = new \SimpleXMLElement($value);
+    } catch (\Throwable $e) {
+      return '';
+    }
+
+    $tags = [];
+    // concatenate the name and organization to make the tag.
+    foreach ($xml->tag as $tag) {
+      $tags[] = (string) $tag->organization . "::" . (string) $tag->name;
+    }
+
+    return implode(';', $tags);
   }
 
 }

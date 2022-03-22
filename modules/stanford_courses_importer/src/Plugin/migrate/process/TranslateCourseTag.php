@@ -60,6 +60,10 @@ class TranslateCourseTag extends ProcessPluginBase implements ContainerFactoryPl
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     /** @var \Drupal\stanford_courses_importer\Entity\CourseTagInterface $tag_entity */
+
+    
+
+
     foreach ($this->tagTranslation->loadMultiple() as $tag_entity) {
       if ($value == $tag_entity->label()) {
         return $tag_entity->tag();
