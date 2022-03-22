@@ -17,214 +17,75 @@ source:
   data_fetcher_plugin: http
   urls: 'https://explorecourses.stanford.edu/search?view=xml-20200810&academicYear=&page=0&q=ACCT&filter-departmentcode-ACCT=on&filter-coursestatus-Active=on'
   data_parser_plugin: simple_xml
-  item_selector: //courses/course/sections/section
+  item_selector: //courses/course
   fields:
-    -
-      name: guid
-      label: GUID
-      selector: guid
     -
       name: title
       label: 'Course Title'
-      selector: ../../title
+      selector: title
     -
-      name: body
+      name: description
       label: Description
-      selector: ../../description
+      selector: description
     -
       name: year
       label: 'Course Academic Year'
-      selector: ../../year
-    -
-      name: component
-      label: 'Section Component'
-      selector: component
+      selector: year
     -
       name: course_id
       label: 'Course ID'
-      selector: ../../administrativeInformation/courseId
-    -
-      name: code
-      label: 'Section Code'
-      selector: ../../code
-    -
-      name: grading
-      label: 'Course Grading'
-      selector: ../../grading
-    -
-      name: requirements
-      label: 'Course Requirements'
-      selector: ../../gers
-    -
-      name: section_id
-      label: 'Section ID'
-      selector: classId
-    -
-      name: section_number
-      label: 'Section Number'
-      selector: sectionNumber
+      selector: administrativeInformation/courseId
     -
       name: subject
       label: 'Course Subject'
-      selector: ../../subject
+      selector: subject
     -
-      name: units
-      label: 'Section Units'
-      selector: units
+      name: code
+      label: 'Course Code'
+      selector: code
+    -
+      name: units_min
+      label: 'Units Min'
+      selector: unitsMin
+    -
+      name: units_max
+      label: 'Units Max'
+      selector: unitsMax
     -
       name: tags
       label: 'Course Tags'
-      selector: ../../tags
+      selector: tags
     -
-      name: quarter
-      label: 'Section Quarter'
-      selector: term
-    -
-      name: academic_career
-      label: 'Academic Career'
-      selector: ../../administrativeInformation/academicCareer
-    -
-      name: instructors
-      label: Instructors
-      selector: 'schedules/schedule[1]/instructors'
-    -
-      name: section_location
-      label: 'Section Location'
-      selector: 'schedules/schedule[1]/location'
-    -
-      name: section_days
-      label: 'Section Days'
-      selector: 'schedules/schedule[1]/days'
-    -
-      name: start_date
-      label: 'Start Date'
-      selector: 'schedules/schedule[1]/startDate'
-    -
-      name: end_date
-      label: 'End Date'
-      selector: 'schedules/schedule[1]/endDate'
-    -
-      name: start_time
-      label: 'Start Time'
-      selector: 'schedules/schedule[1]/startTime'
-    -
-      name: end_time
-      label: 'End Time'
-      selector: 'schedules/schedule[1]/endTime'
+      name: sections
+      label: Sections
+      selector: sections
   ids:
     course_id:
       type: string
-    code:
-      type: string
-    guid:
-      type: string
   constants:
     status: 1
-    type: su_course
-    basic_html: basic_html
+    type: stanford_course
+    stanford_html: stanford_html
     link: 'http://explorecourses.stanford.edu/search?q='
 process:
   status: constants/status
   type: constants/type
   title: title
-  body/value: body
-  body/format: constants/basic_html
-  field_su_course_grading: grading
-  field_su_course_code: code
-  field_su_course_code_int: code
-  field_su_course_id: course_id
-  field_su_course_requirements: requirements
-  field_su_course_section_id: section_id
-  field_su_course_section_number: section_number
-  field_su_course_subject: subject
-  field_su_course_section_units: units
-  field_su_course_section_location: section_location
-  field_su_course_academic_career: academic_career
-  field_su_course_academic_year:
+  body/value: description
+  body/format: constants/stanford_html
+  su_course_code: code
+  su_course_id: course_id
+  su_course_subject: subject
+  su_course_section_units:
     -
-      plugin: skip_on_empty
-      method: process
-      source: year
+      plugin: concat
+      source:
+        - units_min
+        - units_max
+      delimiter: '-'
     -
-      plugin: substr
-      start: 5
-    -
-      plugin: format_date
-      from_format: 'Y'
-      to_format: Y-06-01
-  field_su_course_section_comp:
-    -
-      plugin: entity_generate
-      entity_type: taxonomy_term
-      bundle_key: vid
-      bundle: su_course_component
-      value_key: name
-      source: component
-    -
-      plugin: default_value
-      default_value: null
-  field_su_course_explore_tags:
-    -
-      plugin: callback
-      callable: simplexml_load_string
-      source: tags
-    -
-      plugin: sub_process
-      key: name
-      process:
-        target_id:
-          -
-            plugin: concat
-            source:
-              - organization
-              - name
-            delimiter: '::'
-          -
-            plugin: entity_generate
-            entity_type: taxonomy_term
-            bundle_key: vid
-            bundle: su_course_tags
-            value_key: name
-    -
-      plugin: flatten
-  field_su_course_tags:
-    -
-      plugin: callback
-      callable: simplexml_load_string
-      source: tags
-    -
-      plugin: sub_process
-      key: name
-      process:
-        target_id:
-          -
-            plugin: concat
-            source:
-              - organization
-              - name
-            delimiter: '::'
-          -
-            plugin: translate_course_tag
-            ignore_empty: true
-          -
-            plugin: skip_on_empty
-            method: process
-          -
-            plugin: entity_generate
-            entity_type: taxonomy_term
-            bundle_key: vid
-            bundle: su_course_tags
-            value_key: name
-    -
-      plugin: flatten
-  field_su_course_section_quarter:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: quarter
-    -
-      plugin: substr
-      start: 10
+      plugin: explore_courses_units
+  su_course_academic_year: year
   link_query:
     -
       plugin: concat
@@ -233,78 +94,33 @@ process:
         - code
     -
       plugin: urlencode
-  field_su_course_link:
+  su_course_link:
     -
       plugin: concat
       source:
         - constants/link
         - '@link_query'
-  field_su_course_section_days:
+  su_course_quarters:
     -
-      plugin: str_replace
-      source: section_days
-      regex: true
-      search: '/[\t]/'
-      replace: ' '
+      plugin: explore_courses_quarters
+      source: sections
+  su_course_instructors:
     -
-      plugin: str_replace
-      regex: true
-      search: '/[\n]/'
-      replace: ' '
-    -
-      plugin: str_replace
-      regex: true
-      search: '/[[:blank:]]+/'
-      replace: ' '
-    -
-      plugin: callback
-      callable: trim
-  field_su_course_section_st_date:
-    plugin: format_date
-    from_format: 'M j, Y'
-    to_format: Y-m-d
-    source: start_date
-  field_su_course_section_end_date:
-    plugin: format_date
-    from_format: 'M j, Y'
-    to_format: Y-m-d
-    source: end_date
-  field_su_course_section_end_time:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: end_time
-    -
-      plugin: str_replace
-      search: ':00 '
-      replace: ' '
-  field_su_course_section_st_time:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: start_time
-    -
-      plugin: str_replace
-      search: ':00 '
-      replace: ' '
-  field_su_course_section_instruc:
-    -
-      plugin: callback
-      callable: simplexml_load_string
-      source: instructors
-    -
-      plugin: sub_process
-      key: sunet
-      process:
-        target_id:
-          plugin: entity_generate_no_lookup
-          entity_type: course_collections
-          bundle_key: type
-          bundle: instructor
-          value_key: title
-          source: name
-    -
-      plugin: flatten
+      plugin: explore_courses_instructors
+      source: sections
+  su_course_tags:
+      -
+        plugin: explore_courses_tags
+        source: tags
+      -
+        plugin: explode
+        delimiter: ';'
+      -
+        plugin: entity_generate
+        entity_type: taxonomy_term
+        bundle_key: vid
+        bundle: su_course_tags
+        value_key: name
 destination:
   plugin: 'entity:node'
 migration_dependencies:
