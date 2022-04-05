@@ -129,7 +129,6 @@ class ExploreCoursesUrlWidget extends LinkWidget {
       }
     }
     catch (\Throwable $e) {
-      \Drupal::logger('my_module')->notice(var_export($e, true));
       $form_state->setError($element, $this->t('There was a problem querying the ExploreCourses API.'));
     }
   }
@@ -174,6 +173,11 @@ class ExploreCoursesUrlWidget extends LinkWidget {
       if (!empty($value['uri'])) {
         // Parse the existing URL.
         $url = UrlHelper::parse($value['uri']);
+
+        if (!str_contains($url['path'], 'explorecourses')) {
+          $form_state->setErrorByName("su_explore_course_url[$delta]", $this->t('The URL is not a valid ExploreCourses URL.'));
+          return;
+        }
 
         // Check if the 'view' querystring doesn't exist, or if it's not the xml_querystring
         if (empty($url['query']['view']) || empty($url['query']['view']) != '$xml_querystring') {
