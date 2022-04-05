@@ -14,11 +14,11 @@ use GuzzleHttp\ClientInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Plugin implementation of the 'localist_url' widget.
+ * Plugin implementation of the 'explore_courses_url' widget.
  *
  * @FieldWidget(
- *   id = "localist_url",
- *   label = @Translation("Localist"),
+ *   id = "explore_courses_url",
+ *   label = @Translation("ExploreCourses"),
  *   field_types = {
  *     "link"
  *   }
@@ -67,8 +67,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    */
   public static function defaultSettings() {
     $settings = [
-      'base_url' => '',
-      'select_distinct' => FALSE,
+      'api_version' => '',
     ];
     return $settings + parent::defaultSettings();
   }
@@ -87,15 +86,18 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    * {@inheritDoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    $elements = parent::settingsForm($form, $form_state);
-    $elements['placeholder_url']['#access'] = FALSE;
-    $elements['placeholder_title']['#access'] = FALSE;
-
+    #$elements = parent::settingsForm($form, $form_state);
+    #$elements['placeholder_url']['#access'] = FALSE;
+    #$elements['placeholder_title']['#access'] = FALSE;
     $elements['api_version'] = [
-      '#type' => 'text',
+      '#type' => 'textfield',
       '#title' => $this->t('API version'),
       '#required' => TRUE,
       '#default_value' => $this->getSetting('api_version'),
+      '#access' => TRUE,
+      '#element_validate' => [
+        [$this, 'validateApi'],
+      ],
     ];
     return $elements;
   }
@@ -110,21 +112,24 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    * @param array $complete_form
    *   Complete form.
    */
-  public function validateUrl(array &$element, FormStateInterface $form_state, array &$complete_form) {
+  public function validateApi(array &$element, FormStateInterface $form_state, array &$complete_form) {
     $input = NestedArray::getValue($form_state->getValues(), $element['#parents']);
+
     if ($form_state::hasAnyErrors()) {
       return;
     }
     try {
-      $response = $this->client->request('GET', 'search?view=xml-20200810', ['base_uri' => $input]);
-      $response = json_decode((string) $response->getBody(), TRUE);
-
-      if (!is_array($response)) {
-        throw new \Exception('Invalid response');
+      $response = $this->client->request('GET', 'search?view=xml-' . $input, ['base_uri' => 'https://explorecourses.stanford.edu/']);
+      $response = (string) $response->getBody();
+      $xml = new \SimpleXMLElement($response);
+      // Do this as a string, since SimpleXMLElement doesn't like to cast to bools
+      if ( (string) $xml->deprecated == 'true') {
+        $form_state->setError($element, $this->t("That API version is deprecated. Newest version is: $xml->latestVersion"));
       }
     }
     catch (\Throwable $e) {
-      $form_state->setError($element, $this->t('URL is not a ExploreCourses URL.'));
+      \Drupal::logger('my_module')->notice(var_export($e, true));
+      $form_state->setError($element, $this->t('There was a problem querying the ExploreCourses API.'));
     }
   }
 
@@ -133,11 +138,11 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    */
   public function settingsSummary() {
     $summary = [];
-    if (empty($this->getSetting('base_url'))) {
-      $summary[] = $this->t('No Base URL Provided');
+    if (empty($this->getSetting('api_version'))) {
+      $summary[] = $this->t('No API version Provided');
     }
     else {
-      $summary[] = $this->t('Base URL: @url', ['@url' => $this->getSetting('base_url')]);
+      $summary[] = $this->t('API version: @api_version', ['@api_version' => $this->getSetting('api_version')]);
     }
     return $summary;
   }
@@ -163,29 +168,31 @@ class ExploreCoursesUrlWidget extends LinkWidget {
 
     foreach ($values as $delta => &$value) {
 
-      foreach ($value['filters'] as &$filter_values) {
-        if (is_array($filter_values)) {
-          $filter_values = self::flattenValues($filter_values);
-        }
-      }
+      // Check to make sure the xml view is set to the API version we've specified.
 
-      $value['filters'] = array_filter($value['filters']);
+      //foreach ($value['filters'] as &$filter_values) {
+      //  if (is_array($filter_values)) {
+     //     $filter_values = self::flattenValues($filter_values);
+     //   }
+      //}
 
-      if (empty($value['filters'])) {
-        unset($values[$delta]);
-        continue;
-      }
+      //$value['filters'] = array_filter($value['filters']);
+
+      //if (empty($value['filters'])) {
+      //  unset($values[$delta]);
+      //  continue;
+      //}
 
       // We may in the future have a configuration value
       // to include the "distinct"key to our API call.
       // This tries to find such a value,
       // and applies the key if it finds it.
-      if ($this->getSetting('select_distinct')) {
-        $value['filters']['distinct'] = TRUE;
-      }
+      //if ($this->getSetting('select_distinct')) {
+      //  $value['filters']['distinct'] = TRUE;
+      //}
 
-      $value['uri'] = Url::fromUri(rtrim($this->getSetting('base_url'), '/') . '/api/2/events', ['query' => $value['filters']])
-        ->toString();
+      //$value['uri'] = Url::fromUri(rtrim($this->getSetting('base_url'), '/') . '/api/2/events', ['query' => $value['filters']])
+       // ->toString();
 
     }
     return parent::massageFormValues($values, $form, $form_state);
@@ -200,13 +207,13 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    * @return array
    *   Flattened array.
    */
-  protected static function flattenValues(array $array): array {
-    $return = [];
-    array_walk_recursive($array, function ($a) use (&$return) {
-      $return[] = $a;
-    });
-    return $return;
-  }
+  //protected static function flattenValues(array $array): array {
+  //  $return = [];
+  //  array_walk_recursive($array, function ($a) use (&$return) {
+  //    $return[] = $a;
+  //  });
+  //  return $return;
+  //}
 
   /**
    * Call the ExploreCourses API and return the data in array format.

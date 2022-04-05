@@ -1,12 +1,5 @@
 
-# Course Tag Translation menu items definition
-entity.su_course_tag.collection:
-  title: 'Course Tag Translation'
-  route_name: entity.su_course_tag.collection
-  description: 'List Course Tag Translation (bundles)'
-  parent: migrate_tools.menu
-  weight: 99
-
+# Course menu items definition
 stanford_courses_importer.course_importer:
   title: 'Course Importer'
   route_name: stanford_courses_importer.course_importer

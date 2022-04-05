@@ -8,19 +8,3 @@ stanford_courses_importer.importer_settings:
       sequence:
         type: string
         label: 'Importer URL'
-
-stanford_courses_importer.su_course_tag.*:
-  type: config_entity
-  label: 'Course Tag Translation config'
-  mapping:
-    id:
-      type: string
-      label: 'ID'
-    label:
-      type: label
-      label: 'Label'
-    uuid:
-      type: string
-    tag:
-      type: string
-      label: 'Explore Courses Tag'
