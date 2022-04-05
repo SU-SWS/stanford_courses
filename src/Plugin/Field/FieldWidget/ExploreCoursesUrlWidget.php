@@ -3,6 +3,7 @@
 namespace Drupal\stanford_courses\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\NestedArray;
+use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
@@ -166,79 +167,24 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
 
+    // Something like `view=xml-20200810`, but it may change if the API version changes.
+    $xml_querystring = 'xml-' . $this->getSetting('api_version');
+
     foreach ($values as $delta => &$value) {
+      if (!empty($value['uri'])) {
+        // Parse the existing URL.
+        $url = UrlHelper::parse($value['uri']);
 
-      // Check to make sure the xml view is set to the API version we've specified.
+        // Check if the 'view' querystring doesn't exist, or if it's not the xml_querystring
+        if (empty($url['query']['view']) || empty($url['query']['view']) != '$xml_querystring') {
+          $url['query']['view'] = $xml_querystring;
+        }
 
-      //foreach ($value['filters'] as &$filter_values) {
-      //  if (is_array($filter_values)) {
-     //     $filter_values = self::flattenValues($filter_values);
-     //   }
-      //}
-
-      //$value['filters'] = array_filter($value['filters']);
-
-      //if (empty($value['filters'])) {
-      //  unset($values[$delta]);
-      //  continue;
-      //}
-
-      // We may in the future have a configuration value
-      // to include the "distinct"key to our API call.
-      // This tries to find such a value,
-      // and applies the key if it finds it.
-      //if ($this->getSetting('select_distinct')) {
-      //  $value['filters']['distinct'] = TRUE;
-      //}
-
-      //$value['uri'] = Url::fromUri(rtrim($this->getSetting('base_url'), '/') . '/api/2/events', ['query' => $value['filters']])
-       // ->toString();
-
+        $massaged_url = Url::fromUri($url['path'], ['query' => $url['query']]);
+        $values[$delta]['uri'] = $massaged_url->toString();
+      }
     }
     return parent::massageFormValues($values, $form, $form_state);
-  }
-
-  /**
-   * Flatten a multidimensional array.
-   *
-   * @param array $array
-   *   The array to flatten.
-   *
-   * @return array
-   *   Flattened array.
-   */
-  //protected static function flattenValues(array $array): array {
-  //  $return = [];
-  //  array_walk_recursive($array, function ($a) use (&$return) {
-  //    $return[] = $a;
-  //  });
-  //  return $return;
-  //}
-
-  /**
-   * Call the ExploreCourses API and return the data in array format.
-   *
-   * @param string $uri
-   *   API endpoint.
-   *
-   * @return array
-   *   API response data.
-   *
-   * @see https://developer.localist.com/doc/api
-   */
-  public function fetchExploreCoursesData($uri): array {
-    if ($cache = $this->cache->get($this->cache_key . ":" . $uri)) {
-      return $cache->data;
-    }
-    try {
-      $response = $this->client->request('GET', "/api/2/$uri?pp=$count&page=$page", ['base_uri' => $this->getSetting('base_url')]);
-      return json_decode((string) $response->getBody(), TRUE);
-    }
-    catch (\Throwable $e) {
-      return [];
-    }
-    $this->cache->set($this->cache_key . ":" . $uri, $data, time() + 60 * 60 * 24);
-    return $data;
   }
 
 }
