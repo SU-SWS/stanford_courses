@@ -24,11 +24,9 @@
 {%- set course_url_link_type = "su-link--action" -%}
 
 {# If the news source url is set go there instead of the default. #}
-{%- if news_source|render|striptags("<drupal-render-placeholder>")|trim is not empty -%}
-  {%- set course_url = news_source -%}
   {%- set classes = classes|merge(['su-course-external']) -%}
   {%- set course_url_link_type = "su-link--external" -%}
-{%- endif %}
+
 
 {%- if course_url_attributes is empty -%}
   {% set course_url_attributes = create_attribute() -%}
@@ -42,12 +40,13 @@
   {%- endif -%}
 
   <div class="su-course-header">
-    <h2 class="su-link su-card__link {{ course_url_link_type }}">
-      {{- news_vertical_teaser_headline -}}
-    </h2>
+    {%- if course_code is not empty -%}{{ course_code }}{%-  endif -%} |
+    {%- if course_academic_year is not empty -%}{{ course_academic_year }}{%-  endif -%}
   </div>
   <div class="su-course-link">
-
+    <h2 class="su-link su-card__link {{ course_url_link_type }}">
+      {{- course_title -}}
+    </h2>
   </div>
   {%- if course_url is not empty -%}
     </a>
