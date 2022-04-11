@@ -48,7 +48,8 @@ var webpackConfig = {
   entry: {
     "stanford_courses.script": path.resolve(srcJS, "stanford_courses.js"),
     "stanford_courses.styles": path.resolve(srcSass, "stanford_courses.scss"),
-    "course-list-item": path.resolve(srcSass, "course-list-item.scss")
+    "course-list-item": path.resolve(srcSass, "course-list-item.scss"),
+    "course-vertical-teaser": path.resolve(srcSass, "course-vertical-teaser.scss")
   },
   // Where put build?
   output: {
