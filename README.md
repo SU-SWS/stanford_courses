@@ -8,9 +8,7 @@ Changelog: [Changelog.txt](CHANGELOG.txt)
 Description
 ---
 
-The Stanford Courses module is used to do some things. Please put a
-description of what this module does so that a new developer can get a quick
-understanding about what this module does.
+The Stanford Courses module is used to import course information from ExploreCourses and format it for use in the Stanford Sites environments.
 
 Accessibility
 ---
