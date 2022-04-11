@@ -26,3 +26,6 @@ dependencies:
   - stanford_media
   - rabbit_hole
   - pathauto
+components:
+  namespaces:
+    course: templates/components

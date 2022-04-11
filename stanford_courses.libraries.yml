@@ -50,3 +50,10 @@ stanford_courses:
       dist/css/stanford_courses.styles.css: {}
   js:
     dist/js/stanford_courses.script.js: {}
+course_list:
+  version: VERSION
+  css:
+    base:
+      dist/css/course-list-item.css: {}
+  dependencies:
+    - core/jquery
