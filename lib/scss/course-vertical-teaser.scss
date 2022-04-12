@@ -3,7 +3,67 @@
 @import "./stanford_courses.config";
 
 
-// Your SASS here
-// body {
-//   background-image: url("../../assets/img/test.jpg");
-// }
+.su-course-vertical-teaser {
+
+    @include modular-spacing('margin-bottom', 1);
+
+    // Put the focus on the whole card
+    &:focus-within {
+        outline: -webkit-focus-ring-color auto 1px;
+    }
+
+    .su-course-vertical-teaser__link {
+        &::after {
+            display: none;
+        }
+    }
+
+    .su-course-header {
+        @include modular-spacing('margin-top', 1);
+        @include modular-spacing('margin-bottom', 1);
+        @include modular-spacing('margin-left', 2);
+        @include modular-spacing('margin-right', 2);
+
+        .su-course-subject{
+            display: inline;
+        }
+
+        .su-course-code{
+            display: inline;
+        }
+
+        .su-course-academic-year {
+            display: inline;
+        }
+    }
+
+    .su-course-link{
+        h2 {
+            @include modular-spacing('margin-bottom', 1);
+            @include modular-spacing('margin-left', 2);
+            @include modular-spacing('margin-right', 2);
+        }
+
+        a {
+            color: $su-color-bright-red;
+            font-weight: $su-font-regular;
+            text-decoration: none;
+
+            &:hover,
+            &:focus {
+              text-decoration: underline;
+            }
+
+            font-size: 1em;
+
+            &::after {
+            display: none;
+            }
+        }
+    }
+
+}
+
+
+
+

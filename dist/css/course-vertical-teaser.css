@@ -1,3 +1,123 @@
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser {
+    margin-bottom: 2.31rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser {
+    margin-bottom: 2.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser {
+    margin-bottom: 2.74rem; } }
+
+.su-course-vertical-teaser:focus-within {
+  outline: -webkit-focus-ring-color auto 1px; }
+
+.su-course-vertical-teaser .su-course-vertical-teaser__link::after {
+  display: none; }
+
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-top: 2.31rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-top: 2.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-top: 2.74rem; } }
+
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-bottom: 2.31rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-bottom: 2.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-bottom: 2.74rem; } }
+
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-left: 3.2rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-left: 3.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-left: 3.8rem; } }
+
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-right: 3.2rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-right: 3.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser .su-course-header {
+    margin-right: 3.8rem; } }
+
+.su-course-vertical-teaser .su-course-header .su-course-subject {
+  display: inline; }
+
+.su-course-vertical-teaser .su-course-header .su-course-code {
+  display: inline; }
+
+.su-course-vertical-teaser .su-course-header .su-course-academic-year {
+  display: inline; }
+
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-bottom: 2.31rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-bottom: 2.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-bottom: 2.74rem; } }
+
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-left: 3.2rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-left: 3.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-left: 3.8rem; } }
+
+@media only screen and (min-width: 0) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-right: 3.2rem; } }
+
+@media only screen and (min-width: 768px) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-right: 3.6rem; } }
+
+@media only screen and (min-width: 1500px) {
+  .su-course-vertical-teaser .su-course-link h2 {
+    margin-right: 3.8rem; } }
+
+.su-course-vertical-teaser .su-course-link a {
+  color: #b1040e;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: 1em; }
+  .su-course-vertical-teaser .su-course-link a:hover, .su-course-vertical-teaser .su-course-link a:focus {
+    text-decoration: underline; }
+  .su-course-vertical-teaser .su-course-link a::after {
+    display: none; }
 
 
 /*# sourceMappingURL=course-vertical-teaser.css.map*/

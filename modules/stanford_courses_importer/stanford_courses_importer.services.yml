@@ -1,6 +1,0 @@
-services:
-  stanford_courses_importer.overrider:
-    class: \Drupal\stanford_courses_importer\Overrides\CourseImporterOverrides
-    arguments: ['@config.factory', '@state']
-    tags:
-      - {name: config.factory.override, priority: 5}

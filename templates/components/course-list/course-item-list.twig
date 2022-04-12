@@ -23,7 +23,7 @@
 {% set course_list_url = course_list_url|render|striptags("<drupal-render-placeholder>")|trim %}
 
 {# Unique id for the title for A11y labels #}
-{% set headline = course_list_headline|render_clean %}
+{% set headline = course_list_title|render_clean %}
 {% if headline is not empty %}
   {% set headingID = getUniqueId(headline|render) %}
 {% endif %}

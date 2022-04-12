@@ -18,14 +18,12 @@
   set classes = [
     'su-card',
     'su-course-vertical-teaser',
+    'su-course-external',
   ]
 -%}
 
-{%- set course_url_link_type = "su-link--action" -%}
-
-{# If the news source url is set go there instead of the default. #}
-  {%- set classes = classes|merge(['su-course-external']) -%}
-  {%- set course_url_link_type = "su-link--external" -%}
+{# We use rabbit hole to forward to ExploreCourses, which makes it an external, but this might change #}
+{%- set course_url_link_type = "su-link--external" -%}
 
 
 {%- if course_url_attributes is empty -%}
@@ -40,7 +38,7 @@
   {%- endif -%}
 
   <div class="su-course-header">
-    {%- if course_code is not empty -%}{{ course_code }}{%-  endif -%} |
+    <strong>{%- if course_code is not empty -%}{{ course_code }}{%-  endif -%}</strong> |
     {%- if course_academic_year is not empty -%}{{ course_academic_year }}{%-  endif -%}
   </div>
   <div class="su-course-link">
@@ -48,6 +46,7 @@
       {{- course_title -}}
     </h2>
   </div>
+
   {%- if course_url is not empty -%}
     </a>
   {%- endif -%}
