@@ -6,7 +6,8 @@ stanford {
   color: $su-color-bright-red;
 }
 
-// Your SASS here
-// body {
-//   background-image: url("../../assets/img/test.jpg");
-// }
+.section-stanford-courses-views-header {
+  h1 {
+    @include modular-spacing('margin', 6 null 5);
+  }
+}

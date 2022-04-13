@@ -43,7 +43,7 @@
 #
 # EXAMPLE:
 #
-stanford_courses:
+courses_page:
   version: VERSION
   css:
     component:
@@ -55,5 +55,8 @@ course_list:
   css:
     base:
       dist/css/course-list-item.css: {}
-  dependencies:
-    - core/jquery
+course_card:
+  version: VERSION
+  css:
+    base:
+      dist/css/course-vertical-teaser.css: {}
