@@ -33,21 +33,20 @@
 {% set course_url = course_url|render|striptags("<drupal-render-placeholder>")|trim %}
 
 <article{{ attributes.addClass(classes) }}>
-  {%- if course_url is not empty -%}
-    <a {{ course_url_attributes.addClass('su-course-vertical-teaser__link') }} href="{{ course_url }}" alt="">
-  {%- endif -%}
 
   <div class="su-course-header">
     <strong>{%- if course_code is not empty -%}{{ course_code|render|striptags|replace({'\n': '', ' ': ''})}}{%-  endif -%}</strong> | {%- if course_academic_year is not empty -%}{{ course_academic_year }}{%-  endif -%}
   </div>
   <div class="su-course-link">
     <h2 class="su-link su-card__link {{ course_url_link_type }}">
+    {%- if course_url is not empty -%}
+      <a {{ course_url_attributes.addClass('su-course-vertical-teaser__link') }} href="{{ course_url }}" alt="">
+    {%- endif -%}
       {{- course_title -}}
+    {%- if course_url is not empty -%}
+      </a>
+    {%- endif -%}
     </h2>
   </div>
-
-  {%- if course_url is not empty -%}
-    </a>
-  {%- endif -%}
 
 </article>
