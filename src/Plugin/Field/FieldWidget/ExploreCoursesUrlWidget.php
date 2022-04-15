@@ -8,7 +8,6 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element\Url as UrlElement;
 use Drupal\Core\Url;
 use Drupal\link\Plugin\Field\FieldWidget\LinkWidget;
 use GuzzleHttp\ClientInterface;
@@ -42,9 +41,9 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   protected $cache;
 
   /**
-   * Caching key
+   * Caching key.
    *
-   * @var String
+   * @var string
    */
   protected $cache_key;
 
@@ -87,9 +86,9 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    * {@inheritDoc}
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
-    #$elements = parent::settingsForm($form, $form_state);
-    #$elements['placeholder_url']['#access'] = FALSE;
-    #$elements['placeholder_title']['#access'] = FALSE;
+    // $elements = parent::settingsForm($form, $form_state);
+    // $elements['placeholder_url']['#access'] = FALSE;
+    // $elements['placeholder_title']['#access'] = FALSE;
     $elements['api_version'] = [
       '#type' => 'textfield',
       '#title' => $this->t('API version'),
@@ -123,8 +122,8 @@ class ExploreCoursesUrlWidget extends LinkWidget {
       $response = $this->client->request('GET', 'search?view=xml-' . $input, ['base_uri' => 'https://explorecourses.stanford.edu/']);
       $response = (string) $response->getBody();
       $xml = new \SimpleXMLElement($response);
-      // Do this as a string, since SimpleXMLElement doesn't like to cast to bools
-      if ( (string) $xml->deprecated == 'true') {
+      // Do this as a string, since SimpleXMLElement doesn't like to cast to bools.
+      if ((string) $xml->deprecated == 'true') {
         $form_state->setError($element, $this->t("That API version is deprecated. Newest version is: $xml->latestVersion"));
       }
     }
@@ -179,7 +178,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
           return;
         }
 
-        // Check if the 'view' querystring doesn't exist, or if it's not the xml_querystring
+        // Check if the 'view' querystring doesn't exist, or if it's not the xml_querystring.
         if (empty($url['query']['view']) || empty($url['query']['view']) != '$xml_querystring') {
           $url['query']['view'] = $xml_querystring;
         }

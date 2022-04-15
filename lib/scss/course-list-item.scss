@@ -2,42 +2,38 @@
 
 @import "./stanford_courses.config";
 
-
 .su-course-list-item {
+  @include modular-spacing("margin-top", 1);
+  @include modular-spacing("margin-bottom", 1);
+  border-bottom: 1px grey solid;
 
-    @include modular-spacing('margin-top', 1);
-    @include modular-spacing('margin-bottom', 1);
-    border-bottom: 1px grey solid;
+  .su-course-list__header {
+  }
 
-    .su-course-list__header {}
+  .su-course-list__title {
+    a {
+      color: $su-color-bright-red;
+      font-weight: $su-font-regular;
+      text-decoration: none;
 
-    .su-course-list__title{
-        a {
-            color: $su-color-bright-red;
-            font-weight: $su-font-regular;
-            text-decoration: none;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
 
-            &:hover,
-            &:focus {
-              text-decoration: underline;
-            }
+      font-size: 1em;
 
-            font-size: 1em;
-
-            &::after {
-            display: none;
-            }
-        }
+      &::after {
+        display: none;
+      }
     }
+  }
 
-    .su-course-list__instructors {
-        @include modular-spacing('margin-bottom', 1);
-    }
+  .su-course-list__instructors {
+    @include modular-spacing("margin-bottom", 1);
+  }
 
-    .su-course-list__description {
-        @include modular-spacing('margin-bottom', 1);
-    }
-
+  .su-course-list__description {
+    @include modular-spacing("margin-bottom", 1);
+  }
 }
-
-

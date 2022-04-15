@@ -25,12 +25,13 @@ class ExploreCoursesTags extends ProcessPluginBase {
 
     try {
       $xml = new \SimpleXMLElement($value);
-    } catch (\Throwable $e) {
+    }
+    catch (\Throwable $e) {
       return '';
     }
 
     $tags = [];
-    // concatenate the name and organization to make the tag.
+    // Concatenate the name and organization to make the tag.
     foreach ($xml->tag as $tag) {
       $tags[] = (string) $tag->organization . "::" . (string) $tag->name;
     }

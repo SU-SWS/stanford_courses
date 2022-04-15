@@ -25,7 +25,8 @@ class ExploreCoursesQuarters extends ProcessPluginBase {
 
     try {
       $xml = new \SimpleXMLElement($value);
-    } catch (\Throwable $e) {
+    }
+    catch (\Throwable $e) {
       return '';
     }
 
