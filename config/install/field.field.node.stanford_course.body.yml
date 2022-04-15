@@ -1,4 +1,3 @@
-uuid: 8c845ad8-15b4-488e-9bdc-efede7e3833f
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - node.type.stanford_course
   module:
     - text
-_core:
-  default_config_hash: ZNU9LbZXbozISdcy7_egABNJMHpzRKsB_6VIWiSo2mg
 id: node.stanford_course.body
 field_name: body
 entity_type: node
@@ -23,3 +20,4 @@ settings:
   display_summary: true
   required_summary: false
 field_type: text_with_summary
+

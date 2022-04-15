@@ -1,4 +1,3 @@
-uuid: 1648fe17-15a2-43d6-a21a-691508cacbc6
 langcode: en
 status: true
 dependencies:
@@ -12,8 +11,9 @@ type: link
 settings: {  }
 module: link
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false
 custom_storage: false
+

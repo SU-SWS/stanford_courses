@@ -1,19 +1,15 @@
-uuid: d66fb9ca-bc04-44e1-a0ad-a510bcfcafe6
 langcode: en
 status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: 8Iwddfc46zXBuxc3USi-1CV-IIVYCEBXvDR1CfzM5TA
+    - taxonomy
 id: node.su_course_subject
 field_name: su_course_subject
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+  target_type: taxonomy_term
 module: core
 locked: false
 cardinality: 1
@@ -21,3 +17,4 @@ translatable: true
 indexes: {  }
 persist_with_no_fields: false
 custom_storage: false
+

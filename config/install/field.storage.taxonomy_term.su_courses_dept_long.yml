@@ -2,10 +2,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - node
-id: node.su_course_section_units
-field_name: su_course_section_units
-entity_type: node
+    - taxonomy
+id: taxonomy_term.su_courses_dept_long
+field_name: su_courses_dept_long
+entity_type: taxonomy_term
 type: string
 settings:
   max_length: 255

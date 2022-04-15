@@ -1,4 +1,3 @@
-uuid: f9823e3d-bbde-4c71-872e-fe88403f4bdb
 langcode: en
 status: true
 dependencies: {  }
@@ -10,3 +9,4 @@ allow_override: 0
 redirect: '[node:su_course_link:uri]'
 redirect_code: 301
 redirect_fallback_action: null
+
