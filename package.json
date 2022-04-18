@@ -17,7 +17,7 @@
     "bourbon": "^5.1",
     "browserslist": "^4.8.7",
     "css-loader": "^2.1.1",
-    "decanter": "^6.0.5",
+    "decanter": "^6.2.7",
     "drupal-behaviors-loader": "^1.0.1",
     "eslint": "^5.15.3",
     "extra-watch-webpack-plugin": "^1.0.3",
