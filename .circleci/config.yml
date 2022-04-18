@@ -92,7 +92,7 @@ workflows:
           filters:
             branches:
               only:
-                - 8.x-2.x
+                - 8.x-1.x
   tests:
     jobs:
       - run-coverage

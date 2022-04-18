@@ -27,6 +27,7 @@ dependencies:
   - rabbit_hole
   - pathauto
   - smart_trim
+  - taxonomy_menu
 components:
   namespaces:
     course: templates/components

@@ -23,7 +23,7 @@ class ExploreCoursesUnits extends ProcessPluginBase {
     if (!is_string($value) || !str_contains($value, '-')) {
       return '';
     }
-    // Check to see if the minimum number of units is different from the maximum number of units.
+    // Check to see if the minimumis different from the maximum.
     $units_array = explode('-', $value);
     if (count($units_array) != 2) {
       throw new \Exception('The number of minimum or maximum units is missing.');

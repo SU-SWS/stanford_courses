@@ -33,19 +33,6 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    */
   protected $client;
 
-  /**
-   * Caching service.
-   *
-   * @var \Drupal\Core\Cache\CacheBackendInterface
-   */
-  protected $cache;
-
-  /**
-   * Caching key.
-   *
-   * @var string
-   */
-  protected $cacheKey;
 
   /**
    * {@inheritDoc}.
@@ -57,8 +44,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
       $configuration['field_definition'],
       $configuration['settings'],
       $configuration['third_party_settings'],
-      $container->get('http_client'),
-      $container->get('cache.default')
+      $container->get('http_client')
     );
   }
 
@@ -75,11 +61,9 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   /**
    * {@inheritDoc}.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, ClientInterface $client, CacheBackendInterface $cache) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, ClientInterface $client) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
     $this->client = $client;
-    $this->cache = $cache;
-    $this->cacheKey = 'explorecourses';
   }
 
   /**
@@ -119,7 +103,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
       $response = $this->client->request('GET', 'search?view=xml-' . $input, ['base_uri' => 'https://explorecourses.stanford.edu/']);
       $response = (string) $response->getBody();
       $xml = new \SimpleXMLElement($response);
-      // Do this as a string, since SimpleXMLElement doesn't like to cast to bools.
+      // Do this as a string, since SimpleXMLElement doesn't cast to bools.
       if ((string) $xml->deprecated == 'true') {
         $form_state->setError($element, $this->t("That API version is deprecated. Newest version is: $xml->latestVersion"));
       }
@@ -152,7 +136,6 @@ class ExploreCoursesUrlWidget extends LinkWidget {
     $element['uri']['#access'] = TRUE;
     $element['title']['#access'] = FALSE;
     $element['attributes']['#access'] = FALSE;
-    $item = $items[$delta];
 
     return $element;
   }
@@ -162,7 +145,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
 
-    // Something like `view=xml-20200810`, but it may change if the API version changes.
+    // Something like `view=xml-20200810`, but it may change.
     $xml_querystring = 'xml-' . $this->getSetting('api_version');
 
     foreach ($values as $delta => &$value) {

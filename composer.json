@@ -13,7 +13,37 @@
       "url": "https://packages.drupal.org/8"
     }
   ],
-  "require": {},
+  "require": {
+    "drupal/field_formatter_class": "^1.5",
+    "drupal/field_group": "^3.0",
+    "drupal/allowed_formats": "^1.2",
+    "drupal/auto_entitylabel": "^3.0",
+    "drupal/components": "^2.0",
+    "drupal/config_pages_overrides": "^1.0-alpha4",
+    "drupal/ctools": "^3.4",
+    "drupal/default_content": "^2.0",
+    "drupal/entity_reference_revisions": "^1.8",
+    "drupal/field_permissions": "^1.0@RC",
+    "drupal/layout_builder_restrictions": "^2.7",
+    "drupal/layout_library": "^1.0-beta1",
+    "drupal/menu_block": "^1.6",
+    "drupal/migrate_plus": "^5.1",
+    "drupal/migrate_tools": "^5.0",
+    "drupal/node_revision_delete": "^1.0@RC",
+    "drupal/page_manager": "^4.0",
+    "drupal/paragraphs": "^1.11",
+    "drupal/pathauto": "^1.8",
+    "drupal/rabbit_hole": "^1.0-beta6",
+    "drupal/taxonomy_menu": "dev-3.x",
+    "drupal/views_block_filter_block": "^1.0",
+    "drupal/views_infinite_scroll": "^2.0",
+    "drupal/views_taxonomy_term_name_depth": "^7.0",
+    "su-sws/drupal-patches": "^8.0",
+    "su-sws/jumpstart_ui": "dev-8.x-1.x",
+    "su-sws/stanford_migrate": "dev-8.x-1.x",
+    "su-sws/stanford_text_editor": "dev-8.x-1.x"
+
+  },
   "config": {
      "sort-packages": true
   }
