@@ -11,7 +11,67 @@
     {
       "type": "composer",
       "url": "https://packages.drupal.org/8"
-    }
+    },
+    {
+        "type": "package",
+        "package": {
+            "name": "ckeditor-plugin/a11ychecker",
+            "version": "1.1.1",
+            "type": "drupal-library",
+            "dist": {
+                "url": "https://download.ckeditor.com/a11ychecker/releases/a11ychecker_1.1.1.zip",
+                "type": "zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            }
+        }
+    },
+    {
+      "type": "package",
+      "package": {
+          "name": "ckeditor-plugin/balloonpanel",
+          "version": "4.14.0",
+          "type": "drupal-library",
+          "dist": {
+              "url": "https://download.ckeditor.com/balloonpanel/releases/balloonpanel_4.14.0.zip",
+              "type": "zip"
+          },
+          "require": {
+              "composer/installers": "~1.0"
+          }
+      }
+  },
+  {
+      "type": "package",
+      "package": {
+          "name": "ckeditor-plugin/link",
+          "version": "4.14.0",
+          "type": "drupal-library",
+          "dist": {
+              "url": "https://download.ckeditor.com/link/releases/link_4.14.0.zip",
+              "type": "zip"
+          },
+          "require": {
+              "composer/installers": "~1.0"
+          }
+      }
+  },
+  {
+      "type": "package",
+      "package": {
+          "name": "ckeditor-plugin/fakeobjects",
+          "version": "4.14.0",
+          "type": "drupal-library",
+          "dist": {
+              "url": "https://download.ckeditor.com/fakeobjects/releases/fakeobjects_4.14.0.zip",
+              "type": "zip"
+          },
+          "require": {
+              "composer/installers": "~1.0"
+          }
+      }
+  }
   ],
   "require": {
     "drupal/field_formatter_class": "^1.5",

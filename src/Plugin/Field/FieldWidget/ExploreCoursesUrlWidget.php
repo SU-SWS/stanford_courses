@@ -4,7 +4,6 @@ namespace Drupal\stanford_courses\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\UrlHelper;
-use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -32,7 +31,6 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    * @var \GuzzleHttp\ClientInterface
    */
   protected $client;
-
 
   /**
    * {@inheritDoc}.
@@ -158,7 +156,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
           return;
         }
 
-        // Check if the 'view' querystring doesn't exist, or if it's not the xml_querystring.
+        // Check if the 'view' querystring doesn't exist, or if it's wrong.
         if (empty($url['query']['view']) || empty($url['query']['view']) != '$xml_querystring') {
           $url['query']['view'] = $xml_querystring;
         }
