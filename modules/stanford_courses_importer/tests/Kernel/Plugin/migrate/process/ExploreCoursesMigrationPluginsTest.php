@@ -53,7 +53,7 @@ class ExploreCoursesMigrationPluginsTest extends EntityKernelTestBase {
   ];
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}.
    */
   protected function setUp(): void {
     parent::setUp();
@@ -276,28 +276,28 @@ TAGS;
 class MigrateExecutableTest implements MigrateExecutableInterface {
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}.
    */
   public function import() {
 
   }
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}.
    */
   public function rollback() {
 
   }
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}.
    */
   public function processRow(Row $row, array $process = NULL, $value = NULL) {
 
   }
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}.
    */
   public function saveMessage($message, $level = MigrationInterface::MESSAGE_ERROR) {
 

@@ -1,19 +1,21 @@
 <?php
 
+/**
+ * @file
+ */
+
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\migrate_tools\MigrateBatchExecutable;
 use Drupal\migrate\MigrateMessage;
-use Drupal\stanford_courses_importer\StanfordCoursesImporter;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Cache\Cache;
 
 /**
  * @file
- * stanford_courses_importer.module
+ * Stanford_courses_importer.module.
  */
 
- /**
+/**
  * Implements hook_form_FORM_ID_alter().
  * config-page-stanford-courses-importer-form config-pages-form
  *
@@ -59,7 +61,7 @@ function stanford_courses_importer_config_pages_presave(EntityInterface $entity)
  * @param \Drupal\Core\Form\FormStateInterface $form_state
  *   The form state.
  */
-function stanford_courses_importer_form_config_pages_stanford_courses_importer_form_alter_submit (array &$form, FormStateInterface $form_state) {
+function stanford_courses_importer_form_config_pages_stanford_courses_importer_form_alter_submit(array &$form, FormStateInterface $form_state) {
   // Get the migration object from the ones available.
   $migrations = stanford_migrate_migration_list();
   $migration_plugin = $migrations["stanford_courses"]["stanford_courses"] ?? FALSE;

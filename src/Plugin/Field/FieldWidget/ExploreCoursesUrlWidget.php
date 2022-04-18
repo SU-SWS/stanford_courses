@@ -48,7 +48,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   protected $cache_key;
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public static function create(ContainerInterface $container, array $configuration, $plugin_id, $plugin_definition) {
     return new static(
@@ -63,7 +63,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public static function defaultSettings() {
     $settings = [
@@ -73,7 +73,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, array $third_party_settings, ClientInterface $client, CacheBackendInterface $cache) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
@@ -83,7 +83,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements['api_version'] = [
@@ -130,7 +130,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public function settingsSummary() {
     $summary = [];
@@ -144,7 +144,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
@@ -158,7 +158,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
 

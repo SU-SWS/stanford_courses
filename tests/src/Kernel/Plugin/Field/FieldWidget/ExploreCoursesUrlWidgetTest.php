@@ -25,7 +25,7 @@ use Drupal\stanford_courses\Plugin\Field\FieldWidget\ExploreCoursesUrlWidget;
 class ExploreCoursesUrlWidgetTest extends KernelTestBase {
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   public static $modules = [
     'system',
@@ -37,7 +37,7 @@ class ExploreCoursesUrlWidgetTest extends KernelTestBase {
   ];
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc}.
    */
   protected function setUp(): void {
     parent::setUp();

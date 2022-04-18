@@ -16,7 +16,7 @@ use Drupal\migrate\Row;
 class ExploreCoursesUnits extends ProcessPluginBase {
 
   /**
-   * {@inheritdoc}
+   * {@inheritDoc}.
    */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     // Input should be a concatenated string of two numbers with a dash.
