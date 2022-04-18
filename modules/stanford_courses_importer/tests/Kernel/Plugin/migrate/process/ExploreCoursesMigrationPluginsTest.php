@@ -10,7 +10,6 @@ use Drupal\migrate\Row;
 /**
  * Class ExploreCoursesMigrationPluginsTest.
  *
- * @covers \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesInstructors
  * @group stanford_courses_importer
  */
 class ExploreCoursesMigrationPluginsTest extends EntityKernelTestBase {
@@ -203,6 +202,8 @@ TAGS;
 
   /**
    * Test the Instructors plugin.
+   *
+   * @covers \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesInstructors
    */
   public function testExploreCoursesInstructors() {
     /** @var \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesInstructors $plugin */
@@ -221,6 +222,9 @@ TAGS;
 
   /**
    * Test the Quarters plugin.
+   *
+   * @covers \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesQuarters
+   *
    */
   public function testExploreCoursesQuarters() {
     /** @var \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesQuarters$plugin */
@@ -234,6 +238,9 @@ TAGS;
 
   /**
    * Test the Tags plugin.
+   *
+   * @covers \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesTags
+   *
    */
   public function testExploreCoursesTags() {
     /** @var \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesTags $plugin */
@@ -247,6 +254,9 @@ TAGS;
 
   /**
    * Test the Units plugin.
+   *
+   * @covers \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesUnits
+   *
    */
   public function testExploreCoursesUnits() {
     /** @var \Drupal\stanford_courses_importer\Plugin\migrate\process\ExploreCoursesUnits $plugin */

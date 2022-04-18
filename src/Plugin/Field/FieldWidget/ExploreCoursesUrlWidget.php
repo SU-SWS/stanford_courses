@@ -45,7 +45,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    *
    * @var string
    */
-  protected $cache_key;
+  protected $cacheKey;
 
   /**
    * {@inheritDoc}.
@@ -79,7 +79,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $third_party_settings);
     $this->client = $client;
     $this->cache = $cache;
-    $this->cache_key = 'explorecourses';
+    $this->cacheKey = 'explorecourses';
   }
 
   /**

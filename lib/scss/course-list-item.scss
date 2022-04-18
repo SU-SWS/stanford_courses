@@ -53,9 +53,11 @@ ul {
 
 // Wrapper spacing
 @include grid-media-min('lg') {
-  .flex-lg-9-of-12.main-region {
-    @include responsive-spacing('padding-left', 2);
-  } 
+  .flex-lg-9-of-12 {
+    .main-region {
+      @include responsive-spacing('padding-left', 2);
+    }
+  }
 }
 
 .filter-menu {
