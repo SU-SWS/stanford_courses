@@ -6,7 +6,6 @@ dependencies:
     - system.menu.courses-menu
     - taxonomy.vocabulary.su_course_quarters
     - views.view.stanford_courses
-    - views.view.taxonomy_term_pages
   module:
     - jumpstart_ui
     - layout_builder

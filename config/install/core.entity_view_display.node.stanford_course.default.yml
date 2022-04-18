@@ -12,7 +12,6 @@ dependencies:
     - field.field.node.stanford_course.su_course_section_units
     - field.field.node.stanford_course.su_course_subject
     - field.field.node.stanford_course.su_course_tags
-    - field.field.node.stanford_course.su_shared_tags
     - node.type.stanford_course
   module:
     - jumpstart_ui
@@ -129,22 +128,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 8
             additional: {  }
-          1216415c-5651-4658-a5d2-e8a8f5216cf6:
-            uuid: 1216415c-5651-4658-a5d2-e8a8f5216cf6
-            region: main
-            configuration:
-              id: 'field_block:node:stanford_course:su_shared_tags'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 9
-            additional: {  }
           9ca8e49a-3632-4103-bd8a-db2bdf4ceed6:
             uuid: 9ca8e49a-3632-4103-bd8a-db2bdf4ceed6
             region: main
@@ -256,14 +239,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 104
-    region: main
-  su_shared_tags:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 108
     region: main
 hidden:
   body: true
