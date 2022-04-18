@@ -12,7 +12,6 @@ dependencies:
   - layout_builder
   - layout_discovery
   - link
-  - media
   - menu_block
   - menu_ui
   - node
