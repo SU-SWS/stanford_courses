@@ -211,6 +211,7 @@ TAGS;
 
     $row = new Row();
     $migrate = new MigrateExecutableTest();
+    // good data.
     $translated = $plugin->transform($this->section_xml, $migrate, $row, '');
     $this->assertEquals([
       0 => 'Lu, S.',
@@ -218,6 +219,12 @@ TAGS;
       2 => 'Rajanala, S.',
       3 => 'Morrison, T.',
     ], $translated);
+    // non string value
+    $translated = $plugin->transform([], $migrate, $row, '');
+    $this->assertEquals('', $translated);
+    // unparseable xml
+    $translated = $plugin->transform('<?xml version="1.0" encoding="ASCII"?>', $migrate, $row, '');
+    $this->assertEquals('', $translated);
   }
 
   /**
@@ -232,8 +239,15 @@ TAGS;
 
     $row = new Row();
     $migrate = new MigrateExecutableTest();
+    // Good value
     $translated = $plugin->transform($this->section_xml, $migrate, $row, '');
     $this->assertEquals([0 => 'Autumn'], $translated);
+    // non string value
+    $translated = $plugin->transform([], $migrate, $row, '');
+    $this->assertEquals('', $translated);
+    // unparseable xml
+    $translated = $plugin->transform('<?xml version="1.0" encoding="ASCII"?>', $migrate, $row, '');
+    $this->assertEquals('', $translated);
   }
 
   /**
@@ -248,8 +262,15 @@ TAGS;
 
     $row = new Row();
     $migrate = new MigrateExecutableTest();
+    // a good value.
     $translated = $plugin->transform($this->tags_xml, $migrate, $row, '');
     $this->assertEquals('EDUC::alluniversity;EDUC::alluniversityabove200;EDUC::alluniversityabove100', $translated);
+    // a non string value
+    $translated = $plugin->transform([], $migrate, $row, '');
+    $this->assertEquals('', $translated);
+    // unparseable xml
+    $translated = $plugin->transform('<?xml version="1.0" encoding="ASCII"?>', $migrate, $row, '');
+    $this->assertEquals('', $translated);
   }
 
   /**
