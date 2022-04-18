@@ -24,7 +24,7 @@ code_coverage: &code_coverage
     - run:
         name: Run PHP Unit Coverage Tests
         command: |
-          composer global require SU-SWS/stanford-caravan:dev-8.x-1.x
+          composer global require SU-SWS/stanford-caravan:dev-8.x-2.x
           ~/.composer/vendor/bin/sws-caravan phpunit /var/www/html --extension-dir=/var/www/test --with-coverage
     - save_cache:
         key: dependencies-{{ epoch }}
