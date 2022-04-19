@@ -45,6 +45,10 @@ dependencies:
   - ultimate_cron
   - stanford_fields
   - views_taxonomy_term_name_depth
+  - ui_patterns
+  - ui_patterns_layouts
+  - ui_patterns_library
+  - ui_patterns_views
 components:
   namespaces:
     course: templates/components
