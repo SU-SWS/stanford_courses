@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.taxonomy_term.su_course_subjects.layout_builder__layout
     - field.field.taxonomy_term.su_course_subjects.su_courses_dept_long
     - taxonomy.vocabulary.su_course_subjects
   module:
