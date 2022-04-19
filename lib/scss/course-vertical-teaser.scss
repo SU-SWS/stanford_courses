@@ -2,7 +2,21 @@
 
 @import "./stanford_courses.config";
 
+// Override the card display
+// Added it this way to keep from very deep nesting.
+.su-card {
+  &.su-course-vertical-teaser {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "header" "headline";
+  }
+}
+
 .su-course-vertical-teaser {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "header" "headline";
+
   @include modular-spacing("margin-bottom", 1);
 
   // Put the focus on the whole card
@@ -21,6 +35,8 @@
     @include modular-spacing("margin-bottom", 1);
     @include modular-spacing("margin-left", 2);
     @include modular-spacing("margin-right", 2);
+
+    order: -1;
 
     .su-course-subject {
       display: inline;

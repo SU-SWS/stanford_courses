@@ -2,7 +2,7 @@
 
 @import "./stanford_courses.config";
 
-ul {
+.su-course-list {
   &.su-list-unstyled {
     @include responsive-spacing('margin-bottom', 9);
 
@@ -17,9 +17,19 @@ ul {
 }
 
 .su-course-list-item {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-areas: "header" "headline" "instructors" "description";
+}
+
+.su-course-list-item {
   @include responsive-spacing('margin-top', 4);
   @include responsive-spacing('margin-bottom', 1);
   border-bottom: 1px solid $su-color-black-20;
+
+  .su-course-list__header {
+    order: -1;
+  }
 
   .su-course-list__title {
     h2 {
@@ -44,6 +54,16 @@ ul {
 
   .su-course-list__instructors {
     @include responsive-spacing('margin-bottom', 1);
+
+    h5 {
+      float: left;
+      padding-right: 10px;
+      margin-bottom: 0;
+    }
+
+    li {
+      display: inline;
+    }
   }
 
   .su-course-list__description {

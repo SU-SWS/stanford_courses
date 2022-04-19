@@ -31,12 +31,6 @@
 
 <article{{ attributes }} {% if headingID %}aria-labelledby="{{ headingID }}"{% endif %}>
 
-  <header class="su-course-list__header">
-    <strong>{%- if course_list_code is not empty -%}{{ course_list_code|render|striptags|replace({'\n': '', ' ': ''}) }}{%-  endif -%}</strong> | {%- if course_list_academic_year is not empty -%}{{ course_list_academic_year }}{%-  endif -%}
-
-    {%- if course_list_quarters is not empty -%}{{ course_list_quarters }}{%-  endif -%}
-  </header>
-
   <div class="su-course-list__title">
     {# Link for headline h2 #}
         {%- if course_list_url is not empty -%}
@@ -54,8 +48,14 @@
         {%- endif -%}
   </div>
 
+  <header class="su-course-list__header">
+    <strong>{%- if course_list_code is not empty -%}{{ course_list_code|render|striptags|replace({'\n': '', ' ': ''}) }}{%-  endif -%}</strong> | {%- if course_list_academic_year is not empty -%}{{ course_list_academic_year }}{%-  endif -%}
+
+    {%- if course_list_quarters is not empty -%}<time>{{ course_list_quarters }}</time>{%-  endif -%}
+  </header>
+
   <div class="su-course-list__instructors">
-    <strong>Instructors: </strong>{%- if course_list_instructors|render|striptags('<drupal-render-placeholder>')|trim is not empty -%}{{ course_list_instructors}}{%-  endif -%}
+    <h5>Instructors: </h5>{%- if course_list_instructors|render|striptags('<drupal-render-placeholder>')|trim is not empty -%}{{ course_list_instructors}}{%-  endif -%}
   </div>
 
   <div class="su-course-list__description">
