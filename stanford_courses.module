@@ -2,7 +2,7 @@
 
 /**
  * @file
- * stanford_courses.module.
+ * Stanford_courses.module.
  */
 
 use Drupal\Core\Entity\EntityInterface;
