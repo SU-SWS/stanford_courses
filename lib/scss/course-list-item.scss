@@ -63,6 +63,21 @@
 
     li {
       display: inline;
+
+      &::after {
+        content: ',\A0';
+      }
+
+      &:last-of-type {
+        &::after {
+          content: '';
+        }
+      }
+
+      // Address Safari bug
+      & li::before {
+        content: '\200B';
+      }
     }
   }
 
