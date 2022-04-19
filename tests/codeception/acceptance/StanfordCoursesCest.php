@@ -22,7 +22,8 @@ class StanfordEventsCest {
     $I->canSee('su_course_subject');
     $I->canSee('su_course_tags');
     $I->canSee('su_course_instructors');
-    $I->canSee('su_course_units');
+    $I->canSee('su_course_section_units');
+
   }
 
   /**
