@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Su_course_tags.module.
+ * stanford_courses.module.
  */
 
 use Drupal\Core\Entity\EntityInterface;
@@ -25,7 +25,6 @@ function stanford_courses_page_attachments(array &$attachments) {
  * Implements hook_ENTITY_TYPE_view().
  */
 function stanford_courses_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
-
   // Only run on stanford course items.
   if ($entity->bundle() !== "stanford_course" || !node_is_page($entity)) {
     return;
