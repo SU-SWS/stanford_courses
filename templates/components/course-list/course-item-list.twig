@@ -40,7 +40,7 @@
   <div class="su-course-list__title">
     {# Link for headline h2 #}
         {%- if course_list_url is not empty -%}
-          <a {{ course_list_url_attributes }} href="{{ course_list_url }}" alt="">
+          <a {{ course_list_url_attributes }} href="{{ course_list_url }}" >
         {%- endif -%}
 
         {% if course_list_title|render_clean %}

@@ -40,7 +40,7 @@
   <div class="su-course-link">
     <h2 class="su-link su-card__link {{ course_url_link_type }}">
     {%- if course_url is not empty -%}
-      <a {{ course_url_attributes.addClass('su-course-vertical-teaser__link') }} href="{{ course_url }}" alt="">
+      <a {{ course_url_attributes.addClass('su-course-vertical-teaser__link') }} href="{{ course_url }}" >
     {%- endif -%}
       {{- course_title -}}
     {%- if course_url is not empty -%}
