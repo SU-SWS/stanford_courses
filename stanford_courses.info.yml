@@ -23,6 +23,8 @@ dependencies:
   - user
   - views_infinite_scroll
   - rabbit_hole
+  - rh_node
+  - rh_taxonomy
   - pathauto
   - smart_trim
   - taxonomy_menu
