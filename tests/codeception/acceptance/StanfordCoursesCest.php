@@ -3,7 +3,7 @@
 /**
  * Class StanfordCoursesCest.
  *
- * @group stanford_events
+ * @group stanford_courses
  */
 class StanfordEventsCest {
 
@@ -115,11 +115,24 @@ class StanfordEventsCest {
   /**
    * Test for importer
    */
-  public function testForImporter(AcceptanceTester $I) {
+  public function testImporterForm(AcceptanceTester $I) {
     $I->logInWithRole('administrator');
     $I->amOnPage("/admin/config/importers/courses-importer");
     $I->canSee("ExploreCourses URL");
     $I->canSee("Use this field to import courses from ExploreCourses.");
+  }
+
+  /**
+   * Test cron settings.
+   */
+  public function testForCronSettings(AcceptanceTester $I) {
+    $I->logInWithRole("administrator");
+    $I->amOnPage("/admin/config/system/cron/jobs");
+    $I->canSee("Importer: Courses");
+    $I->amOnPage("/admin/config/system/cron/jobs/manage/stanford_migrate_stanford_courses");
+    $I->canSeeResponseCodeIs(200);
+    $I->canSee("stanford_migrate_ultimate_cron_task");
+    $I->seeCheckboxIsChecked("#edit-status");
   }
 
   /**
