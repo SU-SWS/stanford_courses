@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.taxonomy_term.layout_builder__layout
     - taxonomy.vocabulary.su_course_subjects
   module:
     - layout_builder
