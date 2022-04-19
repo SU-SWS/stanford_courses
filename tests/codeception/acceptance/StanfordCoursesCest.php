@@ -32,7 +32,7 @@ class StanfordEventsCest {
     $I->logInWithRole('administrator');
     $subject = $this->createCourseSubjectsTerm($I, 'TEST');
     $tags = [
-        'su_course_subject' => [$subject],
+        'su_course_subject' => $subject->id(),
     ];
     $node = $this->createCourseNode($I, $tags);
     $path = $node->toUrl()->toString();
@@ -48,7 +48,7 @@ class StanfordEventsCest {
     $I->logInWithRole('administrator');
     $subject = $this->createCourseSubjectsTerm($I, 'TEST');
     $tags = [
-        'su_course_subject' => [$subject],
+        'su_course_subject' => $subject->id(),
     ];
     $node = $this->createCourseNode($I, $tags);
     $path = $node->toUrl()->toString();
@@ -112,6 +112,16 @@ class StanfordEventsCest {
   }
 
   /**
+   * Test for importer
+   */
+  public function testForImporter(AcceptanceTester $I) {
+    $I->logInWithRole('administrator');
+    $I->amOnPage("/admin/config/importers/courses-importer");
+    $I->canSee("ExploreCourses URL");
+    $I->canSee("Use this field to import courses from ExploreCourses.");
+  }
+
+  /**
    * Create a Course Node.
    *
    * @param AcceptanceTester $I
@@ -137,9 +147,6 @@ class StanfordEventsCest {
       'su_course_academic_year' => '2021-2022',
       'su_course_code' => '101',
       'su_course_id' => 123456,
-      'su_course_quarters' => [],
-      'su_course_subject' => [],
-      'su_course_tags' => [],
       'su_course_instructors' => 'Doe, J., Doe, M.',
       'su_course_section_units' => '2',
 
