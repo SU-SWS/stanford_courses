@@ -22,11 +22,27 @@ dependencies:
   - ui_patterns_views
   - user
   - views_infinite_scroll
-  - stanford_media
   - rabbit_hole
   - pathauto
   - smart_trim
   - taxonomy_menu
+  - config_pages_overrides
+  - config_pages
+  - scheduler
+  - shs
+  - jumpstart_ui
+  - layout_builder_restrictions
+  - layout_library
+  - ds
+  - migrate_plus
+  - migrate
+  - page_manager
+  - flat_taxonomy
+  - scheduler
+  - stanford_migrate
+  - ultimate_cron
+  - stanford_fields
+  - views_taxonomy_term_name_depth
 components:
   namespaces:
     course: templates/components
