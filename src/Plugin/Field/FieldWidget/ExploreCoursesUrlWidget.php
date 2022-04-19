@@ -82,7 +82,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * Validate the given domain has a localist API response.
+   * Validate we are specifying the newest api
    *
    * @param array $element
    *   Url form element.

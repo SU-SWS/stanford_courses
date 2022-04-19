@@ -49,6 +49,7 @@ dependencies:
   - ui_patterns_layouts
   - ui_patterns_library
   - ui_patterns_views
+  - stanford_courses_importer
 components:
   namespaces:
     course: templates/components
