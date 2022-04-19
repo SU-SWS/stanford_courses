@@ -82,7 +82,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   }
 
   /**
-   * Validate we are specifying the newest api
+   * Validate we are specifying the newest api.
    *
    * @param array $element
    *   Url form element.
