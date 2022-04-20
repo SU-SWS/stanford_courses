@@ -120,17 +120,15 @@ class ExploreCoursesUrlWidgetTest extends KernelTestBase {
     ];
     $definition = [];
     $widget = ExploreCoursesUrlWidget::create(\Drupal::getContainer(), $config, '', $definition);
-    $element = [
-      'uri' => '',
-    ];
+    $element = ['#value' => ''];
     $form = [];
     $form_state = new FormState();
     $widget->validateExploreCourseUrl($element, $form_state, $form);
     $this->assertCount(0, $form_state->getErrors());
-    $element['uri'] = "https://explorecourses.stanford.edu?test=test";
+    $element['#value'] = "https://explorecourses.stanford.edu?test=test";
     $widget->validateExploreCourseUrl($element, $form_state, $form);
     $this->assertCount(0, $form_state->getErrors());
-    $element['uri'] = "https://bad-data.com";
+    $element['#value'] = "https://bad-data.com";
     $widget->validateExploreCourseUrl($element, $form_state, $form);
     $this->assertCount(1, $form_state->getErrors());
   }

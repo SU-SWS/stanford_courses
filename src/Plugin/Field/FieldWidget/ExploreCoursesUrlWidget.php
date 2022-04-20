@@ -131,9 +131,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
-    $element['#element_validate'] = [
-      [$this, 'validateExploreCourseUrl'],
-    ];
+    $element['uri']['#element_validate'][] = [$this, 'validateExploreCourseUrl'];
     $element['uri']['#description'] = $this->t('This must be a valid ExplorerCourses URL. See: @url', ['@url' => 'https://explorecourses.stanford.edu']);
     $element['title']['#access'] = FALSE;
     $element['attributes']['#access'] = FALSE;
@@ -153,7 +151,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    */
   public function validateExploreCourseUrl(array &$element, FormStateInterface $form_state, array &$complete_form) {
 
-    $url = UrlHelper::parse($element['uri']['#value']);
+    $url = UrlHelper::parse($element['#value']);
     if (!empty($url['path']) && !str_contains($url['path'], 'explorecourses')) {
       $form_state->setError($element, $this->t('The URL is not a valid ExploreCourses URL.'));
       return;
