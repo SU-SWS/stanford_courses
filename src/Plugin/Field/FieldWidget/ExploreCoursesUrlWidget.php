@@ -150,7 +150,6 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    *   Complete form.
    */
   public function validateExploreCourseUrl(array &$element, FormStateInterface $form_state, array &$complete_form) {
-
     $url = UrlHelper::parse($element['#value']);
     if (!empty($url['path']) && !str_contains($url['path'], 'explorecourses')) {
       $form_state->setError($element, $this->t('The URL is not a valid ExploreCourses URL.'));

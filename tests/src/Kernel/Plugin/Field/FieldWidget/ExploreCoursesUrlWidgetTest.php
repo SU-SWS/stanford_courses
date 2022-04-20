@@ -120,7 +120,7 @@ class ExploreCoursesUrlWidgetTest extends KernelTestBase {
     ];
     $definition = [];
     $widget = ExploreCoursesUrlWidget::create(\Drupal::getContainer(), $config, '', $definition);
-    $element = ['#value' => ''];
+    $element = ['#value' => '', '#parents' => []];
     $form = [];
     $form_state = new FormState();
     $widget->validateExploreCourseUrl($element, $form_state, $form);
