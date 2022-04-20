@@ -132,7 +132,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
     $element['#element_validate'] = [
-      [$this, 'validateExploreCourseUrl',]
+      [$this, 'validateExploreCourseUrl'],
     ];
     $element['uri']['#description'] = $this->t('This must be a valid ExplorerCourses URL. See: @url', ['@url' => 'https://explorecourses.stanford.edu']);
     $element['title']['#access'] = FALSE;
