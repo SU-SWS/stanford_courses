@@ -112,6 +112,13 @@ class ExploreCoursesUrlWidgetTest extends KernelTestBase {
    * Test Url Validation.
    */
   public function testUrlValidation() {
+    $field_def = $this->createMock(FieldDefinitionInterface::class);
+    $config = [
+      'field_definition' => $field_def,
+      'settings' => [],
+      'third_party_settings' => [],
+    ];
+    $definition = [];
     $widget = ExploreCoursesUrlWidget::create(\Drupal::getContainer(), $config, '', $definition);
     $element = [
       'uri' => '',
