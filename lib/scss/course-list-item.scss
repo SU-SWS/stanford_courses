@@ -55,10 +55,12 @@
   .su-course-list__instructors {
     @include responsive-spacing('margin-bottom', 1);
 
-    h5 {
+    h3 {
+      @include type-e;
       float: left;
       padding-right: 10px;
       margin-bottom: 0;
+      line-height: 1.4;
     }
 
     li {

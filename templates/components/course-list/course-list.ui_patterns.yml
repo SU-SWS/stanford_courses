@@ -1,4 +1,4 @@
-course-list:
+course_list:
   label: Course List Item
   description: "Building block component for the Course list page."
   fields:
@@ -37,7 +37,7 @@ course-list:
       label: "URL for item"
       description: "URL for title"
       preview: "http://www.stanford.edu/"
-  use: "@course/course-list/course-item-list.twig"
+  use: "@stanford-courses/course-list/course-item-list.twig"
   libraries:
     - newslist:
         css:

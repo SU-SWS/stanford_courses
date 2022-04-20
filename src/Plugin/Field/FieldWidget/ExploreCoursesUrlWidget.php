@@ -51,7 +51,7 @@ class ExploreCoursesUrlWidget extends LinkWidget {
    */
   public static function defaultSettings() {
     $settings = [
-      'api_version' => '',
+      'api_version' => '20200810',
     ];
     return $settings + parent::defaultSettings();
   }
@@ -131,11 +131,33 @@ class ExploreCoursesUrlWidget extends LinkWidget {
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $element = parent::formElement($items, $delta, $element, $form, $form_state);
 
-    $element['uri']['#access'] = TRUE;
+    $element['#element_validate'] = [
+      [$this, 'validateExploreCourseUrl']
+    ];
+    $element['uri']['#description'] = $this->t('This must be a valid ExplorerCourses URL. See: @url', ['@url' => 'https://explorecourses.stanford.edu']);
     $element['title']['#access'] = FALSE;
     $element['attributes']['#access'] = FALSE;
 
     return $element;
+  }
+
+  /**
+   * Validate we have a legit url.
+   *
+   * @param array $element
+   *   Url form element.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   Current form state object.
+   * @param array $complete_form
+   *   Complete form.
+   */
+  public function validateExploreCourseUrl(array &$element, FormStateInterface $form_state, array &$complete_form) {
+
+    $url = UrlHelper::parse($element['uri']['#value']);
+    if (!empty($url['path']) && !str_contains($url['path'], 'explorecourses')) {
+      $form_state->setError($element, $this->t('The URL is not a valid ExploreCourses URL.'));
+      return;
+    }
   }
 
   /**
@@ -151,13 +173,8 @@ class ExploreCoursesUrlWidget extends LinkWidget {
         // Parse the existing URL.
         $url = UrlHelper::parse($value['uri']);
 
-        if (!str_contains($url['path'], 'explorecourses')) {
-          $form_state->setErrorByName("su_explore_course_url[$delta]", $this->t('The URL is not a valid ExploreCourses URL.'));
-          return;
-        }
-
         // Check if the 'view' querystring doesn't exist, or if it's wrong.
-        if (empty($url['query']['view']) || empty($url['query']['view']) != '$xml_querystring') {
+        if (empty($url['query']['view']) || $url['query']['view'] != '$xml_querystring') {
           $url['query']['view'] = $xml_querystring;
         }
 

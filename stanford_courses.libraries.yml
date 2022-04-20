@@ -48,8 +48,6 @@ courses_page:
   css:
     component:
       dist/css/stanford_courses.styles.css: {}
-  js:
-    dist/js/stanford_courses.script.js: {}
 course_list:
   version: VERSION
   css:

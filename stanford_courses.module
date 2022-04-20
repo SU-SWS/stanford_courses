@@ -9,15 +9,15 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Cache\Cache;
+use Drupal\views\ViewExecutable;
+
 
 /**
- * Implements hook_page_attachments().
+ * Implements hook_views_pre_render().
  */
-function stanford_courses_page_attachments(array &$attachments) {
-  // Get the route.
-  $route = \Drupal::routeMatch()->getRouteName();
-  if (str_contains($route, 'page_view_courses_list_page_courses_list_page')) {
-    $attachments['#attached']['library'][] = 'stanford_courses/courses_page';
+function stanford_courses_views_pre_render(ViewExecutable $view) {
+  if (isset($view) && ($view->storage->id() == 'stanford_courses')) {
+    $view->element['#attached']['library'][] = 'stanford_courses/courses_page';
   }
 }
 
@@ -71,6 +71,4 @@ function stanford_courses_node_presave(EntityInterface $entity) {
     }
   }
 
-  // If an item is being edited or saved, clear out some cache tags.
-  Cache::invalidateTags(["node_list:{$entity->bundle()}"]);
 }

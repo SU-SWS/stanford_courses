@@ -47,7 +47,7 @@
   </div>
 
   <div class="su-course-header">
-    <strong>{%- if course_code is not empty -%}{{ course_code|render|striptags|replace({'\n': '', ' ': ''})}}{%-  endif -%}</strong> | {%- if course_academic_year is not empty -%}<time>{{ course_academic_year }}</time>{%-  endif -%}
+    <strong>{%- if course_code is not empty -%}{{ course_code|render|striptags|replace({'\n': '', ' ': ''})}}{%-  endif -%}</strong>&nbsp;|{%- if course_academic_year is not empty -%}<time>{{ course_academic_year }}</time>{%-  endif -%}
   </div>
 
 </article>

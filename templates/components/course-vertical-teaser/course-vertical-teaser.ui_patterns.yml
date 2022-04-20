@@ -1,4 +1,4 @@
-course-vertical-teaser:
+course_vertical_teaser:
   label: Course Vertical Teaser
   description: "Course Vertical Teaser"
   fields:
@@ -22,7 +22,7 @@ course-vertical-teaser:
       label: "URL"
       description: "The link to the course"
       preview: "https://www.stanford.edu"
-  use: "@course/course-vertical-teaser/course-vertical-teaser.twig"
+  use: "@stanford-courses/course-vertical-teaser/course-vertical-teaser.twig"
   libraries:
     - courseverteaser:
         css:
