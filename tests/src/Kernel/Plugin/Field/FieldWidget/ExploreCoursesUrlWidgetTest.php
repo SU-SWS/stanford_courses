@@ -83,7 +83,7 @@ class ExploreCoursesUrlWidgetTest extends KernelTestBase {
 
     $summary = $widget->settingsSummary();
     $this->assertCount(1, $summary);
-    $this->assertEquals('No API version Provided', (string) $summary[0]);
+    $this->assertEquals('API version: 20200810', (string) $summary[0]);
 
     $config = [
       'field_definition' => $field_def,
