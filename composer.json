@@ -82,6 +82,7 @@
     "drupal/ctools": "^3.4",
     "drupal/default_content": "^2.0",
     "drupal/ds": "^3.13",
+    "drupal/element_class_formatter": "^1.4",
     "drupal/entity_reference_revisions": "^1.8",
     "drupal/field_formatter_class": "^1.5",
     "drupal/field_group": "^3.0",
