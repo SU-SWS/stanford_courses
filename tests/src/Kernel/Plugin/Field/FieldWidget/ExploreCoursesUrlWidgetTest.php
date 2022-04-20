@@ -125,13 +125,13 @@ class ExploreCoursesUrlWidgetTest extends KernelTestBase {
     ];
     $form = [];
     $form_state = new FormState();
-    $widget->validateExploreCoursesUrl($element, $form_state, $form);
+    $widget->validateExploreCourseUrl($element, $form_state, $form);
     $this->assertCount(0, $form_state->getErrors());
     $element['uri'] = "https://explorecourses.stanford.edu?test=test";
-    $widget->validateExploreCoursesUrl($element, $form_state, $form);
+    $widget->validateExploreCourseUrl($element, $form_state, $form);
     $this->assertCount(0, $form_state->getErrors());
     $element['uri'] = "https://bad-data.com";
-    $widget->validateExploreCoursesUrl($element, $form_state, $form);
+    $widget->validateExploreCourseUrl($element, $form_state, $form);
     $this->assertCount(1, $form_state->getErrors());
   }
 
