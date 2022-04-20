@@ -79,7 +79,7 @@ class StanfordEventsCest {
     $I->canSeeResponseCodeIs(200);
     $I->canSee("- Default List View -");
     $I->canSee("Taxonomy Term Page List");
-    $I->canSee("Vertical Teaser");
+    $I->canSee("Card Grid");
   }
 
 
