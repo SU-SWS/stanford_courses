@@ -91,8 +91,6 @@
     "drupal/layout_builder_restrictions": "^2.13",
     "drupal/layout_library": "^1.0@beta",
     "drupal/menu_block": "^1.6",
-    "drupal/migrate_plus": "^5.2",
-    "drupal/migrate_tools": "^5.0",
     "drupal/node_revision_delete": "^1.0@RC",
     "drupal/page_manager": "^4.0@beta",
     "drupal/paragraphs": "^1.11",
