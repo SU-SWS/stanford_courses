@@ -105,10 +105,10 @@
     "drupal/views_infinite_scroll": "^2.0",
     "drupal/views_taxonomy_term_name_depth": "^7.0",
     "su-sws/drupal-patches": "^8.0",
-    "su-sws/jumpstart_ui": "8.x-dev",
-    "su-sws/stanford_fields": "8.x-dev",
-    "su-sws/stanford_migrate": "8.x-dev",
-    "su-sws/stanford_text_editor": "8.x-dev"
+    "su-sws/jumpstart_ui": "^8.1",
+    "su-sws/stanford_fields": "^8.1",
+    "su-sws/stanford_migrate": "^8.2",
+    "su-sws/stanford_text_editor": "^8.1"
   },
   "config": {
      "sort-packages": true
