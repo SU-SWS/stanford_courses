@@ -17,7 +17,7 @@
   grid-template-columns: 100%;
   grid-template-areas: "header" "headline";
   @include modular-spacing("padding-top", 1);
-  @include modular-spacing("margin-bottom", 1);
+  @include modular-spacing("margin-bottom", 4);
 
   // Put the focus on the whole card
   &:focus-within {
