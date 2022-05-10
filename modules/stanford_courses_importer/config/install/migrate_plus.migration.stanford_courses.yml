@@ -1,4 +1,3 @@
-uuid: d3961043-6561-413f-ab82-833655a44fb0
 langcode: en
 status: false
 dependencies: {  }
@@ -15,7 +14,7 @@ source:
   track_changes: true
   plugin: url
   data_fetcher_plugin: http
-  urls: ''
+  urls: {  }
   data_parser_plugin: simple_xml
   item_selector: //courses/course
   fields:
@@ -153,4 +152,5 @@ process:
 destination:
   plugin: 'entity:node'
 migration_dependencies:
-  required: {  }
+  required:
+    - stanford_course_depts
