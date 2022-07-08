@@ -1,6 +1,14 @@
 # Stanford Module Example
 
 
+8.1.4
+--------------------------------------------------------------------------------
+_Release Date: 2022-07-08_
+
+- D8CORE-5859: fixes to the courses font sizes. (#102)
+- D8CORE-5858 Add missing "All" courses menu item
+
+
 8.x-1.3
 --------------------------------------------------------------------------------
 _Release Date: 2022-05-10_
